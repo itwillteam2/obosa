@@ -1,0 +1,91 @@
+//회원가입
+create table KDH(
+id varchar(50) primary key,
+pw varchar(20),
+name varchar(20),
+address varchar(20));
+
+//공지사항
+create table board(
+num int primary key,
+name varchar(20),
+passwd varchar(20),
+subject varchar(50),
+content varchar(2000),
+re_ref int,
+re_lev int,
+re_seq int,
+readcount int,
+date datetime,
+ip varchar(20)
+);
+
+//방명록
+create table guest(
+num int primary key,
+name varchar(20),
+passwd varchar(20),
+subject varchar(50),
+content varchar(2000),
+file varchar(50),
+re_ref int,
+re_lev int,
+re_seq int,
+readcount int,
+date datetime,
+ip varchar(20)
+);
+
+//자료실
+create table download(
+num int primary key,
+name varchar(20),
+passwd varchar(20),
+subject varchar(50),
+filename varchar(50),
+realname varchar(50),
+content varchar(2000),
+re_ref int,
+re_lev int,
+re_seq int,
+readcount int,
+date datetime,
+ip varchar(20)
+);
+
+//갤러리
+create table gallery(
+num int primary key,
+name varchar(20),
+passwd varchar(20),
+subject varchar(50),
+filename varchar(50),
+realname varchar(50),
+content varchar(2000),
+re_ref int,
+re_lev int,
+re_seq int,
+readcount int,
+date datetime,
+ip varchar(20)
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
