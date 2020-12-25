@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEANS//EN"
+"http://www.springframework.org/dtd/spring-beans-2.0.dtd"> <!-- 현재 객체(빈)을 생성하기 위한 파일임을 명시 -->
+
+<!-- <beans>태그로 스프링 프로젝트 실행시 컨테이너가 생성할 객체(빈)을 설정 합니다.-->
+<beans>
+	<!-- PersonServiceImpl클래스에 대한 (빈)객체 생성 -->
+	<!-- 
+	<bean id="personSerivce" class="com.spring.ex01.PersonServiceImpl">
+		//setter메소드 호출 // setName메소드 호출시.. 매개변수로 홍길동을 전달하여 String name변수에 저장
+		<property name="name">
+			<value>홍길동</value>		
+		</property>		
+	</bean>
+	 -->
+	 
+	 <!--
+	 	인자가 한개인 생성자로 id가 personService1인 빈(객체)을 생성 합니다.
+	 	객체 생성시 생성자로 value인 이순신을 전달 하여 String name속성을 초기화 합니다.		
+	  -->
+	 <bean id="personService1" class="com.spring.ex02.PersonServiceImpl">
+	 	<!-- 생성자 호출 구문 -->
+	 	<constructor-arg value="이순신" />
+	 </bean>
+	 
+	 <!-- PersonServiceImpl객체 생성시 인자 2개를 받는 생성자 호출!시 이름과 나이를 전달하여 변수에초기화 -->
+	 <bean id="personService2" class="com.spring.ex02.PersonServiceImpl">
+	 <!-- 인자가 2개인 생성자 호출시 차례대로 손흥민, 23 전달하여 name, age 변수값 초기화 -->
+	 	<constructor-arg value="손흥민" />
+	 	<constructor-arg value="23" />
+	 </bean>	 
+	 
+</beans>
