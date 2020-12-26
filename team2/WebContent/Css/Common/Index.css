@@ -1,0 +1,418 @@
+.TopRollingWrap {display:block; width:100%; height:540px;}
+.trTopRollingWrap dt {width:*;}
+.trTopRollingWrap dd {width:1200px; height:540px;}
+.trTopRollingWrap dd a.SlideLink {width:1200px; height:540px;}
+.trTopRollingWrap dd a.SlideLink img {width:1200px; height:540px;}
+
+.TopRollingWrap .TopRollingSlideArrow {width:1200px; margin:0 auto; position:relative; }
+.TopRollingWrap .TopRollingSlideArrow a.TopRollingSlidePrev {top:-310px; left:-90px; display:block; position:absolute; z-index:15; width:40px; height:77px; background-size:40px 77px; background-image:url(/Images/Ver1/Common/slide_arrow_left.png);}
+.TopRollingWrap .TopRollingSlideArrow a.TopRollingSlideNext {top:-310px; right:-90px; display:block; position:absolute; z-index:15; width:40px; height:77px; background-size:40px 77px; background-image:url(/Images/Ver1/Common/slide_arrow_right.png);}
+
+
+.TopRollingWrap_M {display:none; width:100%; height:auto;}
+.trTopRollingWrap_M dt {width:*;}
+.trTopRollingWrap_M dd { width:22.5rem; height:19.6875rem;}
+.trTopRollingWrap_M dd a.SlideLink {display:block; width:22.5rem; height:19.6875rem; margin:0 auto;}
+.trTopRollingWrap_M dd a.SlideLink img {width:100%; height:100%;}
+
+
+.EventBannerWrap {width:1200px; margin:20px auto 0; padding:0;}
+.EventBannerWrap a {float:left; display:block; width:590px; height:205px; background-repeat:no-repeat; background-size:590px 205px; background-position:bottom right; border-radius:5px; color:#000000; font-size:17px; line-height:23px; padding:55px 0 0 30px; text-align:left;}
+.EventBannerWrap a b {display:block; font-size:29px; margin-bottom:24px;}
+.EventBannerWrap a.EventBanner1 {margin:0 10px 0 0;}
+.EventBannerWrap a.EventBanner2 {margin:0 0 0 10px;}
+
+
+
+.BestItemWrap {width:1200px; margin:100px auto 0; padding:0; text-align:left;}
+a.BestItemTitle {text-align:left; display:inline-block; color:#000000; line-height:30px; font-size:30px; font-family:'Saira Condensed'; font-weight:bold; margin:0;}
+a.BestItemTitle span {display:inline-block; width:18px; height:21px; background-size:18px 21px; background-image:url(/Images/Ver1/Common/gogo_pc.png); vertical-align:top; margin:4px 0 5px 7px;}
+
+.BestItemList {display:block; margin:0; width:100%;}
+.BestItemList ul {height:660px; width:auto;}
+.BestItemList li {width:210px; height:310px; margin:20px 15px 0;}
+.BestItemList li a {display:block; position:relative; width:210px; height:auto; text-align:center;}
+.BestItemList li img.ItemImage {width:210px; height:210px; border-radius:50%;}
+.BestItemList li span.ImageNumber     {display:block; position:absolute; z-index:2; top:0; left:0; width:48px; height:48px; border-radius:50%; background-color:#8f8f8f; color:#ffffff; font-size:26px; line-height:48px; text-align:center; font-family:'Saira Condensed'}
+.BestItemList li span.ImageNumber.num1 {background-color:#c80203;}
+.BestItemList li span.ImageBackGround {display:block; position:absolute; z-index:1; top:0; left:0; width:210px; height:210px; border-radius:50%; background:#000000; opacity:0.03; filter:alpha(opacity=3); -ms-filter:alpha(opacity=3); }
+.BestItemList li span.ItemName {display:block; width:210px; margin:10px 0 0 0; text-align:center; font-size:16px; line-height:18px; color:#000000; text-overflow:ellipsis; white-space:nowrap; overflow:hidden;}
+.BestItemList li span.ItemPrice {display:block; width:210px; margin:7px 0 5px 0; text-align:center; font-size:16px; line-height:16px; color:#000000; font-weight:bold;}
+.BestItemList li span.ItemPrice.red {color:#f20001;}
+
+.BestItemList_M {display:none; margin:0.625rem 0 0 0; width:100%; }
+.BestItemList_M ul {width:auto; margin:0 0;}
+.BestItemList_M li {width:10.5625rem; height:14.5rem; margin:0;}
+.BestItemList_M li a {display:block; position:relative; width:10rem; height:auto; text-align:center; margin:0 0 0 0.5625rem;}
+.BestItemList_M li img.ItemImage {width:10rem; height:10rem; border-radius:50%;}
+.BestItemList_M li span.ImageNumber     {display:block; position:absolute; z-index:2; top:0; left:0; width:2rem; height:2rem; border-radius:50%; background-color:#8f8f8f; color:#ffffff; font-size:1.25rem; line-height:2rem; text-align:center; font-family:'Saira Condensed'}
+.BestItemList_M li span.ImageNumber.num1 {background-color:#c80203;}
+.BestItemList_M li span.ImageBackGround {display:block; position:absolute; z-index:1; top:0; left:0; width:10rem; height:10rem; border-radius:50%; background:#000000; opacity:0.03; filter:alpha(opacity=3); -ms-filter:alpha(opacity=3); }
+.BestItemList_M li span.ItemName {display:block; width:10rem; margin:0.5rem 0 0 0; text-align:center; font-size:0.8rem; line-height:0.8rem; color:#000000; text-overflow:ellipsis; white-space:nowrap; overflow:hidden;}
+.BestItemList_M li span.ItemPrice {display:block; width:10rem; margin:0.35rem 0 0.35rem 0; text-align:center; font-size:0.8rem; line-height:0.8rem; color:#000000; font-weight:bold;}
+.BestItemList_M li span.ItemPrice.red {color:#f20001;}
+
+
+
+.NewArrivalWrap {width:1200px; margin:50px auto 0; padding:0; text-align:left;}
+a.NewArrivalTitle {text-align:left; display:inline-block; color:#000000; line-height:30px; font-size:30px; font-family:'Saira Condensed'; font-weight:bold; margin:0;}
+a.NewArrivalTitle span {display:inline-block; width:18px; height:21px; background-size:18px 21px; background-image:url(/Images/Ver1/Common/gogo_pc.png); vertical-align:top; margin:4px 0 5px 7px;}
+
+.NewArrivalList {padding:12px 0 0 0;}
+.NewArrivalList a.NewArrival1,
+.NewArrivalList a.NewArrival2,
+.NewArrivalList a.NewArrival3 {display:block; text-align:left; float:left; width:390px; height:380px; background-size:390px 380px; background-repeat:no-repeat; background-position:bottom right; border-radius:5px; font-size:18px; line-height:18px; color:#000000; padding:32px 0 0 32px; margin:0 15px 0 0;}
+.NewArrivalList a.NewArrival3 {margin:0 0 0 0;}
+.NewArrivalList a.NewArrival3_M {display:none; text-align:left; width:100%; height:8rem; background-size:20.6rem 8rem; background-repeat:no-repeat; background-position:bottom right; border-radius:5px; font-size:0.8rem; line-height:0.8rem; color:#000000; padding:2.95rem 0 0 1rem; margin:0.5rem 0 0 0;}
+.NewArrivalList a.NewArrival1 b,
+.NewArrivalList a.NewArrival2 b,
+.NewArrivalList a.NewArrival3 b, 
+.NewArrivalList a.NewArrival3_M b {display:block; text-align:left; font-size:28px; line-height:28px; margin:0 0 15px 0;}
+
+
+
+.EventProductWrap {display:block; width:1200px; margin:80px auto 0; padding:0; border-radius:5px;}
+.EventProductWrap a.EventProductImage {display:block; width:1200px; height:350px; border-radius:5px;}
+.EventProductWrap a.EventProductImage img {width:1200px; height:350px; border-radius:5px;}
+
+.EventProductWrap .EventProductList {width:100%; padding:15px 15px 5px;}
+.EventProductWrap .EventProductList ul {height:306px;}
+.EventProductWrap .EventProductList li {width:208px; height:306px; margin:0 13px;}
+.EventProductWrap .EventProductList li a {display:block; position:relative; width:208px; height:auto; text-align:center;}
+.EventProductWrap .EventProductList li img.ItemImage {width:208px; height:208px; background-color:#ffffff;}
+.EventProductWrap .EventProductList li span.ItemName {display:block; width:210px; margin:10px 0 0 0; text-align:center; font-size:16px; line-height:16px; color:#000000; text-overflow:ellipsis; white-space:nowrap; overflow:hidden;}
+.EventProductWrap .EventProductList li span.ItemPrice {display:block; width:210px; margin:7px 0 5px 0; text-align:center; font-size:16px; line-height:16px; color:#000000; font-weight:bold;}
+.EventProductWrap .EventProductList li span.ItemPrice.red {color:#f20001;}
+
+
+.EventProductWrap_M {display:none; width:100%; margin:3rem auto 0; padding-bottom:0.5rem;}
+.EventProductWrap_M a.EventProductImage {display:block; width:100%; /*max-width:32.5rem;*/ height:auto; margin:0 auto;}
+.EventProductWrap_M a.EventProductImage img {width:100%; height:100%;}
+
+.EventProductWrap_M .EventProductList {width:100%; padding:0 0.25rem; max-width:32.5rem; height:auto; margin:0 auto;}
+.EventProductWrap_M .EventProductList ul {}
+.EventProductWrap_M .EventProductList li {width:31.3333%; margin:0 1% 0.5rem;}
+.EventProductWrap_M .EventProductList li a {display:block; position:relative; width:100%; height:auto; text-align:center; margin-bottom:0.5rem;}
+.EventProductWrap_M .EventProductList li img.ItemImage {width:100%; height:auto; background-color:#ffffff; }
+.EventProductWrap_M .EventProductList li span.ItemName {display:block; width:100%; margin:0.5rem 0 0 0; text-align:center; font-size:0.8rem; line-height:0.8rem; color:#000000; text-overflow:ellipsis; white-space:nowrap; overflow:hidden;}
+.EventProductWrap_M .EventProductList li span.ItemPrice {display:block; width:100%; margin:0.35rem 0 0.35rem 0; text-align:center; font-size:0.8rem; line-height:0.8rem; color:#000000; font-weight:bold;}
+.EventProductWrap_M .EventProductList li span.ItemPrice.red {color:#f20001;}
+
+
+
+.DesignFinderWrap {display:block; width:100%; margin:90px 0 0 0;}
+.DesignFinderTitle {width:1200px; height:30px; margin:0 auto; background-image:url(/Images/Ver1/Common/designfinder_bg.png); background-repeat:no-repeat; background-size:1200px 1px; background-position:center;}
+.DesignFinderTitle b {line-height:30px; font-size:30px; }
+.DesignFinderTitle ul {}
+.DesignFinderTitle li.left  {color:#000000; font-size:24px; line-height:28px; height:30px; width:30px; text-align:left; display:block; cursor:pointer; }
+.DesignFinderTitle li.right {color:#000000; font-size:24px; line-height:28px; height:30px; width:30px; text-align:right; display:block; cursor:pointer; }
+.DesignFinderTitle li a {color:#000000;}
+.DesignFinderTitle li.center {width:1140px; height:30px; display:block;}
+.DesignFinderTitle li.center b {display:block; width:200px; height:30px; line-height:30px; font-family:'Saira Condensed'; color:#000000; margin:0 auto; background-color:#ffffff; text-align:center; padding:0;}
+
+.DesignFinderList {width:100%; height:270px; margin:17px 0 0 0;}
+.DesignFinderList ul {margin:0 0;}
+.DesignFinderList li {width:290px; height:270px; margin:0;}
+.DesignFinderList li a {display:block; position:relative; width:270px; height:270px; margin:0 10px;}
+.DesignFinderList li img.ItemImage {width:270px; height:270px; border-radius:50%;}
+
+
+.CharacterWrap {display:block; background-color:#f8f8f8; margin:80px 0 0 0; padding:67px 0 0 0;}
+.CharacterWrap .MenuCharacter {width:1200px; height:120px; margin:0 auto;}
+.CharacterWrap .MenuCharacter ul {width:1170px; height:120px; margin:0 15px;}
+.CharacterWrap .MenuCharacter li {height:120px;}
+.CharacterWrap .MenuCharacter li img {width:auto; height:120px;}
+.CharacterWrap .MenuCharacter li img#MenuCharacter1,
+.CharacterWrap .MenuCharacter li img#MenuCharacter2,
+.CharacterWrap .MenuCharacter li img#MenuCharacter3,
+.CharacterWrap .MenuCharacter li img#MenuCharacter4 {margin-right:10px;}
+
+.CharacterWrap .CharacterList {width:1200px; margin:0 auto;}
+.CharacterWrap .CharacterList ul {width:1180px; height:590px; margin:0 10px;}
+.CharacterWrap .CharacterList li {width:285px; height:285px; margin:10px 5px 0 5px;}
+.CharacterWrap .CharacterList li a {display:block; position:relative; width:285px; height:285px; text-align:center;}
+.CharacterWrap .CharacterList li img.ItemImage {width:285px; height:285px;}
+
+.CharacterWrap .CharacterList#CharacterList1 {display:block;}
+.CharacterWrap .CharacterList#CharacterList2,
+.CharacterWrap .CharacterList#CharacterList3,
+.CharacterWrap .CharacterList#CharacterList4 {display:none;}
+
+.CharacterWrap .AboutArtboxCharacter {width:1200px; margin:0 auto; padding:50px 0;}
+.CharacterWrap .AboutArtboxCharacter a {display:block; width:1170px; height:240px; margin:0 15px; }
+.CharacterWrap .AboutArtboxCharacter a img {width:1170px; height:240px;}
+
+.CharacterWrap_M {display:none; background-color:#f6f6f6; margin:4rem 0 0 0; padding:0.7rem 0.5625rem 1.3rem;}
+.CharacterWrap_M .MenuCharacter {padding:0; text-align:left; margin:1.5rem 0 0 0;}
+.CharacterWrap_M .MenuCharacter a {display:block; width:16.125rem; height:3.4375rem;}
+.CharacterWrap_M .MenuCharacter a img {width:16.125rem; height:3.4375rem;}
+.CharacterWrap_M .CharacterList {width:100%; padding:1rem 0.5rem; border-radius:5px;}
+.CharacterWrap_M .CharacterList.CharacterA {background-color:#ceeddb;}
+.CharacterWrap_M .CharacterList.CharacterB {background-color:#f4d7eb;}
+.CharacterWrap_M .CharacterList.CharacterC {background-color:#e4d4f1;}
+.CharacterWrap_M .CharacterList.CharacterD {background-color:#f1e7ce;}
+.CharacterWrap_M .CharacterList ul {width:100%;}
+.CharacterWrap_M .CharacterList li {width:31.3333%; margin:0 1%; height:auto;}
+.CharacterWrap_M .CharacterList li a {display:block; position:relative; width:100%; height:auto; text-align:center;}
+.CharacterWrap_M .CharacterList li img.ItemImage {width:100%; height:auto; border-radius:50%;}
+.CharacterWrap_M .CharacterList li span.ItemName {display:block; width:100%; margin:0.5rem 0 0 0; text-align:center; font-size:0.75rem; line-height:0.75rem; color:#000000; text-overflow:ellipsis; white-space:nowrap; overflow:hidden;}
+.CharacterWrap_M .CharacterList li span.ItemPrice {display:block; width:100%; margin:0.35rem 0 0 0; text-align:center; font-size:0.75rem; line-height:0.75rem; color:#000000; font-weight:bold;}
+.CharacterWrap_M .CharacterList li span.ItemPrice.red {color:#f20001;}
+
+.CharacterWrap_M .CharacterListEtc {margin:1rem 0 1.5rem; width:100%; background-color:#a8bae8; border-radius:5px;}
+.CharacterWrap_M .CharacterListEtc a {display:block; width:100%; height:auto; margin:0 auto; text-align:center;}
+.CharacterWrap_M .CharacterListEtc a img {width:100%; height:auto; max-width:23.40625rem;}
+
+.CharacterWrap_M .AboutArtboxCharacter {width:100%; margin:0 auto; padding:0.8rem 0 0;}
+.CharacterWrap_M .AboutArtboxCharacter a {display:block; width:100%; height:auto; margin:0 auto; text-align:center;}
+.CharacterWrap_M .AboutArtboxCharacter a img {max-width:22.5rem; width:100%; height:auto;}
+
+
+.ArtboxFriendsWrap {margin:80px auto 0; width:1200px; height:97px;  background-image:url(/Images/Ver1/Common/artboxfriends_bg_pc.png); background-repeat:repeat-x; background-size:14px 3px; background-position:center;}
+.ArtboxFriendsWrap a {width:473px; height:97px;}
+.ArtboxFriendsWrap a img {width:473px; height:97px;}
+.ArtboxFriendsWrap #ArtboxFriendsLink {display:block;}
+.ArtboxFriendsWrap #ArtboxFriendsLink_M {display:none;}
+
+
+.InstagramEventWrap {width:1200px; margin:70px auto 0;}
+
+.InstagramList {float:left; width:812px; height:550px;}
+.InstagramList ul {width:812px;}
+.InstagramList li {width:250px; height:250px; margin:10px 10px 0 0;}
+.InstagramList li.num1,g
+.InstagramList li.num2,
+.InstagramList li.num3,
+.InstagramList li.num4,
+.InstagramList li.num5,
+.InstagramList li.num6 {display:block;}
+.InstagramList li a {width:250px; height:250px;}
+.InstagramList li div {width:100%; height:100%; background-position:center; background-size:auto 100%; background-repeat:no-repeat; }
+.InstagramList li a img {width:250px; height:250px;}
+
+.InstagramEventTitle {color:#000000; height:30px; line-height:30px; font-size:30px; font-family:'Saira Condensed'; font-weight:bold; margin:0;}
+.InstagramEventTitle a {font-weight:normal; font-size:20px; color:#aeaeae;}
+
+.EventWrap {display:block; float:left; width:388px; height:550px;}
+.EventWrapBack {background-color:#f5f5f5; width:388px; height:510px; margin-top:10px; padding:60px 0 0 0;}
+.EventWrapBack #EventRollingSlide {width:240px; height:380px; background-color:#ffffff; margin:0 auto; padding:7px;}
+.EventWrapBack #EventRollingSlide ul {}
+.EventWrapBack #EventRollingSlide li {padding:0;}
+.EventWrapBack #EventRollingSlide li a.SlideLink {display:block; width:226px; height:293px; margin:0;}
+.EventWrapBack #EventRollingSlide li a.SlideLink img {width:226px; height:293px;}
+.EventWrapBack #EventRollingSlide li p {margin:0; padding:13px 0 0 0; font-size:15px; line-height:22px; color:#000000; text-align:center;}
+
+.EventWrapBack .EventRollingSlideArrow {width:388; margin:0 auto; position:relative; }
+.EventWrapBack .EventRollingSlideArrow a.EventRollingSlidePrev {top:-240px; left:16px; display:block; position:absolute; z-index:15; width:40px; height:77px; background-size:40px 77px; background-image:url(/Images/Ver1/Common/slide_arrow_left.png);}
+.EventWrapBack .EventRollingSlideArrow a.EventRollingSlideNext {top:-240px; right:16px; display:block; position:absolute; z-index:15; width:40px; height:77px; background-size:40px 77px; background-image:url(/Images/Ver1/Common/slide_arrow_right.png);}
+
+
+.EventWrap_M {display:none; margin:2rem 0 0 0;}
+.EventWrap_M #EventRollingSlide_M {margin:0.4rem 0 0 0;}
+.EventWrap_M #EventRollingSlide_M ul {}
+.EventWrap_M #EventRollingSlide_M li {padding:0; border-radius:5px;}
+.EventWrap_M #EventRollingSlide_M li a.SlideLink {display:block; width:100%; min-width:10rem; height:auto; max-height:7.375rem; max-width:22.5rem; margin:0 auto;}
+.EventWrap_M #EventRollingSlide_M li a.SlideLink img {width:100%; height:100%; border-radius:5px;}
+
+
+.IndexThreeBannerWrap {width:1200px; margin:57px auto 38px; padding:0;}
+
+.Banner1Wrap {display:block; float:left; width:392px; height:157px; margin:0 12px 0 0; border-radius:5px; background-color:#deecf7; }
+.Banner2Wrap {display:block; float:left; width:392px; height:157px; margin:0 12px 0 0; border-radius:5px; background-color:#fef4b6; }
+.Banner3Wrap {display:block; float:left; width:392px; height:157px; margin:0 0 0 0; border-radius:5px; background-color:#ffffff; border:3px solid #dddddd;}
+
+.Banner1Wrap a.Banner1 {display:block; width:392px; height:157px; background-image:url(/Images/Ver1/Common/icon_membershipapp_pc.png?v=44); background-size:55px 110px; background-repeat:no-repeat; background-position:35px center; margin:0;}
+.Banner2Wrap a.Banner2 {display:block; width:392px; height:157px; background-size:130px 122px; background-repeat:no-repeat; background-position:245px center; margin:0;}
+.Banner3Wrap a.Banner3 {display:block; width:392px; height:157px; background-image:url(/Images/Ver1/Common/icon_offlinestore_pc.png?v=44); background-size:101px 80px; background-repeat:no-repeat; background-position:45px 32px; margin:0;}
+
+.Banner1Wrap a.Banner1 h1 {padding:34px 0 0 105px; font-weight:normal; margin:0; height:28px; line-height:28px; font-size:28px; font-family:'Saira Condensed'; color:#000000; text-align:left;}
+.Banner1Wrap a.Banner1 h2 {padding:5px 0 0 105px; font-weight:normal; margin:0; height:36px; line-height:18px; font-size:15px; color:#000000; text-align:left;}
+.Banner1Wrap a.Banner1 h3 {padding:5px 0 0 105px; font-weight:normal; margin:0; height:13px; line-height:13px; font-size:13px; color:#000000; text-align:left;}
+
+.Banner2Wrap a.Banner2 h1 {padding:34px 0 0 35px; font-weight:normal; margin:0; height:28px; line-height:28px; font-size:28px; font-family:'Saira Condensed'; color:#000000; text-align:left;}
+.Banner2Wrap a.Banner2 h2 {padding:8px 0 0 35px; margin:0; height:60px; text-align:left;}
+.Banner2Wrap a.Banner2 h2 span {display:inline-block; width:60px; height:60px; margin:0 8px 0 0; background-size:60px 60px; background-repeat:no-repeat;}
+.Banner2Wrap a.Banner2 h2 span.ios     {background-image:url(/Images/Ver1/Common/icon_ios_pc.png?v=1);}
+.Banner2Wrap a.Banner2 h2 span.android {background-image:url(/Images/Ver1/Common/icon_android_pc.png?v=1);}
+.Banner2Wrap a.Banner2 h2 span.desktop {background-image:url(/Images/Ver1/Common/icon_desktop_pc.png?v=1);}
+
+.Banner3Wrap a.Banner3 h1 {padding:47px 0 0 157px; margin:0; font-weight:normal; height:60px; line-height:30px; font-size:30px; font-family:'Saira Condensed'; color:#3a4b59; text-align:left;}
+.Banner3Wrap a.Banner3 h1 span.pc     {display:inline;}
+.Banner3Wrap a.Banner3 h1 span.mobile {display:none;}
+
+
+@media (max-width:1023px) {
+	.TopRollingWrap {display:none;}
+	.TopRollingWrap_M {display:block;}
+}
+
+@media (max-width:1199px) {
+
+	.EventBannerWrap {width:100%; margin:0; padding:0 0.5625rem;}
+	.EventBannerWrap a {float:none; width:100%; height:6.40625rem; background-size:18.4375rem 6.40625rem; font-size:0.75rem; line-height:1.0625rem; padding:1.4rem 0 0 1.25rem;}
+	.EventBannerWrap a b {font-size:1.1875rem; margin-bottom:0.6875rem;}
+	.EventBannerWrap a.EventBanner1 {margin:0.875rem 0 0 0;}
+	.EventBannerWrap a.EventBanner2 {margin:0.875rem 0 0 0;}
+
+	.BestItemWrap {width:100%; margin:3rem auto 0; padding:0;}
+	a.BestItemTitle {font-size:1.25rem; line-height:1.25rem; margin:0 0.5625rem;}
+	a.BestItemTitle span { width:0.771rem; height:0.9rem; background-size:0.771rem 0.9rem; margin:0.175rem 0 0.175rem 0.25rem; background-image:url(/Images/Ver1/Common/gogo_mobile.png);}
+
+	.BestItemList {display:none;}
+	.BestItemList_M {display:block;}
+
+	.NewArrivalWrap {width:100%; margin:2.5rem auto 0; padding:0;}
+	a.NewArrivalTitle {font-size:1.25rem; line-height:1.25rem; margin:0 0.5625rem;}
+	a.NewArrivalTitle span { width:0.771rem; height:0.9rem; background-size:0.771rem 0.9rem; margin:0.175rem 0 0.175rem 0.25rem; background-image:url(/Images/Ver1/Common/gogo_mobile.png);}
+
+	.NewArrivalList {padding:0.5625rem 0.5625rem 0;}
+	.NewArrivalList a.NewArrival1,
+	.NewArrivalList a.NewArrival2 {width:49%; height:12.5rem; background-size:10.025rem 10rem; font-size:0.8rem; line-height:1rem; padding:1rem 0 0 1rem; margin:0;}
+	.NewArrivalList a.NewArrival1 {float:left;}
+	.NewArrivalList a.NewArrival2 {float:right;}
+	.NewArrivalList a.NewArrival3 {display:none;}
+	.NewArrivalList a.NewArrival3_M {display:block;}
+	.NewArrivalList a.NewArrival1 b,
+	.NewArrivalList a.NewArrival2 b,
+	.NewArrivalList a.NewArrival3_M b {font-size:0.95rem; line-height:0.95rem; margin:0 0 0.4rem 0;}
+
+	.EventProductWrap {display:none;}
+	.EventProductWrap_M {display:block;}
+
+	.DesignFinderWrap {margin:3.7rem 0 0 0;}
+	.DesignFinderTitle {width:100%; height:1.25rem; margin:0; background-position:center right;}
+	.DesignFinderTitle b {line-height:1.25rem; font-size:1.25rem;}
+	.DesignFinderTitle li.left  {display:none;}
+	.DesignFinderTitle li.right {display:none;}
+	.DesignFinderTitle li.center {width:100%; height:1.25rem;;}
+	.DesignFinderTitle li.center b {display:inline-block; width:auto; height:1.25rem; line-height:1.25rem; margin:0; text-align:left; padding:0 0.5625rem;}
+
+	.DesignFinderList {height:10rem; margin:1rem 0 0 0;}
+	.DesignFinderList li {width:11rem; height:10rem;}
+	.DesignFinderList li a {width:10rem; height:10rem; margin:0 0.5rem;}
+	.DesignFinderList li img.ItemImage {width:10rem; height:10rem;}
+
+	.CharacterWrap {display:none;}
+	.CharacterWrap_M {display:block;}
+
+	.ArtboxFriendsWrap {margin:3rem auto 0; width:100%; height:5.15625rem;  background-image:url(/Images/Ver1/Common/artboxfriends_bg_m.png); background-repeat:repeat-x; background-size:1px 3px; background-position:center;}
+	.ArtboxFriendsWrap a {width:17.9375rem; height:5.15625rem; margin:0 auto;}
+	.ArtboxFriendsWrap a img {width:17.9375rem; height:5.15625rem;}
+	.ArtboxFriendsWrap #ArtboxFriendsLink {display:none;}
+	.ArtboxFriendsWrap #ArtboxFriendsLink_M {display:block;}
+
+
+	.InstagramEventWrap {width:100%; margin:1.8rem 0 0; padding:0 0.5625rem;}
+
+	.InstagramList {float:none; width:100%; height:1.25rem;}
+	.InstagramList ul {width:100%;}
+	.InstagramList li {width:100%; height:7.5rem; padding:0; }
+	.InstagramList li.num1 {width:32%; margin:0.4rem 2% 0 0;}
+	.InstagramList li.num2 {width:32%; margin:0.4rem 2% 0 0;}
+	.InstagramList li.num3 {width:32%; margin:0.4rem 0 0 0;}
+	.InstagramList li.num4,
+	.InstagramList li.num5,
+	.InstagramList li.num6 {display:none;}
+	.InstagramList li a {width:100%; height:100%;}
+	.InstagramList li a img {width:100%; height:100%;}
+
+	.InstagramEventTitle {height:1.25rem; line-height:1.25rem; font-size:1.25rem;}
+	.InstagramEventTitle a {font-weight:normal; font-size:0.85rem; color:#aeaeae;}
+
+	.EventWrap {display:none;}
+	.EventWrap_M {display:block;}
+
+
+	.IndexThreeBannerWrap {width:100%; margin:2rem auto 2rem; padding:0 0.5625rem;}
+
+	.Banner1Wrap {float:null; width:100%; height:8rem; margin:0 0 0.7rem 0;}
+	.Banner2Wrap {width:48.5%; height:14rem; margin:0 1.5% 0 0;}
+	.Banner3Wrap {width:48.5%; height:14rem; margin:0 0 0 1.5%; }
+
+	.Banner1Wrap a.Banner1 {width:100%; max-width:22rem; height:8rem; background-image:url(/Images/Ver1/Common/icon_membershipapp.png); background-size:2.5rem 4.875rem; background-repeat:no-repeat; background-position:2rem center; margin:0 auto;}
+	.Banner2Wrap a.Banner2 {width:100%; max-width:10rem; height:14rem; background-size:8.125rem 7.625rem; background-repeat:no-repeat; background-position:center 2.5rem; margin:0 auto;}
+	.Banner3Wrap a.Banner3 {width:100%; max-width:10rem; height:14rem; background-image:url(/Images/Ver1/Common/icon_offlinestore.png); background-size:4.5625rem 3.625rem; background-repeat:no-repeat; background-position:center 1.3125rem; margin:0 auto;}
+
+
+	.Banner1Wrap a.Banner1 h1 {padding:1.5rem 0 0 5.5rem; height:1.4rem; line-height:1.4rem; font-size:1.4rem;}
+	.Banner1Wrap a.Banner1 h2 {padding:0.3rem 0 0 5.5rem; height:2rem; line-height:1rem; font-size:0.8rem;}
+	.Banner1Wrap a.Banner1 h3 {padding:0.3rem 0 0 5.5rem; height:0.7rem; line-height:0.7rem; font-size:0.7rem;}
+
+	.Banner2Wrap a.Banner2 h1 {padding:1.5rem 0 0 0; height:1.4rem; line-height:1.4rem; font-size:1.4rem; font-family:'Saira Condensed'; color:#000000; text-align:center;}
+	.Banner2Wrap a.Banner2 h2 {padding:7rem 0 0 0; margin:0; height:3rem; text-align:center;}
+	.Banner2Wrap a.Banner2 h2 span {width:3rem; height:3rem; margin:0 0.3rem; background-size:3rem 3rem;}
+	.Banner2Wrap a.Banner2 h2 span.ios     {background-image:url(/Images/Ver1/Common/icon_ios.png);}
+	.Banner2Wrap a.Banner2 h2 span.android {background-image:url(/Images/Ver1/Common/icon_android.png);}
+	.Banner2Wrap a.Banner2 h2 span.desktop {display:none}
+
+	.Banner3Wrap a.Banner3 h1 {padding:5.7rem 0 0 0; margin:0; font-weight:normal; height:auto; line-height:2.3rem; font-size:2rem; text-align:center;}
+	.Banner3Wrap a.Banner3 h1 span.pc     {display:none;}
+	.Banner3Wrap a.Banner3 h1 span.mobile {display:inline;}
+
+}
+
+/*20181220 辫剧柳 叼磊捞呈 夸没栏肺 函版(瞒己券)*/
+
+.BestItemList_M .swiper-slide, .DesignFinderWrapPc .swiper-slide, .DesignFinderWrapMo .swiper-slide { text-align: center; font-size: 18px; background: #fff; display: -webkit-box; display: -ms-flexbox; display: -webkit-flex; display: flex; -webkit-box-pack: center; -ms-flex-pack: center; -webkit-justify-content: center; justify-content: center; -webkit-box-align: center; -ms-flex-align: center; -webkit-align-items: center; align-items: center; }
+
+.TopRollingPc { display:block; height:540px; }
+.TopRollingPc .swiper-container { height:540px; }
+.TopRollingPc .swiper-pagination-bullet.swiper-pagination-bullet-active { background:url(/Images/Ver1/Company/AboutArtbox/bullet_on.png) no-repeat center; background-size: 7px; }
+.TopRollingPc .swiper-pagination-bullet { opacity:1; margin:0px 1px !important; width:13px; height:13px; background: url(/Images/Ver1/Company/AboutArtbox/bullet_off.png) no-repeat center; background-size: 7px; }
+.TopRollingPc .swiper-button-prev { width:40px; height:77px; background-size:40px 77px; top:250px; left:50%; margin-left:-690px; background-image: url(/Images/Ver1/Common/slide_arrow_left.png); }
+.TopRollingPc .swiper-button-next { width:40px; height:77px; background-size:40px 77px; top:250px; right:50%; margin-right:-690px; background-image: url(/Images/Ver1/Common/slide_arrow_right.png); }
+
+.TopRollingMo { display:none; }
+.TopRollingMo .swiper-container .swiper-slide img { width:100%; }
+.TopRollingMo .swiper-container .swiper-pagination2 { position:absolute; text-align:center; z-index:2; margin:0 auto; }
+.TopRollingMo .swiper-pagination-bullet.swiper-pagination-bullet-active { background:url(/Images/Ver1/Company/AboutArtbox/bullet_on.png) no-repeat center; background-size: 0.4375rem; }
+.TopRollingMo .swiper-pagination-bullet { opacity:1; margin:0px 1px !important; width:13px; height:13px; background: url(/Images/Ver1/Company/AboutArtbox/bullet_off.png) no-repeat center; background-size: 0.4375rem; }
+
+
+.BestItemList_M {display:none; margin:0.625rem 0 0 0; width:100%; }
+.BestItemList_M .swiper-container {width:auto; margin:0 0;}
+.BestItemList_M .swiper-slide {width:10.5625rem; height:14.5rem; margin:0;}
+.BestItemList_M .swiper-slide a {display:block; position:relative; width:10rem; height:auto; text-align:center; margin:0 0 0 0.5625rem;}
+.BestItemList_M .swiper-slide img.ItemImage {width:10rem; height:10rem; border-radius:50%;}
+.BestItemList_M .swiper-slide span.ImageNumber     {display:block; position:absolute; z-index:2; top:0; left:0; width:2rem; height:2rem; border-radius:50%; background-color:#8f8f8f; color:#ffffff; font-size:1.25rem; line-height:2rem; text-align:center; font-family:'Saira Condensed'}
+.BestItemList_M .swiper-slide span.ImageNumber.num1 {background-color:#c80203;}
+.BestItemList_M .swiper-slide span.ImageBackGround {display:block; position:absolute; z-index:1; top:0; left:0; width:10rem; height:10rem; border-radius:50%; background:#000000; opacity:0.03; filter:alpha(opacity=3); -ms-filter:alpha(opacity=3); }
+.BestItemList_M .swiper-slide span.ItemName {display:block; width:10rem; margin:0.5rem 0 0 0; text-align:center; font-size:0.8rem; line-height:0.8rem; color:#000000; text-overflow:ellipsis; white-space:nowrap; overflow:hidden;}
+.BestItemList_M .swiper-slide span.ItemPrice {display:block; width:10rem; margin:0.35rem 0 0.35rem 0; text-align:center; font-size:0.8rem; line-height:0.8rem; color:#000000; font-weight:bold;}
+.BestItemList_M .swiper-slide span.ItemPrice.red {color:#f20001;}
+
+.DesignFinderWrapPc { display:block; }
+.DesignFinderWrapMo { display:none; }
+
+.DesignFinderWrapPc { margin:90px 0 0 0; }
+
+.DesignFinderWrapPc .swiper-slide a { width:100%; }
+.DesignFinderWrapPc .swiper-slide a img { width:100%; }
+.DesignFinderWrapMo .swiper-slide { margin-right:0%; }
+.DesignFinderWrapMo .swiper-slide img { width:10rem; }
+
+
+.EventWrap_M .SlideLink { display: block; width: 100%; min-width: 10rem; height: auto; max-height: 7.375rem; max-width: 22.5rem; margin: 0 auto; }
+.EventWrap_M .SlideLink img { width:100%; height:100%; border-radius:5px; }
+
+
+
+@media (max-width:1199px) {
+	.TopRollingPc { display:none; }
+	.TopRollingMo { display:block; }
+
+	.BestItemList_M { display:block; }
+
+	.DesignFinderWrapPc { display:none; }
+	.DesignFinderWrapMo { display:block; }
+}
+
+/*20181220 辫剧柳 叼磊捞呈 夸没栏肺 函版(瞒己券)*/
+
+@media (min-width:360px) and (max-width:360px) {
+	/*.swiper-container {width:359px; !important;}*/
+	.BestItemList_M {width:359.4px !important; }
+	.BestItemList_M .swiper-slide {width:9.5125rem; margin:0.875rem !important; left:-6rem;}
+	.DesignFinderWrapMo {width:359.4px !important; }
+	.DesignFinderWrapMo .swiper-slide {width:9.5125rem; margin:0.875rem !important; left:-6rem;}
+}

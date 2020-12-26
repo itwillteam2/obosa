@@ -1,0 +1,84 @@
+@charset "utf-8";
+
+
+@media only screen and (min-width:1200px) {
+	
+	.sec_cont .inner .itemList .Evt87356.ttl1.num1, 	.sec_cont .inner .itemList .Evt87356.ttl1.num2 { width: 400px; margin: 20px 100px 12px 100px; } /*1200 탭 한줄 2개*/
+	.sec_cont .inner .itemList .Evt87356 .img { width:100%; }
+
+	.sec_cont .inner .itemList .Evt83284 { width: 400px; margin: 20px 100px 152px 100px; } /*1200 탭 한줄 2개*/
+	.sec_cont .inner .itemList .Evt83284 .img { width:100%; }
+	
+	.sec_cont .inner .itemList .Evt57723 { width: 400px; margin: 20px 100px 152px 100px; } /*1200 탭 한줄 2개*/
+	.sec_cont .inner .itemList .Evt57723 .img { width:100%; }
+
+	.sec_cont .inner .itemList .Evt82630 { width: 400px; margin: 20px 100px 152px 100px; } /*1200 탭 한줄 2개*/
+	.sec_cont .inner .itemList .Evt82630 .img { width:100%; }
+
+	.sec_cont .inner .itemList .Evt82762 { width: 400px; margin: 20px 100px 152px 100px; } /*1200 탭 한줄 2개*/
+	.sec_cont .inner .itemList .Evt82762 .img { width:100%; }
+
+	.sec_cont .inner .itemList .Evt71014.ttl1 { width: 400px; margin: 20px 100px 152px 100px; } /*1200 탭 한줄 2개*/
+	.sec_cont .inner .itemList .Evt71014.ttl1 .img { width:100%; }
+
+	.sec_cont .inner .itemList .Evt70312 { width: 400px; margin: 20px 100px 152px 100px; } /*1200 탭 한줄 2개*/
+	.sec_cont .inner .itemList .Evt70312 .img { width:100%; }
+
+	.sec_cont .inner .itemList .Evt62922 { width: 400px; margin: 20px 100px 152px 100px; } /*1200 탭 한줄 2개*/
+	.sec_cont .inner .itemList .Evt62922 .img { width:100%; }
+
+	.sec_cont .inner .itemList .Evt82098,
+	.sec_cont .inner .itemList .Evt62683,
+	.sec_cont .inner .itemList .Evt82189,
+	.sec_cont .inner .itemList .Evt82774,
+	.sec_cont .inner .itemList .Evt83799,
+	.sec_cont .inner .itemList .Evt86753,
+	.sec_cont .inner .itemList .Evt61805 { width: 300px; margin: 20px 50px 20px 50px; padding:0; } /*1200 3 탭 한줄 3개*/
+	.sec_cont .inner .itemList .Evt82098 .img,
+	.sec_cont .inner .itemList .Evt62683 .img,
+	.sec_cont .inner .itemList .Evt82189 .img,
+	.sec_cont .inner .itemList .Evt82774 .img,
+	.sec_cont .inner .itemList .Evt83799 .img,
+	.sec_cont .inner .itemList .Evt86753 .img,
+	.sec_cont .inner .itemList .Evt61805 .img { width:100%; }
+	
+	.Evt82149.num1 { width: 400px; margin: 20px 50px 30px 250px; }
+	.Evt82149.num2 { width: 400px; margin: 20px 250px 30px 50px; }
+	.Evt82149.num3, .Evt82149.num4, .Evt82149.num5 { width: 300px; margin: 20px 50px 20px 50px; padding:0; }
+	.sec_cont .inner .itemList .Evt82149 .img { width:100%; }
+
+	.Evt83235.num1 { width: 400px; margin: 20px 50px 30px 250px; }
+	.Evt83235.num2 { width: 400px; margin: 20px 250px 30px 50px; }
+	.Evt83235.num3, .Evt83235.num4, .Evt83235.num5 { width: 300px; margin: 20px 50px 20px 50px; padding:0; }
+	.sec_cont .inner .itemList .Evt83235 .img { width:100%; }
+
+	.Evt83512.num1 { width: 400px; margin: 20px 50px 30px 250px; }
+	.Evt83512.num2 { width: 400px; margin: 20px 250px 30px 50px; }
+	.Evt83512.num3, .Evt83512.num4, .Evt83512.num5 { width: 300px; margin: 20px 50px 20px 50px; padding:0; }
+	.sec_cont .inner .itemList .Evt83512 .img { width:100%; }
+
+	.Evt83513.num1 { width: 400px; margin: 20px 50px 30px 250px; }
+	.Evt83513.num2 { width: 400px; margin: 20px 250px 30px 50px; }
+	.Evt83513.num3, .Evt83513.num4, .Evt83513.num5 { width: 300px; margin: 20px 50px 20px 50px; padding:0; }
+	.sec_cont .inner .itemList .Evt83513 .img { width:100%; }
+
+/*	.sec_cont .inner .itemList .Evt89986.ttl1.num21,
+	.sec_cont .inner .itemList .Evt89986.ttl1.num22,
+	.sec_cont .inner .itemList .Evt89986.ttl1.num23,
+	.sec_cont .inner .itemList .Evt89986.ttl1.num24,
+	.sec_cont .inner .itemList .Evt89986.ttl1.num25 { width:20%; } 
+
+	.sec_cont .inner .itemList .Evt89986.ttl1.num21 .img,
+	.sec_cont .inner .itemList .Evt89986.ttl1.num22 .img,
+	.sec_cont .inner .itemList .Evt89986.ttl1.num23 .img,
+	.sec_cont .inner .itemList .Evt89986.ttl1.num24 .img,
+	.sec_cont .inner .itemList .Evt89986.ttl1.num25 .img { width:100%; }*/
+
+	
+/*	.sec_cont .inner .itemList .Evt78397 { width: 300px; margin: 20px 50px 20px 50px; padding:0; } /*1200 3 탭 한줄 3개*/
+/*	.sec_cont .inner .itemList .Evt78397 .img { width:100%; }*/
+
+}
+
+
+.evtid68535 {font-size:20px; background-color:#121212;}
