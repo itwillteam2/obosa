@@ -1,0 +1,177 @@
+@charset "utf-8";
+
+.wrap { width:1200px; margin:0 auto; max-width:1200px; }
+.noborder { border:0 !important; }
+
+.sec_header .inner { margin:70px 0 0 0; }
+.sec_header .inner .thmb { width:100%; height:370px; position:relative; }
+.sec_header .inner .thmb .category { display:inline-block; position:absolute; bottom:44px; left:48px; font-size:45px; color:#000000; line-height:48px; }
+.sec_header .inner .thmb .character { display:block; position:absolute; top:55px; left:45px; }
+.sec_header .inner .thmb .character .kor { display:block; float:left; font-size:45px; line-height:47px; color:#000000;}
+.sec_header .inner .thmb .character .eng { display:block; float:left; font-size:27px; line-height:22px; color:#414141; margin:22px 0 0 15px;  }
+.sec_header .inner .thmb .character .desc { display:block; padding:15px 0 0 0; font-size:18px; line-height:20px; color:#414141; clear:both; }
+.sec_header .inner .thmb .label { display:block; position:absolute; bottom:40px; left:45px; cursor:pointer; }
+
+
+.sec_header .inner .lnbmenu { margin:25px 0 0 0; }
+.sec_header .inner .lnbmenu span { display:block; float:left; padding:0 15px; position:relative; }
+.sec_header .inner .lnbmenu span:nth-child(1) { padding:0 15px 0 0; }
+.sec_header .inner .lnbmenu span:after { position:absolute; display:block; content:" "; left:0; top:0; bottom:0; width:1px; background-color:#999999; }
+.sec_header .inner .lnbmenu span:nth-child(1):after { display:none; }
+.sec_header .inner .lnbmenu span a { display:block; height:100%; font-size:16px; line-height:20px; color:#999999; }
+.sec_header .inner .lnbmenu span a.select { color:#000000; font-weight:bold; }
+.sec_header .inner .lnbmenu:after { display:block; content:" "; clear:both; }
+
+.sec_header .inner .title { display:block; padding:0 0 0 0; font-size:27px; color:#000000; font-weight:bold; text-align:center; line-height:31px; }
+
+.sec_header .inner .kwd_result { display:block; text-align:center; font-size:27px; color:#000000; line-height:40px; padding:0 0 50px 0; }
+.sec_header .inner .kwd_result.nodata { padding:0; }
+.sec_header .inner .kwd_nodata { display:block; text-align:center; padding:235px 0 0 0; background:url(https://www.artboxmall.com/images/ver1/common/img_search_nodata.png?v=20180904) no-repeat center;  }
+.sec_header .inner .kwd_etc { display:block; text-align:center; padding:0 0 70px 0; font-size:16px; line-height:20px;  }
+
+.sec_cont .inner.type2 { padding:0 0 60px 0; }
+.sec_cont .inner .info { padding:44px 0 30px 0; position:relative; }
+.sec_cont .inner .info.type2 { padding:30px 0 40px 0; }
+.sec_cont .inner .info .result { display:block; position:absolute; bottom:30px; left:0; font-size:16px; color:#646464; line-height:23px; }
+.sec_cont .inner .info .result strong { font-size:20px; color:#000000; line-height:23px; }
+.sec_cont .inner .info .selectbox { display:block; float:right; width:165px; height:46px; }
+.sec_cont .inner .info .selectbox select { border:1px solid #424242; border-radius:5px; height:100%; width:100%; padding:0 12px; color:#424242; font-size:17px; line-height:44px; 
+										   background:url(https://www.artboxmall.com/images/ver1/common/sel_arrow.png) no-repeat right center; background-size:0.53125rem 0.28125rem; background-position:right 0.3125rem center;}
+.sec_cont .inner .info:after { display:block; content:" "; clear:both; }
+
+.sec_cont .inner .itemList { width:100%; /*display:table;*/ }
+.sec_cont .inner .itemList li { width:25%; padding:0 15px; }
+.sec_cont .inner .itemList li.hide { display:none; }
+.sec_cont .inner .itemList li .img { display:block; width:270px; position:relative; }
+
+.sec_cont .inner .itemList .anchor   { width: 100%; height: 1px; }
+.sec_cont .inner .itemList .EvtTitle { position:relative; height: 100%;  width: 100%; padding:0; }
+.sec_cont .inner .itemList .EvtTitle.pc { text-align:center; background-color:#121212; color:#ffffff; margin:20px 0; }
+.sec_cont .inner .itemList .EvtTitle.pc .evttext { display:block; line-height:30px; padding:10px 0; font-size:20px;}
+.sec_cont .inner .itemList .EvtTitle img { width:100%; max-width:1200px; }
+
+.sec_cont .inner .itemList .EvtTitle:after  { display:block; content:" "; }
+
+.sec_cont .inner .itemList li .img .hover    { display:none;  }
+.sec_cont .inner .itemList li .img .hover.on { display:block; position:absolute; bottom:0; left:0; right:0; height:60px; background-color:rgba(0,0,0,0.4); }
+.sec_cont .inner .itemList li .img .hover.on .wish    { display:block; position:absolute; bottom:18px; left:10px; width:24px; height:25px; cursor:pointer; background:url(https://www.artboxmall.com/images/ver1/common/lise_heart_off.png) no-repeat center; }
+.sec_cont .inner .itemList li .img .hover.on .wish.on { background:url(https://www.artboxmall.com/images/ver1/common/lise_heart_on.png) no-repeat center; }
+.sec_cont .inner .itemList li .img .hover.on .cart    { display:block; position:absolute; bottom:18px; left:40px; width:24px; height:25px; cursor:pointer; background:url(https://www.artboxmall.com/images/ver1/common/lise_basket.png) no-repeat center; }
+.sec_cont .inner .itemList li .img .hover.on .cart.on { background:url(https://www.artboxmall.com/images/ver1/common/lise_basket_on.png) no-repeat center; }
+.sec_cont .inner .itemList li .img .hover.on .ps	  { display:block; position:absolute; bottom:18px; right:10px; height:25px; cursor:pointer; padding:0 0 0 30px; background:url(https://www.artboxmall.com/images/ver1/common/lise_comment.png) no-repeat left center; color:#ffffff; font-size:14px; line-height:25px; }
+
+.sec_cont .inner .itemList li .img a { display:block; height:100%; }
+.sec_cont .inner .itemList li .img a img { width:100%; border:0; }
+.sec_cont .inner .itemList li .img .ImageNumber { display: block; position: absolute; z-index: 2; top: 10px; left: 10px; width: 48px; height: 48px; border-radius: 50%; 
+									               background-color: #8f8f8f; color: #ffffff; font-size: 26px;  line-height: 48px; text-align: center; font-family: 'Saira Condensed'; }
+.sec_cont .inner .itemList li:nth-child(1) .img .ImageNumber { background-color: #c80203; }
+.sec_cont .inner .itemList li .iteminfo { display:block; height:125px; padding:15px 0 0 0; text-align:center; }
+.sec_cont .inner .itemList li .iteminfo .text { display:block; /*height:40px;*/ }
+.sec_cont .inner .itemList li .iteminfo .text a {  /*display: -webkit-inline-box; line-height: 20px; overflow: hidden; text-overflow: ellipsis; -webkit-line-clamp: 2;
+												   -webkit-box-orient: vertical; font-size:16px; color: #000000; vertical-align: middle; word-break: keep-all; width: 100%;*/
+													display:block; font-size:16px; color:#000000; line-height:20px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
+													}
+.sec_cont .inner .itemList li .iteminfo .text a:before { display: inline-block; width: 0; height: 100%; vertical-align: middle; content: ''; }
+.sec_cont .inner .itemList li .iteminfo .price { display:block; }
+.sec_cont .inner .itemList li .iteminfo .price .won { display:inline-block; font-size:16px; line-height:20px; color:#000000; font-weight:bold; }
+.sec_cont .inner .itemList li .iteminfo .price .won.type2 { color:#ef2830; }
+.sec_cont .inner .itemList li .iteminfo .price .per { display:inline-block; font-size:16px; line-height:20px; color:#ef2830; font-weight:bold; padding:0 0 0 5px; }
+
+.b_img { position:relative; margin:40px 0 30px 0; }
+.b_img img { width:100%; max-width:1200px; }
+
+
+.pc     { display:block !important; }
+.mobile { display:none !important; }
+
+.overlay { display:none; }
+.overlay.on { display:block; }
+.overlay.on.fullScreen { position: absolute; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.4); z-index: 9999; }
+.overlay.on.inner { width:450px; position:fixed; top:50%; left:50%; margin-top:-115px; margin-left:-225px; padding:0 20px; z-index: 10000; background-color:#ffffff; }
+.overlay.on.inner .overlay_header { display:block; line-height:62px; font-size:20px; color:#000000; border-bottom:1px solid #d2d2d2; }
+.overlay.on.inner .overlay_header:after { display:block; content:" "; clear:both; }
+.overlay.on.inner .overlay_close { margin:0 10px 0 0; padding:0; border:0; float:right; width:20px; height:62px; background:url(https://www.artboxmall.com/images/ver1/shop/img_overlay_close.gif) no-repeat center; }
+.overlay.on.inner .overlay_body { padding:32px 0 40px 0; }
+.overlay.on.inner .overlay_body:after { display:block; content:" "; clear:both; }
+.overlay.on.inner .overlay_body .text { display:block; text-align:center; font-size:16px; color:#646464; padding:0 0 30px 0; }
+.overlay.on.inner .overlay_body .btn  { display:block; float:left; padding:0 5px 0 40px; width:50%; }
+.overlay.on.inner .overlay_body .btn.type2 { padding:0 40px 0 5px; }
+.overlay.on.inner .overlay_body .btn input[type=button] { margin:0; padding:0; width:100%; background-color:#000000; color:#ffffff; border-radius:5px; border:0; line-height:47px; font-size:16px; }
+
+
+
+@media (max-width:1199px) {
+	
+	.wrap { width:100%; }
+
+	.pc     { display:none !important; }
+	.mobile { display:block !important; }
+	
+	.sec_header .inner { margin:2rem 0 0 0; }
+	.sec_header .inner .thmb { height:8.4375rem; background-size:auto 8.4375rem, 100%; background-repeat:no-repeat; background-position:center right, center left; margin:0 !important;}
+	.sec_header .inner .thmb .category { top:1.4375rem; bottom:initial; left:1.0625rem; font-size:1.5625rem; line-height:1.71875rem; }
+
+	.sec_header .inner .title { font-size:1.4rem; line-height:1.8125rem; padding:0 0 0 0; }
+
+	.sec_header .inner .lnbmenu { padding:1.0625rem 0; margin:0; border-bottom:1px solid #e4e4e4; }
+
+	.sec_header .inner .lnbmenu .swiper-slide { width: auto; border-left:1px solid #999999; }
+	.sec_header .inner .lnbmenu .swiper-slide:nth-child(1) { border-left:0; }
+	.sec_header .inner .lnbmenu .swiper-slide a { padding:0 1rem; font-size:1rem; width:auto; line-height:1.125rem; color:#999999;  }
+	.sec_header .inner .lnbmenu .swiper-slide a.select { color:#000000; font-weight:bold; }
+	
+	.sec_cont .inner.type2 { padding:0 0 1.875rem 0; }
+	.sec_cont .inner .info { padding:1.25rem 0 1.25rem 0; }
+	.sec_cont .inner .info.type2 { padding:0.625rem 0 0.875rem 0; }
+	.sec_cont .inner .info .result { bottom:1.25rem; left:0.625rem; text-align:left; font-size:0.78125rem; line-height:0.90625rem; }
+	.sec_cont .inner .info .result strong { font-size:0.9375rem; }
+
+	.sec_cont .inner .info .selectbox { width:34%; height:2.1875rem; margin:0 0.625rem 0 0; } 
+	.sec_cont .inner .info .selectbox select { padding:0 0.75rem; font-size:0.8125rem; line-height:2rem;  }
+
+	.sec_cont .inner .info.type2  .selectbox { float:right; width:8.125rem; margin:0 0.625rem 0 0; }
+
+	.sec_cont .inner .itemList li { padding:0 0.625rem; }
+	.sec_cont .inner .itemList li .img { width:100%; }
+	.sec_cont .inner .itemList li .iteminfo { display:block; height:auto; padding:1.25rem 0; text-align:center; }
+	.sec_cont .inner .itemList li .iteminfo .price { padding:0.3125rem 0; }
+
+	.sec_cont .inner .itemList li .img .ImageNumber { top: 0.625rem;  left: 0.625rem; width: 2rem; height: 2rem; font-size: 1.25rem; line-height: 2rem; }
+
+	.sec_header .inner .kwd_result { padding:0.625rem 0 0.375rem 0; font-size:1.25rem; line-height:1.5625rem; }
+	.sec_header .inner .kwd_nodata { padding:12.5rem 0 0 0; background:url(https://www.artboxmall.com/images/ver1/common/img_search_nodata.png?v=20180904) no-repeat center; background-size:6.25rem;  }	
+	.sec_header .inner .kwd_etc { padding:0 0 2.1875rem 0; font-size:0.875rem; line-height:1.25rem;  }
+
+	.sec_header .inner .thmb .character { left:1.40625rem; top:1.5625rem;  width:60%; }
+	.sec_header .inner .thmb .character .kor  { font-size:1.2rem; line-height:1rem; }
+	.sec_header .inner .thmb .character .eng  { font-size:0.7rem; margin:0 0 0 0.2rem; }
+	.sec_header .inner .thmb .character .desc { padding:0.3125rem 0 0 0; font-size:0.75rem; line-height:0.875rem; word-break: keep-all; width:85%; }
+
+	.sec_header .inner .thmb .label { left:1.2rem; bottom:0.8rem; width:9.0625rem; }
+	.sec_header .inner .thmb .label img { width:100%; max-width:144px;}
+
+	.b_img { position:relative; margin:1.25rem 0 1rem 0; }
+
+	.sec_cont .inner .itemList .EvtTitle:before { display:none;}
+	.sec_cont .inner .itemList .EvtTitle:after  { display:block; content:" "; height:0.9375rem; }
+	.sec_cont .inner .itemList .EvtTitle.toggle:after { display:none; }
+	
+	.sec_cont .inner .itemList .EvtTitle .evttext { display:block; cursor:pointer; border-bottom: 1px solid #646464; line-height: 0.9375rem; margin: 0 0.625rem; font-size: 0.875rem; font-weight:bold;
+													color: #3a4a58; padding: 0.9375rem 1.25rem 0.9375rem 0; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;
+													background:url(https://www.artboxmall.com/images/ver1/shop/img_toggle_up.gif) no-repeat right 0.625rem center; background-size:0.9375rem auto; } 
+	.sec_cont .inner .itemList .EvtTitle.toggle .evttext { background:url(https://www.artboxmall.com/images/ver1/shop/img_toggle_down.gif) no-repeat right 0.625rem center; background-size:0.9375rem auto; } 
+
+
+}   
+    
+
+@media (min-width:600px) and (max-width:799px) {
+	.sec_cont .inner .itemList li { width:33.3%; }
+}
+
+@media (max-width:599px) {
+	.sec_cont .inner .itemList li { width:50%; }
+	.sec_cont .inner .itemList li .iteminfo .text a { font-size: 0.84375rem; line-height: 0.9375rem;}
+	.sec_cont .inner .itemList li .iteminfo .price .won { font-size: 0.96875rem; line-height: 1.0625rem; }
+	.sec_cont .inner .itemList li .iteminfo .price .per { font-size: 0.96875rem; line-height: 1.0625rem; } 
+}
