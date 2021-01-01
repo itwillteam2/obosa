@@ -1,6 +1,6 @@
 var nowPageURL = window.location.href;
 
-function setComma(number) //asp의 formatnumber 사용법 -> var xxx = setComma(parseInt(변수));
+function setComma(number) 
 {
 	var minusYN = "N";
 	if (parseInt(number,10)<0)
@@ -34,38 +34,6 @@ function trim(str)
  
 
 
-function fnBizInfo() //사업자 정보 확인
-{
-	var newwindow = window.open("http://www.ftc.go.kr/www/bizCommView.do?key=232&apv_perm_no=2011321012130200404&pageUnit=10&searchCnd=wrkr_no&searchKrwd=2148106825&pageIndex=1","POOM_fnBizInfo","");
-	newwindow.focus();
-}
-
-/*function fnZipCode(id_zipcode,id_addr) //우편번호 찾기
-{
-	var width, height, left, top;
-
-	width = 750;
-	height = 700;
-	left = (document.body.offsetWidth/2)-(width/2);
-	top = (document.body.offsetHeight/2)-(height/2);
-
-	var newwindow = window.open("/Home/Member/PopZipCode.asp?id_zipcode="+id_zipcode+"&id_addr="+id_addr,"POOM_fnZipCode","width="+width+",height="+height+",left="+left+",top="+top+",resizable=no,menubar=no,location=no,scrollbars=yes,status=no,toolbar=no");
-	newwindow.focus();
-}
-
-function fnZipCodeHttps(id_zipcode,id_addr) //우편번호 찾기 Https
-{
-	var width, height, left, top;
-
-	width = 750;
-	height = 700;
-	left = (document.body.offsetWidth/2)-(width/2);
-	top = (document.body.offsetHeight/2)-(height/2);
-
-	var newwindow = window.open("/Home/Member/PopZipCode.asp?id_zipcode="+id_zipcode+"&id_addr="+id_addr+"&https=Y","POOM_fnZipCode","width="+width+",height="+height+",left="+left+",top="+top+",resizable=no,menubar=no,location=no,scrollbars=yes,status=no,toolbar=no");
-	newwindow.focus();
-}
-*/
 
 // Internet Explorer 버전 체크
 var IEVersionCheck = function() {
@@ -180,10 +148,6 @@ $(document).ready(function(){
 		$("#CommonHeader_M").css("position","absolute");
 	}
 
-	if ($(window).width() == "360")
-	{
-		//
-	}
 
 	$(window).on("scroll", function (){
 		ScrollTop = $(window).scrollTop();
@@ -196,28 +160,24 @@ $(document).ready(function(){
 				$("#CommonHeader .MainLogoScroll").css("display","block");
 				$("#MyInfoSummary").css("padding-top","23px");
 				$("#CommonHeader").css("opacity","0.9");
-				$("#LoginBalloon").css("visibility","hidden");
+			//	$("#LoginBalloon").css("visibility","hidden");
 
 				$(".MyInfoSummaryArea").css("top","97px");
 				$(".MyInfoSummaryArea").css("z-index","99998");
-				if (nowPageURL.toLowerCase() === "http://www.artboxmall.com/home/event/popmart.asp")
-				{
-					$(".swiper-container.pc.popmart").css("top","862px");
-				}
+			//	if (nowPageURL.toLowerCase() === "http://www.artboxmall.com/home/event/popmart.asp")
+			//	{	$(".swiper-container.pc.popmart").css("top","862px"); 		}
 			} else {
 				$("#CommonHeader").css("position","absolute");
 				$("#CommonHeader .OtherBrand").css("display","block");
 				$("#CommonHeader .MainLogo").css("display","block");
 				$("#CommonHeader .MainLogoScroll").css("display","none");
 				$("#CommonHeader").css("opacity","1");
-				$("#LoginBalloon").css("visibility","visible");
+			//	$("#LoginBalloon").css("visibility","visible");
 
 				$(".MyInfoSummaryArea").css("top",(223-ScrollTop)+"px");
 				$(".MyInfoSummaryArea").css("z-index","998");
-				if (nowPageURL.toLowerCase() === "http://www.artboxmall.com/home/event/popmart.asp")
-				{
-					$(".swiper-container.pc.popmart").css("top","988px");
-				}
+			//	if (nowPageURL.toLowerCase() === "http://www.artboxmall.com/home/event/popmart.asp")
+			//	{	$(".swiper-container.pc.popmart").css("top","988px");		}
 			}
 			CommonHeaderHeight = $("#CommonHeader").height();
 			$("#CommonHeaderArea").height(CommonHeaderHeight);
@@ -274,36 +234,6 @@ $(document).ready(function(){
 	}
 
 
-	fnLogout = function(https){ //fnLogin함수는 로그인 페이지에만 있음(로그인 하는 경로가 로그인 페이지에만 있어서)
-
-
-		var sendUrl = "http://www.artboxmall.com/Home/Member/LogoutAjax.asp";
-		if (https=="on" || https == "https") {
-			sendUrl = "https://www.artboxmall.com:443/Home/Member/LogoutAjax.asp?https=on";
-		}
-
-		var params = "";
-		var returnValue, returnMessage;
-
-		$.ajax({
-			url: sendUrl,
-			type: "POST",
-			dataType: "XML",
-			data: params,
-			async:false,
-			success: function(xml){
-
-				returnValue = $(xml).find("returnValue").text();
-				returnMessage = $(xml).find("returnMessage").text();
-
-				if (returnValue=="Y") {
-					location.href = "http://www.artboxmall.com/Home/";
-				} else {
-					alert(returnMessage);
-				}
-			}
-		});
-	}
 
 
 	fnMyInfoSummary = function(x){
@@ -328,67 +258,3 @@ function fnOnlyNumber(t) //onkeypress="fnOnlyNumber(this);"
 	}
 }
 
-
-function fnTaekBae(deliverycode, deliverynum) // 2015-10-21 updated
-{
-	var newwindow;
-	switch (deliverycode)
-	{
-		case "01" : //대한통운
-			//newwindow=window.open("https://www.doortodoor.co.kr/parcel/doortodoor.do?fsp_action=PARC_ACT_002&fsp_cmd=retrieveInvNoACT&invc_no=" + deliverynum,"_blank","");
-			newwindow=window.open("http://nexs.cjgls.com/web/service02_01.jsp?slipno=" + deliverynum,"_blank","");
-			break;
-		case "02" : //우체국
-			newwindow=window.open("http://service.epost.go.kr/trace.RetrieveRegiPrclDeliv.postal?sid1=" + deliverynum,"_blank","");
-			break;
-		case "03" : //현대
-//			newwindow=window.open("http://www.hlc.co.kr/personalService/tracking/06/tracking_goods_result.jsp?InvNo=" + deliverynum,"_blank","");
-			newwindow=window.open("https://ftr.alps.llogis.com:18260/ftr/tracking.html?" + deliverynum,"_blank","");
-			break;
-		case "05" : //한진
-			newwindow=window.open("http://www.hanjin.co.kr/Delivery_html/inquiry/result_waybill.jsp?wbl_num=" + deliverynum,"_blank","");
-			break;
-		case "10" : //CJ
-			newwindow=window.open("http://nexs.cjgls.com/web/service02_01.jsp?slipno=" + deliverynum,"_blank","");
-			break;
-	//	case "12" : //옐로우캡
-	//		newwindow=window.open("http://www.kglogis.co.kr/contents/waybill.jsp?item_no=" + deliverynum,"_blank","");
-	//		break;
-		case "14" : //로젠택배
-			newwindow=window.open("https://www.ilogen.com/m/personal/trace/" + deliverynum,"_blank","");
-	//		newwindow=window.open("http://www.ilogen.com/iLOGEN.Web.New/TRACE/TraceView.aspx?gubun=slipno&slipno=" + deliverynum,"_blank","");
-			break;
-		case "15" : //일양택배
-			newwindow=window.open("http://www.ilyanglogis.com/functionality/tracking_result.asp?hawb_no=" + deliverynum,"_blank","");
-			break;
-		case "16" : //KGB
-			newwindow=window.open("http://www.kgbls.co.kr/sub5/trace.asp?f_slipno=" + deliverynum,"_blank","");
-			break;
-		case "22" : //이노지스
-			newwindow=window.open("http://www.innogis.co.kr/innogis/delivery.asp?invoice=" + deliverynum,"_blank","");
-			break;
-		case "24" : //동부익스프레스 (140120-박혜현 / 변경URL 업데이트)
-			newwindow=window.open("http://www.kglogis.co.kr/contents/waybill.jsp?item_no=" + deliverynum,"_blank","");
-			break;
-		case "29" : //천일택배
-			newwindow=window.open("http://www.chunil.co.kr/HTrace/HTrace.jsp?transNo=" + deliverynum,"_blank","");
-			break;
-		case "34" : //GTX로지스
-			newwindow=window.open("http://www.gtxlogis.co.kr/tracking/default.asp?awblno=" + deliverynum,"_blank","");
-			break;
-		case "36" : //한우리물류
-			newwindow=window.open("http://tms1.bandsoft.kr/Search/SearchMain.jsp?orderno=" + deliverynum,"_blank","");
-			break;
-		case "37" : //롯데(구 현대)
-//			newwindow=window.open("http://www.hlc.co.kr/personalService/tracking/06/tracking_goods_result.jsp?InvNo=" + deliverynum,"_blank","");
-			newwindow=window.open("https://ftr.alps.llogis.com:18260/ftr/tracking.html?" + deliverynum,"_blank","");
-			break;
-		case "46" : //fedex
-			newwindow=window.open("https://www.fedex.com/apps/fedextrack/index.html?tracknumbers=" + deliverynum + "&cntry_code=kr","_blank","");
-			break;
-		default :
-			alert("해당 택배사에서 배송조회 API 서비스를 지원않습니다.\n고객센터로 연락주시거나 해당 택배사에서 직접 조회해주시기 바랍니다.");
-			return false;
-	}
-	newwindow.focus();
-}

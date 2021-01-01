@@ -1,9 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
+	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+	<c:set var="contextPath" value="${pageContext.request.contextPath}"/>	
 <header>	
 <div id="CommonHeader">
-	<a href="../index.jsp" class="MainLogo"><img src="${contextPath}/Images/Ver1/Common/logo.png" /></a>
-	<a href="../index.jsp" class="MainLogoScroll"><img src="${contextPath}/Images/Ver1/Common/logo.png" /></a>
+	<a href="${contextPath}/Home/index.jsp" class="MainLogo"><img src="${contextPath}/Images/Ver1/Common/logo.png" /></a>
+	<a href="${contextPath}/Home/index.jsp" class="MainLogoScroll"><img src="${contextPath}/Images/Ver1/Common/logo.png" /></a>
 	<div class="CategoryLarge">
 		<ul>
 			<li class="CategoryMiddle"><a href="#">인형/토이</a></li>
@@ -16,9 +18,19 @@
 			<li class="CategoryMiddle"><a href="#">뷰티</a></li>
 			
 			<li class="MyPage">
-				<a href="../Home/Member/Login.jsp" title="로그인"><img src="${contextPath}/Images/Ver1/Common/avatar.svg" id="MyInfoSummaryIcon" /></a>
-				<a href="..Home/Member/Login.jsp" id="LoginBalloon"><div class="test" >..님</div><div class="test"><a href="logout.jsp">로그아웃</a> </div><div class="test"><a href="${contextPath}/Join.jsp">회원관리</a></div></a>
-				<a class="btnBallon" href="javascript:fnLoginBalloon();"></a>
+			<c:choose>
+				<c:when test="${empty sessionScope.id}">
+					<a href="${contextPath}/Home/Member/Login.jsp" title="로그인"><img src="${contextPath}/Images/Ver1/Common/avatar.svg" id="MyInfoSummaryIcon" /></a>
+					<a href="${contextPath}/member/login.do" id="LoginBalloon" title="로그인">로그인</a>
+					<a href="${contextPath}/member/join.do" title="회원가입"><img src="${contextPath}/Images/Ver1/Common/house_1.svg" id="MyInfoSummaryIcon" /></a>
+				</c:when>
+				<c:otherwise>
+					<a href="${contextPath}/member/userInfo.do">회원정보변경</a>
+					<a href="${contextPath}/member/logout.do">로그아웃</a>
+				</c:otherwise>
+			</c:choose>
+			<a class="btnBallon" href="javascript:fnLoginBalloon();"></a>
+			
 			</li>
 			<li class="Cart">
 				<a href="Order/Cart.html" title="장바구니">			

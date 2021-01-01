@@ -5,34 +5,9 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
 <!DOCTYPE html>
-<html lang="ko">
-
-<meta http-equiv="content-type" content="text/html;charset=utf-8" /><!-- /Added by HTTrack -->
 <head>
-<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-
-<meta http-equiv="Content-Script-Type" content="text/javascript" />
-<meta http-equiv="Content-Style-Type" content="text/css" />
-<title>SSMarket</title>
-
-<link href="${contextPath}/T2_tmp/Images/Ver1/Icon/icon180.png" rel="apple-touch-icon-precomposed" />
-
-<link rel="stylesheet" type="text/css" href="${contextPath}/T2_tmp/Home/Css/Common/Common.css" />
-<link rel="stylesheet" type="text/css" href="${contextPath}/T2_tmp/Home/Css/Common/swiper.min.css" />
-<script type="text/javascript" src="${contextPath}/T2_tmp/Home/Js/Common/jquery-1.11.3.min.js"></script>
-
-<script type="text/javascript" src="${contextPath}/T2_tmp/Home/Js/Common/Common.js"></script>
-
-<script type="text/javascript" src="${contextPath}/T2_tmp/Home/Js/Common/swiper_r.min.js"></script>
- 
-<link rel="stylesheet" type="text/css" href="${contextPath}/T2_tmp/Home/Css/Common/Index.css" />
-<link rel="stylesheet" type="text/css" href="${contextPath}/T2_tmp/Home/Css/Common/FlexSliderIndex.css" />
-<script type="text/javascript" src="${contextPath}/T2_tmp/Home/Js/Common/jquery.flexslider-min.js" charset="utf-8"></script>
-<link rel="stylesheet" type="text/css" href="${contextPath}/T2_tmp/Home/Css/Common/swiper.min.css" />
-<script type="text/javascript" src="${contextPath}/T2_tmp/Home/Js/Common/swiper.min.js"></script>
-<script type="text/javascript" src="${contextPath}/T2_tmp/Home/Js/Common/jquery.rwdImageMaps.min.js"></script>
-
-<script type="text/javascript" src="${contextPath}/T2_tmp/Home/Js/Common/jquery.bxslider.ABIndex.js"></script>
+<html lang="ko">
+<jsp:include page="/Home/inc/head.jsp"/>
 <script type="text/javascript">
 var WinKind;
 $(document).ready(function(){
@@ -70,50 +45,7 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-<div id="CommonHeader">
-	<div id="mymenu">
-		<c:choose>
-			<c:when test="${empty sessionScope.id}">
-				<a href="${contextPath}/member/login.do">로그인</a>&nbsp; | &nbsp;
-				<a href="${contextPath}/member/join.do">회원가입</a>
-			</c:when>
-			<c:otherwise>
-				<a href="${contextPath}/member/userInfo.do">회원정보변경</a>&nbsp; | &nbsp;
-				<a href="${contextPath}/member/logout.do">로그아웃</a>
-			</c:otherwise>
-		</c:choose>
-	</div>
-	<a href="${contextPath}/common/index.do" class="MainLogo"><img src="${contextPath}/T2_tmp/Images/Ver1/Common/logo.png" /></a>
-
-	<a href="i${contextPath}/common/index.do" class="MainLogoScroll"><img src="${contextPath}/T2_tmp/Images/Ver1/Common/logo.png" /></a>
-	<div class="CategoryLarge">
-		<ul>
-			<li class="CategoryMiddle"><a href="#">인형/토이</a></li>
-			<li class="CategoryMiddle"><a href="#">문구</a></li>
-			<li class="CategoryMiddle"><a href="#">패션</a></li>
-			<li class="CategoryMiddle"><a href="#">주방/욕실</a></li>
-			<li class="CategoryMiddle"><a href="#">리빙/데코</a></li>
-			<li class="CategoryMiddle"><a href="#">디지털/가전</a></li>
-			<li class="CategoryMiddle"><a href="#">여행</a></li>
-			<li class="CategoryMiddle"><a href="#">뷰티</a></li>
-			<li class="Cart">
-				<a href="${contextPath}/common/cart.do title="장바구니" onclick="GA_event('HEAD', '최상단 메뉴 PC', '장바구니');">
-					<img src="${contextPath}/T2_tmp/Images/Ver1/Common/top_icon_cart.png" />
-				</a>
-			</li>
-			<li class="Search">
-				<div class="CommonSearch">
-					<input type="text" id="kwd" value="" onkeypress="if(event.keyCode==13){fnCommonSearch(1);}" /><a href="javascript:fnCommonSearch(1);" title="검색" onclick="GA_event('HEAD', '최상단 메뉴 PC', '검색');"><img src="${contextPath}/T2_tmp/Images/Ver1/Common/top_icon_search.png" /></a>
-				</div>
-			</li>
-		</ul>
-		<div class="clear"></div>
-	</div>
-
-</div>
-
-<div id="CommonHeaderArea"></div>
-<div id="CommonHeader_M">
+<jsp:include page="/Home/inc/header.jsp"/>
 
 </div>
 
@@ -621,58 +553,7 @@ $(document).ready(function(){
 </script>
 
 
-<div id="CommonFooter">
-	<div class="FooterMenu">
-		<ul>
-			<li class="FooterLink"><a href="${contextPath}/T2_tmp/Home/company/index.html" target="_blank" onclick="GA_event('FOOT', '최하단 메뉴 PC', '회사소개');">회사소개</a></li>
-			<li class="FooterLink"><a href="http://recruit.artbox.co.kr/" target="_blank" onclick="GA_event('FOOT', '최하단 메뉴 PC', '인재채용');">인재채용</a></li>
-			<li class="FooterLink"><a href="${contextPath}/T2_tmp/Home/company/UserAgreement.html" onclick="GA_event('FOOT', '최하단 메뉴 PC', '이용약관');">이용약관</a></li>
-			<li class="FooterLink"><a href="${contextPath}/T2_tmp/Home/company/Privacy.html" class="privacy" onclick="GA_event('FOOT', '최하단 메뉴 PC', '개인정보취급방침');">개인정보취급방침</a></li>
-			<li class="FooterLink"><a href="${contextPath}/T2_tmp/Home/company/EmailDeny.html" onclick="GA_event('FOOT', '최하단 메뉴 PC', '이메일주소무단수집거부');">이메일주소무단수집거부</a></li>
-			<li class="FooterLink"><a href="${contextPath}/T2_tmp/Home/company/OpenBiz.html" onclick="GA_event('FOOT', '최하단 메뉴 PC', '입점문의');">입점문의</a></li>
-			<li class="FooterLink"><a href="${contextPath}/T2_tmp/Home/company/LargeBuy.html" onclick="GA_event('FOOT', '최하단 메뉴 PC', '대량구매');">대량구매</a></li>
-			<li class="FamilySite">
-				<select title="패밀리 사이트" onchange="if(this.value){window.open(this.value,'_blank');this[0].selected=true;}">
-					<option value="">FAMILY SITE</option>
-					<option value="http://www.poom.co.kr/">POOM</option>
-				</select>
-			</li>
-			<li class="Facebook">
-				<a href="https://www.facebook.com/artbox.kr.official/" target="_blank" title="페이스북" onclick="GA_event('FOOT', '최하단 메뉴 PC', '페이스북');"><img src="../Images/Ver1/Common/facebook.png" /></a>
-			</li>
-			<li class="Instagram">
-				<a href="https://www.instagram.com/artbox_kr_official/" target="_blank" title="인스타그램" onclick="GA_event('FOOT', '최하단 메뉴 PC', '인스타그램');"><img src="../Images/Ver1/Common/instagram.png" /></a>
-			</li>
-			<li class="Youtube">
-				<a href="https://www.youtube.com/channel/UC-3Ys0zhdyTe1x6wLiokAMg/" target="_blank" title="유튜브" onclick="GA_event('FOOT', '최하단 메뉴 PC', '유튜브');"><img src="../Images/Ver1/Common/youtube.png" /></a>
-			</li>
-		</ul>
-		<div class="clear"></div>
-	</div>
-	<div class="FooterInfo">
-		<ul>
-			<a href="${contextPath}/T2_tmp/Home/Cscenter/NoticeList.html" onclick="GA_event('FOOT', '최하단 메뉴 PC', '공지사항');"><li class="CallCenter">
-				<b class="string">고객감동센터</b>
-				<b class="number">1577-9081</b>
-				운영시간 09:00 - 18:00, 점심시간 12:30 - 13:30
-				<small>*주말 및 공휴일은 1:1 문의/상담을 이용해주세요.</small>
-			</li></a>
-			<li class="TwoButton">
-				<a href="${contextPath}/T2_tmp/Home/Cscenter/FaqList.html" onclick="GA_event('FOOT', '최하단 메뉴 PC', '자주하는 질문');"><img src="${contextPath}/T2_tmp/Images/Ver1/Common/footer_btn1.png" />자주하는 질문</a><a href="${contextPath}/T2_tmp/Home/Cscenter/Enquiry.html" onclick="GA_event('FOOT', '최하단 메뉴 PC', '1:1 문의/상담');"><img src="${contextPath}/T2_tmp/Images/Ver1/Common/footer_btn2.png" />1:1 문의/상담</a>
-			</li>
-			<li class="Information">
-				<big>(주)아트박스</big><br />
-				(06653) 서울특별시 서초구 반포대로 12길 41&nbsp;&nbsp;대표이사 : 조석현&nbsp;&nbsp;사업자등록번호 214-81-06825&nbsp;&nbsp;<a style="color:#5f5f5f; font-weight:bold; letter-spacing:-1px;" href="javascript:fnBizInfo();" onclick="GA_event('FOOT', '최하단 메뉴 PC', '사업자정보확인');">사업자정보확인&gt;</a><br />
-				통신판매업신고 제 2011-서울서초-0404호&nbsp;&nbsp;개인정보 책임자 : 정연규&nbsp;&nbsp;호스팅제공자 : (주)아트박스<br />
-				E-MAIL: customer@poom.co.kr<br /><br />
-				<!--a class="BizInfo" href="javascript:fnBizInfo();">사업자 정보 확인</a-->
-				COPYRIGHT &copy; 2011 ARTBOX CO., LTD ALL RIGHTS RESERVED.
-			</li>
-		</ul>
-		<div class="clear"></div>
-	</div>
-</div>
-
+<jsp:include page="/Home/inc/footer.jsp"/>
 <script type="text/javascript" src="../../wcs.naver.net/wcslog.js"></script> 
 
 <span itemscope="" itemtype="https://schema.org/Organization">
