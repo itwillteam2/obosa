@@ -120,7 +120,7 @@ public class MemberController extends HttpServlet{
 			}
 			
 			//회원가입에 성공했을 때 이동할 뷰페이지 주소 저장
-			nextPage = "/T2_tmp/Home/Member/Login.jsp";
+			nextPage = "/Home/Member/Login.jsp";
 		
 		}else if(action.equals("/loginCK.do")){
 			String id = request.getParameter("memid");
@@ -158,11 +158,11 @@ public class MemberController extends HttpServlet{
 			         + " location.href=document.referrer;"
 					 +"</script>");
 		}else if(action.equals("/login.do")){
-			nextPage = "/T2_tmp/Home/Member/Login.jsp";
+			nextPage = "/Home/Member/Login.jsp";
 		}else if(action.equals("/join.do")){
-			nextPage = "/T2_tmp/Home/Member/Join.jsp";
+			nextPage = "/Home/Member/Join.jsp";
 		}else if(action.equals("/userInfo")){
-			nextPage = "/T2_tmp/Home/Member/userInfo.jsp";
+			nextPage = "/Home/Member/userInfo.jsp";
 		}
 		//listMembers.jsp페이지에서 수정 클릭했을 때 컨트롤러에 ID로 회원정보 조회 후 수정창으로 포o워딩
 //		}else if(action.equals("/modMemberForm.do")){

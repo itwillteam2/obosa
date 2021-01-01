@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<jsp:include page="/Home/inc/head.jsp"/>
+<jsp:include page="${contextPath}/Home/inc/head.jsp"/>
 
 <script type="text/javascript">
 
@@ -114,7 +114,7 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-<jsp:include page="/Home/inc/header.jsp" />
+<jsp:include page="${contextPath}/Home/inc/header.jsp" />
 
 <form name="Login" method="post" action="${contextPath}/member/loginCK.do">
 <div class="LoginWrap">
@@ -138,12 +138,12 @@ $(document).ready(function(){
 		<a class="NonMemberOrderDetailButton" href="javascript:fnNonMemberOrderDetail();">확인</a>
 	</div>
 	<div class="BenefitImage">
-		<img src="${contextPath}/T2_tmp/Images/Ver1/Member/benefit.png" />
+		<img src="${contextPath}/Images/Ver1/Member/benefit.png" />
 	</div>
 
 </div>
 </form>
 
-<jsp:include page="/Home/inc/footer.jsp"/>
+<jsp:include page="${contextPath}/Home/inc/footer.jsp"/>
 </body>
 </html>

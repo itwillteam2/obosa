@@ -414,7 +414,7 @@ a#CheckSixNum {display:none; width:100%; padding:0; text-align:center; margin:0 
 
 }
 
-@media (max-width:640px) {
+@media (max-width:360px) {
 
 	.overlay.inner.on { position:fixed; top:0 !important; left:0; right:0; bottom:0; padding:3.125rem 0.625rem 2.3125rem 0.625rem; }
 	.overlay.inner.on span:nth-child(1) { font-size:1.6875rem; line-height:1.8125rem; }

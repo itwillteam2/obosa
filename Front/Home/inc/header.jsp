@@ -20,8 +20,8 @@
 			<li class="MyPage">
 			<c:choose>
 				<c:when test="${empty sessionScope.id}">
-					<a href="${contextPath}/Home/Member/Login.jsp" title="로그인"><img src="${contextPath}/Images/Ver1/Common/avatar.svg" id="MyInfoSummaryIcon" /></a>
-					<a href="${contextPath}/member/login.do" id="LoginBalloon" title="로그인">로그인</a>
+					<a href="${contextPath}/member/login.do" title="로그인"><img src="${contextPath}/Images/Ver1/Common/avatar.svg" id="MyInfoSummaryIcon" /></a>
+					<a href="${contextPath}/member/login.do" id="LoginBalloon" title="로그인">로그인 !!</a>
 					<a href="${contextPath}/member/join.do" title="회원가입"><img src="${contextPath}/Images/Ver1/Common/house_1.svg" id="MyInfoSummaryIcon" /></a>
 				</c:when>
 				<c:otherwise>
@@ -47,9 +47,9 @@
 	</div>
 	</div>
 	<div id="CommonHeaderArea"></div>
-	<div id="CommonHeader_M">
-		<div id="CommonHeaderMenu_M"></div>
-	</div>
+<div id="CommonHeader_M"></div>
+	
+
 
 	<a class="btn_top" href="javascript:;"><img src="../Images/Ver1/Common/btn_top.png"></a>
 	<script type="text/javascript">

@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <jsp:include page="/Home/inc/head.jsp"/>
+    <jsp:include page="${contextPath}/Home/inc/head.jsp"/>
  
     <script type="text/javascript">
     $(document).ready(function(){
@@ -485,7 +485,7 @@
     </head>
     <body>
 <body>
-	<jsp:include page="/Home/inc/header.jsp"/>
+	<jsp:include page="${contextPath}/Home/inc/header.jsp"/>
 
 
 <form name="Join" method="post" action="${contextPath}/member/addMember.do">
@@ -497,8 +497,8 @@
             <dt>회원 유형</dt>
             <dd>
             	<p class="null"></p>
-                <input type="radio" name="memtype" value="customer" checked> 일반회원
-                <input type="radio" name="memtype" value="seller"> 판매자
+                <input type="radio"  name="memtype" value="customer" checked>일반회원
+                <input type="radio"  name="memtype" value="seller">판매자
                 <p class="null" id="r_memtype"></p>
                 <input type="hidden" id="i_memtype_valid" name="memtype_valid">
             </dd>
@@ -678,7 +678,6 @@
 
 </form>
 
-<jsp:include page="/Home/inc/footer.jsp" />
-
+<jsp:include page="${contextPath}/Home/inc/footer.jsp" />
 </body>
 </html>

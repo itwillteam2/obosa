@@ -164,7 +164,7 @@ $(document).ready(function(){
 
 				$(".MyInfoSummaryArea").css("top","97px");
 				$(".MyInfoSummaryArea").css("z-index","99998");
-			//	if (nowPageURL.toLowerCase() === "http://www.artboxmall.com/home/event/popmart.asp")
+			//	if (nowPageURL.toLowerCase() === "http://")
 			//	{	$(".swiper-container.pc.popmart").css("top","862px"); 		}
 			} else {
 				$("#CommonHeader").css("position","absolute");
@@ -176,7 +176,7 @@ $(document).ready(function(){
 
 				$(".MyInfoSummaryArea").css("top",(223-ScrollTop)+"px");
 				$(".MyInfoSummaryArea").css("z-index","998");
-			//	if (nowPageURL.toLowerCase() === "http://www.artboxmall.com/home/event/popmart.asp")
+			//	if (nowPageURL.toLowerCase() === "http://")
 			//	{	$(".swiper-container.pc.popmart").css("top","988px");		}
 			}
 			CommonHeaderHeight = $("#CommonHeader").height();

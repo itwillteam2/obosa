@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <head>
 <html lang="ko">
-<jsp:include page="/Home/inc/head.jsp"/>
+<jsp:include page="${contextPath}/Home/inc/head.jsp"/>
 <script type="text/javascript">
 var WinKind;
 $(document).ready(function(){
@@ -45,9 +45,7 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-<jsp:include page="/Home/inc/header.jsp"/>
-
-</div>
+<jsp:include page="${contextPath}/Home/inc/header.jsp"/>
 
 <div class="TopRollingPc">
 	<div class="swiper-container">
@@ -59,7 +57,7 @@ $(document).ready(function(){
 					<tbody>
 						<tr>
 							<td bgcolor="#d3e9f6"></td>
-							<td><a class="SlideLink" href="event/eventcontentse13a.html?EvtID=91374" target="_self" onclick="GA_event('메인_PC', '상단 롤링', '1_https_/www.artboxmall.com/home/event/eventcontentse13a.html?EvtID=91374');"><img style="border:0;" src="../Upload/DesignMng/poom2012215156588663759c87.jpg?v=v20201221105142" /></a></td>
+							<td><a class="SlideLink" href="event/eventcontentse13a.html?EvtID=91374" target="_self" ><img style="border:0;" src="${contextPath}/Images/Ver1/Common/house_1.svg" /></a></td>
 							<td bgcolor="#d3e9f6"></td>
 						</tr>
 					</tbody>
@@ -72,7 +70,7 @@ $(document).ready(function(){
 					<tbody>
 						<tr>
 							<td bgcolor="#dfd5f3"></td>
-							<td><a class="SlideLink" href="event/eventcontents3ec6.html?EvtID=91095&amp;cdl=500" target="_self" onclick="GA_event('메인_PC', '상단 롤링', '2_https_/www.artboxmall.com/home/event/eventcontents3ec6.html?EvtID=91095&amp;cdl=500');"><img style="border:0;" src="../Upload/DesignMng/poom2012145731037986089c87.jpg?v=v20201221105142" /></a></td>
+							<td><a class="SlideLink" href="event/eventcontents3ec6.html?EvtID=91095&amp;cdl=500" target="_self" ><img style="border:0;" src="${contextPath}/Images/Ver1/Common/house_1.svg" /></a></td>
 							<td bgcolor="#dfd5f3"></td>
 						</tr>
 					</tbody>
@@ -302,70 +300,8 @@ $(document).ready(function(){
 	</div>
 </div>
 
-<div class="EventProductWrap" style="background-color:#ffd2d2";>
-	<a class="EventProductImage" href="Shop/Categoryd46e.html?kwd=%EB%AC%B8%EB%8B%B5" target="_self" onclick="GA_event('메인_PC', '키워드 카테고리', 'Shop/Categoryd46e.html?kwd=%EB%AC%B8%EB%8B%B5');"><img src="../Upload/DesignMng/poom201221538723007199c87.jpg?v=v20201221105142" /></a>
-	<div class="EventProductList">
-		<ul>
-		
-			<li>
-				<a href="Shop/ItemDetailc4d9.html?itemidx=2011130544" title="커플문답 연애정복 기출문제집 기본편 (26020806)" onclick="GA_event('메인_PC', '키워드 카테고리', '#1_커플문답 연애정복 기출문제집 기본편 (26020806)'); GA_onclick('메인_PC', '2011130544', '커플문답 연애정복 기출문제집 기본편 (26020806)', '아트박스', '디자인문구 > 노트/메모지 > 유선노트', '5000', '#1', '0');">
-					<img class="ItemImage" src="../../www.poom.co.kr/Upload2/Product/202011/2011130544_detail1.jpg" />
-					<span class="ItemName">커플문답 연애정복 기출문제집 기본편 (26020806)</span>
-					
-					<span class="ItemPrice">5,000원</span>
-					
-					<div class="stampicongroup"><span class="stampicon blank"></span></div>
-				</a>
-			</li>
-		
-			<li>
-				<a href="Shop/ItemDetail956e.html?itemidx=2008210099" title="꽁냥꽁냥 커플문답책 (26020569)" onclick="GA_event('메인_PC', '키워드 카테고리', '#2_꽁냥꽁냥 커플문답책 (26020569)'); GA_onclick('메인_PC', '2008210099', '꽁냥꽁냥 커플문답책 (26020569)', '아트박스', '디자인문구 > 노트/메모지 > 기능성노트', '7800', '#2', '0');">
-					<img class="ItemImage" src="../../www.poom.co.kr/Upload2/Product/202008/2008210099_detail1.jpg" />
-					<span class="ItemName">꽁냥꽁냥 커플문답책 (26020569)</span>
-					
-					<span class="ItemPrice">7,800원</span>
-					
-					<div class="stampicongroup"><span class="stampicon blank"></span></div>
-				</a>
-			</li>
-		
-			<li>
-				<a href="Shop/ItemDetail5715.html?itemidx=2011230342" title="연애고사 심화편 (26020807)" onclick="GA_event('메인_PC', '키워드 카테고리', '#3_연애고사 심화편 (26020807)'); GA_onclick('메인_PC', '2011230342', '연애고사 심화편 (26020807)', '아트박스', '디자인문구 > 노트/메모지 > 기능성노트', '5000', '#3', '0');">
-					<img class="ItemImage" src="../../www.poom.co.kr/Upload2/Product/202011/2011230342_detail1.jpg" />
-					<span class="ItemName">연애고사 심화편 (26020807)</span>
-					
-					<span class="ItemPrice">5,000원</span>
-					
-					<div class="stampicongroup"><span class="stampicon blank"></span></div>
-				</a>
-			</li>
-		
-			<li>
-				<a href="Shop/ItemDetaild8c5.html?itemidx=2011230354" title="감사의 마음 자녀문답 (26020809)" onclick="GA_event('메인_PC', '키워드 카테고리', '#4_감사의 마음 자녀문답 (26020809)'); GA_onclick('메인_PC', '2011230354', '감사의 마음 자녀문답 (26020809)', '아트박스', '디자인문구 > 노트/메모지 > 기능성노트', '5000', '#4', '0');">
-					<img class="ItemImage" src="../../www.poom.co.kr/Upload2/Product/202011/2011230354_detail1.jpg" />
-					<span class="ItemName">감사의 마음 자녀문답 (26020809)</span>
-					
-					<span class="ItemPrice">5,000원</span>
-					
-					<div class="stampicongroup"><span class="stampicon blank"></span></div>
-				</a>
-			</li>
-		
-			<li>
-				<a href="Shop/ItemDetail1c53.html?itemidx=2011160374" title="[빌럽어스] 티키타카 상황문답 1+1 (51010389)" onclick="GA_event('메인_PC', '키워드 카테고리', '#5_[빌럽어스] 티키타카 상황문답 1+1 (51010389)'); GA_onclick('메인_PC', '2011160374', '[빌럽어스] 티키타카 상황문답 1+1 (51010389)', '아트박스X품', '디자인문구 > 노트/메모지 > 기능성노트', '12800', '#5', '0');">
-					<img class="ItemImage" src="../../www.poom.co.kr/Upload2/Product/202011/2011160374_detail1.jpg" />
-					<span class="ItemName">[빌럽어스] 티키타카 상황문답 1+1 (51010389)</span>
-					
-					<span class="ItemPrice">12,800원</span>
-					
-					<div class="stampicongroup"><span class="stampicon blank"></span></div>
-				</a>
-			</li>
-		
-		</ul>
+
 		<div class="clear"></div>
-	</div>
-</div>
 
 <div class="DesignFinderWrapPc">
 	<div class="DesignFinderTitle">
@@ -462,102 +398,7 @@ $(document).ready(function(){
 	});
 </script>
 
-<div class="InstagramEventWrap">
-	<div class="InstagramList">
-		<div class="InstagramEventTitle">INSTAGRAM&nbsp;<a href="https://www.instagram.com/artbox_kr_official/" target="_blank" onclick="GA_event('메인', 'INSTAGRAM', 'INSTAGRAM');">@artbox_kr_official</a></div>
-			<!-- ul id="InstagramListUl"></ul -->
-						
-			<ul>
-				<li class="num1"><a href="https://www.instagram.com/p/CIC3iGMnUDF" target="_blank" ><img src="../../scontent-ssn1-1.cdninstagram.com/v/t51.2885-15/sh0.08/e35/s640x640/127185132_498983317746426_1967210419633212971_ne098.jpg?_nc_ht=scontent-ssn1-1.cdninstagram.com&amp;_nc_cat=106&amp;_nc_ohc=j3YXkaKYl0sAX_tj2-s&amp;tp=1&amp;oh=107fa44402a3b2cbd16e9fce251e4ce7&amp;oe=5FE95D1C" /></a></li>
-				<li class="num2"><a href="https://www.instagram.com/p/CIASziRBlFT" target="_blank" ><img src="../../scontent-ssn1-1.cdninstagram.com/v/t51.2885-15/sh0.08/e35/s640x640/127179987_964497727411756_7643917984820228069_n2768.jpg?_nc_ht=scontent-ssn1-1.cdninstagram.com&amp;_nc_cat=104&amp;_nc_ohc=ZVZF7Ohp_5MAX8v8d7H&amp;tp=1&amp;oh=11167d75aff4adfa3db2334cbae381f3&amp;oe=5FE85F46" /></a></li>
-				<li class="num3"><a href="https://www.instagram.com/p/CH9t9-kn82q" target="_blank" ><img src="../../scontent-ssn1-1.cdninstagram.com/v/t51.2885-15/sh0.08/e35/s640x640/126899874_1343772935967955_3342050872195084812_nb569.jpg?_nc_ht=scontent-ssn1-1.cdninstagram.com&amp;_nc_cat=107&amp;_nc_ohc=YxtqRa1hUp4AX-SDuCs&amp;tp=1&amp;oh=ba105a94e07f12475b9497d875ec7ad9&amp;oe=5FE94D7E" /></a></li>
-				<li class="num4"><a href="https://www.instagram.com/p/CH7JOWMJJUw" target="_blank" ><img src="../../scontent-ssn1-1.cdninstagram.com/v/t51.2885-15/sh0.08/e35/s640x640/126306997_994758011015279_6754929408948217078_n6442.jpg?_nc_ht=scontent-ssn1-1.cdninstagram.com&amp;_nc_cat=111&amp;_nc_ohc=jPfrpf1oy-sAX-XL106&amp;tp=1&amp;oh=37062b3ee5d49091e2fcc96d001269d6&amp;oe=5FEACFD7" /></a></li>
-				<li class="num5"><a href="https://www.instagram.com/p/CHw19sBlrDN" target="_blank" ><img src="../../scontent-ssn1-1.cdninstagram.com/v/t51.2885-15/sh0.08/e35/s640x640/125780254_1495228634001610_6460205359568476577_n4577.jpg?_nc_ht=scontent-ssn1-1.cdninstagram.com&amp;_nc_cat=110&amp;_nc_ohc=KdeSiuHFoywAX-4msJJ&amp;tp=1&amp;oh=5b32a9c9dba63a43b4f7f8193ecb527a&amp;oe=5FE7D832" /></a></li>
-				<li class="num6"><a href="https://www.instagram.com/p/CHrsaS0Bx4E" target="_blank" ><img src="../../scontent-ssn1-1.cdninstagram.com/v/t51.2885-15/sh0.08/e35/s640x640/125480492_742296923161913_4502440473476514507_nf2dd.jpg?_nc_ht=scontent-ssn1-1.cdninstagram.com&amp;_nc_cat=105&amp;_nc_ohc=a7L76VOEtzMAX-K5ce7&amp;tp=1&amp;oh=d6be4b292126ac89c37ecbff23285d47&amp;oe=5FE8A033" /></a></li>
-			</ul>
-			
-		<div class="clear"></div>
-	</div>
-	<style>
 
-		.EventWrapBack .SlideBox	{ width: 240px; height: 380px; background-color: #ffffff; margin: 0 auto; padding: 7px; }
-		.EventWrapBack .SlideBox p { margin: 0; padding: 13px 0 0 0; font-size: 15px; line-height: 22px; color: #000000; text-align: center; }
-		.EventWrapBack .SlideLink { display: block; width: 226px; height: 293px; margin: 0; }
-		.EventWrapBack .SlideLink img { width: 226px; height: 293px; }
-
-		.EventWrapBack .swiper-button-prev { width: 40px; height: 77px; background-size: 40px 77px; background-image: url(../Images/Ver1/Common/slide_arrow_left.png); }
-		.EventWrapBack .swiper-button-next { width: 40px; height: 77px; background-size: 40px 77px; background-image: url(../Images/Ver1/Common/slide_arrow_right.png); }
-		.EventWrapBack .swiper-pagination { position:relative; }
-		.EventWrapBack .swiper-pagination-bullet { margin:0 2px; background: url(../Images/Ver1/Company/AboutArtbox/bulletdark_off.png) no-repeat center; }
-		.EventWrapBack .swiper-pagination-bullet.swiper-pagination-bullet-active { background: url(../Images/Ver1/Company/AboutArtbox/bulletdark_on.png) no-repeat center; }
-
-		.EventWrap_M .swiper-pagination-bullet { background: url(../Images/Ver1/Company/AboutArtbox/bulletdark_off.png) no-repeat center; }
-		.EventWrap_M .swiper-pagination-bullet.swiper-pagination-bullet-active { background: url(../Images/Ver1/Company/AboutArtbox/bulletdark_on.png) no-repeat center; }
-	</style>
-	<div class="EventWrap">
-		<div class="InstagramEventTitle">EVENT</div>
-		<div class="EventWrapBack" style="position:relative;">
-			<div class="swiper-container">
-				<div class="swiper-wrapper">
-				
-					<div class="swiper-slide">
-						<div class="SlideBox">
-							<a class="SlideLink" href="https://www.poom.co.kr/Home/Event/Culturetour/MyHouse.asp" target="_blank" title="도서 <결혼은 모르겠고 내 집은 있습니다> 증정" onclick="GA_event('메인_PC', 'EVENT', '#1_도서 <결혼은 모르겠고 내 집은 있습니다> 증정');"><img src="../Upload/DesignMng/poom2012173747541764869c87.jpg?v=v20201221105142" /></a>
-							<p>이벤트 기간<br />2020.12.17 - 2020.12.30</p>
-						</div>
-					</div>
-				
-				</div>
-			</div>
-			
-		</div>
-	</div>
-	<div class="clear"></div>
-	</div>
-</div>
-<script>
-
-
-</script>
-
-
-<div class="IndexThreeBannerWrap">
-	<div class="Banner1Wrap">
-		<a class="Banner1" href="${contextPath}/T2_tmp/Home/company/ArtboxMembership.html" onclick="GA_event('메인_MO', '하단 배너', '#멤버쉽');">
-			<h1>ARTBOX MEMBERSHIP</h1>
-			<h2>할인에 적립까지-<br />아트박스의 모든 브랜드 혜택을 한 번에!</h2>
-			<h3>아트박스 통합 멤버십, 지금 바로 가입하세요~</h3>
-		</a>
-	</div>
-	<div class="Banner2Wrap">
-		<a class="Banner2" href="${contextPath}/T2_tmp/Home/company/Wallpaper.html" style="background-image:url(../Images/Ver1/Common/wallpaper.jpg);">
-			<h1>WALL PAPER</h1>
-			<h2><span class="ios" onclick="GA_event('메인_MO', '하단 배너', '#월페이퍼_IOS');"></span><span class="android" onclick="GA_event('메인_MO', '하단 배너', '#월페이퍼_ANDROID');"></span><span class="desktop" onclick="GA_event('메인_MO', '하단 배너', '#월페이퍼_DESKTOP');"></span></h2>
-		</a>
-	</div>
-	<div class="Banner3Wrap">
-		<a class="Banner3" href="${contextPath}/T2_tmp/Home/company/offlinestore.html" onclick="GA_event('메인_MO', '하단 배너', '#오프라인 스토어');">
-			<h1>ARTBOX<br />OFFLINE<span class="pc">&nbsp;</span><span class="mobile"><br /></span>STORE</h1>
-		</a>
-	</div>
-
-	<div class="clear"></div>
-</div>
-
-
-<script>
-	setTimeout(function(){ 
-		$(".Banner2").css("background-image", "url('../Images/Ver1/Company/WallPaper/2020.12-thumb.jpg')");
-		$(".Banner2Wrap").css("background-color", "#f9f5ee");		
-	}, 500);
-</script>
-
-
-<jsp:include page="/Home/inc/footer.jsp"/>
-<script type="text/javascript" src="../../wcs.naver.net/wcslog.js"></script> 
-
-<span itemscope="" itemtype="https://schema.org/Organization">
-<link itemprop="url" href="https://www.artboxmall.com/"><a itemprop="sameAs" href="https://www.youtube.com/channel/UC-3Ys0zhdyTe1x6wLiokAMg"></a><a itemprop="sameAs" href="https://www.instagram.com/artbox_kr_official/"></a><a itemprop="sameAs" href="https://play.google.com/store/apps/details?id=com.artbox.membership"></a><a itemprop="sameAs" href="https://itunes.apple.com/app/id1190223635"></a><a itemprop="sameAs" href="https://www.facebook.com/artbox.kr.official/"></a></span>
-
+<jsp:include page="${contextPath}/Home/inc/footer.jsp"/>
 </body>
 </html>
