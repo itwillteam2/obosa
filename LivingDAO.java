@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 import DBUtil.DBConnection;
-import Pagination.PagingVO;
+//import Pagination.PagingVO;
 
 public class LivingDAO {
 
@@ -51,7 +51,7 @@ public class LivingDAO {
 		
 	}//end of selectAllArticles
 	
-	//get one page of list
+/*	//get one page of list
 	public List<Map<String, Integer>> selectOnePageLivingList(){
 		
 		PagingVO pagingVO = new PagingVO();
@@ -66,7 +66,7 @@ public class LivingDAO {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
-				//여기서부터는 세팅한글 DB에서 가져오기
+				//���⼭���ʹ� �����ѱ� DB���� ��������
 				
 			}
 			
@@ -80,7 +80,7 @@ public class LivingDAO {
 		
 		
 	}//end of selectLivingOnePageListItem
-	
+*/	
 	
 	//get total record count
 	public int selectTotalCount() {
@@ -122,25 +122,25 @@ public class LivingDAO {
 	
 	//insert part for living item list
 	public int insertLivingNewArticle(LivingVO livingVO) {
-		int NUM = getNewLivingArticleNo();
+		int num = getNewLivingArticleNo();
 		
 		try {
 			conn = DBConnection.getConnection();
 			String query = "INSERT INTO living"
-					+ "(NUM,PRODUCT_NAME,SELLER,SELLINGPRICE,PHOTO_NAME,ORDER_QTY,SHIPPING_FEE,POINT,REG_DATE,LIVING_CONTENT) "
+					+ "(productName,productContent,sellerName,productPrice,productImageName1,productImageName2,productImageName3,productQuantity,shipping_fee,point) "
 					+ "VALUES(?,?,?,?,?,?,?,?,?,?)";
 			pstmt = conn.prepareStatement(query);
 			
-			pstmt.setInt(1, NUM);
-			pstmt.setString(2, livingVO.getProduct_name());
-			pstmt.setString(3, livingVO.getSeller());
-			pstmt.setInt(4, livingVO.getSellingprice());		
-			pstmt.setString(5, livingVO.getPhoto_name());
-			pstmt.setInt(6, livingVO.getOrder_qty());
-			pstmt.setInt(7, livingVO.getShipping_fee());
-			pstmt.setInt(8, livingVO.getPoint());
-			pstmt.setTimestamp(9, livingVO.getReg_date());
-			pstmt.setString(10, livingVO.getLiving_content());			
+			pstmt.setString(1, livingVO.getProductName());
+			pstmt.setString(2, livingVO.getProductContent());
+			pstmt.setString(3, livingVO.getSellerName());
+			pstmt.setInt(4, livingVO.getProductPrice());
+			pstmt.setString(5, livingVO.getProductImageName1());
+			pstmt.setString(6, livingVO.getProductImageName2());
+			pstmt.setString(7, livingVO.getProductImageName3());
+			pstmt.setInt(8, livingVO.getProductQuantity());
+			pstmt.setInt(9, livingVO.getShipping_fee());
+			pstmt.setInt(10, livingVO.getPoint());		
 			
 			pstmt.executeUpdate();
 					
@@ -149,9 +149,10 @@ public class LivingDAO {
 		}finally {
 			freeResource();
 		}		
-		return NUM;
+		return num;
 	}//end of insertNewArticle
 	
+	/*
 	//update method part for living list
 	public void updateLivingArticle(LivingVO livingVO) {
 		try {
@@ -182,7 +183,7 @@ public class LivingDAO {
 			freeResource();
 		}
 	}//end of updateLivingArticle
-	
+	*/
 	
 	//delete part for living one item.
 	public void deleteArticle(int NUM) {

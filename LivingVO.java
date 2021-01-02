@@ -5,12 +5,14 @@ import java.sql.Timestamp;
 public class LivingVO {
 
 	private int num;
-	private String product_name;
-	private String living_content;
-	private String seller;
-	private int sellingprice;
-	private String photo_name;
-	private int order_qty;
+	private String productName;
+	private String productContent;
+	private String sellerName;
+	private int productPrice;
+	private String productImageName1;
+	private String productImageName2;
+	private String productImageName3;
+	private int productQuantity;
 	private int shipping_fee;
 	private int point;
 	private Timestamp reg_date;
@@ -19,16 +21,19 @@ public class LivingVO {
 	
 	}
 
-	public LivingVO(int num, String product_name, String living_content, String seller, int sellingprice,
-			String photo_name, int order_qty, int shipping_fee, int point) {
+	public LivingVO(int num, String productName, String productContent, String sellerName, int productPrice,
+			String productImageName1, String productImageName2, String productImageName3, int productQuantity,
+			int shipping_fee, int point) {
 		
 		this.num = num;
-		this.product_name = product_name;
-		this.living_content = living_content;
-		this.seller = seller;
-		this.sellingprice = sellingprice;
-		this.photo_name = photo_name;
-		this.order_qty = order_qty;
+		this.productName = productName;
+		this.productContent = productContent;
+		this.sellerName = sellerName;
+		this.productPrice = productPrice;
+		this.productImageName1 = productImageName1;
+		this.productImageName2 = productImageName2;
+		this.productImageName3 = productImageName3;
+		this.productQuantity = productQuantity;
 		this.shipping_fee = shipping_fee;
 		this.point = point;
 	}
@@ -41,52 +46,68 @@ public class LivingVO {
 		this.num = num;
 	}
 
-	public String getProduct_name() {
-		return product_name;
+	public String getProductName() {
+		return productName;
 	}
 
-	public void setProduct_name(String product_name) {
-		this.product_name = product_name;
+	public void setProductName(String productName) {
+		this.productName = productName;
 	}
 
-	public String getLiving_content() {
-		return living_content;
+	public String getProductContent() {
+		return productContent;
 	}
 
-	public void setLiving_content(String living_content) {
-		this.living_content = living_content;
+	public void setProductContent(String productContent) {
+		this.productContent = productContent;
 	}
 
-	public String getSeller() {
-		return seller;
+	public String getSellerName() {
+		return sellerName;
 	}
 
-	public void setSeller(String seller) {
-		this.seller = seller;
+	public void setSellerName(String sellerName) {
+		this.sellerName = sellerName;
 	}
 
-	public int getSellingprice() {
-		return sellingprice;
+	public int getProductPrice() {
+		return productPrice;
 	}
 
-	public void setSellingprice(int sellingprice) {
-		this.sellingprice = sellingprice;
+	public void setProductPrice(int productPrice) {
+		this.productPrice = productPrice;
 	}
 
-	public String getPhoto_name() {
-		return photo_name;
+	public String getProductImageName1() {
+		return productImageName1;
 	}
 
-	public void setPhoto_name(String photo_name) {
-		this.photo_name = photo_name;
+	public void setProductImageName1(String productImageName1) {
+		this.productImageName1 = productImageName1;
 	}
 
-	public int getOrder_qty() {
-		return order_qty;
+	public String getProductImageName2() {
+		return productImageName2;
 	}
 
-	public void setOrder_qty(int order_qty) {
-		this.order_qty = order_qty;
+	public void setProductImageName2(String productImageName2) {
+		this.productImageName2 = productImageName2;
+	}
+
+	public String getProductImageName3() {
+		return productImageName3;
+	}
+
+	public void setProductImageName3(String productImageName3) {
+		this.productImageName3 = productImageName3;
+	}
+
+	public int getProductQuantity() {
+		return productQuantity;
+	}
+
+	public void setProductQuantity(int productQuantity) {
+		this.productQuantity = productQuantity;
 	}
 
 	public int getShipping_fee() {
@@ -111,5 +132,10 @@ public class LivingVO {
 
 	public void setReg_date(Timestamp reg_date) {
 		this.reg_date = reg_date;
-	}	
+	}
+
+	
+	
+	
+
 }

@@ -2,12 +2,16 @@ package Living;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -20,7 +24,7 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 
 
 
-
+@WebServlet("/living/*")
 public class LivingController extends HttpServlet{
 
 	LivingVO livingVO;
@@ -55,46 +59,67 @@ public class LivingController extends HttpServlet{
 		String action = request.getPathInfo();
 		System.out.println("action :" + action);
 		
-		HttpSession session;
+		
 		
 		
 		 if(action == null || action.equals("listLiving.do")) {
 		  
-			 Map<String, String> livingListMap = new HashMap<String, String>();
-			 
-			 String name = livingListMap.get("name");			
-			String passwd = livingListMap.get("passwd");
-			String subject = livingListMap.get("subject");
-			String image = livingListMap.get("image");
-			String content = livingListMap.get("content");
 			
-			livingVO.setSeller(name);
-			//패스워드
-			livingVO.setProduct_name(subject);
-			livingVO.setPhoto_name(image);
-			livingVO.setLiving_content(content);
-		
-			 
-			 
 		 }else if(action.equals("listLiving.do")){
 		  
-		 }else if(action.equals("addLivingItem.do")) {
+		 }else if(action.equals("/addLivingItem.do")) {
 			
 			Map<String, String> addItemMap = upload(request, response);
 			
-			String name = addItemMap.get("name");			
-			String passwd = addItemMap.get("passwd");
-			String subject = addItemMap.get("subject");
-			String image = addItemMap.get("image");
-			String content = addItemMap.get("content");
+			String productName = addItemMap.get("productName");
+			String productContent = addItemMap.get("productContent");
+			String sellerName = addItemMap.get("sellerName");
+			int productPrice = Integer.parseInt(addItemMap.get("productPrice"));
+			String productImageName1 = addItemMap.get("productImageName1");
+			String productImageName2 = addItemMap.get("productImageName2");
+			String productImageName3 = addItemMap.get("productImageName3");
+			int productQuantity = Integer.parseInt(addItemMap.get("productQuantity"));
+			int shipping_fee = Integer.parseInt(addItemMap.get("shipping_fee"));
+			int point = Integer.parseInt(addItemMap.get("point"));
+			/* String reg_date = addItemMap.get("reg_date"); */
 			
-			livingVO.setSeller(name);
-			//ADD insert password later.
-			livingVO.setProduct_name(subject);
-			livingVO.setPhoto_name(image);
-			livingVO.setLiving_content(content);
+			livingVO.setPoint(point);
+			livingVO.setProductContent(productContent);
+			livingVO.setProductImageName1(productImageName1);
+			livingVO.setProductImageName2(productImageName2);
+			livingVO.setProductImageName3(productImageName3);
+			livingVO.setProductName(productName);
+			livingVO.setProductPrice(productPrice);
+			livingVO.setProductQuantity(productQuantity);
+			livingVO.setSellerName(sellerName);
+			/* livingVO.setReg_date(reg_date); */
+			livingVO.setShipping_fee(shipping_fee);
 			
+			int isRegistSuccess = livingService.insertLiving(livingVO);
+			if(isRegistSuccess > 0) {
+				
+				nextPage = "T2_tmp/Home/Living/living.jsp";
+				
+			}else{
+				PrintWriter out = response.getWriter();
+				out.print("<script>");
+				out.print("<alert='등록에 실패 했습니다.'>");
+				out.print("</script>");
+			}				
 			
+		}else if(action.equals("updateLivingProduct.do")) {
+			Map<String,String> livingListMap = upload(request, response);
+			
+			String productName = livingListMap.get("productName");
+			String productContent = livingListMap.get("productContent");
+			String sellerName = livingListMap.get("sellerName");
+			int productPrice = Integer.parseInt(livingListMap.get("productPrice"));
+			String productImageName1 = livingListMap.get("productImageName1");
+			String productImageName2 = livingListMap.get("productImageName2");
+			String productImageName3 = livingListMap.get("productImageName3");
+			int productQuantity = Integer.parseInt(livingListMap.get("productQuantity"));
+			int shipping_fee = Integer.parseInt(livingListMap.get("shipping_fee"));
+			int point = Integer.parseInt(livingListMap.get("point"));
 			
 			
 		}
@@ -112,8 +137,8 @@ public class LivingController extends HttpServlet{
 		String encoding = "UTF-8";
 		File currentDirPath = new File(ARTICLE_IMAGE_REPO);
 		DiskFileItemFactory factory = new DiskFileItemFactory();
-		factory.setRepository(currentDirPath); //임시 사진폴더
-		factory.setSizeThreshold(1024*1024*1); // 사진 사이즈
+		factory.setRepository(currentDirPath); //�ӽ� ��������
+		factory.setSizeThreshold(1024*1024*1); // ���� ������
 		ServletFileUpload upload = new ServletFileUpload(factory);
 		
 		try {
@@ -124,8 +149,8 @@ public class LivingController extends HttpServlet{
 					System.out.println(fileItem.getFieldName() + "=" + fileItem.getString(encoding));
 					articleMap.put(fileItem.getFieldName(), fileItem.getString(encoding));
 				}else {
-					System.out.println("파라미터명:" + fileItem.getFieldName());
-					System.out.println("파일명 : " + fileItem.getName());
+					System.out.println("파일이름:" + fileItem.getFieldName());
+					System.out.println("파일이름 : " + fileItem.getName());
 					System.out.println("파일크기 : " + fileItem.getSize() + "bytes");
 					if(fileItem.getSize() > 0) {
 						int idx = fileItem.getName().lastIndexOf("\\");
@@ -147,3 +172,16 @@ public class LivingController extends HttpServlet{
 		return articleMap;
 	}	
 }//end of LivingController
+
+/*
+ * 
+ * else if(action.equals("detailLivingProduct.do")) {
+ * 
+ * int productNum = Integer.parseInt(request.getParameter("productNum"));
+ * Map<String, Object> livingProductMap =
+ * livingService.detailLivingProduct(productNum);
+ * request.setAttribute("livingProductMap", livingProductMap);
+ * 
+ * nextPage="/livingProduct/detailProduct.jsp"; //<-- 디테일 한번 추가하기 }
+ * 
+ */
