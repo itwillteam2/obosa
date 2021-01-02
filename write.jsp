@@ -37,7 +37,7 @@
 	</div>
 </div>
 <article class="product" style="width:1200px; margin : 0 auto" >
-	<form action="${contextPath}/living/addLivingItem.do" method="post" enctype="multipart/form-data" >
+	<form action="${contextPath}/living/addLiving.do" method="post" enctype="multipart/form-data" >
 		<table class="table">
 			<colgroup>
 				<col style="width:120px" />
@@ -68,7 +68,7 @@
 				</th>
 				<td>
 					<div class="form-inline">
-						<input class="form-control" type="number" name="productPrice" id="productPrice" min="0" max="100000000" step="100" value="0" required />
+						<input class="form-control" type="number" name="productPrice" id="productPrice" min="0" max="10000000000" step="100" value="0" required />
 					</div>
 				</td>
 			</tr>
@@ -78,7 +78,17 @@
 				</th>
 				<td>
 					<div class="form-inline">
-						<input class="form-control d-inline-block" type="number" name="productQuantity" id="productQuantity" min="0" max="9999" value="0" required />
+						<input class="form-control d-inline-block" type="number" name="productQuantity" id="productQuantity" min="0" max="10000000000" value="0" required />
+					</div>
+				</td>
+			</tr>
+			<tr>
+				<th class="align-middle">
+					<label for="Shipping_fee" class="m-0">배송비</label>
+				</th>
+				<td>
+					<div class="form-inline">
+						<input class="form-control d-inline-block" type="number" name="Shipping_fee" id="Shipping_fee" value="0" min="0" max="10000000000" step="100" required />
 					</div>
 				</td>
 			</tr>
