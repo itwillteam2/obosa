@@ -495,11 +495,15 @@
     <div class="tableDiv">
         <dl class="trJoin">
             <dt>회원 유형</dt>
-            <dd>
-            	<p class="null"></p>
-                <input type="radio"  name="memtype" value="customer" checked>일반회원
-                <input type="radio"  name="memtype" value="seller">판매자
-                <p class="null" id="r_memtype"></p>
+            <dd class="radio">
+                <label class="mb_radio">일반 회원
+                    <input type="radio"  name="memtype" value="customer" checked>
+                    <span class="checkmark"></span>
+                </label>
+                <label class="mb_radio">판매자
+                    <input type="radio"  name="memtype" value="seller" checked>
+                    <span class="checkmark"></span>
+                </label>
                 <input type="hidden" id="i_memtype_valid" name="memtype_valid">
             </dd>
         </dl>

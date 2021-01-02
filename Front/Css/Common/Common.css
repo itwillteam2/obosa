@@ -124,7 +124,7 @@ input[type=button]{cursor:pointer;}
 
 #CommonHeader .CategoryLarge li.MyPage {display:table-cell;float:right; width:180px;  margin:5px 0 0 1px; position:relative;}
 #CommonHeader .CategoryLarge li.MyPage a {display:inline-block; width:40px; height:40px;font-size: 15px;}
-#CommonHeader .CategoryLarge li.MyPage img {width:30px; height:30px; padding:0 0 15px 0;}
+#CommonHeader .CategoryLarge li.MyPage img {width:30px; height:30px;}
 
 #CommonHeader .CategoryLarge li.MyPage a#LoginBalloon {position:absolute; z-index:1; left:-7px; top:-22px; width:69px; height:34px;}
 #CommonHeader .CategoryLarge li.MyPage a#LoginBalloon img {width:69px; height:34px;}

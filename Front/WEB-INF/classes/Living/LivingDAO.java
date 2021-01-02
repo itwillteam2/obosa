@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Map;
 
 import DBUtil.DBConnection;
-import Pagination.PagingVO;
+//import Pagination.PagingVO;
 
 public class LivingDAO {
 
@@ -51,7 +51,7 @@ public class LivingDAO {
 		
 	}//end of selectAllArticles
 	
-	//get one page of list
+/*	//get one page of list
 	public List<Map<String, Integer>> selectOnePageLivingList(){
 		
 		PagingVO pagingVO = new PagingVO();
@@ -80,7 +80,7 @@ public class LivingDAO {
 		
 		
 	}//end of selectLivingOnePageListItem
-	
+*/	
 	
 	//get total record count
 	public int selectTotalCount() {

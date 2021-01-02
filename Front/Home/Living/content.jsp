@@ -332,7 +332,7 @@ $(window).load(function(){
 			</section>
 
 			<section class="item_content postscript">
-				<input class='btnOverlay btnProductQnA' type='button' value='상품후기 작성' />
+				<input class='btnOverlay btnProductQnA' type='button' value='상품후기 작성'  onclick="window.open('review.jsp', '상품후기등록', 'width=500, height=500, location=no, status=no, scrollbars=no, resizable=no, left=500, top=100' );"  />
 				<div class='inner'>
 					<div class='table'>
 						<span class='tr ClickPs'> 
@@ -367,7 +367,7 @@ $(window).load(function(){
 			</section>
 
 			<section class="item_content productqna">
-				<input class='btnOverlay btnProductQnA' type='button' value='Q&A작성' />
+				<input class='btnOverlay btnProductQnA' type='button' value='Q&A작성' onclick="window.open('qna.jsp', '질문등록', 'width=500, height=500, location=no, status=no, scrollbars=no, resizable=no, left=500, top=100' );"/>
 				<div class='inner'>
 					<div class='table'>
 						<span class='tr ClickQna'> 
@@ -414,7 +414,7 @@ $(window).load(function(){
 			<input type="hidden" name="opcnt" />
 			
 	<section class="item_content productqna">
-		<input class='btnOverlay btnProductQnA' type='button' value='Q&A작성' data='btnProductQnA' />
+		<input class='btnOverlay btnProductQnA' type='button' value='Q&A작성' data='btnProductQnA'>/>
 		<div class='inner'>
 			<div class='table'>
 				<span class='tr ClickQna'> <span class='td'>답변완료</span> <span
