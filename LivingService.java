@@ -25,8 +25,13 @@ public class LivingService {
 	}
 	
 	public int insertLiving(LivingVO livingVO) {
-		int NUM = livingDAO.insertLivingNewArticle(livingVO);
-		return NUM;
+		int num = livingDAO.insertLivingNewArticle(livingVO);
+		return num;
 	}
-
+	
+	public Map<String, Object> livingDetailProduct(int productNum){
+		
+	}
+	
+	
 }
