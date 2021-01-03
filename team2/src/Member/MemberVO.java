@@ -2,8 +2,6 @@ package Member;
 
 import java.sql.Date;
 
-//MVC중에 Model의 역할을 하는 클래스 
-
 public class MemberVO {
 	
 	private String id;
@@ -86,7 +84,3 @@ public class MemberVO {
 	}
 	
 }
-
-
-
-

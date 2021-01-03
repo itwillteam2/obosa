@@ -15,22 +15,22 @@ pageEncoding="UTF-8"%>
 	<meta property="og:title" content="상상마켓">
 	<meta property="og:type" content="website">
 	<meta property="og:url" content="http://www.sangsangmarket.com/">
-	<link rel="shortcut icon" href="${contextPath}/Images/Ver1/Icon/ssmkt.ico" />
-	<link href="${contextPath}/Images/Ver1/Icon/icon180.png" rel="apple-touch-icon-precomposed" />
-	<link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/Common/Common.css" />
-	<link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/Common/swiper.min.css" />
-	<script type="text/javascript" src="${contextPath}/Home/Js/Common/jquery-1.11.3.min.js"></script>
-	<script type="text/javascript" src="${contextPath}/Home/Js/Common/Common.js"></script>
-	<script type="text/javascript" src="${contextPath}/Home/Js/Common/swiper_r.min.js"></script> 
-	<link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/Common/Index.css" />
-	<link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/Common/FlexSliderIndex.css" />
-	<script type="text/javascript" src="/Home/Js/Common/jquery.flexslider-min.js" charset="utf-8"></script> 
-	<link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/Common/swiper.min.css" />
-	<link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/Member/Member.css" />
-	<link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/Common/Item.css" />
-	<script type="text/javascript" src="${contextPath}/Home/Js/Common/swiper.min.js"></script>
-	<script type="text/javascript" src="${contextPath}/Home/Js/Common/jquery.rwdImageMaps.min.js"></script>
-	<script type="text/javascript" src="${contextPath}/Home/Js/Common/jquery.bxslider.ABIndex.js"></script>
+	<link rel="shortcut icon" href="${contextPath}/T2_tmp/Images/Ver1/Icon/ssmkt.ico" />
+	<link href="${contextPath}/T2_tmp/Images/Ver1/Icon/icon180.png" rel="apple-touch-icon-precomposed" />
+	<link rel="stylesheet" type="text/css" href="${contextPath}/T2_tmp/Home/Css/Common/Common.css" />
+	<link rel="stylesheet" type="text/css" href="${contextPath}/T2_tmp/Home/Css/Common/swiper.min.css" />
+	<script type="text/javascript" src="${contextPath}/T2_tmp/Home/Js/Common/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="${contextPath}/T2_tmp/Home/Js/Common/Common.js"></script>
+	<script type="text/javascript" src="${contextPath}/T2_tmp/Home/Js/Common/swiper_r.min.js"></script> 
+	<link rel="stylesheet" type="text/css" href="${contextPath}/T2_tmp/Home/Css/Common/Index.css" />
+	<link rel="stylesheet" type="text/css" href="${contextPath}/T2_tmp/Home/Css/Common/FlexSliderIndex.css" />
+	<script type="text/javascript" src="${contextPath}/T2_tmp/Home/Js/Common/jquery.flexslider-min.js" charset="utf-8"></script> 
+	<link rel="stylesheet" type="text/css" href="${contextPath}/T2_tmp/Home/Css/Common/swiper.min.css" />
+	<link rel="stylesheet" type="text/css" href="${contextPath}/T2_tmp/Home/Css/Member/Member.css" />
+	<link rel="stylesheet" type="text/css" href="${contextPath}/T2_tmp/Home/Css/Common/Item.css" />
+	<script type="text/javascript" src="${contextPath}/T2_tmp/Home/Js/Common/swiper.min.js"></script>
+	<script type="text/javascript" src="${contextPath}/T2_tmp/Home/Js/Common/jquery.rwdImageMaps.min.js"></script>
+	<script type="text/javascript" src="${contextPath}/T2_tmp/Home/Js/Common/jquery.bxslider.ABIndex.js"></script>
 	<script type="text/javascript">
 		var WinKind;
 		$(document).ready(function(){
@@ -40,7 +40,6 @@ pageEncoding="UTF-8"%>
 			var srcOn = $("#MenuCharacter"+x).attr("srcon");
 			var srcOff = $("#MenuCharacter"+x).attr("srcoff");
 			var srcNow = $("#MenuCharacter"+x).attr("src");
-
 			if (srcNow!=srcOn) {
 				for (var i=1; i<=4; i++) {
 					if (i!=x) {
@@ -76,5 +75,3 @@ pageEncoding="UTF-8"%>
 			});
 		});
 		</script>
-		
-	

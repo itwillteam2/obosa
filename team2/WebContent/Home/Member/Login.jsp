@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=utf-8"
-    pageEncoding="utf-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
     
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
@@ -8,8 +8,18 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<jsp:include page="/Home/inc/head.jsp"/>
 
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+<title>SSMarket</title>
+
+<link href="${contextPath}/T2_tmp/Home/Css/Common/Common.css" type="text/css" rel="stylesheet" />
+<link href="${contextPath}/T2_tmp/Home/Css/Common/swiper.min.css" type="text/css" rel="stylesheet" />
+<script type="text/javascript" src="${contextPath}/T2_tmp/Home/Js/Common/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="${contextPath}/T2_tmp/Home/Js/Common/Common.js"></script>
+<script type="text/javascript" src="${contextPath}/T2_tmp/Home/Js/Common/swiper_r.min.js"></script>
+<link rel="stylesheet" type="text/css" href="${contextPath}/T2_tmp/Home/Css/Member/Member.css" />
 <script type="text/javascript">
 
 $(document).ready(function(){
@@ -25,24 +35,17 @@ $(document).ready(function(){
 
 	function fnLogin(x){
 
-		var memid, mempwd, chkAutoID;
-
-		if (x==2) {
-			memid = document.SnsLogin.memid.value;
-			mempwd = document.SnsLogin.memid.value;
-		} else {
-			memid = $("input[name=memid]").val().trim();
-			mempwd = $("input[name=mempwd]").val();
-		}
+		var memid = document.Login.memid.value;
+		var mempwd = document.Login.mempwd.value;
 
 		if (!memid) {
-			alert("ì•„ì´ë””ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.");
+			alert("¾ÆÀÌµğ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
 			$("input[name=memid]").focus();
 			return;
 		}
 
 		if (!mempwd) {
-			alert("ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.");
+			alert("ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
 			$("input[name=mempwd]").focus();
 			return;
 		}
@@ -55,23 +58,6 @@ $(document).ready(function(){
 		}
 
 	document.Login.submit();
-	}
-	
-// 	$(document).on("click", ".btnGoJoin", function(){
-// 		$(location).attr("href","Join.jsp");
-// 	});
-
-	$(window).resize(function(){
-		if ($(".overlay").hasClass("on"))
-		{
-			$(".overlay.inner").center();	
-		}
-	});
-
-	$.fn.center = function () {		// ë ˆì´ì–´íŒì—… ì„¼í„° ì •ë ¬
-		this.css("top", Math.max(0, (($(window).height() - $(this).outerHeight()) / 2) + $(window).scrollTop()) + "px");
-		this.css("left", Math.max(0, (($(window).width() - $(this).outerWidth()) / 2) + $(window).scrollLeft()) + "px");
-		return this;
 	}
 	
 	function setCookie(cookieName, value, exdays){
@@ -114,36 +100,58 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-<jsp:include page="/Home/inc/header.jsp" />
+<jsp:include page="../inc/header.jsp" />
+<div id="CommonHeaderArea"></div>
+<div id="CommonHeader_M">
+	<div id="CommonHeaderMenu_M">
+		<div class="tableDiv">
+			<dl class="trMobileMenu">
+				<dd class="tdBtn"><a href="javascript:fnMobileMenu(1);" onclick="GA_event('HEAD', 'ÃÖ»ó´Ü ¸Ş´º MO', '¸Ş´º¹öÆ°');"><img src="${contextPath}/T2_tmp/Images/Ver1/Common/m_top_menu.png" /></a></dd>
+				<dd class="tdBtn">&nbsp;</dd>
+				<dd class="tdLogo"><a href="${contextPath}/T2_tmp/Home/index-2.html"><img src="${contextPath}/T2_tmp/Images/Ver1/Common/m_logo.png" onclick="GA_event('HEAD', 'ÃÖ»ó´Ü ¸Ş´º MO', 'È¨');"/></a></dd>
+				<dd class="tdBtn"><a href="javascript:fnMobileMenuToggle(1);" onclick="GA_event('HEAD', 'ÃÖ»ó´Ü ¸Ş´º MO', '°Ë»ö È°¼ºÈ­');"><img src="${contextPath}/T2_tmp/Images/Ver1/Common/m_top_search.png" /></a></dd>
+				<dd class="tdBtn">
+					<a href="${contextPath}/T2_tmp/Home/Order/Cart.html" onclick="GA_event('HEAD', 'ÃÖ»ó´Ü ¸Ş´º MO', 'Àå¹Ù±¸´Ï');">
+						
+						<img src="${contextPath}/T2_tmp/Images/Ver1/Common/m_top_cart.png" />
+					</a>
+				</dd>
+			</dl>
+		</div>
+	</div>
+	<div id="CommonHeaderSearch_M">
+		<div class="tableDiv">
+			<dl class="trMobileMenu">
+				<dd class="tdKwd"><div class="CommonSearch"><input type="text" id="kwd_M" value="" onkeypress="if(event.keyCode==13){fnCommonSearch(2);}" /></div></dd>
+				<dd class="tdBtn"><a href="javascript:fnCommonSearch(2);" onclick="GA_event('HEAD', 'ÃÖ»ó´Ü ¸Ş´º MO', '°Ë»ö');"><img src="${contextPath}/T2_tmp/Images/Ver1/Common/m_top_search.png" /></a></dd>
+				<dd class="tdBtn"><a href="javascript:fnMobileMenuToggle(2);" onclick="GA_event('HEAD', 'ÃÖ»ó´Ü ¸Ş´º MO', '°Ë»ö ºñÈ°¼ºÈ­');"><img src="${contextPath}/T2_tmp/Images/Ver1/Common/m_top_close.png" /></a></dd>
+			</dl>
+		</div>
+	</div>
+</div>
+<div id="CommonHeaderArea_M"></div>
 
 <form name="Login" method="post" action="${contextPath}/member/loginCK.do">
 <div class="LoginWrap">
-	<div class="LoginTitle">ë¡œê·¸ì¸</div>
+	<div class="LoginTitle">·Î±×ÀÎ</div>
 	<div class="LoginComment"></div>
 	<input type="hidden" name="recentURI" value="${recentURI}">
-	<div class="LoginInput"><input type="text" name="memid" placeholder="ì•„ì´ë””ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”." maxlength="16" value="" /></div>
-	<div class="LoginInput"><input type="password" name="mempwd" placeholder="ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”." maxlength="32" onkeypress="if(event.keyCode==13){fnLogin(1);}" /></div>
+	<div class="LoginInput"><input type="text" name="memid" placeholder="¾ÆÀÌµğ¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä." maxlength="16" value="" /></div>
+	<div class="LoginInput"><input type="password" name="mempwd" placeholder="ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä." maxlength="32" onkeypress="if(event.keyCode==13){fnLogin(1);}" /></div>
 	<div class="JoinLink">
 		<ul>
-			<li class="Left"><input name="chkAutoID" type="checkbox"  id="chkAutoID" />&nbsp;&nbsp;ì•„ì´ë”” ì €ì¥í•˜ê¸°</li>
-			<li class="Right"><a href="${contextPath}/member/find.do">ì•„ì´ë””/ë¹„ë°€ë²ˆí˜¸ ì°¾ê¸°</a><span>|</span><a href="${contextPath}/member/join.do">íšŒì›ê°€ì…</a></li>
+			<li class="Left"><input name="chkAutoID" type="checkbox"  id="chkAutoID" />&nbsp;&nbsp;¾ÆÀÌµğ ÀúÀåÇÏ±â</li>
+			<li class="Right"><a href="${contextPath}/member/find.do">¾ÆÀÌµğ/ºñ¹Ğ¹øÈ£ Ã£±â</a><span>|</span><a href="${contextPath}/member/join.do">È¸¿ø°¡ÀÔ</a></li>
 		</ul>
 		<div class="clear"></div>
 	</div>
-	<a class="LoginButton" href="javascript:fnLogin(1);">ë¡œê·¸ì¸</a>
-	<div id="NonMemberForm">
-		<div class="LoginInput"><input type="text" name="ordernumber" placeholder="ì£¼ë¬¸ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”." maxlength="16" value="" /></div>
-		<div class="LoginInput"><input type="text" name="nonmembername" placeholder="ì£¼ë¬¸ìëª…ì„ ì…ë ¥í•´ì£¼ì„¸ìš”." maxlength="16" onkeypress="if(event.keyCode==13){fnNonMemberOrderDetail();}" /></div>
-		<div class="NonMemberFormComment">*ì£¼ë¬¸ë²ˆí˜¸ëŠ” ì£¼ë¬¸ ì‹œ ë°œì†¡ë˜ëŠ” ë©”ì¼ ë˜ëŠ” ë¬¸ìë¥¼ í†µí•´ í™•ì¸í•  ìˆ˜ ìˆìŠµë‹ˆë‹¤.</div>
-		<a class="NonMemberOrderDetailButton" href="javascript:fnNonMemberOrderDetail();">í™•ì¸</a>
-	</div>
+	<a class="LoginButton" href="javascript:fnLogin(1);">·Î±×ÀÎ</a>
 	<div class="BenefitImage">
-		<img src="${contextPath}/Images/Ver1/Member/benefit.png" />
+		<img src="${contextPath}/T2_tmp/Images/Ver1/Member/benefit.png" />
 	</div>
 
 </div>
 </form>
-
-<jsp:include page="/Home/inc/footer.jsp"/>
+<jsp:include page="../inc/footer.jsp" />
 </body>
 </html>
