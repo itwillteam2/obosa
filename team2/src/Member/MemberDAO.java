@@ -422,5 +422,32 @@ public class MemberDAO {
 		}
 		return check;
 	}
+
+	public void modPwd(String id, String pwd) {
+		try{
+			con = getConnection();
+			String query = "select * from customer where id=?";
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				query = "update customer set pwd=? where id=?";
+				pstmt = con.prepareStatement(query);
+				pstmt.setString(1, pwd);
+				pstmt.setString(2, id);
+				pstmt.executeUpdate();
+			}else{
+				query = "update seller set pwd=? where id=?";
+				pstmt = con.prepareStatement(query);
+				pstmt.setString(1, pwd);
+				pstmt.setString(2, id);
+				pstmt.executeUpdate();
+			}
+		}catch(Exception e){
+			System.out.println("modPwd메소드 내부에서 오류 발생 : " + e);
+		}finally{
+			release();
+		}
+	}
 	
 }
