@@ -15,7 +15,6 @@ public class EmailConfirm{
 		String authNum=EmailConfirm.authNum(); // 인증번호 위한 난수 발생부분
 		String content="인증번호 : ["+authNum+"]"; // 이메일 내용 설정
 		
-        // SMTP 이용하기 위해 설정해주는 설정값들
 		try{
 		Properties props=new Properties();
 		props.put("mail.smtp.starttls.enable", "true");
