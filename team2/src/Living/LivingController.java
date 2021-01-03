@@ -1,7 +1,10 @@
 package Living;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.net.URLEncoder;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,6 +19,7 @@ import javax.servlet.http.HttpSession;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.io.FileUtils;
 
 
 
@@ -145,5 +149,68 @@ public class LivingController extends HttpServlet{
 			System.out.println("upload error : " + e.toString());
 		}			
 		return articleMap;
-	}	
+	}//end of upload
+	
+	public void downloadFile(HttpServletResponse response, int num, String fileName) {
+		try {
+			String filePath = realPath + "\\" + num + "\\" + fileName;
+			File file = new File(filePath);
+			
+			OutputStream ops = response.getOutputStream();
+			
+			response.setHeader("Cache-Control", "no-chche");
+			response.addHeader("Cache-Control", "no-store");			
+			response.setHeader("Content-disposition", "attachment; fileName=\"" + URLEncoder.encode(fileName,"UTF-8") + "\";");
+			
+			FileInputStream fis = new FileInputStream(file);
+			
+			byte[] buffer = new byte[1024*8];
+			
+			while(true) {
+				int count = fis.read(buffer);
+				
+				if(count == -1) {
+					break;
+				}
+				ops.write(buffer,0,count);
+			}
+			fis.close();
+			ops.close();
+		} catch (Exception e) {
+			System.out.println("downloadFile error : " + e.toString() );
+		}
+	}// end of downloadFile
+	
+	//temp to realPath on file of Image 
+	public void moveFile(int num, String fileName) {
+		try {
+			File srcFile = new File(realPath + "\\" + fileName);
+			File destDir = new File(realPath + "\\" + num);
+			boolean createDestDir = destDir.mkdir();
+			
+			String filePath = realPath + "\\" + num + "\\" + fileName;
+			File file = new File(filePath);
+			
+			if(!file.exists()) {
+				FileUtils.moveDirectoryToDirectory(srcFile, destDir, createDestDir);
+			}
+			
+		} catch (Exception e) {
+			System.out.println("moveFile error : " + e.toString());
+		}
+	}// end of moveFile
+	
+	//delete file when delete list
+	public void deleteFile(int num, String fileName) {
+		try {
+			String filePath = realPath + "\\" + num + "\\" + fileName;
+			File file = new File(filePath);
+			
+			if(file.exists()) {
+				file.delete();
+			}
+		} catch (Exception e) {
+			System.out.println("deleteFile error : " + e.toString());
+		}
+	}// end of deleteFile
 }//end of LivingController
