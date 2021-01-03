@@ -1,7 +1,0 @@
-eclipse.preferences.version=1
-encoding//src/board/BoardDAO.java=UTF-8
-encoding//src/board/BoardReplyDAO.java=UTF-8
-encoding//src/chat/ChatDAO.java=UTF-8
-encoding//src/database/MemberDAO.java=UTF-8
-encoding//src/download/DownloadDAO.java=UTF-8
-encoding//src/guest/GuestDAO.java=UTF-8
