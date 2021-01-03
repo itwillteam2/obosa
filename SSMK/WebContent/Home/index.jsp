@@ -7,7 +7,7 @@
 <!DOCTYPE html>
 <head>
 <html lang="ko">
-<jsp:include page="${contextPath}/Home/inc/head.jsp"/>
+<jsp:include page="/Home/inc/head.jsp"/>
 <script type="text/javascript">
 var WinKind;
 $(document).ready(function(){
@@ -45,7 +45,7 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-<jsp:include page="${contextPath}/Home/inc/header.jsp"/>
+<jsp:include page="/Home/inc/header.jsp"/>
 
 <div class="TopRollingPc">
 	<div class="swiper-container">
@@ -399,6 +399,6 @@ $(document).ready(function(){
 </script>
 
 
-<jsp:include page="${contextPath}/Home/inc/footer.jsp"/>
+<jsp:include page="/Home/inc/footer.jsp"/>
 </body>
 </html>

@@ -8,10 +8,10 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<jsp:include page="${contextPath}/Home/inc/head.jsp"/>
+<jsp:include page="/Home/inc/head.jsp"/>
 </head>
 <body>
-<jsp:include page="${contextPath}/Home/inc/header.jsp" />
+<jsp:include page="/Home/inc/header.jsp" />
 <script type="text/javascript">
 	$(document).ready(function(){
 	
@@ -518,6 +518,6 @@
 
 
 
-<jsp:include page="${contextPath}/Home/inc/footer.jsp"/>
+<jsp:include page="/Home/inc/footer.jsp"/>
 </body>
 </html>

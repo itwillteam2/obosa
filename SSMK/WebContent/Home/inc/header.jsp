@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
 	pageEncoding="utf-8"%>
-	<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-	<c:set var="contextPath" value="${pageContext.request.contextPath}"/>	
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<c:set var="contextPath" value="${pageContext.request.contextPath}"/>	
 <header>	
 <div id="CommonHeader">
 	<a href="${contextPath}/Home/index.jsp" class="MainLogo"><img src="${contextPath}/Images/Ver1/Common/logo.png" /></a>
@@ -22,7 +22,7 @@
 				<c:when test="${empty sessionScope.id}">
 					<a href="${contextPath}/member/login.do" title="로그인"><img src="${contextPath}/Images/Ver1/Common/avatar.svg" id="MyInfoSummaryIcon" /></a>
 					<a href="${contextPath}/member/login.do" id="LoginBalloon" title="로그인">로그인 !!</a>
-					<a href="${contextPath}/member/join.do" title="회원가입"><img src="${contextPath}/Images/Ver1/Common/house_1.svg" id="MyInfoSummaryIcon" /></a>
+					<a href="${contextPath}/member/join.do" title="회원가입"><img src="${contextPath}/Images/Ver1/Common/house_1.svg" /></a>
 				</c:when>
 				<c:otherwise>
 					<a href="${contextPath}/member/userInfo.do">회원정보변경</a>
@@ -39,7 +39,7 @@
 			</li>
 			<li class="Search">
 				<div class="CommonSearch">
-					<input type="text" id="kwd" value=""><a href="javascript:fnCommonSearch(1);"><img src="../../Images/Ver1/Common/top_icon_search.png" /></a>
+					<input type="text" id="kwd" value=""><a href="javascript:fnCommonSearch(1);"><img src="${contextPath}/Images/Ver1/Common/top_icon_search.png" /></a>
 				</div>
 			</li>
 		</ul>

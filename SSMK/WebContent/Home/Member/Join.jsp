@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <jsp:include page="${contextPath}/Home/inc/head.jsp"/>
+    <jsp:include page="/Home/inc/head.jsp"/>
  
     <script type="text/javascript">
     $(document).ready(function(){
@@ -485,7 +485,7 @@
     </head>
     <body>
 <body>
-	<jsp:include page="${contextPath}/Home/inc/header.jsp"/>
+	<jsp:include page="/Home/inc/header.jsp"/>
 
 
 <form name="Join" method="post" action="${contextPath}/member/addMember.do">
@@ -682,6 +682,6 @@
 
 </form>
 
-<jsp:include page="${contextPath}/Home/inc/footer.jsp" />
+<jsp:include page="/Home/inc/footer.jsp" />
 </body>
 </html>
