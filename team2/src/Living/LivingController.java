@@ -63,6 +63,8 @@ public class LivingController extends HttpServlet{
 		
 		
 		 if(action == null || action.equals("listLiving.do")) {
+			 
+			 
 		  
 			Map<String, String> livingListMap = new HashMap<String, String>();
 			 
