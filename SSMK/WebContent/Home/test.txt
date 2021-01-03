@@ -9,7 +9,8 @@ local Repositories.. 아무 곳이나 설정.. 일반적으로 user>git.. git 폴더안에 파일 
 project explorer에서 new - import - git - local - 라디오 버튼 세개 중에 eclipse project 선택.. worktree에서 SSMK 선택
 임포트 된 후 작업하면 됨..
 
-커밋 할 때는 git staging에서 unstaged changes 에서 원하는 부분 staged로 드래그 
-커밋 and 푸시.. (이렇게 하면 오류가 자주 난다는 말이 있음.. 그때는 커밋만.. 그리고 project explorer로 와서 ssmk 옆에 화살표가 생긴것 확인.. 마우스 오른쪽.. push branch... 선택)
+커밋 할 때는 git staging에서 unstaged changes 에서 원하는 부분 staged로 드래그 - commit message 입력
+커밋 and 푸시.. (이렇게 하면 오류가 자주 난다는 말이 있음.. 그때는 커밋만.. 그리고 project explorer로 와서 ssmk 옆에 화살표가 생긴것 확인.. 
+               마우스 오른쪽..team - push branch main... 선택)
 
 
