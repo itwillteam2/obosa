@@ -36,6 +36,7 @@ public class LivingDAO {
 		List articlesList = new ArrayList();
 		int section = (Integer)pagingMap.get("section");
 		int pageNum = (Integer)pagingMap.get("pageNum");
+		//가나다라마바사아자차카타파하ㅋㅋㅋ
 		
 		try {
 			conn = DBConnection.getConnection();
