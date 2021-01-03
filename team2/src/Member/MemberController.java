@@ -220,6 +220,13 @@ public class MemberController extends HttpServlet{
 		}else if(action.equals("/modPwd.do")){
 			String id = request.getParameter("memid");
 			String pwd = request.getParameter("mempwd");
+			memberService.modPwd(id, pwd);
+			
+			PrintWriter pw = response.getWriter();
+			pw.print("<script>" 
+					 + " alert('비밀번호 변경이 완료되었습니다.'); "  
+					 + " location.href='/team2/T2_tmp/Home/Member/Login.jsp'; "
+					 +"</script>");
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);

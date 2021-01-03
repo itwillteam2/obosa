@@ -16,8 +16,8 @@
 				</c:otherwise>
 			</c:choose>
 		</div>
-	<a href="${contextPath}/T2_tmp/Home/index.jsp" class="MainLogo"><img src="${contextPath}/T2_tmp/Images/Ver1/Common/logo.png" /></a>
-	<a href="${contextPath}/T2_tmp/Home/index.jsp" class="MainLogoScroll"><img src="${contextPath}/T2_tmp/Images/Ver1/Common/logo.png" /></a>
+	<a href="${contextPath}/common/index.do" class="MainLogo"><img src="${contextPath}/T2_tmp/Images/Ver1/Common/logo.png" /></a>
+	<a href="${contextPath}/common/index.do" class="MainLogoScroll"><img src="${contextPath}/T2_tmp/Images/Ver1/Common/logo.png" /></a>
 	<div class="CategoryLarge">
 		<ul>
 			<li class="CategoryMiddle"><a href="#">인형/토이</a></li>
@@ -63,7 +63,7 @@
 	
 
 
-	<a class="btn_top" href="javascript:;"><img src="../Images/Ver1/Common/btn_top.png"></a>
+	<a class="btn_top" href="javascript:;"><img src="${contextPath}/T2_tmp/Images/Ver1/Common/btn_top.png"></a>
 	<script type="text/javascript">
 		$(document).on("click",".btn_top",function(){ $("html, body").animate({ scrollTop :0},200); });
 	</script>
