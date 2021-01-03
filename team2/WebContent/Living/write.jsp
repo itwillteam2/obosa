@@ -24,7 +24,7 @@
 
 </head>
 <body>
-<jsp:include page="../inc/header.jsp"/>
+<jsp:include page="../Home/inc/header.jsp"/>
 <div id="CommonHeaderArea"></div>
 <div id="CommonHeader_M"></div>
 <%
