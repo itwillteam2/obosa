@@ -120,36 +120,38 @@ public class LivingDAO {
 		
 	}//end of selectAllArticles
 	
-/*	//get one page of list
-	public List<Map<String, Integer>> selectOnePageLivingList(){
+	public LivingVO getLiving(int livingNum) {
+		LivingVO livingVO = new LivingVO();
 		
-		PagingVO pagingVO = new PagingVO();
-		List<Map<String, Integer>> LivingOneArticleList = new ArrayList<Map<String,Integer>>();
 		try {
 			conn = DBConnection.getConnection();
-			String query = "SELECT * FROM living ORDER BY NUM DESC LIMIT ?,?";
+			String query = "SELECT * FROM living WHERE NUM = ?";
 			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, pagingVO.getStartPageNo());
-			pstmt.setInt(2, pagingVO.getPageSize());
-			
+			pstmt.setInt(1, livingNum);
 			rs = pstmt.executeQuery();
-			
 			if(rs.next()) {
-				//���⼭���ʹ� �����ѱ� DB���� ��������
+				livingVO.setNum(rs.getInt("num"));
+				livingVO.setPoint(rs.getInt("point"));
+				livingVO.setProductContent(rs.getString("productContent"));
+				livingVO.setProductImageName1(rs.getString("productImageName1"));
+				livingVO.setProductImageName2(rs.getString("productImageName2"));
+				livingVO.setProductImageName3(rs.getString("productImageName3"));
+				livingVO.setProductName(rs.getString("productName"));
+				livingVO.setProductPrice(rs.getInt("productPrice"));
+				livingVO.setProductQuantity(rs.getInt("productQuantity"));
+				livingVO.setReg_date(rs.getTimestamp("regDate"));
+				livingVO.setSellerName(rs.getString("sellerName"));
+				livingVO.setShipping_fee(rs.getInt("shipping_fee"));
 				
 			}
-			
 		} catch (Exception e) {
-			System.out.println("selectOnePageLivingList error : " + e.toString());			
+			System.out.println("getLiving error : " + e.toString());
 		}finally {
 			freeResource();
 		}
 		
-		return LivingOneArticleList;
-		
-		
-	}//end of selectLivingOnePageListItem
-*/	
+		return livingVO;
+	}
 	
 	//get total record count
 	public int selectTotalCount() {

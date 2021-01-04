@@ -3,6 +3,7 @@ package Living;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.nio.file.Files;
 import java.sql.Date;
 import java.sql.Timestamp;
 import java.util.HashMap;
@@ -78,7 +79,34 @@ public class LivingController extends HttpServlet {
 			
 			nextPage="Home/Living/living.jsp"; //<--리스트.jsp 적기
 			
-		}else if (action.equals("/addLivingItem.do")) {
+		}else if(action.equals("detailLivingItem.do")) {
+			int livingNum = Integer.parseInt(request.getParameter("livingNum"));
+			
+			Map<String, Object> livingMap = livingService.detailLiving(livingNum);
+			
+			livingVO = (LivingVO)livingMap.get("livingVO");
+			String productImageName1 = livingVO.getProductImageName1();
+			String productImageName2 = livingVO.getProductImageName2();
+			String productImageName3 = livingVO.getProductImageName3();
+			
+			if(productImageName1 !=null && productImageName1 != "") {
+				String livingFileType = getFileType1(livingNum, productImageName1);
+				livingMap.put("livingFileType", livingFileType);
+			}
+			if(productImageName2 !=null && productImageName2 != "") {
+				String livingFileType = getFileType1(livingNum, productImageName2);
+				livingMap.put("livingFileType", livingFileType);
+			}
+			if(productImageName3 !=null && productImageName3 != "") {
+				String livingFileType = getFileType1(livingNum, productImageName3);
+				livingMap.put("livingFileType", livingFileType);
+			}
+			
+			request.setAttribute("livingMap", livingMap);
+			
+			nextPage=""; //<-- 상세페이지 주소
+			
+		}else  if (action.equals("/addLivingItem.do")) {
 
 			Map<String, String> addItemMap = upload(request, response);
 
@@ -275,4 +303,56 @@ public class LivingController extends HttpServlet {
 			System.out.println("deleteFile error : " + e.toString());
 		}
 	}// end of deleteFile
+	
+	private String getFileType1(int livingNum, String productImageName1){
+		String livingFileType = "";
+
+		try {
+			String filePath = realPath + "\\" + livingNum + "\\" + productImageName1;
+			File file = new File(filePath);
+			
+			String mimeType = Files.probeContentType(file.toPath());
+			livingFileType = mimeType.split("/")[0];
+			
+		} catch (Exception e) {
+			System.out.println("getFileType()메소드 내부에서 오류 : " + e.toString());
+		}
+		
+		return livingFileType;
+	}//end of getFileType1
+	
+	private String getFileType2(int livingNum, String productImageName2){
+		String livingFileType = "";
+
+		try {
+			String filePath = realPath + "\\" + livingNum + "\\" + productImageName2;
+			File file = new File(filePath);
+			
+			String mimeType = Files.probeContentType(file.toPath());
+			livingFileType = mimeType.split("/")[0];
+			
+		} catch (Exception e) {
+			System.out.println("getFileType()메소드 내부에서 오류 : " + e.toString());
+		}
+		
+		return livingFileType;
+	}//end of getFileType2
+	
+	private String getFileType3(int livingNum, String productImageName3){
+		String livingFileType = "";
+
+		try {
+			String filePath = realPath + "\\" + livingNum + "\\" + productImageName3;
+			File file = new File(filePath);
+			
+			String mimeType = Files.probeContentType(file.toPath());
+			livingFileType = mimeType.split("/")[0];
+			
+		} catch (Exception e) {
+			System.out.println("getFileType()메소드 내부에서 오류 : " + e.toString());
+		}
+		
+		return livingFileType;
+	}//end of getFileType3
+	
 }// end of LivingController

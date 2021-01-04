@@ -3,6 +3,7 @@
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+<c:set var="livingVO" value="${livingMap.livingVO }" />
 
 
 <!DOCTYPE html>
@@ -149,7 +150,7 @@
 						<li>
 							<span class='img'> 
 								<a href=''>
-									<img src="" />
+									<img src="${livingVO.productImageName1 }" />
 								</a> 
 							</span> 
 							<span class='iteminfo'> 
