@@ -232,8 +232,20 @@ public class MemberController extends HttpServlet{
 			PrintWriter pw = response.getWriter();
 			pw.print("<script>" 
 					 + " alert('비밀번호 변경이 완료되었습니다.'); "  
-					 + " location.href='/Home/Member/Login.jsp'; "
 					 +"</script>");
+			nextPage = "/Home/Member/Login.jsp";
+		}else if(action.equals("/delete.do")){
+			HttpSession session = request.getSession();
+			String id = (String)session.getAttribute("id");
+			System.out.println(id);
+			memberService.delete(id);
+			session.invalidate();
+			
+			PrintWriter pw = response.getWriter();
+			pw.print("<script>" 
+					 + " alert('회원정보가 삭제되었습니다.'); "  
+					 +"</script>");
+			nextPage = "/Home/index.jsp";
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);

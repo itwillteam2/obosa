@@ -50,4 +50,8 @@ public class MemberService{
 		String id = memberDAO.findIdByEmail(name, email);
 		return id;
 	}
+
+	public void delete(String id) {
+		memberDAO.delete(id);
+	}
 }

@@ -257,17 +257,17 @@ public class MemberDAO {
 				pstmt = con.prepareStatement(query);
 				pstmt.setString(1, id);
 				rs = pstmt.executeQuery();
-				rs.next();
-				
-				vo.setPwd(rs.getString("pwd"));
-				vo.setBusinessRegNum(rs.getString("businessRegNum"));
-				vo.setShopName(rs.getString("shopName"));
-				vo.setPnum(rs.getString("pnum"));
-				vo.setCpnum(rs.getString("cpnum"));
-				vo.setEmail(rs.getString("email"));
-				vo.setPostcode(rs.getString("postcode"));
-				vo.setAddr1(rs.getString("addr1"));
-				vo.setAddr2(rs.getString("addr2"));
+				if(rs.next()){
+					vo.setPwd(rs.getString("pwd"));
+					vo.setBusinessRegNum(rs.getString("businessRegNum"));
+					vo.setShopName(rs.getString("shopName"));
+					vo.setPnum(rs.getString("pnum"));
+					vo.setCpnum(rs.getString("cpnum"));
+					vo.setEmail(rs.getString("email"));
+					vo.setPostcode(rs.getString("postcode"));
+					vo.setAddr1(rs.getString("addr1"));
+					vo.setAddr2(rs.getString("addr2"));
+				}
 			}
 		}catch(Exception e){
 			System.out.println("searchUser메소드 내부에서 오류 : " + e);
@@ -445,6 +445,31 @@ public class MemberDAO {
 			}
 		}catch(Exception e){
 			System.out.println("modPwd메소드 내부에서 오류 발생 : " + e);
+		}finally{
+			release();
+		}
+	}
+
+	public void delete(String id) {
+		try{
+			con = getConnection();
+			String query = "select * from customer where id=?";
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			if(rs.next()){
+				query = "delete from customer where id=?";
+				pstmt = con.prepareStatement(query);
+				pstmt.setString(1, id);
+				pstmt.executeUpdate();
+			}else{
+				query = "delete from seller where id=?";
+				pstmt = con.prepareStatement(query);
+				pstmt.setString(1, id);
+				pstmt.executeUpdate();
+			}
+		}catch(Exception e){
+			System.out.println("delete메소드 내부에서 오류 발생 : " + e);
 		}finally{
 			release();
 		}

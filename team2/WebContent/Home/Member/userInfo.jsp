@@ -454,6 +454,14 @@
             document.Join.submit();
     
         }
+        
+        fnDelete = function(){
+            if (confirm("정말 회원 탈퇴하시겠습니까?")){
+                location.href="${contextPath}/member/delete.do";
+            }else{
+            	return;
+            }
+        }
     });
     
     function Check_Number(str) { // only number
@@ -652,7 +660,8 @@
             </dd>
         </dl>
     </div>
-    <a class="JoinButton" href="javascript:fnJoin();">회원정보 수정</a>
+    <a class="JoinButton" href="javascript:fnJoin();">회원정보 수정</a><br>
+    <a class="deleteButton" href="javascript:fnDelete();">회원탈퇴</a>
     <input type="hidden" name="snslogin" id="i_snslogin" value="N">
 </div>
 </div>

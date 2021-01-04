@@ -134,7 +134,7 @@
              
              if($("#r_mememail").text() == "사용할 수 있는 이메일입니다."){
             	 var email = $("#i_mememail").val();
-            	 var url="${contextPath}/T2_tmp/Home/Member/emailCheck.jsp?email="+email;
+            	 var url="${contextPath}/Home/Member/emailCheck.jsp?email="+email;
      			open(url,"emailwindow", "statusbar=no, scrollbar=no, menubar=no, width=600, height=130, left=800, top=450" );
              }
         } 

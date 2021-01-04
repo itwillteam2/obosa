@@ -22,7 +22,7 @@ $(document).ready(function(){
 
 });
 
-	function fnLogin(x){
+	function fnLogin(){
 
 		var memid = document.Login.memid.value;
 		var mempwd = document.Login.mempwd.value;
@@ -115,7 +115,7 @@ $(document).ready(function(){
 		</ul>
 		<div class="clear"></div>
 	</div>
-	<a class="LoginButton" href="javascript:fnLogin(1);">로그인</a>
+	<a class="LoginButton" href="javascript:fnLogin();">로그인</a>
 	
 
 </div>
