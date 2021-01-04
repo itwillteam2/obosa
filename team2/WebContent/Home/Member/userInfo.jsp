@@ -490,12 +490,9 @@
         return (exptext.test(str));
     }
     </script>
-    </head>
-    <body>
+</head>
 <body>
 	<jsp:include page="/Home/inc/header.jsp" />
-	<div id="CommonHeaderArea"></div>
-	<div id="CommonHeader_M"></div>
 
 <form name="Join" method="post" action="${contextPath}/member/modMember.do">
 <div class="JoinWrap">
