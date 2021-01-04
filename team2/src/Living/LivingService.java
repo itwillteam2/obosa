@@ -14,6 +14,17 @@ public class LivingService {
 		livingVO = new LivingVO();
 	}	
 	
+	public Map listLivingProduct(Map<String, String> num) {
+		
+		Map<String, String> LivingProductListMap = new HashMap<String, String>();
+		
+		List<Map<String, String>> productList = livingDAO.getProductList(num);
+		LivingProductListMap.put("productList", productList);
+		
+		
+		
+	}
+	
 	public Map listArticles(Map<String, Integer> paingMap){
 		Map livingListMap = new HashMap();
 		List<LivingVO> livingList = livingDAO.selectAllArticles(paingMap);

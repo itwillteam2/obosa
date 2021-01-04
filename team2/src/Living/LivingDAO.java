@@ -30,6 +30,64 @@ public class LivingDAO {
 			e.printStackTrace();
 		}
 	}//end of freeResource
+	
+	//get list of one page.
+	public List<Map<String,String>> getProductList(int startRow, int endRow){
+		List<Map<String, String>> productList = new ArrayList<Map<String,String>>();
+		
+		
+		try {
+			conn = DBConnection.getConnection();
+			String query = "SELECT * FROM living ORDER BY num LIMIT ?,?";
+			
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, startRow);
+			pstmt.setInt(2, endRow);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()) {
+				int num = rs.getInt("num");
+				String productName = rs.getString("productName");
+				String productContent = rs.getString("productContent");
+				String sellerName = rs.getString("sellerName");
+				int productPrice = rs.getInt("productPrice");
+				String productImageName1 = rs.getString("productImageName1");
+				String productImageName2 = rs.getString("productImageName2");
+				String productImageName3 = rs.getString("productImageName3");
+				int productQuantity = rs.getInt("productQuantity");
+				int shipping_fee = rs.getInt("shipping_fee");
+				int point = rs.getInt("point");
+				Timestamp reg_date = rs.getTimestamp("regDate");
+				
+				
+				LivingVO livingVO = new LivingVO();
+				livingVO.setNum(num);
+				livingVO.setPoint(point);
+				livingVO.setProductContent(productContent);
+				livingVO.setProductImageName1(productImageName1);
+				livingVO.setProductImageName2(productImageName2);
+				livingVO.setProductImageName3(productImageName3);
+				livingVO.setProductName(productName);
+				livingVO.setProductPrice(productPrice);
+				livingVO.setProductQuantity(productQuantity);
+				livingVO.setReg_date(reg_date);
+				livingVO.setSellerName(sellerName);
+				livingVO.setShipping_fee(shipping_fee);
+				
+				productList.add((Map<String, String>) livingVO);
+				
+			}		
+			
+		} catch (Exception e) {
+			System.out.println("getProductList error " + e.toString());
+		}finally {
+			freeResource();
+		}
+		
+		return productList;
+		
+	}//end of getProductList
 
 	//select part for select all items list
 	public List selectAllArticles(Map pagingMap) {

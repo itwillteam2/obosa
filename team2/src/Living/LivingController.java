@@ -65,10 +65,17 @@ public class LivingController extends HttpServlet {
 		HttpSession session;
 
 		if (action == null || action.equals("listLiving.do")) {
-
-		} else if (action.equals("listLiving.do")) {
-
-		} else if (action.equals("/addLivingItem.do")) {
+			
+			String num = request.getParameter("num");
+						
+			Map<String, String> livingListNumMap = new HashMap<String, String>();
+			livingListNumMap.put("num", num );
+			
+			Map<String, String> LivingListMap = livingService.listLivingProduct(livingListNumMap);
+			
+			nextPage="#"; //<--리스트.jsp 적기
+			
+		}else if (action.equals("/addLivingItem.do")) {
 
 			Map<String, String> addItemMap = upload(request, response);
 
