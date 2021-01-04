@@ -45,7 +45,7 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-<jsp:include page="/Home/inc/header.jsp"/>
+<jsp:include page="/Home/inc/hdr_menu.jsp"/>
 
 <div class="TopRollingPc">
 	<div class="swiper-container">

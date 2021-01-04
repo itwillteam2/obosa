@@ -12,26 +12,9 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-
-<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-
-<meta http-equiv="Content-Script-Type" content="text/javascript" />
-<meta http-equiv="Content-Style-Type" content="text/css" />
-
-<title>SSMarket</title>
-
-<link href="${contextPath}/T2_tmp/Home/Css/Common/Common.css" type="text/css" rel="stylesheet" />
-<link href="${contextPath}/T2_tmp/Home/Css/Common/swiper.min.css" type="text/css" rel="stylesheet" />
-
-<script type="text/javascript" src="${contextPath}/T2_tmp/Home/Js/Common/jquery-1.11.3.min.js"></script>
-<script type="text/javascript" src="${contextPath}/T2_tmp/Home/Js/Common/Common.js"></script>
-<script type="text/javascript" src="${contextPath}/T2_tmp/Home/Js/Common/swiper_r.min.js"></script>
-
-<link rel="stylesheet" type="text/css" href="${contextPath}/T2_tmp/Home/Css/Shop/ItemDetail.css">
-<link rel="stylesheet" type="text/css" href="${contextPath}/T2_tmp/Home/Css/Shop/ScrollBar.css"/>
-	
-<script type="text/javascript" src="${contextPath}/T2_tmp/Home/Js/Common/iscroll.js"></script>
-<script type="text/javascript" src="${contextPath}/T2_tmp/Home/Js/Common/jquery.sticky.js"></script>
+<jsp:include page="/Home/inc/head.jsp"/>
+<link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/Shop/ItemDetail.css">
+<link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/Shop/ScrollBar.css"/>
 
 <script type="text/javascript">
 
@@ -196,7 +179,7 @@ $(window).load(function(){
 </script>
 </head>
 <body>
-	<jsp:include page="../inc/header.jsp" />
+	<jsp:include page="/Home/inc/hdr_menu.jsp" />
 	<div id="CommonHeaderArea"></div>
 	<div id="CommonHeader_M"></div>
 	<div class="wrap">

@@ -3,7 +3,6 @@
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
-
 <%
 	request.setCharacterEncoding("utf-8");
 	String num = request.getParameter("num");
@@ -12,12 +11,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<link rel="stylesheet" type="text/css" href="${contextPath}/T2_tmp/Home/Css/Shop/Review.css"/>
-    <link href="https://fonts.googleapis.com/css2?family=Gaegu&display=swap" rel="stylesheet">
-	<script type="text/javascript" src="${contextPath}/T2_tmp/Home/Js/Common/jquery-1.11.3.min.js"></script>
-	<script type="text/javascript" src="${contextPath}/T2_tmp/Home/Js/Shop/Review.js"></script>
-<title>Review</title>
+<jsp:include page="/Home/inc/head.jsp"/>
+<link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/Shop/Review.css"/>
+<script type="text/javascript" src="${contextPath}/Home/Js/Shop/Review.js"></script>
+
 </head>
 <body>	
 	<%
@@ -44,5 +41,6 @@
             </div>
         </article>
     </section>
+    <
 </body>
 </html>

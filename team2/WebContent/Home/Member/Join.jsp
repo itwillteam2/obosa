@@ -495,18 +495,12 @@
         return (exptext.test(str));
     }
     </script>
-</head>
+    </head>
+    <body>
 <body>
-<!-- Main Logo area start -->
-<div id="CommonHeader">
-	<a href="${contextPath}/common/index.do" class="MainLogo"><img src="${contextPath}/Images/Ver1/Common/logo.png" /></a>
-	<a href="${contextPath}/common/index.do" class="MainLogoScroll"><img src="${contextPath}/Images/Ver1/Common/logo.png" /></a>		
-	<div class="CategoryLarge"></div>
-</div>
-<div id="CommonHeaderArea"></div>
-<div id="CommonHeader_M"></div>
-		<div class="clear"></div>
-<!-- Main Logo area end -->
+	<jsp:include page="/Home/inc/hdr_logo.jsp" />
+	<div id="CommonHeaderArea"></div>
+	<div id="CommonHeader_M"></div>
 
 <form name="Join" method="post" action="${contextPath}/member/addMember.do">
 <div class="JoinWrap">

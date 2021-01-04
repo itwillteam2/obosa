@@ -13,7 +13,7 @@
 <script type="text/javascript" src="${contextPath}/Home/Js/Shop/Review.js"></script>
 </head>
 <body>	
-<jsp:include page="/Home/inc/header.jsp"/>	
+<jsp:include page="/Home/inc/hdr_info.jsp"/>	
     <section class="container">
         <article class="half">
             <h1>Q&A</h1>

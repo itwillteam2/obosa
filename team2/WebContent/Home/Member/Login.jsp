@@ -89,7 +89,17 @@ $(document).ready(function(){
 </script>
 </head>
 <body>
-<jsp:include page="/Home/inc/header.jsp" />
+<!-- Main Logo area start -->
+<div id="CommonHeader">
+	<a href="${contextPath}/common/index.do" class="MainLogo"><img src="${contextPath}/Images/Ver1/Common/logo.png" /></a>
+	<a href="${contextPath}/common/index.do" class="MainLogoScroll"><img src="${contextPath}/Images/Ver1/Common/logo.png" /></a>		
+	<div class="CategoryLarge"></div>
+</div>
+<div id="CommonHeaderArea"></div>
+<div id="CommonHeader_M"></div>
+		<div class="clear"></div>
+<!-- Main Logo area end -->
+
 
 <form name="Login" method="post" action="${contextPath}/member/loginCK.do">
 <div class="LoginWrap">
@@ -110,6 +120,7 @@ $(document).ready(function(){
 
 </div>
 </form>
+
 <jsp:include page="/Home/inc/footer.jsp" />
 </body>
 </html>
