@@ -9,9 +9,6 @@
 <html lang="ko">
 <head>
 <jsp:include page="/Home/inc/head.jsp"/>
-</head>
-<body>
-<jsp:include page="/Home/inc/header.jsp" />
 <script type="text/javascript">
 	$(document).ready(function(){
 	
@@ -312,6 +309,10 @@
 		return (exptext.test(str));
 	}
 	</script>
+</head>
+<body>
+<jsp:include page="/Home/inc/header.jsp" />
+
 <form name="FindIdPw" method="post" action="${contextPath}/member/modPwd.do">
 
 <div class="FindIdPwWrap">
