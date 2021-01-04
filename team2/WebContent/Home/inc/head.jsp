@@ -15,7 +15,7 @@ pageEncoding="UTF-8"%>
 	<meta property="og:title" content="상상마켓">
 	<meta property="og:type" content="website">
 	<meta property="og:url" content="http://www.sangsangmarket.com/">
-	<link rel="shortcut icon" href="${contextPath}/Images/Ver1/Icon/ssmkt.png" />
+	<link rel="shortcut icon" type="image/png" href="${contextPath}/Images/Ver1/Icon/ssmkt.png" />
 	<link href="${contextPath}/Images/Ver1/Icon/icon180.png" rel="apple-touch-icon-precomposed" />
 	<link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/Common/Common.css" />
 	<link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/Common/swiper.min.css" />
