@@ -114,6 +114,13 @@ public class MemberController extends HttpServlet{
 			if(check){
 				HttpSession session = request.getSession();
 				session.setAttribute("id", id);
+				vo = memberService.searchUser(id);
+				String shopName = vo.getShopName();
+				if(shopName == null || shopName == ""){
+					session.setAttribute("memtype", "customer");
+				}else{
+					session.setAttribute("memtype", "seller");
+				}
 				PrintWriter pw = response.getWriter();
 				pw.print("<script>" 
 				         + " location.href='"+recentURI+"'; "

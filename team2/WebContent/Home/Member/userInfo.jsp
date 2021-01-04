@@ -4,6 +4,7 @@
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <c:set var="id" value="${sessionScope.id}"/>
+<c:set var="memtype" value="${sessionScope.memtype}"/>
 <c:set var="recentURI" value="${recentURI}"/>
 <c:set var="shopName" value="${vo.shopName}"/>
 <c:set var="cpnum" value="${vo.cpnum}"/>
