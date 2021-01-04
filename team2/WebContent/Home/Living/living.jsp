@@ -4,6 +4,12 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 
+
+
+
+
+
+
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -133,7 +139,7 @@
 				<div class="inner">
 
 					<div class="info">
-						<span class="result">총 <strong>4591</strong>개의 상품이 조회되었습니다.
+						<span class="result">총 <strong>${totalCountList}</strong>개의 상품이 조회되었습니다.
 						</span> <span class="selectbox"> <select name="ord">
 								<option value="o1" selected="selected">신상품순</option>
 								<option value="o5">인기상품순</option>
@@ -156,115 +162,7 @@
 								<a href='#'>JELLY뻐 너만콬콬 사랑할꼬야 콜라젤리 (24009448)</a></span> 
 								<span class='price won'><span class='won'>3,300<strong>원</strong></span></span>
 						</span></li>
-						<li><span class='img'> <a
-								href='https://www.artboxmall.com/home/shop/itemdetail.asp?itemidx=2012150250'
-								onclick='GA_event("카테고리", "_상품", "JELLY뻐 우리사랑에 한계란없지 사우어프라이드 에그젤리 (24009445)"); GA_onclick("카테고리_", "2012150250", "JELLY뻐 우리사랑에 한계란없지 사우어프라이드 에그젤리 (24009445)", "아트박스", "", "3300", "#31", "0");'>
-									<img
-									src='https://www.poom.co.kr/Upload2/Product/202012/2012150250_detail1.jpg?cmd=thumb&amp;w=270&amp;h=270&amp;fit=true' />
-							</a> <span class='hover'><span class='wish '
-									data-itemidx='2012150250'></span><span class='cart '
-									data-itemidx='2012150250' data-opidx='' data-itemoptioncd='N'></span><span
-									class='ps' data-itemidx='2012150250'>0</span></span>
-						</span> <span class='iteminfo'> <span class='text'><a
-									href='https://www.artboxmall.com/home/shop/itemdetail.asp?itemidx=2012150250'
-									title='JELLY뻐 우리사랑에 한계란없지 사우어프라이드 에그젤리 (24009445)'>JELLY뻐
-										우리사랑에 한계란없지 사우어프라이드 에그젤리 (24009445)</a></span> <span class='price'><span
-									class='won'>3,300<strong>원</strong></span></span><span
-								class="stampicon new"></span>
-						</span></li>
-						<li><span class='img'> <a
-								href='https://www.artboxmall.com/home/shop/itemdetail.asp?itemidx=2012150246'
-								onclick='GA_event("카테고리", "_상품", "JELLY뻐 너랑나랑 알콩달콩 젤리빈스젤리 (24009443)"); GA_onclick("카테고리_", "2012150246", "JELLY뻐 너랑나랑 알콩달콩 젤리빈스젤리 (24009443)", "아트박스", "", "3300", "#30", "0");'>
-									<img
-									src='https://www.poom.co.kr/Upload2/Product/202012/2012150246_detail1.jpg?cmd=thumb&amp;w=270&amp;h=270&amp;fit=true' />
-							</a> <span class='hover'><span class='wish '
-									data-itemidx='2012150246'></span><span class='cart '
-									data-itemidx='2012150246' data-opidx='' data-itemoptioncd='N'></span><span
-									class='ps' data-itemidx='2012150246'>0</span></span>
-						</span> <span class='iteminfo'> <span class='text'><a
-									href='https://www.artboxmall.com/home/shop/itemdetail.asp?itemidx=2012150246'
-									title='JELLY뻐 너랑나랑 알콩달콩 젤리빈스젤리 (24009443)'>JELLY뻐 너랑나랑
-										알콩달콩 젤리빈스젤리 (24009443)</a></span> <span class='price'><span
-									class='won'>3,300<strong>원</strong></span></span><span
-								class="stampicon new"></span>
-						</span></li>
-						<li><span class='img'> <a
-								href='https://www.artboxmall.com/home/shop/itemdetail.asp?itemidx=2012150232'
-								onclick='GA_event("카테고리", "_상품", "와이어 자물쇠 시바 (26013611)"); GA_onclick("카테고리_", "2012150232", "와이어 자물쇠 시바 (26013611)", "아트박스", "", "4200", "#29", "0");'>
-									<img
-									src='https://www.poom.co.kr/Upload2/Product/202012/2012150232_detail1.jpg?cmd=thumb&amp;w=270&amp;h=270&amp;fit=true' />
-							</a> <span class='hover'><span class='wish '
-									data-itemidx='2012150232'></span><span class='cart '
-									data-itemidx='2012150232' data-opidx='' data-itemoptioncd='N'></span><span
-									class='ps' data-itemidx='2012150232'>0</span></span>
-						</span> <span class='iteminfo'> <span class='text'><a
-									href='https://www.artboxmall.com/home/shop/itemdetail.asp?itemidx=2012150232'
-									title='와이어 자물쇠 시바 (26013611)'>와이어 자물쇠 시바 (26013611)</a></span> <span
-								class='price'><span class='won'>4,200<strong>원</strong></span></span><span
-								class="stampicon new"></span>
-						</span></li>
-						<li><span class='img'> <a
-								href='https://www.artboxmall.com/home/shop/itemdetail.asp?itemidx=2012150231'
-								onclick='GA_event("카테고리", "_상품", "와이어 자물쇠 보스 (26013610)"); GA_onclick("카테고리_", "2012150231", "와이어 자물쇠 보스 (26013610)", "아트박스", "", "4200", "#28", "0");'>
-									<img
-									src='https://www.poom.co.kr/Upload2/Product/202012/2012150231_detail1.jpg?cmd=thumb&amp;w=270&amp;h=270&amp;fit=true' />
-							</a> <span class='hover'><span class='wish '
-									data-itemidx='2012150231'></span><span class='cart '
-									data-itemidx='2012150231' data-opidx='' data-itemoptioncd='N'></span><span
-									class='ps' data-itemidx='2012150231'>0</span></span>
-						</span> <span class='iteminfo'> <span class='text'><a
-									href='https://www.artboxmall.com/home/shop/itemdetail.asp?itemidx=2012150231'
-									title='와이어 자물쇠 보스 (26013610)'>와이어 자물쇠 보스 (26013610)</a></span> <span
-								class='price'><span class='won'>4,200<strong>원</strong></span></span><span
-								class="stampicon new"></span>
-						</span></li>
-						<li><span class='img'> <a
-								href='https://www.artboxmall.com/home/shop/itemdetail.asp?itemidx=2012150229'
-								onclick='GA_event("카테고리", "_상품", "커플 자물쇠 하트 (26013609)"); GA_onclick("카테고리_", "2012150229", "커플 자물쇠 하트 (26013609)", "아트박스", "", "7200", "#27", "0");'>
-									<img
-									src='https://www.poom.co.kr/Upload2/Product/202012/2012150229_detail1.jpg?cmd=thumb&amp;w=270&amp;h=270&amp;fit=true' />
-							</a> <span class='hover'><span class='wish '
-									data-itemidx='2012150229'></span><span class='cart '
-									data-itemidx='2012150229' data-opidx='' data-itemoptioncd='N'></span><span
-									class='ps' data-itemidx='2012150229'>0</span></span>
-						</span> <span class='iteminfo'> <span class='text'><a
-									href='https://www.artboxmall.com/home/shop/itemdetail.asp?itemidx=2012150229'
-									title='커플 자물쇠 하트 (26013609)'>커플 자물쇠 하트 (26013609)</a></span> <span
-								class='price'><span class='won'>7,200<strong>원</strong></span></span><span
-								class="stampicon new"></span>
-						</span></li>
-						<li><span class='img'> <a
-								href='https://www.artboxmall.com/home/shop/itemdetail.asp?itemidx=2012150228'
-								onclick='GA_event("카테고리", "_상품", "JELLY뻐 나는애플 너는뷰티플 사우어사과링젤리 (24009456)"); GA_onclick("카테고리_", "2012150228", "JELLY뻐 나는애플 너는뷰티플 사우어사과링젤리 (24009456)", "아트박스", "", "3300", "#26", "0");'>
-									<img
-									src='https://www.poom.co.kr/Upload2/Product/202012/2012150228_detail1.jpg?cmd=thumb&amp;w=270&amp;h=270&amp;fit=true' />
-							</a> <span class='hover'><span class='wish '
-									data-itemidx='2012150228'></span><span class='cart '
-									data-itemidx='2012150228' data-opidx='' data-itemoptioncd='N'></span><span
-									class='ps' data-itemidx='2012150228'>0</span></span>
-						</span> <span class='iteminfo'> <span class='text'><a
-									href='https://www.artboxmall.com/home/shop/itemdetail.asp?itemidx=2012150228'
-									title='JELLY뻐 나는애플 너는뷰티플 사우어사과링젤리 (24009456)'>JELLY뻐 나는애플
-										너는뷰티플 사우어사과링젤리 (24009456)</a></span> <span class='price'><span
-									class='won'>3,300<strong>원</strong></span></span><span
-								class="stampicon new"></span>
-						</span></li>
-						<li><span class='img'> <a
-								href='https://www.artboxmall.com/home/shop/itemdetail.asp?itemidx=2012150221'
-								onclick='GA_event("카테고리", "_상품", "JELLY뻐 너를정말사랑하지렁 미니사우어 웜스젤리 (24009454)"); GA_onclick("카테고리_", "2012150221", "JELLY뻐 너를정말사랑하지렁 미니사우어 웜스젤리 (24009454)", "아트박스", "", "3300", "#25", "0");'>
-									<img
-									src='https://www.poom.co.kr/Upload2/Product/202012/2012150221_detail1.jpg?cmd=thumb&amp;w=270&amp;h=270&amp;fit=true' />
-							</a> <span class='hover'><span class='wish '
-									data-itemidx='2012150221'></span><span class='cart '
-									data-itemidx='2012150221' data-opidx='' data-itemoptioncd='N'></span><span
-									class='ps' data-itemidx='2012150221'>0</span></span>
-						</span> <span class='iteminfo'> <span class='text'><a
-									href='https://www.artboxmall.com/home/shop/itemdetail.asp?itemidx=2012150221'
-									title='JELLY뻐 너를정말사랑하지렁 미니사우어 웜스젤리 (24009454)'>JELLY뻐
-										너를정말사랑하지렁 미니사우어 웜스젤리 (24009454)</a></span> <span class='price'><span
-									class='won'>3,300<strong>원</strong></span></span><span
-								class="stampicon new"></span>
-						</span></li>
+						
 					</ul>
 					<div class="clear"></div>
 					<div class='paging'>
