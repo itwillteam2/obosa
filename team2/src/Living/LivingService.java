@@ -14,18 +14,20 @@ public class LivingService {
 		livingVO = new LivingVO();
 	}	
 
-	/*
-	 * public Map listLivingProduct(Map<String, String> num) {
-	 * 
-	 * Map<String, String> LivingProductListMap = new HashMap<String, String>();
-	 * 
-	 * List<Map<String, String>> productList = livingDAO.getProductList(num);
-	 * LivingProductListMap.put("productList", productList);
-	 * 
-	 * 
-	 * 
-	 * }
-	 */
+	
+	  public Map listLivingProduct(Map<String, String> num) {
+	  
+	  Map<String, String> LivingProductListMap = new HashMap<String, String>();
+	  
+	  List<Map<String, String>> productList = livingDAO.getProductList(startRow, endRow);
+	  LivingProductListMap.put("productList", productList);
+	  
+	  return LivingProductListMap;
+	  
+	  
+	  
+	  }
+	 
 	
 	public int totalCountList() {
 		int totalCountList = livingDAO.selectTotalCount();

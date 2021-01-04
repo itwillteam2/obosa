@@ -67,13 +67,15 @@ public class LivingController extends HttpServlet {
 		if (action == null || action.equals("listLiving.do")) {
 			
 			String num = request.getParameter("num");
+			String search = request.getParameter("search");
 						
 			Map<String, String> livingListNumMap = new HashMap<String, String>();
 			livingListNumMap.put("num", num );
+			livingListNumMap.put("search", search );
 			
 			Map<String, String> LivingListMap = livingService.listLivingProduct(livingListNumMap);
 			
-			nextPage="#"; //<--리스트.jsp 적기
+			nextPage="Home/Living/living.jsp"; //<--리스트.jsp 적기
 			
 		}else if (action.equals("/addLivingItem.do")) {
 
@@ -106,7 +108,7 @@ public class LivingController extends HttpServlet {
 			int isRegistSuccess = livingService.insertLiving(livingVO);
 			if (isRegistSuccess > 0) {
 
-				nextPage = "T2_tmp/Home/Living/living.jsp";
+				nextPage = "Home/Living/living.jsp";
 
 			} else {
 				PrintWriter out = response.getWriter();
