@@ -58,10 +58,10 @@ a.NonMemberOrderDetailButton {display:block; width:100%; height:56px; line-heigh
 .JoinWrap .MobileButton {display:none;}
 
 .trJoinSex dt {width:120px; line-height:27px; text-align:left; font-size:16px; color:#646464; padding:0 0 30px 0;}
-.trJoinSex dd {width:*; line-height:27px; text-align:left; font-size:16px; color:#646464; padding:0 0 30px 0;}
+.trJoinSex dd {width:120px; line-height:27px; text-align:left; font-size:16px; color:#646464; padding:0 0 30px 0;}
 
 .trJoin dt {width:120px; line-height:56px; text-align:left; font-size:16px; color:#646464;}
-.trJoin dd {width:*;}
+.trJoin dd {width:120px;}
 
 .trJoin dd.blank  {width:18px; text-align:center; font-size:15px; color:#646464; line-height:56px;}
 .trJoin dd.comment  {vertical-align:middle; text-align:left;  width:73%; color:#9c9c9c; line-height:27px; height:27px; font-size:14px;}
@@ -154,14 +154,14 @@ a.JoinButton {display:block; width:310px; height:56px; line-height:56px; font-si
 #WithdrawWrap     {display:none;}
 
 .trPwd dt {width:175px; line-height:56px; text-align:left; font-size:16px; color:#646464;}
-.trPwd dd {width:*;}
+.trPwd dd {width:175px;}
 
 .WithdrawInfo {color:#646464; font-size:14px; line-height:22px; padding:0 0 0 0;}
 .WithdrawInfo a.LeftBtn,
 .WithdrawInfo a.RightBtn {display:inline-block; width:164px; padding:0; text-align:center; margin:14px 10px 24px 0; line-height:46px; height:46px; color:#ffffff; font-size:15px; border:0; background-color:#424242; border-radius:5px;}
 
 .trWithdraw dt {width:170px; text-align:center; font-size:14px; color:#646464; vertical-align:middle;}
-.trWithdraw dd {width:*; text-align:left; font-size:13px; line-height:22px; color:#646464; vertical-align:middle; padding:14px 20px;}
+.trWithdraw dd {width:170px; text-align:left; font-size:13px; line-height:22px; color:#646464; vertical-align:middle; padding:14px 20px;}
 .trWithdraw .LT {border-top:1px solid #646464; border-right:1px solid #646464; border-bottom:1px solid #646464; border-left:1px solid #646464; border-radius:5px 0 0 0;}
 .trWithdraw .RT {border-top:1px solid #646464; border-right:1px solid #646464; border-bottom:1px solid #646464; border-left-width:0; border-radius:0 5px 0 0;}
 .trWithdraw .LB {border-top-width:0; border-right:1px solid #646464; border-bottom:1px solid #646464; border-left:1px solid #646464; border-radius:0 0 0 5px;}
@@ -196,7 +196,7 @@ a.ConfirmButton {display:block; width:100%; height:56px; line-height:56px; font-
 .FindIdPwForm #FindIdResult {display:none;}
 .FindIdPwForm #FindPwResult {display:none;}
 
-.trFindType dd {width:*; line-height:27px; text-align:left; font-size:16px; color:#646464; padding:0 0 15px 0;}
+.trFindType dd {width:100%; line-height:27px; text-align:left; font-size:16px; color:#646464; padding:0 0 15px 0;}
 
 #TableCPNUM {display:table;}
 #TableEMAIL {display:none;}
@@ -284,10 +284,10 @@ a#CheckSixNum {display:none; width:100%; padding:0; text-align:center; margin:0 
 	.JoinWrap .MobileButton a {display:block; width:100%; height:3rem; line-height:3rem; background-color:#424242; text-align:center; color:#ffffff; font-size:0.875rem; border-radius:5px; margin:0;}
 
 	.trJoinSex dt {width:5rem; line-height:1.0625rem; font-size:0.75rem; padding:0 0 1.125rem 0;}
-	.trJoinSex dd {width:*; line-height:1.0625rem; font-size:0.75rem; padding:0 0 1.125rem 0;}
+	.trJoinSex dd {width:5rem; line-height:1.0625rem; font-size:0.75rem; padding:0 0 1.125rem 0;}
 
 	.trJoin dt {width:5rem; line-height:3rem; font-size:0.75rem;}
-	.trJoin dd {width:*;}
+	.trJoin dd {width:5rem;}
 
 	.trJoin dd.blank  {width:0.875rem; font-size:0.7rem; line-height:3rem;}
 	.trJoin dd.button {display:none;}
@@ -363,7 +363,7 @@ a#CheckSixNum {display:none; width:100%; padding:0; text-align:center; margin:0 
 	.SilverBorder.paddingBottom {height:1.6875rem;}
 
 	.trPwd dt {width:8.2rem; line-height:3rem; font-size:0.75rem;}
-	.trPwd dd {width:*;}
+	.trPwd dd {width:8.2rem;}
 
 	.WithdrawInfo {font-size:0.8125rem; line-height:1.2rem; padding:0.7rem 0 0 0;}
 	.WithdrawInfo a.LeftBtn  {display:inline-block; width:49%; padding:0; text-align:center; margin:0.5rem 1% 0.9rem 0; line-height:2.6rem; height:2.6rem; font-size:0.875rem;}
@@ -394,7 +394,7 @@ a#CheckSixNum {display:none; width:100%; padding:0; text-align:center; margin:0 
 
 	.FindIdPwForm h2 {line-height:1.2rem; font-size:0.75rem; padding:1rem 0 2.5rem;}
 
-	.trFindType dd {width:*; line-height:1.0625rem; font-size:0.75rem; padding:0 0 0.5625rem 0;}
+	.trFindType dd {width:100%; line-height:1.0625rem; font-size:0.75rem; padding:0 0 0.5625rem 0;}
 
 	a#TabIdSubmit, a#TabPwSubmit,
 	a#TabIdLogin {width:13rem; text-align:center; margin:0.7rem auto 0; line-height:3rem; height:3rem; font-size:1rem; font-weight:normal;}

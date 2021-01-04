@@ -28,7 +28,7 @@
 <script type="text/javascript" src="${contextPath}/Home/Js/Common/Common.js"></script>
 <script type="text/javascript" src="${contextPath}/Home/Js/Common/swiper_r.min.js"></script>
 
-<link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/CsCenter/Cscenter.css" />
+<link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css//.css" />
 
 <script type="text/javascript">
 
@@ -53,7 +53,7 @@
 	{
 		var param = "mode=N&idx=" + idx ;
 		var request = $.ajax({
-			url : "/Home/Cscenter/PlusSeeAjax.asp",
+			url : "/Home//PlusSeeAjax.asp",
 			type: "post",
 			data: param
 		});
@@ -67,7 +67,7 @@
 		var term = $("[name=Term]").val();
 		var param = "?page=" + page;
 		
-		location.href="https://www.artboxmall.com/Home/Cscenter/NoticeList.asp" + param
+		location.href="https://www.artboxmall.com/Home//NoticeList.asp" + param
 	}
 	
 	//삭제
@@ -91,9 +91,9 @@
 		<div class="top_title">고객감동센터</div>
 	<div class="MenuBar_Box">
 		<ul>
-			<li onclick="location.href='${contextPath}/Home/board/NoticeList.jsp';" class="on">공지사항</li>
-			<li onclick="location.href='${contextPath}/Home/board/'InquireList.jsp;" >상품Q&A</li>
-			<li onclick="location.href='${contextPath}/Home/board/InquiryWrite.jsp';" >1:1 문의/상담</li>
+			<li onclick="location.href='${contextPath}/Home//NoticeList.jsp';" class="on">공지사항</li>
+			<li onclick="location.href='${contextPath}/Home//'InquireList.jsp;" >상품Q&A</li>
+			<li onclick="location.href='${contextPath}/Home//InquiryWrite.jsp';" >1:1 문의/상담</li>
 		</ul>
 	</div>
 	

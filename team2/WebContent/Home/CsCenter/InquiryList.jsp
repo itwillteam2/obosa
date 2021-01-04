@@ -86,9 +86,9 @@
 	<div class="top_title">고객감동센터</div>
 	<div class="MenuBar_Box">
 		<ul>
-			<li onclick="location.href='${contextPath}/Home/board/NoticeList.jsp';" class="on">공지사항</li>
-			<li onclick="location.href='${contextPath}/Home/board/InquiryList.jsp';" >상품Q&A</li>
-			<li onclick="location.href='${contextPath}/Home/board/InquiryWrite.jsp';" >1:1 문의/상담</li>
+			<li onclick="location.href='${contextPath}/Home/CsCenter/NoticeList.jsp';" class="on">공지사항</li>
+			<li onclick="location.href='${contextPath}/Home/CsCenter/InquiryList.jsp';" >상품Q&A</li>
+			<li onclick="location.href='${contextPath}/Home/CsCenter/InquiryWrite.jsp';" >1:1 문의/상담</li>
 		</ul>
 	</div>
 
@@ -105,7 +105,7 @@
 			<option value="Q">문의접수</option>
 			<option value="A">답변완료</option>
 		</select>
-		<span onclick="javascript:location.href='${contextPath}/Home/board/InquiryWrite.jsp';">문의하기</span>
+		<span onclick="javascript:location.href='${contextPath}/Home/CsCenter/InquiryWrite.jsp';">문의하기</span>
 	</div>
 	
 		<div class="MyQnaBox">
