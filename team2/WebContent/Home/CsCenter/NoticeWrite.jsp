@@ -38,60 +38,21 @@
 <link rel="stylesheet" href="${contextPath}/Home/Css/Write/board.css">
 <script type="text/javascript">
 
-	$(document).ready(function(){
-
-	});
-	
-	$(document).on("click", ".imageFileName", function(){
-		var targetNum = $(this).attr("data");
-		
-		$("[name=txFile"+targetNum+"]").val("");
-		$("[name=file"+targetNum+"]").val("");
-		$(this).css("display","none");
-	});
-
-	function fnItem1FileUpload()
-	{
-		$("[name=txFile1]").val( $("[name=imageFileName]").val().replace(/^.*\\/, "") );
-		$(".file_x[data=1]").css("display", "block");
-	}
-	
-	function InquiryInput(){
-		var f = document.Inquiryfrm;
-		
-		
-		if(!f.title.value){
+$(function(){		
+	$("#submit").click(function(){
+		if($("#title").val()==""){
 			alert("제목을 입력해주세요.");
-			f.txSubject.focus();
-			return false;
-		}	
-
-		
-		if(f.title.value.length < 2){
-			alert("제목을 2자 이상 입력하세요.");
-			f.txSubject.focus() ;
-			return;	
-		}
-		
-		
-		if(!f.content.value){
+			$("#title").focus();
+			return false;				
+		};
+		if($("#content").val()==""){
 			alert("내용을 입력해주세요.");
-			f.txContent.focus();
-			return false;
-		}	
-
-
-		if(f.content.value.length > 32767) {
-			alert("문의내용은 32767바이트(한글 약 15000자)를 넘길 수 없습니다.\t");
-			return false;
-		}
-
-		
-		f.method = "post";
-		f.encoding = "multipart/form-data"
-		f.action = "${contextPath}/board/addArticle.do";
-		f.submit();
-	}
+			$("#content").focus();
+			return false;				
+		};
+	});	
+	return false;
+});
 	
 	
 	//글목록 보기 버튼 클릭했을떄 호출되는 함수 
@@ -112,7 +73,7 @@
 	</div>
 </div>
 <article class="product" style="width:1200px; margin : 0 auto" >
-	<form action="${contextPath}/living/addLiving.do" method="post">
+	<form action="${contextPath}/CsCenter/addNotice.do" method="post">
 		<table class="table">
 			<colgroup>
 				<col style="width:120px" />
@@ -120,25 +81,24 @@
 			</colgroup>
 			<tr>
 				<th class="align-middle">
-					<label for="productName" class="m-0">제목</label>
+					<label for="title" class="m-0">제목</label>
 				</th>
 				<td>
-					<input style="width:700px; margin:0 auto;" class="form-control" type="text" name="productName" id="productName" />
+					<input style="width:700px; margin:0 auto;" id="title" class="form-control" type="text" name="title" id="title" />
 				</td>
 			</tr>
 			<tr>
 				<th class="align-middle">
-					<label for="productContent" class="m-0">내용</label>
+					<label for="Content"  class="m-0">내용</label>
 				</th>
 				<td>			
-					<textarea style="margin:0 auto; resize:none; height:400px; width:700px;"class="form-control" name="productContent" id="productContent" cols="40" rows="13"></textarea>
+					<textarea id="content" style="margin:0 auto; resize:none; height:400px; width:700px;"class="form-control" name="content" id="content" cols="40" rows="13"></textarea>
 				</td>
-			</tr>
 			</tr>
 		</table>
 		<div class="text-center my-5">
 			<button type="button" class="btn btn-secondary" onclick="history.back()">취소</button>
-			<button type="submit" class="btn btn-primary">공지사항 등록하기</button>
+			<button type="submit" id="submit" class="btn btn-primary">공지사항 등록하기</button>
 		</div>
 	</form>
 </article>
