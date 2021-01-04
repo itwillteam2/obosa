@@ -32,8 +32,14 @@ public class LivingDAO {
 	}//end of freeResource
 	
 	//get list of one page.
-	public List<Map<String,String>> getProductList(int startRow, int endRow){
-		List<Map<String, String>> productList = new ArrayList<Map<String,String>>();
+	public List<Map<String,Object>> getLivingList(Map<String,Object> LivingListMap){
+		
+		List<Map<String, Object>> productList = new ArrayList<Map<String,Object>>();
+		
+		int numberPerPage = 10; // 
+		int pageNo = (int)LivingListMap.get("num");
+		int offset = (pageNo - 1) * 10;
+		String kwd = (String)LivingListMap.get("kwd");
 		
 		
 		try {
@@ -41,12 +47,14 @@ public class LivingDAO {
 			String query = "SELECT * FROM living ORDER BY num LIMIT ?,?";
 			
 			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, startRow);
-			pstmt.setInt(2, endRow);
+			pstmt.setInt(1, offset);
+			pstmt.setInt(2, numberPerPage);
 			
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()) {
+				
+				Map<String,Object> livingMap = new HashMap<String, Object>();
 				int num = rs.getInt("num");
 				String productName = rs.getString("productName");
 				String productContent = rs.getString("productContent");
@@ -75,7 +83,9 @@ public class LivingDAO {
 				livingVO.setSellerName(sellerName);
 				livingVO.setShipping_fee(shipping_fee);
 				
-				productList.add((Map<String, String>) livingVO);
+				livingMap.put("livingVO", livingVO);
+				productList.add(livingMap);
+				
 				
 			}		
 			

@@ -15,11 +15,11 @@ public class LivingService {
 	}	
 
 	
-	  public Map listLivingProduct(Map<String, String> num) {
+	  public Map<String,Object> listLivingProduct(Map<String, Object> LivingListMap) {
 	  
-	  Map<String, String> LivingProductListMap = new HashMap<String, String>();
+	  Map<String, Object> LivingProductListMap = new HashMap<String, Object>();
 	  
-	  List<Map<String, String>> productList = livingDAO.getProductList(startRow, endRow);
+	  List<Map<String, Object>> productList = livingDAO.getLivingList(LivingListMap);
 	  LivingProductListMap.put("productList", productList);
 	  
 	  return LivingProductListMap;

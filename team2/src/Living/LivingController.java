@@ -67,13 +67,14 @@ public class LivingController extends HttpServlet {
 		if (action == null || action.equals("listLiving.do")) {
 			
 			String num = request.getParameter("num");
-			String search = request.getParameter("search");
+			String kwd = request.getParameter("kwd"); //<--키워드
 						
-			Map<String, String> livingListNumMap = new HashMap<String, String>();
+			Map<String, Object> livingListNumMap = new HashMap<String, Object>();
 			livingListNumMap.put("num", num );
-			livingListNumMap.put("search", search );
+			livingListNumMap.put("kwd", kwd );
 			
-			Map<String, String> LivingListMap = livingService.listLivingProduct(livingListNumMap);
+			Map<String, Object> LivingListMap = livingService.listLivingProduct(livingListNumMap);
+			request.setAttribute("LivingListMap", LivingListMap);
 			
 			nextPage="Home/Living/living.jsp"; //<--리스트.jsp 적기
 			
