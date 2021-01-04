@@ -34,35 +34,6 @@
 </head>
 <body>
 <jsp:include page="/Home/inc/header.jsp" />
-<div id="CommonHeaderArea"></div>
-<div id="CommonHeader_M">
-	<div id="CommonHeaderMenu_M">
-		<div class="tableDiv">
-			<dl class="trMobileMenu">
-				<dd class="tdBtn"><a href="javascript:fnMobileMenu(1);" onclick="GA_event('HEAD', '최상단 메뉴 MO', '메뉴버튼');"><img src="${contextPath}/T2_tmp/Images/Ver1/Common/m_top_menu.png" /></a></dd>
-				<dd class="tdBtn">&nbsp;</dd>
-				<dd class="tdLogo"><a href="${contextPath}/T2_tmp/Home/index-2.html"><img src="${contextPath}/T2_tmp/Images/Ver1/Common/m_logo.png" onclick="GA_event('HEAD', '최상단 메뉴 MO', '홈');"/></a></dd>
-				<dd class="tdBtn"><a href="javascript:fnMobileMenuToggle(1);" onclick="GA_event('HEAD', '최상단 메뉴 MO', '검색 활성화');"><img src="${contextPath}/T2_tmp/Images/Ver1/Common/m_top_search.png" /></a></dd>
-				<dd class="tdBtn">
-					<a href="${contextPath}/T2_tmp/Home/Order/Cart.html" onclick="GA_event('HEAD', '최상단 메뉴 MO', '장바구니');">
-						
-						<img src="${contextPath}/T2_tmp/Images/Ver1/Common/m_top_cart.png" />
-					</a>
-				</dd>
-			</dl>
-		</div>
-	</div>
-	<div id="CommonHeaderSearch_M">
-		<div class="tableDiv">
-			<dl class="trMobileMenu">
-				<dd class="tdKwd"><div class="CommonSearch"><input type="text" id="kwd_M" value="" onkeypress="if(event.keyCode==13){fnCommonSearch(2);}" /></div></dd>
-				<dd class="tdBtn"><a href="javascript:fnCommonSearch(2);" onclick="GA_event('HEAD', '최상단 메뉴 MO', '검색');"><img src="${contextPath}/T2_tmp/Images/Ver1/Common/m_top_search.png" /></a></dd>
-				<dd class="tdBtn"><a href="javascript:fnMobileMenuToggle(2);" onclick="GA_event('HEAD', '최상단 메뉴 MO', '검색 비활성화');"><img src="${contextPath}/T2_tmp/Images/Ver1/Common/m_top_close.png" /></a></dd>
-			</dl>
-		</div>
-	</div>
-</div>
-<div id="CommonHeaderArea_M"></div>
 
 <form name="Check" method="post" action="${contextPath}/member/userInfo.do">
 <input type="hidden" name="recentURI" value="${recentURI}">
