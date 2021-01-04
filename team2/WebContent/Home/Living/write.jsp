@@ -14,8 +14,8 @@
 <script type="text/javascript" src="${contextPath}/Home/Js/Common/iscroll.js"></script>
 <script type="text/javascript" src="${contextPath}/Home/Js/Common/jquery.sticky.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
-<link rel="stylesheet" href="${contextPath}/Home/Css/write/bootstrap.min.css">
-<link rel="stylesheet" href="${contextPath}/Home/Css/write/board.css">
+<link rel="stylesheet" href="${contextPath}/Home/Css/Write/bootstrap.min.css">
+<link rel="stylesheet" href="${contextPath}/Home/Css/Write/board.css">
 
 </head>
 <body>
