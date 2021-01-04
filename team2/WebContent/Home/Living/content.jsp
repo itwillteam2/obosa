@@ -3,19 +3,36 @@
 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<%
+	request.setCharacterEncoding("utf-8");
+	String num = request.getParameter("num");
+%>
 <c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
 
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<jsp:include page="/Home/inc/head.jsp"/>
 
-<link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/Shop/ItemDetail.css">
-<link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/Shop/ScrollBar.css"/>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+<meta http-equiv="Content-Script-Type" content="text/javascript" />
+<meta http-equiv="Content-Style-Type" content="text/css" />
+
+<title>SSMarket</title>
+
+<link href="${contextPath}/T2_tmp/Home/Css/Common/Common.css" type="text/css" rel="stylesheet" />
+<link href="${contextPath}/T2_tmp/Home/Css/Common/swiper.min.css" type="text/css" rel="stylesheet" />
+
+<script type="text/javascript" src="${contextPath}/T2_tmp/Home/Js/Common/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="${contextPath}/T2_tmp/Home/Js/Common/Common.js"></script>
+<script type="text/javascript" src="${contextPath}/T2_tmp/Home/Js/Common/swiper_r.min.js"></script>
+
+<link rel="stylesheet" type="text/css" href="${contextPath}/T2_tmp/Home/Css/Shop/ItemDetail.css">
+<link rel="stylesheet" type="text/css" href="${contextPath}/T2_tmp/Home/Css/Shop/ScrollBar.css"/>
 	
-<script type="text/javascript" src="${contextPath}/Home/Js/Common/iscroll.js"></script>
-<script type="text/javascript" src="${contextPath}/Home/Js/Common/jquery.sticky.js"></script>
+<script type="text/javascript" src="${contextPath}/T2_tmp/Home/Js/Common/iscroll.js"></script>
+<script type="text/javascript" src="${contextPath}/T2_tmp/Home/Js/Common/jquery.sticky.js"></script>
+
 <script type="text/javascript">
 
 $(window).load(function(){
@@ -179,8 +196,9 @@ $(window).load(function(){
 </script>
 </head>
 <body>
-	<jsp:include page="/Home/inc/header.jsp" />
-
+	<jsp:include page="../inc/header.jsp" />
+	<div id="CommonHeaderArea"></div>
+	<div id="CommonHeader_M"></div>
 	<div class="wrap">
 		<form method="post" name="ItemDetail"
 			enctype="application/x-www-form-urlencoded" action="" target="proc">
@@ -301,7 +319,7 @@ $(window).load(function(){
 			</section>
 
 			<section class="item_content postscript">
-				<input class='btnOverlay btnProductQnA' type='button' value='상품후기 작성'  onclick="window.open('review.jsp', '상품후기등록', 'width=500, height=500, location=no, status=no, scrollbars=no, resizable=no, left=500, top=100' );"  />
+				<input class='btnOverlay btnProductQnA' type='button' value='상품후기 작성'  onclick="window.open('${contextPath}/T2_tmp/Home/Living/review.jsp?num=<%=num %>', '상품후기등록', 'width=500, height=500, location=no, status=no, scrollbars=no, resizable=no, left=500, top=100' );"  />
 				<div class='inner'>
 					<div class='table'>
 						<span class='tr ClickPs'> 
@@ -435,6 +453,6 @@ $(window).load(function(){
 			</div>
 		</div>
 	</section>
-	<jsp:include page="/Home/inc/footer.jsp" />
+	<jsp:include page="../inc/footer.jsp" />
 </body>
 </html>

@@ -3,19 +3,26 @@
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
-<% String id = (String)session.getAttribute("id"); 	%>   
- 
+
+<%
+	request.setCharacterEncoding("utf-8");
+	String num = request.getParameter("num");
+%>
+   
 <!DOCTYPE html>
 <html>
 <head>
-<jsp:include page="/Home/inc/head.jsp"/>
-
-<link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/Shop/Review.css"/>
-<script type="text/javascript" src="${contextPath}/Home/Js/Shop/Review.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+	<link rel="stylesheet" type="text/css" href="${contextPath}/T2_tmp/Home/Css/Shop/Review.css"/>
+    <link href="https://fonts.googleapis.com/css2?family=Gaegu&display=swap" rel="stylesheet">
+	<script type="text/javascript" src="${contextPath}/T2_tmp/Home/Js/Common/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="${contextPath}/T2_tmp/Home/Js/Shop/Review.js"></script>
+<title>Review</title>
 </head>
 <body>	
-<jsp:include page="/Home/inc/header.jsp"/>
-	
+	<%
+		String id = (String)session.getAttribute("id");
+	%>
     <section class="container">
         <article class="half">
             <h1>Review</h1>
@@ -24,20 +31,18 @@
             </div>
             <div class="content">
                 <div class="signup-cont cont">
-                    <form action="ModifyUp.jsp" method="post">
-                        <input type="text" name="id2" id="id2" class="inpt" value="<%=id%>" readonly="readonly">
-                        <input type="text" name="pw2" id="pw2" class="inpt" placeholder="Password">
+                    <form action="${contextPath}/living/addReply.do" method="post">
+                    	<input type="hidden" name="num" id="num" class="inpt" value="<%=num%>">
+                        <input type="text" name="writer" id="writer" class="inpt">
+                        <input type="text" name="pw" id="pw" class="inpt" placeholder="Password">
                         <textarea rows="9" cols="36" class="reviewcontent" id="content"></textarea>
                         <div class="submit-wrap">
                             <input type="submit" value="상품후기 등록" class="submit2">
                         </div>
-
                     </form>            
                 </div>
             </div>
         </article>
     </section>
-    <jsp:include page="/Home/inc/footer.jsp"/>
-    
 </body>
 </html>
