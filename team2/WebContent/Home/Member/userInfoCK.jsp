@@ -1,5 +1,5 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR"
-    pageEncoding="EUC-KR"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
@@ -10,18 +10,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-
-<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-<meta http-equiv="Content-Script-Type" content="text/javascript" />
-<meta http-equiv="Content-Style-Type" content="text/css" />
-<title>SSMarket</title>
-
-<link href="${contextPath}/T2_tmp/Home/Css/Common/Common.css" type="text/css" rel="stylesheet" />
-<link href="${contextPath}/T2_tmp/Home/Css/Common/swiper.min.css" type="text/css" rel="stylesheet" />
-<script type="text/javascript" src="${contextPath}/T2_tmp/Home/Js/Common/jquery-1.11.3.min.js"></script>
-<script type="text/javascript" src="${contextPath}/T2_tmp/Home/Js/Common/Common.js"></script>
-<script type="text/javascript" src="${contextPath}/T2_tmp/Home/Js/Common/swiper_r.min.js"></script>
-<link rel="stylesheet" type="text/css" href="${contextPath}/T2_tmp/Home/Css/Member/Member.css" />
+<jsp:include page="/Home/inc/head.jsp"/>
 <script type="text/javascript">
 
 	function fnCheck(){
@@ -29,13 +18,13 @@
 		var mempwd = document.Check.mempwd.value;
 
 		if (!mempwd) {
-			alert("ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä.");
+			alert("ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”.");
 			$("input[name=mempwd]").focus();
 			return;
 		}
 
 	if(mempwd != "${pwd}"){
-		alert("ºñ¹Ğ¹øÈ£°¡ ÀÏÄ¡ÇÏÁö ¾Ê½À´Ï´Ù.");
+		alert("ë¹„ë°€ë²ˆí˜¸ê°€ ì¼ì¹˜í•˜ì§€ ì•ŠìŠµë‹ˆë‹¤.");
 		return;
 	}
 	document.Check.submit();
@@ -44,18 +33,18 @@
 </script>
 </head>
 <body>
-<jsp:include page="../inc/header.jsp" />
+<jsp:include page="/Home/inc/header.jsp" />
 <div id="CommonHeaderArea"></div>
 <div id="CommonHeader_M">
 	<div id="CommonHeaderMenu_M">
 		<div class="tableDiv">
 			<dl class="trMobileMenu">
-				<dd class="tdBtn"><a href="javascript:fnMobileMenu(1);" onclick="GA_event('HEAD', 'ÃÖ»ó´Ü ¸Ş´º MO', '¸Ş´º¹öÆ°');"><img src="${contextPath}/T2_tmp/Images/Ver1/Common/m_top_menu.png" /></a></dd>
+				<dd class="tdBtn"><a href="javascript:fnMobileMenu(1);" onclick="GA_event('HEAD', 'ìµœìƒë‹¨ ë©”ë‰´ MO', 'ë©”ë‰´ë²„íŠ¼');"><img src="${contextPath}/T2_tmp/Images/Ver1/Common/m_top_menu.png" /></a></dd>
 				<dd class="tdBtn">&nbsp;</dd>
-				<dd class="tdLogo"><a href="${contextPath}/T2_tmp/Home/index-2.html"><img src="${contextPath}/T2_tmp/Images/Ver1/Common/m_logo.png" onclick="GA_event('HEAD', 'ÃÖ»ó´Ü ¸Ş´º MO', 'È¨');"/></a></dd>
-				<dd class="tdBtn"><a href="javascript:fnMobileMenuToggle(1);" onclick="GA_event('HEAD', 'ÃÖ»ó´Ü ¸Ş´º MO', '°Ë»ö È°¼ºÈ­');"><img src="${contextPath}/T2_tmp/Images/Ver1/Common/m_top_search.png" /></a></dd>
+				<dd class="tdLogo"><a href="${contextPath}/T2_tmp/Home/index-2.html"><img src="${contextPath}/T2_tmp/Images/Ver1/Common/m_logo.png" onclick="GA_event('HEAD', 'ìµœìƒë‹¨ ë©”ë‰´ MO', 'í™ˆ');"/></a></dd>
+				<dd class="tdBtn"><a href="javascript:fnMobileMenuToggle(1);" onclick="GA_event('HEAD', 'ìµœìƒë‹¨ ë©”ë‰´ MO', 'ê²€ìƒ‰ í™œì„±í™”');"><img src="${contextPath}/T2_tmp/Images/Ver1/Common/m_top_search.png" /></a></dd>
 				<dd class="tdBtn">
-					<a href="${contextPath}/T2_tmp/Home/Order/Cart.html" onclick="GA_event('HEAD', 'ÃÖ»ó´Ü ¸Ş´º MO', 'Àå¹Ù±¸´Ï');">
+					<a href="${contextPath}/T2_tmp/Home/Order/Cart.html" onclick="GA_event('HEAD', 'ìµœìƒë‹¨ ë©”ë‰´ MO', 'ì¥ë°”êµ¬ë‹ˆ');">
 						
 						<img src="${contextPath}/T2_tmp/Images/Ver1/Common/m_top_cart.png" />
 					</a>
@@ -67,8 +56,8 @@
 		<div class="tableDiv">
 			<dl class="trMobileMenu">
 				<dd class="tdKwd"><div class="CommonSearch"><input type="text" id="kwd_M" value="" onkeypress="if(event.keyCode==13){fnCommonSearch(2);}" /></div></dd>
-				<dd class="tdBtn"><a href="javascript:fnCommonSearch(2);" onclick="GA_event('HEAD', 'ÃÖ»ó´Ü ¸Ş´º MO', '°Ë»ö');"><img src="${contextPath}/T2_tmp/Images/Ver1/Common/m_top_search.png" /></a></dd>
-				<dd class="tdBtn"><a href="javascript:fnMobileMenuToggle(2);" onclick="GA_event('HEAD', 'ÃÖ»ó´Ü ¸Ş´º MO', '°Ë»ö ºñÈ°¼ºÈ­');"><img src="${contextPath}/T2_tmp/Images/Ver1/Common/m_top_close.png" /></a></dd>
+				<dd class="tdBtn"><a href="javascript:fnCommonSearch(2);" onclick="GA_event('HEAD', 'ìµœìƒë‹¨ ë©”ë‰´ MO', 'ê²€ìƒ‰');"><img src="${contextPath}/T2_tmp/Images/Ver1/Common/m_top_search.png" /></a></dd>
+				<dd class="tdBtn"><a href="javascript:fnMobileMenuToggle(2);" onclick="GA_event('HEAD', 'ìµœìƒë‹¨ ë©”ë‰´ MO', 'ê²€ìƒ‰ ë¹„í™œì„±í™”');"><img src="${contextPath}/T2_tmp/Images/Ver1/Common/m_top_close.png" /></a></dd>
 			</dl>
 		</div>
 	</div>
@@ -78,13 +67,13 @@
 <form name="Check" method="post" action="${contextPath}/member/userInfo.do">
 <input type="hidden" name="recentURI" value="${recentURI}">
 <div class="LoginWrap">
-	<div class="LoginTitle">ºñ¹Ğ¹øÈ£ È®ÀÎ</div>
+	<div class="LoginTitle">ë¹„ë°€ë²ˆí˜¸ í™•ì¸</div>
 	<div class="LoginComment"></div>
 	<input type="hidden" name="recentURI" value="${recentURI}">
-	<div class="LoginInput"><input type="password" name="mempwd" placeholder="ºñ¹Ğ¹øÈ£¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä." maxlength="32" onkeypress="if(event.keyCode==13){fnLogin(1);}" /></div>
-	<a class="LoginButton" href="javascript:fnCheck();">È®ÀÎ</a>
+	<div class="LoginInput"><input type="password" name="mempwd" placeholder="ë¹„ë°€ë²ˆí˜¸ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”." maxlength="32" onkeypress="if(event.keyCode==13){fnLogin(1);}" /></div>
+	<a class="LoginButton" href="javascript:fnCheck();">í™•ì¸</a>
 </div>
 </form>
-<jsp:include page="../inc/footer.jsp" />
+<jsp:include page="/Home/inc/footer.jsp" />
 </body>
 </html>

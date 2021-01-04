@@ -134,9 +134,9 @@ public class MemberController extends HttpServlet{
 			         + " location.href=document.referrer;"
 					 +"</script>");
 		}else if(action.equals("/login.do")){
-			nextPage = "/T2_tmp/Home/Member/Login.jsp";
+			nextPage = "/Home/Member/Login.jsp";
 		}else if(action.equals("/join.do")){
-			nextPage = "/T2_tmp/Home/Member/Join.jsp";
+			nextPage = "/Home/Member/Join.jsp";
 		}else if(action.equals("/userInfoCK.do")){
 			HttpSession session = request.getSession();
 			String id = (String)session.getAttribute("id");
@@ -144,7 +144,7 @@ public class MemberController extends HttpServlet{
 			MemberVO vo = memberService.searchUser(id);
 			request.setAttribute("vo", vo);
 			
-			nextPage = "/T2_tmp/Home/Member/userInfoCK.jsp";
+			nextPage = "/Home/Member/userInfoCK.jsp";
 		}else if(action.equals("/userInfo.do")){
 			String recentURI = request.getParameter("recentURI");
 			HttpSession session = request.getSession();
@@ -153,7 +153,7 @@ public class MemberController extends HttpServlet{
 			request.setAttribute("vo", vo);
 			request.setAttribute("recentURI", recentURI);
 			
-			nextPage = "/T2_tmp/Home/Member/userInfo.jsp";
+			nextPage = "/Home/Member/userInfo.jsp";
 		}else if(action.equals("/modMember.do")){
 			String recentURI = request.getParameter("recentURI");
 			String memtype = request.getParameter("memtype");
@@ -216,7 +216,7 @@ public class MemberController extends HttpServlet{
 					 + " location.href='"+recentURI+"'; "
 					 +"</script>");
 		}else if(action.equals("/find.do")){
-			nextPage = "/T2_tmp/Home/Member/find.jsp";
+			nextPage = "/Home/Member/find.jsp";
 		}else if(action.equals("/modPwd.do")){
 			String id = request.getParameter("memid");
 			String pwd = request.getParameter("mempwd");
@@ -225,7 +225,7 @@ public class MemberController extends HttpServlet{
 			PrintWriter pw = response.getWriter();
 			pw.print("<script>" 
 					 + " alert('비밀번호 변경이 완료되었습니다.'); "  
-					 + " location.href='/team2/T2_tmp/Home/Member/Login.jsp'; "
+					 + " location.href='/Home/Member/Login.jsp'; "
 					 +"</script>");
 		}
 		

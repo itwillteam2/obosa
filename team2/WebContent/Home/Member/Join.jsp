@@ -7,24 +7,10 @@
 <html lang="ko">
 <head>
 
-    <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-
-    <meta http-equiv="Content-Script-Type" content="text/javascript">
-    <meta http-equiv="Content-Style-Type" content="text/css">
-
-    <title>SSMarket</title>
+<jsp:include page="/Home/inc/head.jsp"/>
     
-	<link href="${contextPath}/T2_tmp/Home/Css/Common/Common.css" type="text/css" rel="stylesheet" />
-	<link href="${contextPath}/T2_tmp/Home/Css/Common/swiper.min.css" type="text/css" rel="stylesheet" />
-	<script type="text/javascript" src="${contextPath}/T2_tmp/Home/Js/Common/jquery-1.11.3.min.js"></script>
-	
-	<script type="text/javascript" src="${contextPath}/T2_tmp/Home/Js/Common/Common.js"></script>
-	
-	<script type="text/javascript" src="${contextPath}/T2_tmp/Home/Js/Common/swiper_r.min.js"></script>
-	
-	<link rel="stylesheet" type="text/css" href="${contextPath}/T2_tmp/Home/Css/Member/Member.css" />
-	<script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
 
+	<script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
     <script type="text/javascript">
     $(document).ready(function(){
     
@@ -512,7 +498,7 @@
     </head>
     <body>
 <body>
-	<jsp:include page="..//inc/header.jsp" />
+	<jsp:include page="/Home/inc/header.jsp" />
 	<div id="CommonHeaderArea"></div>
 	<div id="CommonHeader_M"></div>
 
@@ -706,7 +692,7 @@
 
 </form>
 
-<jsp:include page="../inc/footer.jsp" />
+<jsp:include page="/Home/inc/footer.jsp" />
 
 </body>
 </html>

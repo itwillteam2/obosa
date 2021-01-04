@@ -16,8 +16,8 @@
 				</c:otherwise>
 			</c:choose>
 		</div>
-	<a href="${contextPath}/common/index.do" class="MainLogo"><img src="${contextPath}/T2_tmp/Images/Ver1/Common/logo.png" /></a>
-	<a href="${contextPath}/common/index.do" class="MainLogoScroll"><img src="${contextPath}/T2_tmp/Images/Ver1/Common/logo.png" /></a>
+	<a href="${contextPath}/common/index.do" class="MainLogo"><img src="${contextPath}/Images/Ver1/Common/logo.png" /></a>
+	<a href="${contextPath}/common/index.do" class="MainLogoScroll"><img src="${contextPath}/Images/Ver1/Common/logo.png" /></a>
 	<div class="CategoryLarge">
 		<ul>
 			<li class="CategoryMiddle"><a href="#">인형/토이</a></li>
@@ -32,13 +32,13 @@
 <!-- 			<li class="MyPage"> -->
 <%-- 			<c:choose> --%>
 <%-- 				<c:when test="${empty sessionScope.id}"> --%>
-<%-- 					<a href="${contextPath}/T2_tmp/Member/login.do" title="로그인"><img src="${contextPath}/T2_tmp/Images/Ver1/Common/avatar.svg" id="MyInfoSummaryIcon" /></a> --%>
-<%-- 					<a href="${contextPath}/T2_tmp/Member/login.do" id="LoginBalloon" title="로그인">로그인 !!</a> --%>
-<%-- 					<a href="${contextPath}/T2_tmp/Member/join.do" title="회원가입"><img src="${contextPath}/T2_tmp/Images/Ver1/Common/house_1.svg" /></a> --%>
+<%-- 					<a href="${contextPath}/Member/login.do" title="로그인"><img src="${contextPath}/Images/Ver1/Common/avatar.svg" id="MyInfoSummaryIcon" /></a> --%>
+<%-- 					<a href="${contextPath}/Member/login.do" id="LoginBalloon" title="로그인">로그인 !!</a> --%>
+<%-- 					<a href="${contextPath}/Member/join.do" title="회원가입"><img src="${contextPath}/Images/Ver1/Common/house_1.svg" /></a> --%>
 <%-- 				</c:when> --%>
 <%-- 				<c:otherwise> --%>
-<%-- 					<a href="${contextPath}/T2_tmp/Member/userInfo.do">회원정보변경</a> --%>
-<%-- 					<a href="${contextPath}/T2_tmp/Member/logout.do">로그아웃</a> --%>
+<%-- 					<a href="${contextPath}/Member/userInfo.do">회원정보변경</a> --%>
+<%-- 					<a href="${contextPath}/Member/logout.do">로그아웃</a> --%>
 <%-- 				</c:otherwise> --%>
 <%-- 			</c:choose> --%>
 <!-- 			<a class="btnBallon" href="javascript:fnLoginBalloon();"></a> -->
@@ -46,12 +46,12 @@
 <!-- 			</li> -->
 			<li class="Cart">
 				<a href="Order/Cart.html" title="장바구니">			
-					<img src="${contextPath}/T2_tmp/Images/Ver1/Common/top_icon_cart.png" />
+					<img src="${contextPath}/Images/Ver1/Common/top_icon_cart.png" />
 				</a>
 			</li>
 			<li class="Search">
 				<div class="CommonSearch">
-					<input type="text" id="kwd" value=""><a href="javascript:fnCommonSearch(1);"><img src="${contextPath}/T2_tmp/Images/Ver1/Common/top_icon_search.png" /></a>
+					<input type="text" id="kwd" value=""><a href="javascript:fnCommonSearch(1);"><img src="${contextPath}/Images/Ver1/Common/top_icon_search.png" /></a>
 				</div>
 			</li>
 		</ul>
@@ -63,7 +63,7 @@
 	
 
 
-	<a class="btn_top" href="javascript:;"><img src="${contextPath}/T2_tmp/Images/Ver1/Common/btn_top.png"></a>
+	<a class="btn_top" href="javascript:;"><img src="${contextPath}/Images/Ver1/Common/btn_top.png"></a>
 	<script type="text/javascript">
 		$(document).on("click",".btn_top",function(){ $("html, body").animate({ scrollTop :0},200); });
 	</script>

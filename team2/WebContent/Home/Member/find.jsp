@@ -8,10 +8,10 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<jsp:include page="../inc/head.jsp"/>
+<jsp:include page="/Home/inc/head.jsp"/>
 </head>
 <body>
-<jsp:include page="../inc/header.jsp" />
+<jsp:include page="/Home/inc/header.jsp" />
 <script type="text/javascript">
 	$(document).ready(function(){
 	
@@ -413,6 +413,6 @@
 </div>
 </div>
 </form>
-<jsp:include page="../inc/footer.jsp"/>
+<jsp:include page="/Home/inc/footer.jsp"/>
 </body>
 </html>
