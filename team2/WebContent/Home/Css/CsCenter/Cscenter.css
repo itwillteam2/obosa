@@ -191,7 +191,7 @@
 
 	.wrap .swiper-slide .txt_area { width:75%; padding-left:0.5625rem; padding-top:2.1875rem; float:left;  }
 	.wrap .swiper-slide .txt_area span:nth-child(1) { display:block; line-height:normal; font-size:0.875rem; color:#000000; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; }
-	.wrap .swiper-slide .txt_area span:nth-child(2) { display:block; line-height:normal; font-size0.625rem; color:#646464; }
+	.wrap .swiper-slide .txt_area span:nth-child(2) { display:block; line-height:normal; font-size:0.625rem; color:#646464; }
 
 /*이벤트리스트*/
 

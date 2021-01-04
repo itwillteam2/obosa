@@ -13,20 +13,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-
-<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-
-<meta http-equiv="Content-Script-Type" content="text/javascript" />
-<meta http-equiv="Content-Style-Type" content="text/css" />
-
-<title>SSMarket</title>
-
-<link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/Common/Common.css" />
-<link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/Common/swiper.min.css" />
-
-<script type="text/javascript" src="${contextPath}/Home/Js/Common/jquery-1.11.3.min.js"></script>
-<script type="text/javascript" src="${contextPath}/Home/Js/Common/Common.js"></script>
-<script type="text/javascript" src="${contextPath}/Home/Js/Common/swiper_r.min.js"></script>
+<jsp:include page="/Home/inc/head.jsp"/>
  
 <link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/CsCenter/MyPageQnA.css">
 
@@ -86,8 +73,8 @@
 	<div class="top_title">고객감동센터</div>
 	<div class="MenuBar_Box">
 		<ul>
-			<li onclick="location.href='${contextPath}/Home/CsCenter/NoticeList.jsp';" class="on">공지사항</li>
-			<li onclick="location.href='${contextPath}/Home/CsCenter/InquiryList.jsp';" >상품Q&A</li>
+			<li onclick="location.href='${contextPath}/Home/CsCenter/NoticeList.jsp';" >공지사항</li>
+			<li onclick="location.href='${contextPath}/Home/CsCenter/InquiryList.jsp';" class="on">상품Q&A</li>
 			<li onclick="location.href='${contextPath}/Home/CsCenter/InquiryWrite.jsp';" >1:1 문의/상담</li>
 		</ul>
 	</div>
