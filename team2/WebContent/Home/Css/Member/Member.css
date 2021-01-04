@@ -61,7 +61,7 @@ a.NonMemberOrderDetailButton {display:block; width:100%; height:56px; line-heigh
 .trJoinSex dd {width:120px; line-height:27px; text-align:left; font-size:16px; color:#646464; padding:0 0 30px 0;}
 
 .trJoin dt {width:120px; line-height:56px; text-align:left; font-size:16px; color:#646464;}
-.trJoin dd {width:120px;}
+.trJoin dd {}
 
 .trJoin dd.blank  {width:18px; text-align:center; font-size:15px; color:#646464; line-height:56px;}
 .trJoin dd.comment  {vertical-align:middle; text-align:left;  width:73%; color:#9c9c9c; line-height:27px; height:27px; font-size:14px;}
@@ -231,7 +231,7 @@ a#CheckSixNum {display:none; width:100%; padding:0; text-align:center; margin:0 
 
 /* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - êµ¬ë¶„ì„  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
-@media (max-width:1199px) {
+@media (max-width:360px) {
 	input[type=password], input[type=tel],
 	input[type=text] {padding:0 0.78125rem; line-height:3rem; height:3rem; font-size:0.875rem;}
 
@@ -287,7 +287,7 @@ a#CheckSixNum {display:none; width:100%; padding:0; text-align:center; margin:0 
 	.trJoinSex dd {width:5rem; line-height:1.0625rem; font-size:0.75rem; padding:0 0 1.125rem 0;}
 
 	.trJoin dt {width:5rem; line-height:3rem; font-size:0.75rem;}
-	.trJoin dd {width:5rem;}
+	.trJoin dd {}
 
 	.trJoin dd.blank  {width:0.875rem; font-size:0.7rem; line-height:3rem;}
 	.trJoin dd.button {display:none;}
