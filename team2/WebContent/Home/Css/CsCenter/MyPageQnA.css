@@ -1,0 +1,73 @@
+	.pc { display:block; }
+	.mobile { display:none; }
+	
+	.wrap { width:1200px; margin:0 auto; }
+	.wrap .top_title { font-size:24px; text-align:center; margin:50px 0 40px 0; color:#000000; }
+	.wrap .top_image { margin-bottom:35px;  }
+	.wrap .top_image img { width:100%; }
+
+	.wrap .MenuBar_Box { margin-bottom:45px; }
+	.wrap .MenuBar_Box:after { content:" "; display:block; clear:both; }
+	.wrap .MenuBar_Box li { cursor:pointer; text-align:center; font-size:20px; color:#999999; background-color:#f4f4f4; border-left:1px solid #000000; border-top:1px solid #000000; border-bottom:1px solid #000000; width:33.3%; height:65px; line-height:65px; }
+	.wrap .MenuBar_Box li.on { color:#000000; background-color:#ffffff; }
+	.wrap .MenuBar_Box li:nth-child(1) { border-radius:5px 0 0 5px; }
+	.wrap .MenuBar_Box li:nth-child(3) { border-right:1px solid #000000; border-radius:0 5px 5px 0; }
+
+	.wrap { width:1200px; margin:0 auto; }
+	.wrap .sel_box { margin-bottom:13px;  }
+	.wrap .sel_box:after { content:" "; display:block; clear:both;  }
+	.wrap .sel_box select { background:url(/images/ver1/common/sel_arrow.png) no-repeat; background-position:right 0.3125rem center; font-size:17px; color:#424242; width:165px; height:46px; line-height:16px; padding:0 12px; border:1px solid #424242; border-radius:5px; }
+	.wrap .sel_box span { cursor:pointer; float:right; display:inline-block; background-color:#000000; color:#ffffff; width:185px; height:46px; line-height:46px; border-radius:5px; text-align:center; font-size:17px; }
+
+	.wrap .MyQnaBox { border-top:1px solid #000000; }
+
+	.wrap .list_line ul li:nth-child(1) { text-align:left; border:0; color:#000000; width:100%; }
+	.wrap .list_line ul li:nth-child(2) { width:150px; }
+	.wrap .list_line ul li:nth-child(3) { width:900px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis;}
+	.wrap .list_line ul li:nth-child(4) { width:150px; }
+
+	.wrap .list_line ul:after { content:" "; display:block; clear:both; }
+	.wrap .list_line ul li { height:75px; line-height:75px; border-bottom:1px solid #e4e4e4; font-size:16px; color:#999999; text-align:center; }
+	.wrap .list_line ul li:nth-child(3) { text-align:left; color:#000000; }
+	.wrap .list_line ul li:nth-child(4) { color:#000000; }
+
+	.wrap .list_cont { background-color:#f9f9f9; padding:30px 0; font-size:15px; color:#888888; line-height:23px; border-bottom:1px solid #e4e4e4; }
+	.wrap .list_cont p { line-height:23px; }
+	.wrap .list_cont .qnabox { padding-left:130px; position:relative; }
+	.wrap .list_cont .qnabox.type { margin-top:30px; }
+	.wrap .list_cont .qnabox .marker { left:43px; font-size:25px; color:#ff8f8e; display:inline-block; position:absolute;  } 
+	.wrap .list_cont .btn_area { text-align:right; }
+	.wrap .list_cont .btn_area .RemoveQA { display:inline-block; text-align:center; margin-right:30px; cursor:pointer; border-radius:5px; width:115px; height:35px; line-height:35px; color:#ffffff; background-color:#424242; font-size:14px; }
+	.wrap .list_cont .Download { margin-top:10px; }
+	.wrap .list_cont .Download div { margin-right:30px; color:#000000;}
+
+
+@media only screen and (max-width:1199px)
+{
+	.pc { display:none; }
+	.mobile { display:block; }
+
+	.wrap { width:100%; margin:0 auto; padding:0 0.75rem; }
+	.wrap .sel_box { margin-bottom:0.78125rem;  }
+	.wrap .sel_box select { background:url(/images/ver1/common/sel_arrow.png) no-repeat; background-size:0.53125rem 0.28125rem; background-position:right 0.3125rem center; font-size:0.8125rem; color:#424242; width:33%; height:2.125rem; padding:0 0.375rem; border:1px solid #424242; border-radius:5px; }
+	.wrap .sel_box span { float:right; display:inline-block; background-color:#000000; color:#ffffff; font-size:0.8125rem; width:20%; height:2.125rem; line-height:2.125rem; border-radius:5px; text-align:center; }
+
+	.wrap .list_line ul li:nth-child(1) { height:1.8rem; }
+	.wrap .list_line ul li:nth-child(2) { width:20%; color:#999999 !important; }
+	.wrap .list_line ul li:nth-child(3) { width:80%; }
+
+	.wrap .list_line ul:after { content:" "; display:block; clear:both; }
+	.wrap .list_line ul li { height:2.375rem; line-height:2.375rem; border-bottom:1px solid #e4e4e4; font-size:0.8125rem; color:#999999; text-align:center; }
+	.wrap .list_line ul li:nth-child(2) { text-align:left; color:#000000; }
+
+	.wrap .list_cont { background-color:#f9f9f9; padding:0.9375rem 0; font-size:0.75rem; color:#888888; line-height:0.875rem; border-bottom:1px solid #e4e4e4; }
+	.wrap .list_cont p { line-height:0.875rem; }
+	.wrap .list_cont .qnabox { padding-left:2.8125rem; position:relative; }
+	.wrap .list_cont .qnabox.type { margin-top:0.9375rem; }
+	.wrap .list_cont .qnabox .marker { left:1rem; font-size:1.125rem; color:#ff8f8e; display:inline-block; position:absolute;  } 
+	.wrap .list_cont .btn_area { text-align:right; }
+	.wrap .list_cont .btn_area .RemoveQA { display:inline-block; text-align:center; margin-right:1rem; cursor:pointer; border-radius:5px; padding:0 1rem; width:auto; height:2.125rem; line-height:2.125rem; color:#ffffff; background-color:#424242; font-size:0.75rem; }
+	.wrap .list_cont .Download { margin-top:0.625rem; }
+	.wrap .list_cont .Download div { margin-right:1rem; color:#000000;}
+
+}

@@ -25,6 +25,10 @@ pageEncoding="UTF-8"%>
 	<link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/Common/swiper.min.css" />
 	<link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/Member/Member.css" />
 	<link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/Common/Item.css" />
+	<link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/CsCenter/Cscenter.css" />
+	<link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/CsCenter/MyPageQnA.css" />
+	
+	
 	
 	<script type="text/javascript" src="${contextPath}/Home/Js/Common/jquery-1.11.3.min.js"></script>
 	<script type="text/javascript" src="${contextPath}/Home/Js/Common/Common.js"></script>

@@ -179,7 +179,7 @@ $(window).load(function(){
 </script>
 </head>
 <body>
-	<jsp:include page="/Home/inc/hdr_menu.jsp" />
+	<jsp:include page="../inc/hdr_menu.jsp" />
 	<div id="CommonHeaderArea"></div>
 	<div id="CommonHeader_M"></div>
 	<div class="wrap">

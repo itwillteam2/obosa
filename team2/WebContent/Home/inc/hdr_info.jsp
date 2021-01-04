@@ -22,11 +22,6 @@
 		<div class="clear"></div>
 	</div>
 	<div id="CommonHeaderArea"></div>
-<div id="CommonHeader_M"></div>
-	
-<!-- Mobile -->
-	<a class="btn_top" href="javascript:;"><img src="${contextPath}/Images/Ver1/Common/btn_top.png"></a>
-	<script type="text/javascript">
-		$(document).on("click",".btn_top",function(){ $("html, body").animate({ scrollTop :0},200); });
-	</script>
+	<div id="CommonHeader_M"></div>
+
 	</header>

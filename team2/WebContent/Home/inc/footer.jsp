@@ -41,7 +41,7 @@ pageEncoding="UTF-8"%>
 			<img src="${contextPath}/Images/Ver1/Common/footer_btn2.png"  />1:1 문의/상담</a></li>
 			<li class="Information"><big>(주)TEAM2</big><br />
 				부산 아이티윌 2조&nbsp;&nbsp; <br>
-				팀원 : 김성훈, 곽서린, 한승원, 이은미, 김동환, 오소라 <br>
+				팀원 : 김성훈, 곽서린, 한승원, 김동환, 오소라 <br>
 				E-MAIL: team2@naver.com<br><br>
 				COPYRIGHT &copy; 가나다라마바사</li>
 		</ul>
