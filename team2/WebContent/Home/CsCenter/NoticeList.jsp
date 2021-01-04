@@ -21,6 +21,8 @@
 
 <title>SSMarket</title>
 
+
+<jsp:include page="../inc/head.jsp" />
 <link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/Common/Common.css" />
 <link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/Common/swiper.min.css" />
 
@@ -28,7 +30,8 @@
 <script type="text/javascript" src="${contextPath}/Home/Js/Common/Common.js"></script>
 <script type="text/javascript" src="${contextPath}/Home/Js/Common/swiper_r.min.js"></script>
 
-<link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css//.css" />
+<link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/Cscenter.css" />
+<link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/MyPageQnA.css" />
 
 <script type="text/javascript">
 
@@ -91,50 +94,58 @@
 		<div class="top_title">고객감동센터</div>
 	<div class="MenuBar_Box">
 		<ul>
-			<li onclick="location.href='${contextPath}/Home//NoticeList.jsp';" class="on">공지사항</li>
-			<li onclick="location.href='${contextPath}/Home//'InquireList.jsp;" >상품Q&A</li>
-			<li onclick="location.href='${contextPath}/Home//InquiryWrite.jsp';" >1:1 문의/상담</li>
+			<li onclick="location.href='${contextPath}/Home/CsCenter/NoticeList.jsp';" class="on">공지사항</li>
+			<li onclick="location.href='${contextPath}/Home/CsCenter/InquiryList.jsp';" >상품Q&A</li>
+			<li onclick="location.href='${contextPath}/Home/CsCenter/InquiryWrite.jsp';" >1:1 문의/상담</li>
 		</ul>
 	</div>
-	
-		<%-- <c:if test="${is_admin == 1}"> --%>
-			<a href="${contextPath}/board/articleForm.do"><input type="button" value="글쓰기"></a>
-		<%-- </c:if> --%>
-			
-			<div class="tab_gubn">
-				<ul>
-					<li>번호</li>
-					<li>제목</li>
-					<li>등록일</li>
-				</ul>
-			</div>
-	
-	<c:choose>
-		<c:when test="${articlesList == null}" >
-				<div>등록된 글이 없습니다.</div>
-		</c:when>
-		<c:when test="${articlesList != null}" >
-		<c:forEach  var="article"   items="${articlesList}"  varStatus="articleNum"  >
-			<div class="list_line">
-				<ul>
-					<li>8</li>
-					<li>리플렛 할인 쿠폰 발급 및 사용 종료 안내</li>
-					<li>2020-11-27</li>
-					<input type="hidden"/>
-				</ul>
-			</div>
-			<div class="list_cont" style="display:none;">
-				<p>내용</p>
-				<div class="btn_area">
-					<span class="btnQA" onclick="javascript:funcDel(52333);">수정</span>
-					<span class="btnQA" onclick="">삭제</span>
+
+		<div class="sel_box">
+			<span
+				onclick="javascript:location.href='${contextPath}/CsCenter/NoticeWrite.do';">공지사항 쓰기</span>
+		</div>
+		<span class="tot_cnt">총 <span>102</span>건의 FAQ가 있습니다.
+		</span>
+		<div style="clear: both;"></div>
+		<div class="tab_gubn">
+			<ul>
+				<li>번호</li>
+				<li>제목</li>
+				<li>등록일</li>
+			</ul>
+		</div>
+		<div class="list_line">
+			<ul>
+				<li>102</li>
+				<li>상품을 해외로 배송할 수 있나요?</li>
+				<li>2018-09-18</li>
+			</ul>
+		</div>
+		<div class="list_cont" style="display:none;">
+			<p>현재 해외배송 서비스는 지원하지 않고 있습니다.</p><p>국내 배송지로 배송만 가능합니다.</p>
+			<div class="more_info">답변이 충분하지 않으신가요?<strong class="mobile"></strong> 1:1 문의/상담을 이용해 주세요.<span onclick="javascript:location.href='/Home/Cscenter/Enquiry.asp';">1:1 문의/상담 작성</span></div>
+		</div>
+		<div class="FAQ">
+			<div class="SearchContent">
+				<div class="SearchLeftTitle">공지사항 검색</div>
+
+				<div class="selectbox">
+					<select id='ClassIDX' name='ClassIDX'>
+						<option value=''>전체</option>
+						<option value='0'>주문/결제</option>
+						<option value='1'>취소/반품/환불</option>
+						<option value='2'>배송</option>
+					</select>
+				</div>
+				<div class="inputbox">
+					<input type="text" class="i_input01" name="txSch" id="txSch"
+						value="" title="검색어"
+						onkeypress="if(event.keyCode==13){$('.Search_btn').trigger('click');}" />
+					<span class="Search_btn"></span>
 				</div>
 			</div>
-		</c:forEach>
-		</c:when>
-	</c:choose>	
-	
-			<div class="paging">
+		</div>
+		<div class="paging">
 				<span class="box">
 					<span class="btn_pageprev opacity" ><a href="javascript:;" ><img class="paging_pc" src="${contextPath}/Images/Ver1/Common/btn_board_prev.gif" /></a></span>
 					<span class="txt_pagenum"><a href="javascript:;" class="btn_pageon"  >1</a></span>

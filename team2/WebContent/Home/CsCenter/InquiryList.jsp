@@ -13,8 +13,14 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<jsp:include page="/Home/inc/head.jsp"/>
- 
+
+<link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/Common/Common.css" />
+<link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/Common/swiper.min.css" />
+
+<script type="text/javascript" src="${contextPath}/Home/Js/Common/jquery-1.11.3.min.js"></script>
+<script type="text/javascript" src="${contextPath}/Home/Js/Common/Common.js"></script>
+<script type="text/javascript" src="${contextPath}/Home/Js/Common/swiper_r.min.js"></script>
+<link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/Cscenter.css" />
 <link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/CsCenter/MyPageQnA.css">
 
 <script type="text/javascript">

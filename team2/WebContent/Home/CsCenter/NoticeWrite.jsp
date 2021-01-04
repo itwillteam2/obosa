@@ -30,6 +30,12 @@
 
 <link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/CsCenter/Cscenter.css" />
 
+
+<script type="text/javascript" src="${contextPath}/Home/Js/Common/iscroll.js"></script>
+<script type="text/javascript" src="${contextPath}/Home/Js/Common/jquery.sticky.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
+<link rel="stylesheet" href="${contextPath}/Home/Css/Write/bootstrap.min.css">
+<link rel="stylesheet" href="${contextPath}/Home/Css/Write/board.css">
 <script type="text/javascript">
 
 	$(document).ready(function(){
@@ -98,63 +104,45 @@
 </script>
 </head>
 <body>
-	<jsp:include page="../inc/hdr_menu.jsp" />
-	<div id="CommonHeaderArea"></div>
-	<div id="CommonHeader_M"></div>
+<jsp:include page="/Home/inc/hdr_info.jsp"/>
 
-	<div class="wrap" id="ori_wrap">
-		<div class="top_title">고객감동센터</div>	
-	<div class="MenuBar_Box">
-		<ul>
-			<li onclick="location.href='${contextPath}/Home/CsCenter/NoticeList.jsp';" class="on">공지사항</li>
-			<li onclick="location.href='${contextPath}/Home/CsCenter/InquiryList.jsp';" >상품Q&A</li>
-			<li onclick="location.href='${contextPath}/Home/CsCenter/InquiryWrite.jsp';" >1:1 문의/상담</li>
-		</ul>
+<div>
+	<div>
+		<h2 style="text-align:center; margin: 30px 0; font-size:30px;">공지사항 등록</h2>
 	</div>
-	
-	<form action="${contextPath}/board/addArticle.do" name="Inquiryfrm" method="post" enctype="multipart/form-data">	
-		<div class="outter_box">
-			<div class="right_box">
-
-			<div>
-				<ul>
-					<li>제목</li>
-					<li>
-						<input type="text" name="title" />
-					</li>
-				</ul>
-			</div>
-
-			<div>
-				<ul>
-					<li>내용</li>
-					<li class="textbox">
-						<textarea type="text" name="content"></textarea>
-					</li>
-				</ul>
-			</div>
-
-			<div>
-				<ul>
-					<li class="filebox">파일첨부</li>
-					<li class="filebox" style="position:relative;">
-						<img class="file_x" data="https://www.artboxmall.com/Home/Cscenter/1" src="https://www.artboxmall.com/Images/Ver1/Common/btn_file_x.png" />
-						<input type="text" name="txFile1" /><span class="file_btn">파일선택<input type="file" name="imageFileName"  onchange="fnItem1FileUpload()"/></span>
-						<div style="clear:both; margin-bottom:10px;"></div>
-					</li>
-
-				</ul>
-			</div>
-			</div>
-		</div>
-
-		<div class="btn_area">
-			<span onclick="backToList(this.form);">취소</span>
-			<span onclick="InquiryInput();">등록</span>
+</div>
+<article class="product" style="width:1200px; margin : 0 auto" >
+	<form action="${contextPath}/living/addLiving.do" method="post">
+		<table class="table">
+			<colgroup>
+				<col style="width:120px" />
+				<col />
+			</colgroup>
+			<tr>
+				<th class="align-middle">
+					<label for="productName" class="m-0">제목</label>
+				</th>
+				<td>
+					<input style="width:700px; margin:0 auto;" class="form-control" type="text" name="productName" id="productName" />
+				</td>
+			</tr>
+			<tr>
+				<th class="align-middle">
+					<label for="productContent" class="m-0">내용</label>
+				</th>
+				<td>			
+					<textarea style="margin:0 auto; resize:none; height:400px; width:700px;"class="form-control" name="productContent" id="productContent" cols="40" rows="13"></textarea>
+				</td>
+			</tr>
+			</tr>
+		</table>
+		<div class="text-center my-5">
+			<button type="button" class="btn btn-secondary" onclick="history.back()">취소</button>
+			<button type="submit" class="btn btn-primary">공지사항 등록하기</button>
 		</div>
 	</form>
-	
-	</div>
-	<jsp:include page="../inc/footer.jsp" />
+</article>
+<script src="${contextPath}/Home/Js/Shop/bootstrap.min.js"></script>
+<jsp:include page="/Home/inc/footer.jsp"/>
 </body>
 </html>

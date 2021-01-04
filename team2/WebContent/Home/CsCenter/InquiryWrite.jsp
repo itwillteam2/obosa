@@ -117,21 +117,6 @@
 			alert("문의내용은 32767바이트(한글 약 15000자)를 넘길 수 없습니다.\t");
 			return false;
 		}
-
-		if(!f.privacycheck1.checked){
-			alert("개인정보 수집 및 이용에 동의해주세요.\t");
-			f.privacycheck1.focus() ;
-			return false;
-		}else if(!f.privacycheck2.checked){
-			alert("제 3자 정보 제공에 동의해주세요.\t");
-			f.privacycheck2.focus() ;
-			return false;
-		}
-		
-		f.method = "post";
-		f.encoding = "multipart/form-data"
-		f.action = "https://www.artboxmall.com/Home/Cscenter/Enquiry_p.asp";
-		f.submit();
 	}
 
 </script>
@@ -224,38 +209,8 @@
 					</li>
 				</ul>
 			</div>
-
-			<div>
-				<ul>
-					<li class="filebox">파일첨부</li>
-					<li class="filebox" style="position:relative;">
-						<img class="file_x" data="https://www.artboxmall.com/Home/Cscenter/1" src="https://www.artboxmall.com/Images/Ver1/Common/btn_file_x.png" />
-						<input type="text" name="txFile1" /><span class="file_btn">파일선택<input type="file" name="file1"  onchange="fnItem1FileUpload()"/></span>
-						<div style="clear:both; margin-bottom:10px;"></div>
-						<img class="file_x" data="https://www.artboxmall.com/Home/Cscenter/2" src="https://www.artboxmall.com/Images/Ver1/Common/btn_file_x.png" />
-						<input type="text" name="txFile2" /><span class="file_btn">파일선택<input type="file" name="file2"  onchange="fnItem2FileUpload()"/></span>
-						<div style="clear:both; margin-bottom:10px;"></div>
-						<img class="file_x" data="https://www.artboxmall.com/Home/Cscenter/3" src="https://www.artboxmall.com/Images/Ver1/Common/btn_file_x.png" />
-						<input type="text" name="txFile3" /><span class="file_btn">파일선택<input type="file" name="file3"  onchange="fnItem3FileUpload()"/></span>
-						<div style="clear:both; margin:0;"></div>
-						<span>파일개수 : 최대 3개</span>
-					</li>
-
-				</ul>
-			</div>
 		</div>
-
 	</div>
-
-
-	<div class="PrivacyCheck">
-		<b>개인정보 수집 및 이용에 동의합니다. <input type="checkbox" name="privacycheck1" /></b>
-		<p>(주)아트박스에서는 고객상담을 목적으로 개인정보(이름, 휴대폰번호, 이메일)를 수집하며, 수집한 개인정보는 전자상거래 등에서의 소비자보호에 관한 법률에 의거 상담 접수일로부터 3년 또는 5년간 보관 후 파기 합니다. 동의 거부 시 상담이 제한되거나 거부될 수 있습니다.</p>
-		<b>제 3자 정보 제공에 동의합니다. <input type="checkbox" name="privacycheck2" /></b>
-		<p>(주)아트박스에서 고객상담을 목적으로 (주)웅진에 개인정보(이름, 휴대폰번호, 이메일)를 제공하며, 제공한 개인정보는 전자상거래 등에서의 소비자보호에 관한 법률에 의거 상담 접수일로 부터 3년 또는 5년간 보관 후 파기 합니다. 동의 거부 시 상담이 제한되거나 거부될 수 있습니다.</p>
-	</div>
-
-
 	<div class="btn_area">
 		<span onclick="history.back(-1);">취소</span>
 		<span onclick="InquiryInput();">등록</span>
