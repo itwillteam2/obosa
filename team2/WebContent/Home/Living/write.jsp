@@ -1,36 +1,26 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>    
-<!DOCTYPE html>
-<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>Write</title>
-<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-
-<link href="${contextPath}/T2_tmp/Home/Css/Common/Common.css" type="text/css" rel="stylesheet" />
-<link href="${contextPath}/T2_tmp/Home/Css/Common/swiper.min.css" type="text/css" rel="stylesheet" />
-
-<script type="text/javascript" src="${contextPath}/T2_tmp/Home/Js/Common/jquery-1.11.3.min.js"></script>
-<script type="text/javascript" src="${contextPath}/T2_tmp/Home/Js/Common/Common.js"></script>
-<script type="text/javascript" src="${contextPath}/T2_tmp/Home/Js/Common/swiper_r.min.js"></script>
-	
-<script type="text/javascript" src="${contextPath}/T2_tmp/Home/Js/Common/iscroll.js"></script>
-<script type="text/javascript" src="${contextPath}/T2_tmp/Home/Js/Common/jquery.sticky.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
-<link rel="stylesheet" href="../Css/write/bootstrap.min.css">
-<link rel="stylesheet" href="../Css/write/board.css">
-
-</head>
-<body>
-<jsp:include page="../inc/header.jsp"/>
-<div id="CommonHeaderArea"></div>
-<div id="CommonHeader_M"></div>
 <%
 	request.setCharacterEncoding("utf-8");
 	String id = (String)session.getAttribute("id");
 %>
+
+<!DOCTYPE html>
+<html>
+<head>
+<jsp:include page="/Home/inc/head.jsp"/>
+<script type="text/javascript" src="${contextPath}/Home/Js/Common/iscroll.js"></script>
+<script type="text/javascript" src="${contextPath}/Home/Js/Common/jquery.sticky.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script>
+<link rel="stylesheet" href="${contextPath}/Home/Css/write/bootstrap.min.css">
+<link rel="stylesheet" href="${contextPath}/Home/Css/write/board.css">
+
+</head>
+<body>
+<jsp:include page="/Home/inc/header.jsp"/>
+
 <div>
 	<div>
 		<h2 style="text-align:center; margin: 30px 0;">상품 등록</h2>
@@ -156,14 +146,14 @@
 	</form>
 </article>
 
-<script src="${contextPath}/T2_tmp/Home/Js/Shop/bs-custom-file-input.js"></script>
-<script src="${contextPath}/T2_tmp/Home/Js/Shop/lmw-custom-preview.js"></script>
-<script src="${contextPath}/T2_tmp/Home/Js/Shop/bootstrap.min.js"></script>
+<script src="${contextPath}/Home/Js/Shop/bs-custom-file-input.js"></script>
+<script src="${contextPath}/Home/Js/Shop/lmw-custom-preview.js"></script>
+<script src="${contextPath}/Home/Js/Shop/bootstrap.min.js"></script>
 <script>	
 	$(document).ready(function() {
 		bsCustomFileInput.init()
 	});
 </script>
-<jsp:include page="../inc/footer.jsp"/>
+<jsp:include page="/Home/inc/footer.jsp"/>
 </body>
 </html>

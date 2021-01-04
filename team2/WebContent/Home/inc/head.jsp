@@ -19,15 +19,18 @@ pageEncoding="UTF-8"%>
 	<link href="${contextPath}/Images/Ver1/Icon/icon180.png" rel="apple-touch-icon-precomposed" />
 	<link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/Common/Common.css" />
 	<link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/Common/swiper.min.css" />
-	<script type="text/javascript" src="${contextPath}/Home/Js/Common/jquery-1.11.3.min.js"></script>
-	<script type="text/javascript" src="${contextPath}/Home/Js/Common/Common.js"></script>
-	<script type="text/javascript" src="${contextPath}/Home/Js/Common/swiper_r.min.js"></script> 
+	<link href="https://fonts.googleapis.com/css2?family=Gaegu&display=swap" rel="stylesheet">
 	<link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/Common/Index.css" />
 	<link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/Common/FlexSliderIndex.css" />
-	<script type="text/javascript" src="${contextPath}/Home/Js/Common/jquery.flexslider-min.js" charset="utf-8"></script> 
 	<link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/Common/swiper.min.css" />
 	<link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/Member/Member.css" />
 	<link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/Common/Item.css" />
+	
+	<script type="text/javascript" src="${contextPath}/Home/Js/Common/jquery-1.11.3.min.js"></script>
+	<script type="text/javascript" src="${contextPath}/Home/Js/Common/Common.js"></script>
+	<script type="text/javascript" src="${contextPath}/Home/Js/Common/swiper_r.min.js"></script> 
+	
+	<script type="text/javascript" src="${contextPath}/Home/Js/Common/jquery.flexslider-min.js" charset="utf-8"></script> 
 	<script type="text/javascript" src="${contextPath}/Home/Js/Common/swiper.min.js"></script>
 	<script type="text/javascript" src="${contextPath}/Home/Js/Common/jquery.rwdImageMaps.min.js"></script>
 	<script type="text/javascript" src="${contextPath}/Home/Js/Common/jquery.bxslider.ABIndex.js"></script>

@@ -1,23 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
-    
+ <% String id = (String)session.getAttribute("id"); %>   
 <!DOCTYPE html>
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-	<link rel="stylesheet" type="text/css" href="${contextPath}/T2_tmp/Home/Css/Shop/Review.css"/>
-    <link href="https://fonts.googleapis.com/css2?family=Gaegu&display=swap" rel="stylesheet">
-	<script type="text/javascript" src="${contextPath}/T2_tmp/Home/Js/Common/jquery-1.11.3.min.js"></script>
-	<script type="text/javascript" src="${contextPath}/T2_tmp/Home/Js/Shop/Review.js"></script>
-<title>Q&A</title>
+<jsp:include page="/Home/inc/head.jsp"/>
+
+<link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/Shop/Review.css"/>
+<script type="text/javascript" src="${contextPath}/Home/Js/Shop/Review.js"></script>
 </head>
 <body>	
-	<%
-		String id = (String)session.getAttribute("id");
-	%>
+<jsp:include page="/Home/inc/header.jsp"/>	
     <section class="container">
         <article class="half">
             <h1>Q&A</h1>
@@ -39,5 +35,6 @@
             </div>
         </article>
     </section>
+    <jsp:include page="/Home/inc/footer.jsp"/>
 </body>
 </html>

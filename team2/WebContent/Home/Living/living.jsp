@@ -7,27 +7,8 @@
 <!DOCTYPE html>
 <html lang="ko">
 
-<!-- Mirrored from www.artboxmall.com/home/shop/category.asp by HTTrack Website Copier/3.x [XR&CO'2014], Thu, 24 Dec 2020 05:44:06 GMT -->
-<!-- Added by HTTrack -->
-<meta http-equiv="content-type" content="text/html;charset=utf-8" />
-<!-- /Added by HTTrack -->
 <head>
-
-<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
-
-<meta http-equiv="Content-Script-Type" content="text/javascript" />
-<meta http-equiv="Content-Style-Type" content="text/css" />
-<title>SSMarket</title>
-
-
-<link rel="stylesheet" type="text/css" href="${contextPath}/T2_tmp/Home/Css/Common/Item.css">
-<script type="text/javascript" src="${contextPath}/T2_tmp/Home/Js/Common/swiper.min.js"></script>
-<link href="${contextPath}/T2_tmp/Home/Css/Common/Common.css" type="text/css" rel="stylesheet" />
-<link href="${contextPath}/T2_tmp/Home/Css/Common/swiper.min.css" type="text/css" rel="stylesheet" />
-<script type="text/javascript" src="${contextPath}/T2_tmp/Home/Js/Common/jquery-1.11.3.min.js"></script>
-<script type="text/javascript" src="${contextPath}/T2_tmp/Home/Js/Common/Common.js"></script>
-<script type="text/javascript" src="${contextPath}/T2_tmp/Home/Js/Common/swiper_r.min.js"></script>
-
+<jsp:include page="/Home/inc/head.jsp"/>
 <script type="text/javascript">
 	$(document)
 			.on(
@@ -137,10 +118,8 @@
 </head>
 <body>
 
-	<jsp:include page="../inc/header.jsp" />
+	<jsp:include page="/Home/inc/header.jsp" />
 
-	<div id="CommonHeaderArea"></div>
-	<div id="CommonHeader_M"></div>
 
 	<div class="wrap">
 		<section class="sec_header">
@@ -313,7 +292,7 @@
 			</form>
 		</section>
 	</div>
-	<jsp:include page="../inc/footer.jsp" />
+	<jsp:include page="/Home/inc/footer.jsp" />
 
 </body>
 </html>
