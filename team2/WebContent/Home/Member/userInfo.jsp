@@ -12,7 +12,7 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-<jsp:include page="/Home/inc/head.jsp"/>
+<jsp:include page="../inc/head.jsp"/>
 	<script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
 
     <script type="text/javascript">
@@ -634,7 +634,6 @@
             </dd>
         </dl>
     </div>
-    
     <div class="tableDiv">
         <dl class="trJoin">
             <dt>&nbsp;</dt>
