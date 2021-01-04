@@ -52,11 +52,11 @@ public class CommonController extends HttpServlet{
 		//회원 검색 기능을 수행합니다.
 		//-> 회원 조회 기능 요청이 들어 오면(/listMembers.do)
 		if(action.equals("/index.do")){
-			nextPage = "/T2_tmp/Home/index.jsp";
+			nextPage = "/Home/index.jsp";
 		}else if(action.equals("/cart.do")){
-			nextPage = "/T2_tmp/Home/Order/Cart.jsp";
+			nextPage = "/Home/Order/Cart.jsp";
 		}else if(action.equals("/living.do")){
-			nextPage = "/T2_tmp/Home/Living/living.jsp";
+			nextPage = "/Home/Living/living.jsp";
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
