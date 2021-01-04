@@ -3,11 +3,7 @@
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
-
-
-
-
-
+<c:set var="livingVO" value="${livingMap.livingVO }" />
 
 
 <!DOCTYPE html>
@@ -153,14 +149,14 @@
 					<ul class='itemList'>
 						<li>
 							<span class='img'> 
-								<a href='#'>
-									<img src='https://www.poom.co.kr/Upload2/Product/202012/2012150253_detail1.jpg?cmd=thumb&amp;w=270&amp;h=270&amp;fit=true' />
+								<a href=''>
+									<img src="${livingVO.productImageName1 }" />
 								</a> 
 							</span> 
 							<span class='iteminfo'> 
 								<span class='text'>
-								<a href='#'>JELLY뻐 너만콬콬 사랑할꼬야 콜라젤리 (24009448)</a></span> 
-								<span class='price won'><span class='won'>3,300<strong>원</strong></span></span>
+								<a href='#'></a></span> 
+								<span class='price won'><span class='won'><strong>원</strong></span></span>
 						</span></li>
 						
 					</ul>

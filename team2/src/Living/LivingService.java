@@ -13,18 +13,26 @@ public class LivingService {
 		livingDAO = new LivingDAO();
 		livingVO = new LivingVO();
 	}	
+	
+	public Map<String,Object> detailLiving(int livingNum){
+		
+		Map<String, Object> livingMap = new HashMap<String, Object>();
+		
+		LivingVO livingVO = livingDAO.getLiving(livingNum);
+		livingMap.put("livingVO", livingVO);
+		
+		return livingMap;
+	}
 
 	
-	  public Map listLivingProduct(Map<String, String> num) {
+	  public Map<String,Object> listLivingProduct(Map<String, Object> LivingListMap) {
 	  
-	  Map<String, String> LivingProductListMap = new HashMap<String, String>();
+	  Map<String, Object> LivingProductListMap = new HashMap<String, Object>();
 	  
-	  List<Map<String, String>> productList = livingDAO.getProductList(startRow, endRow);
+	  List<Map<String, Object>> productList = livingDAO.getLivingList(LivingListMap);
 	  LivingProductListMap.put("productList", productList);
 	  
-	  return LivingProductListMap;
-	  
-	  
+	  return LivingProductListMap;	  
 	  
 	  }
 	 
