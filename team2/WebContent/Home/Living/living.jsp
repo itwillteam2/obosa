@@ -129,7 +129,7 @@
 		</section>
 
 		<section class="sec_cont">
-			<form name="frm">
+			<form name="frm" action="${contextPath }/Living/listLiving.do">
 				<input type="hidden" name="page" value="1" />
 
 				<div class="inner">
@@ -147,18 +147,41 @@
 						</span>
 					</div>
 					<ul class='itemList'>
-						<c:forEach var="livingItem" items="" begin="0" end="${LivingListMap}" step="1">
-							<li><span class='img'>
-							 <a href=''>
-								 <img src="${livingItem.productImageName1 }" />								 
-							</a>
-							</span> <span class='iteminfo'> <span class='text'> <a
-										href='#'>${livingItem.productName }</a>
-								</span> <span class='price won'> <span class='won'> <strong>${livingItem.productPrice }원</strong>
+						
+						
+						<c:forEach var="living" items="${livingList }">
+							<li>
+								<span class="img"> 
+										<!-- 사진 클릭했을때 그 인덱스값으로 가기 -->
+										<a href="/home/shop/itemdetail.asp?itemidx=2012110629"
+											onclick="GA_event(&quot;카테고리&quot;, &quot;패션_상품&quot;, &quot;미니파우치 뽀글 지퍼주머니 체리 (37002942)&quot;); GA_onclick(&quot;카테고리_패션&quot;, &quot;2012110629&quot;, &quot;미니파우치 뽀글 지퍼주머니 체리 (37002942)&quot;, &quot;아트박스&quot;, &quot;패션&quot;, &quot;4500&quot;, &quot;#32&quot;, &quot;0&quot;);">
+											<!-- 이미지 불러오기 -->
+											<img src="${living.productImageName1 }">
+										</a> 
+											<span class="hover">
+												<span class="wish " data-itemidx="2012110629"></span>										
+												<span class="cart" data-itemidx="2012110629" data-opidx="" data-itemoptioncd="N"></span>
+												<span class="ps" data-itemidx="2012110629">0</span>
+											</span>
+								</span> 
+								<span class="iteminfo"> 
+									<span class="text">
+										<!-- 제목 클릭했을때 그 인덱스값으로 가기 -->
+										<a href="/home/shop/itemdetail.asp?itemidx=2012110629" title="미니파우치 뽀글 지퍼주머니 체리 (37002942)">
+											${living.productName } <!-- 제목  -->
+										</a>
 									</span>
+									 <span class="price">
+									 						<!-- 상품 가격 -->
+								 		<span class="won">${living.productPrice }<strong>원</strong></span>
+							 		</span><span class="stampicon new"></span>
 								</span>
-							</span></li>
+							</li>
 						</c:forEach>
+
+
+
+					
 					</ul>
 					<div class="clear"></div>
 					<div class='paging'>

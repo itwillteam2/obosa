@@ -23,13 +23,14 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.FileUtils;
 
-@WebServlet("/living/*")
+@WebServlet("/Living/*")
 public class LivingController extends HttpServlet {
 
 	LivingVO livingVO;
 	LivingService livingService;
 	LivingRepVO livingRepVO;
 	String realPath;
+	
 
 	private static String ARTICLE_IMAGE_REPO = "C:\\files\\article_image";
 
@@ -63,23 +64,17 @@ public class LivingController extends HttpServlet {
 		String action = request.getPathInfo();
 		System.out.println("action :" + action);
 
-		HttpSession session;
+		
 
-		if (action == null || action.equals("listLiving.do")) {
+		if (action == null || action.equals("/listLiving.do")) {
+			System.out.println(action);
+			List <LivingVO> livingList = livingService.livingList();
+			request.setAttribute("livingList", livingList);			
+		
 			
-			String num = request.getParameter("num");
-			String kwd = request.getParameter("kwd"); //<--keyword var
-						
-			Map<String, Object> livingListNumMap = new HashMap<String, Object>();
-			livingListNumMap.put("num", num );
-			livingListNumMap.put("kwd", kwd );
+			nextPage="Home/Living/living.jsp";
 			
-			Map<String, Object> LivingListMap = livingService.listLivingProduct(livingListNumMap);
-			request.setAttribute("LivingListMap", LivingListMap);
-			
-			nextPage="Home/Living/living.jsp"; //<--리스트.jsp 적기
-			
-		}else if(action.equals("detailLivingItem.do")) {
+		}else  if(action.equals("detailLivingItem.do")) {
 			int livingNum = Integer.parseInt(request.getParameter("livingNum"));
 			
 			Map<String, Object> livingMap = livingService.detailLiving(livingNum);
@@ -146,7 +141,7 @@ public class LivingController extends HttpServlet {
 				out.print("</script>");
 			}
 
-		} else if (action.equals("updateLivingProduct.do")) {
+		} else if (action.equals("/updateLivingProduct.do")) {
 			Map<String, String> livingListMap = upload(request, response);
 
 			String productName = livingListMap.get("productName");

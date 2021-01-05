@@ -30,82 +30,63 @@ public class LivingDAO {
 			e.printStackTrace();
 		}
 	}//end of freeResource
-	
-	//get list of one page.
-	public List<Map<String,Object>> getLivingList(Map<String,Object> LivingListMap){
-		
-		List<Map<String, Object>> productList = new ArrayList<Map<String,Object>>();
-		
-		int numberPerPage = 10; // 
-		int pageNo = (int)LivingListMap.get("num");
-		int offset = (pageNo - 1) * 10;
-		String kwd = (String)LivingListMap.get("kwd");
-		
-		
-		try {
-			conn = DBConnection.getConnection();
-			String query = "SELECT * FROM living ORDER BY num LIMIT ?,?";
-			
-			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, offset);
-			pstmt.setInt(2, numberPerPage);
-			
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()) {
-				
-				Map<String,Object> livingMap = new HashMap<String, Object>();
-				int num = rs.getInt("num");
-				String productName = rs.getString("productName");
-				String productContent = rs.getString("productContent");
-				String sellerName = rs.getString("sellerName");
-				int productPrice = rs.getInt("productPrice");
-				String productImageName1 = rs.getString("productImageName1");
-				String productImageName2 = rs.getString("productImageName2");
-				String productImageName3 = rs.getString("productImageName3");
-				int productQuantity = rs.getInt("productQuantity");
-				int shipping_fee = rs.getInt("shipping_fee");
-				int point = rs.getInt("point");
-				Timestamp reg_date = rs.getTimestamp("regDate");
-				
-				
-				LivingVO livingVO = new LivingVO();
-				livingVO.setNum(num);
-				livingVO.setPoint(point);
-				livingVO.setProductContent(productContent);
-				livingVO.setProductImageName1(productImageName1);
-				livingVO.setProductImageName2(productImageName2);
-				livingVO.setProductImageName3(productImageName3);
-				livingVO.setProductName(productName);
-				livingVO.setProductPrice(productPrice);
-				livingVO.setProductQuantity(productQuantity);
-				livingVO.setReg_date(reg_date);
-				livingVO.setSellerName(sellerName);
-				livingVO.setShipping_fee(shipping_fee);
-				
-				livingMap.put("livingVO", livingVO);
-				productList.add(livingMap);
-				
-				
-			}		
-			
-		} catch (Exception e) {
-			System.out.println("getProductList error " + e.toString());
-		}finally {
-			freeResource();
-		}
-		
-		return productList;
-		
-	}//end of getProductList
-
+	/*
+	 * //get list of one page. public List<Map<String,Object>>
+	 * getLivingList(LivingVO livingVO){
+	 * 
+	 * List<Map<String, Object>> productList = new ArrayList<Map<String,Object>>();
+	 * 
+	 * int numberPerPage = 10; // int pageNo = (int)livingListMap.get("num"); int
+	 * offset = (pageNo - 1) * 10; String kwd = (String)livingListMap.get("kwd");
+	 * 
+	 * 
+	 * try { conn = DBConnection.getConnection(); String query =
+	 * "SELECT * FROM living ORDER BY num LIMIT ?,?";
+	 * 
+	 * pstmt = conn.prepareStatement(query); pstmt.setInt(1, offset);
+	 * pstmt.setInt(2, numberPerPage);
+	 * 
+	 * rs = pstmt.executeQuery();
+	 * 
+	 * if(rs.next()) {
+	 * 
+	 * Map<String,Object> livingMap = new HashMap<String, Object>(); int num =
+	 * rs.getInt("num"); String productName = rs.getString("productName"); String
+	 * productContent = rs.getString("productContent"); String sellerName =
+	 * rs.getString("sellerName"); int productPrice = rs.getInt("productPrice");
+	 * String productImageName1 = rs.getString("productImageName1"); String
+	 * productImageName2 = rs.getString("productImageName2"); String
+	 * productImageName3 = rs.getString("productImageName3"); int productQuantity =
+	 * rs.getInt("productQuantity"); int shipping_fee = rs.getInt("shipping_fee");
+	 * int point = rs.getInt("point"); Timestamp reg_date =
+	 * rs.getTimestamp("regDate");
+	 * 
+	 * 
+	 * livingVO = new LivingVO(); livingVO.setNum(num); livingVO.setPoint(point);
+	 * livingVO.setProductContent(productContent);
+	 * livingVO.setProductImageName1(productImageName1);
+	 * livingVO.setProductImageName2(productImageName2);
+	 * livingVO.setProductImageName3(productImageName3);
+	 * livingVO.setProductName(productName); livingVO.setProductPrice(productPrice);
+	 * livingVO.setProductQuantity(productQuantity); livingVO.setReg_date(reg_date);
+	 * livingVO.setSellerName(sellerName); livingVO.setShipping_fee(shipping_fee);
+	 * 
+	 * livingMap.put("livingVO", livingVO); productList.add(livingMap);
+	 * 
+	 * 
+	 * }
+	 * 
+	 * } catch (Exception e) { System.out.println("getProductList error " +
+	 * e.toString()); }finally { freeResource(); }
+	 * 
+	 * return productList;
+	 * 
+	 * }//end of getProductList
+	 */
 	//select part for select all items list
-	public List selectAllArticles(Map pagingMap) {
+	public List selectAllArticles() {
 	
-		List articlesList = new ArrayList();
-		int section = (Integer)pagingMap.get("section");
-		int pageNum = (Integer)pagingMap.get("pageNum");
-		
+		List<LivingVO> livingList = new ArrayList<LivingVO>();
 		try {
 			conn = DBConnection.getConnection();
 			String query = "SELECT * FROM living";
@@ -114,9 +95,9 @@ public class LivingDAO {
 		} catch (Exception e) {
 			System.out.println("selectAllArticles error : " + e.toString());
 		}finally {
-			
+			freeResource();
 		}
-		return articlesList;
+		return livingList;
 		
 	}//end of selectAllArticles
 	

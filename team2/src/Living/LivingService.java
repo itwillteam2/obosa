@@ -1,5 +1,6 @@
 package Living;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -25,14 +26,11 @@ public class LivingService {
 	}
 
 	
-	  public Map<String,Object> listLivingProduct(Map<String, Object> LivingListMap) {
-	  
-	  Map<String, Object> LivingProductListMap = new HashMap<String, Object>();
-	  
-	  List<Map<String, Object>> productList = livingDAO.getLivingList(LivingListMap);
-	  LivingProductListMap.put("productList", productList);
-	  
-	  return LivingProductListMap;	  
+	  public List<LivingVO> livingList() {
+		  List livingList = new ArrayList();
+		  livingDAO.selectAllArticles();
+		  return livingList;
+	 
 	  
 	  }
 	 
@@ -43,17 +41,17 @@ public class LivingService {
 		return totalCountList;
 	}
 	
-	
-	public Map listArticles(Map<String, Integer> paingMap){
-		Map livingListMap = new HashMap();
-		List<LivingVO> livingList = livingDAO.selectAllArticles(paingMap);
-		
-		livingListMap.put("livingList", livingList);		
-		
-		return livingListMap;
-		
-	}
-	
+	/*
+	 * public List listArticles(Map<String, Integer> paingMap){ Map livingListMap =
+	 * new HashMap(); List<LivingVO> livingList =
+	 * livingDAO.selectAllArticles(paingMap);
+	 * 
+	 * livingListMap.put("livingList", livingList);
+	 * 
+	 * return livingListMap;
+	 * 
+	 * }
+	 */
 	public int addLiving(LivingVO livingVO) {
 		return livingDAO.addLiving(livingVO);
 	}
