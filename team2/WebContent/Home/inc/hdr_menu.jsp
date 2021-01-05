@@ -2,6 +2,11 @@
 	pageEncoding="utf-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>	
+<script>
+	fnCommonSearch = function(){
+		document.fr.submit();
+	}
+</script>
 <header>	
 <div id="CommonHeader">
 	<div id="mymenu">
@@ -35,10 +40,21 @@
 				</a>
 			</li>
 			<li class="Search">
-				<div class="CommonSearch">
-					<input type="text" id="kwd" value=""><a href="javascript:fnCommonSearch(1);"><img src="${contextPath}/Images/Ver1/Common/top_icon_search.png" /></a>
-				</div>
+				<form action="${contextPath}/common/search.do" name="fr" method="post">
+					<div class="CommonSearch">
+						<input type="text" id="kwd" value="">
+						<a href="javascript:fnCommonSearch();">
+							<img src="${contextPath}/Images/Ver1/Common/top_icon_search.png" />
+						</a>
+					</div>
+				</form>
 			</li>
+<!-- 			<li class="selectType"> -->
+<!-- 				<select> -->
+<!-- 					<option>판매자</option> -->
+<!-- 					<option>상품</option> -->
+<!-- 				</select> -->
+<!-- 			</li> -->
 		</ul>
 		<div class="clear"></div>
 	</div>
