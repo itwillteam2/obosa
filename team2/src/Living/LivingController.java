@@ -68,7 +68,7 @@ public class LivingController extends HttpServlet {
 		if (action == null || action.equals("listLiving.do")) {
 			
 			String num = request.getParameter("num");
-			String kwd = request.getParameter("kwd"); //<--키워드
+			String kwd = request.getParameter("kwd"); //<--keyword var
 						
 			Map<String, Object> livingListNumMap = new HashMap<String, Object>();
 			livingListNumMap.put("num", num );

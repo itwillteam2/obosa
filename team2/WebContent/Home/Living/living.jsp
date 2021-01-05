@@ -147,18 +147,18 @@
 						</span>
 					</div>
 					<ul class='itemList'>
-						<c:if test="${livingListMap != null }">
+						<c:forEach var="livingItem" items="" begin="0" end="${LivingListMap}" step="1">
 							<li><span class='img'>
 							 <a href=''>
-								 <img src="${LivingListMap.productImageName1 }" />
-								</a>
+								 <img src="${livingItem.productImageName1 }" />								 
+							</a>
 							</span> <span class='iteminfo'> <span class='text'> <a
-										href='#'>${productName }</a>
-								</span> <span class='price won'> <span class='won'> <strong>${productPrice }원</strong>
+										href='#'>${livingItem.productName }</a>
+								</span> <span class='price won'> <span class='won'> <strong>${livingItem.productPrice }원</strong>
 									</span>
 								</span>
 							</span></li>
-						</c:if>
+						</c:forEach>
 					</ul>
 					<div class="clear"></div>
 					<div class='paging'>
