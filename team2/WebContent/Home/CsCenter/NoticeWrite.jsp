@@ -58,7 +58,7 @@ $(function(){
 	//글목록 보기 버튼 클릭했을떄 호출되는 함수 
 	function backToList(obj){//클릭한 버튼이 속해 있는 <form>태그를 매개변수로 전달 받는다.
 		
-		obj.action="${contextPath}/board/listArticles.do";
+		obj.action="${contextPath}/CsCenter/NoticeList.do";
 		obj.submit();//form태그로 서블릿에  모든 글 조회 요청	
 	}
 
@@ -84,7 +84,7 @@ $(function(){
 					<label for="title" class="m-0">제목</label>
 				</th>
 				<td>
-					<input style="width:700px; margin:0 auto;" id="title" class="form-control" type="text" name="title" id="title" />
+					<input style="width:700px; margin:0 auto;" class="form-control" type="text" name="title" id="title" />
 				</td>
 			</tr>
 			<tr>
@@ -92,7 +92,7 @@ $(function(){
 					<label for="Content"  class="m-0">내용</label>
 				</th>
 				<td>			
-					<textarea id="content" style="margin:0 auto; resize:none; height:400px; width:700px;"class="form-control" name="content" id="content" cols="40" rows="13"></textarea>
+					<textarea style="margin:0 auto; resize:none; height:400px; width:700px;"class="form-control" name="content" id="content" cols="40" rows="13"></textarea>
 				</td>
 			</tr>
 		</table>
