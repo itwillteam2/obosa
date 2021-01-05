@@ -14,13 +14,6 @@ import javax.servlet.http.HttpSession;
 
 @WebServlet("/common/*")
 public class CommonController extends HttpServlet{
-
-//	MemberDAO memberDAO;
-//	
-//	@Override
-//	public void init() throws ServletException {
-//		memberDAO = new MemberDAO();
-//	}
 	
 	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -34,29 +27,23 @@ public class CommonController extends HttpServlet{
 	
 	protected void doHandle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		//인코딩 방식 UTF-8로 설정
 		request.setCharacterEncoding("utf-8");
-		//웹브라우저로 응답할 MIME-TYPE설정(데이터유형 설정)
 		response.setContentType("text/html; charset=utf-8");
 		
-		//request객체의 getPathInfo()메소드를 호출해  
-		//요청한 전체 URL주소중에서 .. 2단계 요청 주소를 얻는다
-		String action = request.getPathInfo();  // /memberForm.do
+		String action = request.getPathInfo();
 		System.out.println("action변수에 저장된 요청한 주소 : " + action);
 		
-		//MVC 중 View화면 주소를 변수에 저장하기 위한 변수 선언
 		String nextPage = null;
-		
-		//action변수에 값에 따라 if문을 분기해서 요청한 작업을 수행하는데..
-		//만약 action변수의 값이 null이거나  /listMembers.do인 경우에는
-		//회원 검색 기능을 수행합니다.
-		//-> 회원 조회 기능 요청이 들어 오면(/listMembers.do)
+
 		if(action.equals("/index.do")){
 			nextPage = "/Home/index.jsp";
 		}else if(action.equals("/cart.do")){
 			nextPage = "/Home/Order/Cart.jsp";
 		}else if(action.equals("/living.do")){
 			nextPage = "/Home/Living/living.jsp";
+		}else if(action.equals("/search.do")){
+			String search = request.getParameter("kwd");
+			nextPage = "/Home/Common/search.jsp";
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
@@ -65,7 +52,4 @@ public class CommonController extends HttpServlet{
 	
 	}//doHandle메소드 끝	
 	
-}//MemberController서블릿 클래스 끝
-
-
-
+}//CommonController서블릿 클래스 끝
