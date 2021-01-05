@@ -215,7 +215,7 @@ public class LivingController extends HttpServlet {
 			String num = request.getParameter("num");
 			LivingVO content = livingService.viewContent(Integer.parseInt(num));
 			request.setAttribute("content", content);
-			nextPage = "/T2_tmp/Home/Living/content.jsp";
+			nextPage = "/Home/Living/content.jsp";
 
 		}
 
