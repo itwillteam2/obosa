@@ -10,7 +10,7 @@ public class DBConnection {
 
 	public static Connection getConnection() throws Exception{
 		Context init = new InitialContext();
-		DataSource ds = (DataSource) init.lookup("java:comp:/env/jdbc/team2");
+		DataSource ds = (DataSource) init.lookup("java:comp/env/jdbc/team2");
 		Connection conn = ds.getConnection();
 		return conn;
 		

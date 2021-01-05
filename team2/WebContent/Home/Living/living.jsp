@@ -147,18 +147,18 @@
 						</span>
 					</div>
 					<ul class='itemList'>
-						<li>
-							<span class='img'> 
-								<a href=''>
-									<img src="${livingVO.productImageName1 }" />
-								</a> 
-							</span> 
-							<span class='iteminfo'> 
-								<span class='text'>
-								<a href='#'></a></span> 
-								<span class='price won'><span class='won'><strong>원</strong></span></span>
-						</span></li>
-						
+						<c:if test="${livingListMap != null }">
+							<li><span class='img'>
+							 <a href=''>
+								 <img src="${LivingListMap.productImageName1 }" />
+								</a>
+							</span> <span class='iteminfo'> <span class='text'> <a
+										href='#'>${productName }</a>
+								</span> <span class='price won'> <span class='won'> <strong>${productPrice }원</strong>
+									</span>
+								</span>
+							</span></li>
+						</c:if>
 					</ul>
 					<div class="clear"></div>
 					<div class='paging'>
