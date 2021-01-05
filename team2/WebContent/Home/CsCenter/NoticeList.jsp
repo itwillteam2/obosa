@@ -49,9 +49,9 @@
 		<div class="top_title">고객감동센터</div>
 		<div class="MenuBar_Box">
 			<ul>
-				<li onclick="location.href='${contextPath}/CsCenter/NoticeList.do';" class="on">공지사항</li>
-				<li onclick="location.href='${contextPath}/CsCenter/InquiryList.do';">상품Q&A</li>
-				<li onclick="location.href='${contextPath}/CsCenter/InquiryWrite.do';">1:1문의/상담</li>
+				<li onclick="location.href='${contextPath}/CsCenter/NoticeList.do'" class="on">공지사항</li>
+				<li onclick="location.href='${contextPath}/CsCenter/InquiryList.do'">상품Q&A</li>
+				<li onclick="location.href='${contextPath}/CsCenter/InquiryWrite.do'">1:1문의/상담</li>
 			</ul>
 		</div>
 
@@ -71,16 +71,16 @@
 			</ul>
 		</div>
 		<div class="list_line">
-			<c:forEach var="notice" items="${NoticeList}" varStatus="NoticeNum">
-				<ul>
-					<li>${notice.nnum}</li>
-					<li>${notice.title}</li>
-					<li><fmt:formatDate value="${notice.date}" /></li>
+			<c:forEach var="NoticeList" items="${NoticeList}">			
+				<ul>							
+					<li>${NoticeList.nnum}</li>
+					<li>${NoticeList.title}</li>
+					<li><fmt:formatDate value="${NoticeList.date}" /></li>
 				</ul>
 			</c:forEach>
 		</div>
 		<div class="list_cont" style="display: none;">
-			<p>${Notice.content }</p>
+			<p>${NoticeList.content }</p>
 		</div>
 		<div class="FAQ">
 			<div class="SearchContent" style="margin-top: 20px; float: right;">

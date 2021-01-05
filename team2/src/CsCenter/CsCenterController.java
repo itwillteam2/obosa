@@ -56,7 +56,7 @@ public class CsCenterController extends HttpServlet {
 			NoticeList  = CsCenterService.listNotice(); 
 			
 			request.setAttribute("NoticeList", NoticeList);
-			
+			System.out.println(NoticeList);
 			nextPage = "/Home/CsCenter/NoticeList.jsp";
 		} 
 		  else if (action.equals("/InquiryWrite.do")) {
