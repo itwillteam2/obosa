@@ -84,13 +84,30 @@ public class LivingDAO {
 	 * }//end of getProductList
 	 */
 	//select part for select all items list
-	public List selectAllArticles() {
+	public List<LivingVO> selectAllArticles() {
 	
 		List<LivingVO> livingList = new ArrayList<LivingVO>();
 		try {
 			conn = DBConnection.getConnection();
 			String query = "SELECT * FROM living";
 			pstmt = conn.prepareStatement(query);
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				LivingVO vo = new LivingVO();
+				vo.setNum(rs.getInt("num"));
+				vo.setPoint(rs.getInt("point"));
+				vo.setProductContent(rs.getString("productContent"));
+				vo.setProductImageName1(rs.getString("productImageName1"));
+				vo.setProductImageName2(rs.getString("productImageName2"));
+				vo.setProductImageName3(rs.getString("productImageName3"));
+				vo.setProductName(rs.getString("productName"));
+				vo.setProductPrice(rs.getInt("productPrice"));
+				vo.setProductQuantity(rs.getInt("productQuantity"));
+				vo.setReg_date(rs.getTimestamp("regDate"));
+				vo.setSellerName(rs.getString("sellerName"));
+				vo.setShipping_fee(rs.getInt("shipping_fee"));
+				livingList.add(vo);
+			}
 			
 		} catch (Exception e) {
 			System.out.println("selectAllArticles error : " + e.toString());

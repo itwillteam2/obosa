@@ -27,11 +27,9 @@ public class LivingService {
 
 	
 	  public List<LivingVO> livingList() {
-		  List livingList = new ArrayList();
-		  livingDAO.selectAllArticles();
+		  List<LivingVO> livingList = new ArrayList<LivingVO>();
+		  livingList = livingDAO.selectAllArticles();
 		  return livingList;
-	 
-	  
 	  }
 	 
 	

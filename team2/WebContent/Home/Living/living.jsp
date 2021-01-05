@@ -3,7 +3,7 @@
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
-<c:set var="livingVO" value="${livingMap.livingVO }" />
+<c:set var="livingList" value="${livingList}"/>
 
 
 <!DOCTYPE html>
@@ -149,7 +149,7 @@
 					<ul class='itemList'>
 						
 						
-						<c:forEach var="living" items="${livingList }">
+						<c:forEach var="living" items="${livingList}">
 							<li>
 								<span class="img"> 
 										<!-- 사진 클릭했을때 그 인덱스값으로 가기 -->

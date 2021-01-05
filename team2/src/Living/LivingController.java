@@ -72,7 +72,7 @@ public class LivingController extends HttpServlet {
 			request.setAttribute("livingList", livingList);			
 		
 			
-			nextPage="Home/Living/living.jsp";
+			nextPage="/Home/Living/living.jsp";
 			
 		}else  if(action.equals("detailLivingItem.do")) {
 			int livingNum = Integer.parseInt(request.getParameter("livingNum"));
@@ -132,7 +132,7 @@ public class LivingController extends HttpServlet {
 			int isRegistSuccess = livingService.insertLiving(livingVO);
 			if (isRegistSuccess > 0) {
 
-				nextPage = "Home/Living/living.jsp";
+				nextPage = "/Home/Living/living.jsp";
 
 			} else {
 				PrintWriter out = response.getWriter();
