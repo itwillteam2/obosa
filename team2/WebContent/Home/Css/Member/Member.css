@@ -50,7 +50,7 @@ a.NonMemberOrderDetailButton {display:block; width:100%; height:56px; line-heigh
 .JoinCompleteWrap img {display:block; width:521px; height:598px; margin:30px auto 0; padding:0;}
 .JoinCompleteWrap a   {display:block; width:230px; height:50px; line-height:50px; font-size:16px; color:#ffffff; background-color:#000000; font-weight:bold; text-align:center; border:0; border-radius:5px; margin:30px auto 0;}
 
-/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - êµ¬ë¶„ì„  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
+/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -  - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */
 
 .JoinWrap {width:100%; margin:50px auto 50px; padding:0;}
 .JoinWrap h1 {display:block; width:680px; height:25px; line-height:25px; font-size:25px; color:#000000; font-weight:normal; text-align:center; margin:0 auto; padding:0;}
@@ -58,7 +58,7 @@ a.NonMemberOrderDetailButton {display:block; width:100%; height:56px; line-heigh
 .JoinWrap .MobileButton {display:none;}
 
 .trJoinSex dt {width:120px; line-height:27px; text-align:left; font-size:16px; color:#646464; padding:0 0 30px 0;}
-.trJoinSex dd {width:120px; line-height:27px; text-align:left; font-size:16px; color:#646464; padding:0 0 30px 0;}
+.trJoinSex dd {line-height:27px; text-align:left; font-size:16px; color:#646464; padding:0 0 30px 0;}
 
 .trJoin dt {width:120px; line-height:56px; text-align:left; font-size:16px; color:#646464;}
 .trJoin dd {}
@@ -364,7 +364,7 @@ a#CheckSixNum {display:none; width:100%; padding:0; text-align:center; margin:0 
 	.SilverBorder.paddingBottom {height:1.6875rem;}
 
 	.trPwd dt {width:8.2rem; line-height:3rem; font-size:0.75rem;}
-	.trPwd dd {width:8.2rem;}
+	.trPwd dd {}
 
 	.WithdrawInfo {font-size:0.8125rem; line-height:1.2rem; padding:0.7rem 0 0 0;}
 	.WithdrawInfo a.LeftBtn  {display:inline-block; width:49%; padding:0; text-align:center; margin:0.5rem 1% 0.9rem 0; line-height:2.6rem; height:2.6rem; font-size:0.875rem;}
