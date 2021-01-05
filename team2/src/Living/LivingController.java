@@ -23,7 +23,7 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.FileUtils;
 
-@WebServlet("/Living/*")
+@WebServlet("/living/*")
 public class LivingController extends HttpServlet {
 
 	LivingVO livingVO;
@@ -72,7 +72,7 @@ public class LivingController extends HttpServlet {
 			request.setAttribute("livingList", livingList);			
 		
 			
-			nextPage="/Home/Living/living.jsp";
+			nextPage="/Home/living/living.jsp";
 			
 		}else  if(action.equals("detailLivingItem.do")) {
 			int livingNum = Integer.parseInt(request.getParameter("livingNum"));
@@ -132,7 +132,7 @@ public class LivingController extends HttpServlet {
 			int isRegistSuccess = livingService.insertLiving(livingVO);
 			if (isRegistSuccess > 0) {
 
-				nextPage = "/Home/Living/living.jsp";
+				nextPage = "/Home/living/living.jsp";
 
 			} else {
 				PrintWriter out = response.getWriter();
@@ -215,7 +215,7 @@ public class LivingController extends HttpServlet {
 			String num = request.getParameter("num");
 			LivingVO content = livingService.viewContent(Integer.parseInt(num));
 			request.setAttribute("content", content);
-			nextPage = "/Home/Living/content.jsp";
+			nextPage = "/Home/living/content.jsp";
 
 		}
 

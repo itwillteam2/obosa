@@ -129,7 +129,7 @@
 		</section>
 
 		<section class="sec_cont">
-			<form name="frm" action="${contextPath }/Living/listLiving.do">
+			<form name="frm" action="${contextPath }/living/listLiving.do">
 				<input type="hidden" name="page" value="1" />
 
 				<div class="inner">
