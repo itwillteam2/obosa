@@ -155,14 +155,14 @@ a.deleteButton{display:block; width:310px; height:56px; font-size:20px; color:si
 #WithdrawWrap     {display:none;}
 
 .trPwd dt {width:175px; line-height:56px; text-align:left; font-size:16px; color:#646464;}
-.trPwd dd {width:175px;}
+.trPwd dd {}
 
 .WithdrawInfo {color:#646464; font-size:14px; line-height:22px; padding:0 0 0 0;}
 .WithdrawInfo a.LeftBtn,
 .WithdrawInfo a.RightBtn {display:inline-block; width:164px; padding:0; text-align:center; margin:14px 10px 24px 0; line-height:46px; height:46px; color:#ffffff; font-size:15px; border:0; background-color:#424242; border-radius:5px;}
 
 .trWithdraw dt {width:170px; text-align:center; font-size:14px; color:#646464; vertical-align:middle;}
-.trWithdraw dd {width:170px; text-align:left; font-size:13px; line-height:22px; color:#646464; vertical-align:middle; padding:14px 20px;}
+.trWithdraw dd {text-align:left; font-size:13px; line-height:22px; color:#646464; vertical-align:middle; padding:14px 20px;}
 .trWithdraw .LT {border-top:1px solid #646464; border-right:1px solid #646464; border-bottom:1px solid #646464; border-left:1px solid #646464; border-radius:5px 0 0 0;}
 .trWithdraw .RT {border-top:1px solid #646464; border-right:1px solid #646464; border-bottom:1px solid #646464; border-left-width:0; border-radius:0 5px 0 0;}
 .trWithdraw .LB {border-top-width:0; border-right:1px solid #646464; border-bottom:1px solid #646464; border-left:1px solid #646464; border-radius:0 0 0 5px;}
@@ -285,7 +285,7 @@ a#CheckSixNum {display:none; width:100%; padding:0; text-align:center; margin:0 
 	.JoinWrap .MobileButton a {display:block; width:100%; height:3rem; line-height:3rem; background-color:#424242; text-align:center; color:#ffffff; font-size:0.875rem; border-radius:5px; margin:0;}
 
 	.trJoinSex dt {width:5rem; line-height:1.0625rem; font-size:0.75rem; padding:0 0 1.125rem 0;}
-	.trJoinSex dd {width:5rem; line-height:1.0625rem; font-size:0.75rem; padding:0 0 1.125rem 0;}
+	.trJoinSex dd { line-height:1.0625rem; font-size:0.75rem; padding:0 0 1.125rem 0;}
 
 	.trJoin dt {width:5rem; line-height:3rem; font-size:0.75rem;}
 	.trJoin dd {}
