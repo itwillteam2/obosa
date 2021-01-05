@@ -47,7 +47,6 @@ public class CommonController extends HttpServlet{
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
-		//실제 재요청(포워딩)시 request, response전달
 		dispatcher.forward(request, response);
 	
 	}//doHandle메소드 끝	
