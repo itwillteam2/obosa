@@ -47,11 +47,13 @@ public class SearchDAO {
 	public List<SearchVO> searchArticles(String search) {
 		List<SearchVO> searchList = new ArrayList<SearchVO>();
 		try {
+			
 			con = getConnection();
-			String query = "SELECT * FROM living where productname=?";
+			String query = "SELECT * FROM living where productname like ?";
 			//select * from (select * from living union select * from fancy) a;
 			pstmt = con.prepareStatement(query);
-			pstmt.setString(1, "%"+search+"%");
+			pstmt.setString(1,"%"+search+"%");
+			
 			rs = pstmt.executeQuery();
 			while(rs.next()){
 				SearchVO vo = new SearchVO();
@@ -61,12 +63,13 @@ public class SearchDAO {
 				vo.setSellerName(rs.getString("sellerName"));
 				searchList.add(vo);
 			}
-			
+			System.out.println(searchList);
 		} catch (Exception e) {
 			System.out.println("searchArticles 메소드 내부에서 오류 : " + e);
 		}finally {
 			release();
 		}
+		System.out.println(searchList);
 		return searchList;
 		
 	}//searchArticles 메소드 끝
