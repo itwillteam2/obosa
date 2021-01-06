@@ -1,11 +1,12 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <%
 	request.setCharacterEncoding("UTF-8");
+	pageContext.setAttribute("newLineChar", "\n");
 %>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
@@ -75,7 +76,7 @@
 			
 		</div>
 		<div class="list_cont" style="display: none;">
-			<p>${NoticeList.content}</p>
+			<p>${fn:replace(NoticeList.content, newLineChar, "<br/>")}</p>
 		</div>
 		</c:forEach>
 		<div class="FAQ">

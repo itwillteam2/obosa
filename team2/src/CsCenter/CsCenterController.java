@@ -75,9 +75,8 @@ public class CsCenterController extends HttpServlet {
 			nnum = CsCenterService.addNotice(NoticeVO);
 			
 			PrintWriter pw = response.getWriter();
-			pw.print("<script> alert('공지사항을 추가 했습니다.'); </script>");
-			
-			nextPage = "/Home/CsCenter/NoticeList.jsp";
+			pw.print("<script>" + "  alert('공지사항을 추가 했습니다.');" + " location.href='" + request.getContextPath()
+					+ "/CsCenter/NoticeList.do';" + "</script>");
 			
 		} else if (action.equals("/InquiryList.do")) {
 			nextPage = "/Home/CsCenter/InquiryList.jsp";
