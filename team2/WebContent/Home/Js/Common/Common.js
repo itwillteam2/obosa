@@ -160,6 +160,7 @@ $(document).ready(function(){
 				$("#CommonHeader .MainLogoScroll").css("display","block");
 				$("#MyInfoSummary").css("padding-top","23px");
 				$("#CommonHeader").css("opacity","0.9");
+				$("#CommonHeader").css("padding-bottom","30px");
 			//	$("#LoginBalloon").css("visibility","hidden");
 
 				$(".MyInfoSummaryArea").css("top","97px");
@@ -172,6 +173,7 @@ $(document).ready(function(){
 				$("#CommonHeader .MainLogo").css("display","block");
 				$("#CommonHeader .MainLogoScroll").css("display","none");
 				$("#CommonHeader").css("opacity","1");
+				$("#CommonHeader").css("padding-bottom","0px");
 			//	$("#LoginBalloon").css("visibility","visible");
 
 				$(".MyInfoSummaryArea").css("top",(223-ScrollTop)+"px");
