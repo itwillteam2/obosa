@@ -52,6 +52,9 @@ public class CommonController extends HttpServlet{
 			String search = request.getParameter("kwd");
 			List<SearchVO> searchList = searchService.searchList(search);
 			request.setAttribute("searchList", searchList);
+			int searchCount = searchService.searchCount(search);
+			System.out.println(searchCount);
+			request.setAttribute("searchCount", searchCount);
 			nextPage = "/Home/Common/search.jsp";
 		}
 		

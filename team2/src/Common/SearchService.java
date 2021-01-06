@@ -11,4 +11,9 @@ public class SearchService {
 		  searchList = searchDAO.searchArticles(search);
 		  return searchList;
 	  }
+
+	public int searchCount(String search) {
+		int searchCount = searchDAO.searchCount(search);
+		return searchCount;
+	}
 }

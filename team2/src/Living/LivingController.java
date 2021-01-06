@@ -200,7 +200,7 @@ public class LivingController extends HttpServlet {
 
 			PrintWriter pw = response.getWriter();
 			pw.print("<script>" + "  alert('새글을 추가 했습니다.');" + " location.href='" + request.getContextPath()
-					+ "/common/living.do';" + "</script>");
+					+ "/living/listLiving.do';" + "</script>");
 
 			return;
 

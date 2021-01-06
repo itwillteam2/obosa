@@ -50,7 +50,8 @@ public class SearchDAO {
 			
 			con = getConnection();
 			String query = "SELECT * FROM living where productname like ?";
-			//select * from (select * from living union select * from fancy) a;
+			//select * from (select * from living where productname like ? 
+			//union select * from fancy where productname like ?) a;
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1,"%"+search+"%");
 			
@@ -73,5 +74,25 @@ public class SearchDAO {
 		return searchList;
 		
 	}//searchArticles 메소드 끝
+
+	public int searchCount(String search) {
+		int searchCount = 0;
+		try{
+			con = getConnection();
+			String query = "SELECT count(*) FROM living where productname like ?";
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, "%"+search+"%");
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				searchCount = rs.getInt(1);
+			}
+		}catch(Exception e){
+			System.out.println("searchCount메소드 내부에서 오류 : " + e);
+		}finally{
+			release();
+		}
+		return searchCount;
+	}
 	
 }

@@ -212,7 +212,7 @@ public class LivingDAO {
 					+ "VALUES(?,?,?,?,?,?,?,?,?,?,?)";
 			pstmt = conn.prepareStatement(query);
 			
-			pstmt.setInt(1, livingVO.getNum());
+			pstmt.setInt(1, num);
 			pstmt.setString(2, livingVO.getProductName());
 			pstmt.setString(3, livingVO.getProductContent());
 			pstmt.setString(4, livingVO.getSellerName());
