@@ -50,11 +50,38 @@ public class CommonController extends HttpServlet{
 			nextPage = "/Home/Living/living.jsp";
 		}else if(action.equals("/search.do")){
 			String search = request.getParameter("kwd");
+			request.setAttribute("kwd", search);
+
+			int shopSearchCount = searchService.shopSearchCount(search);
+			request.setAttribute("shopSearchCount", shopSearchCount);
+			
+			List<SearchVO> shopSearchList = searchService.shopSearchList(search);
+			request.setAttribute("shopSearchList", shopSearchList);
+			
+			int searchCount = searchService.searchCount(search);
+			request.setAttribute("searchCount", searchCount);
+			
 			List<SearchVO> searchList = searchService.searchList(search);
 			request.setAttribute("searchList", searchList);
-			int searchCount = searchService.searchCount(search);
-			System.out.println(searchCount);
-			request.setAttribute("searchCount", searchCount);
+
+			int livingCount = searchService.livingCount(search);
+			request.setAttribute("livingCount", livingCount);
+			
+			List<SearchVO> searchLiving = searchService.searchLiving(search);
+			request.setAttribute("searchLiving", searchLiving);
+			
+			int artCount = searchService.artCount(search);
+			request.setAttribute("artCount", artCount);
+			
+			List<SearchVO> searchArt = searchService.searchArt(search);
+			request.setAttribute("searchArt", searchArt);
+			
+			int fancyCount = searchService.fancyCount(search);
+			request.setAttribute("fancyCount", fancyCount);
+			
+			List<SearchVO> searchFancy = searchService.searchFancy(search);
+			request.setAttribute("searchFancy", searchFancy);
+			
 			nextPage = "/Home/Common/search.jsp";
 		}
 		

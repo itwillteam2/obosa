@@ -114,6 +114,62 @@
 	$(document).on("click", ".overlay_close,.btnGoShopping", function() {
 		$(".overlay").removeClass("on");
 	});
+	
+	$(document).ready(function(){
+		$("#alla").css("color", "red");
+		
+		$("#living").css("display", "none");
+		$("#art").css("display", "none");
+		$("#fancy").css("display", "none");
+	});
+	
+	function fnSelectAll(){
+		$("#all").css("display", "");
+		$("#living").css("display", "none");
+		$("#art").css("display", "none");
+		$("#fancy").css("display", "none");
+		
+		$("#alla").css("color", "red");
+		$("#livinga").css("color", "");
+		$("#arta").css("color", "");
+		$("#fancya").css("color", "");
+	}
+	
+	function fnSelectLiving(){
+		$("#all").css("display", "none");
+		$("#living").css("display", "");
+		$("#art").css("display", "none");
+		$("#fancy").css("display", "none");
+		
+		$("#alla").css("color", "");
+		$("#livinga").css("color", "red");
+		$("#arta").css("color", "");
+		$("#fancya").css("color", "");
+	}
+	
+	function fnSelectArt(){
+		$("#all").css("display", "none");
+		$("#living").css("display", "none");
+		$("#art").css("display", "");
+		$("#fancy").css("display", "none");
+		
+		$("#alla").css("color", "");
+		$("#livinga").css("color", "");
+		$("#arta").css("color", "red");
+		$("#fancya").css("color", "");
+	}
+	
+	function fnSelectFancy(){
+		$("#all").css("display", "none");
+		$("#living").css("display", "none");
+		$("#art").css("display", "none");
+		$("#fancy").css("display", "");
+		
+		$("#alla").css("color", "");
+		$("#livinga").css("color", "");
+		$("#arta").css("color", "");
+		$("#fancya").css("color", "red");
+	}
 </script>
 </head>
 <body>
@@ -125,85 +181,244 @@
 		<section class="sec_header">
 			<div class="inner"></div>
 		</section>
-		<!-- 		<div> -->
-		<!-- 		<h1>상점 검색 결과</h1> -->
-		<!-- 		<section class="sec_cont"> -->
-		<!-- 			<form name="frm"> -->
-		<!-- 				<input type="hidden" name="page" value="1" /> -->
-
-		<!-- 				<div class="inner"> -->
-
-		<!-- 					<div class="info"> -->
-		<%-- 						<span class="result">총 <strong>${totalCountList}</strong>개의 상점이 조회되었습니다. --%>
-		<!-- 						</span> -->
-		<!-- 					</div> -->
-		<!-- 					<ul class='itemList'> -->
-		<%-- 						<c:if test="${livingListMap != null }"> --%>
-		<!-- 							<li><span class='img'> -->
-		<!-- 							 <a href=''> -->
-		<%-- 								 <img src="${LivingListMap.productImageName1 }" /> --%>
-		<!-- 								</a> -->
-		<!-- 							</span> <span class='iteminfo'> <span class='text'> <a -->
-		<%-- 										href='#'>${productName }</a> --%>
-		<%-- 								</span> <span class='price won'> <span class='won'> <strong>${productPrice }원</strong> --%>
-		<!-- 									</span> -->
-		<!-- 								</span> -->
-		<!-- 							</span></li> -->
-		<%-- 						</c:if> --%>
-		<!-- 					</ul> -->
-		<!-- 					<a href="#">결과 전체 보기</a> -->
-		<!-- 					<div class="clear"></div> -->
-		<!-- 				</div> -->
-		<!-- 			</form> -->
-		<!-- 		</section> -->
-		<!-- 		</div> -->
+			<div>
+				<h1>상점이름 검색 결과</h1>
+				<section class="sec_cont">
+					<form name="frm">
+						<input type="hidden" name="page" value="1" />
+						<div class="inner">
+							<div class="info">
+								<c:choose>
+									<c:when test="${shopSearchCount > 0}">
+										<span class="result">총 <strong>${shopSearchCount}</strong>개의 상점이 조회되었습니다.</span>
+									</c:when>
+									<c:otherwise>
+										<span class="result">총 <strong>0</strong>개의 상점이 조회되었습니다.</span>
+									</c:otherwise>
+								</c:choose>
+							</div>
+							<ul class='itemList'>
+								<c:forEach var="shopSearchList" items="${shopSearchList}">
+									<span class="iteminfo">
+										<span class="searchSeller">${shopSearchList.sellerName}</span>
+									</span>
+								</c:forEach>
+							</ul>
+							<div class="clear"></div>
+							<c:choose>
+								<c:when test="${shopSearchCount > 0}">
+									<div class="showAll"><a href="#">결과 전체 보기</a></div>
+								</c:when>
+							</c:choose>
+						</div>
+					</form>
+				</section>
+			</div>
 		<hr>
 		<div>
 			<h1>상품 검색 결과</h1>
+			<div class="categories">
+				<a href="javascript:fnSelectAll();" id="alla">전체</a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
+				<a href="javascript:fnSelectLiving();" id="livinga">리빙</a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
+				<a href="javascript:fnSelectArt();" id="arta">공예</a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
+				<a href="javascript:fnSelectFancy();" id="fancya">문구</a>
+			</div>
 			<section class="sec_cont">
 				<form name="frm">
 					<input type="hidden" name="page" value="1" />
 					<div class="inner">
-						<div class="info">
-							<span class="result">총 <strong>${searchCount}</strong>개의 상품이 조회되었습니다.
-							</span>
-						</div>
-						<ul class='itemList'>
-							<c:forEach var="searchList" items="${searchList}">
-								<li>
-								<span class="img"> <!-- 사진 클릭했을때 그 인덱스값으로 가기 -->
-									<a href="/home/shop/itemdetail.asp?itemidx=2012110629" onclick="GA_event(&quot;카테고리&quot;, &quot;패션_상품&quot;, &quot;미니파우치 뽀글 지퍼주머니 체리 (37002942)&quot;); GA_onclick(&quot;카테고리_패션&quot;, &quot;2012110629&quot;, &quot;미니파우치 뽀글 지퍼주머니 체리 (37002942)&quot;, &quot;아트박스&quot;, &quot;패션&quot;, &quot;4500&quot;, &quot;#32&quot;, &quot;0&quot;);">
-											<!-- 이미지 불러오기 --> 
-											<img src="${contextPath}/download.do?productImageName1=${searchList.productImageName1}">
-									</a> 
-									<span class="hover"> <span class="wish "
-										data-itemidx="2012110629"></span> <span class="cart"
-										data-itemidx="2012110629" data-opidx="" data-itemoptioncd="N"></span>
-									<span class="ps" data-itemidx="2012110629">0</span>
-									</span>
-								</span> 
-									<span class="iteminfo"> 
-										<span class="text"> <!-- 제목 클릭했을때 그 인덱스값으로 가기 -->
-											<a href="/home/shop/itemdetail.asp?itemidx=2012110629" title="미니파우치 뽀글 지퍼주머니 체리 (37002942)">
-													${searchList.productName} <!-- 제목  -->
-											</a>
-										</span> 
-										<span class="price"> <!-- 상품 가격 --> 
-											<span class="won">${searchList.productPrice}<strong>원</strong></span>
+						<div id="all">
+							<div class="info">
+								<c:choose>
+									<c:when test="${searchCount>0}">
+										<span class="count">총 <strong>${searchCount}</strong>개의 상품이 조회되었습니다.</span>
+									</c:when>
+									<c:otherwise>
+										<span class="count">총 <strong>0</strong>개의 상품이 조회되었습니다.</span>
+									</c:otherwise>
+								</c:choose>
+								<ul class='itemList'>
+								<c:forEach var="searchList" items="${searchList}">
+									<li>
+									<span class="img"> <!-- 사진 클릭했을때 그 인덱스값으로 가기 -->
+										<a href="/home/shop/itemdetail.asp?itemidx=2012110629" onclick="GA_event(&quot;카테고리&quot;, &quot;패션_상품&quot;, &quot;미니파우치 뽀글 지퍼주머니 체리 (37002942)&quot;); GA_onclick(&quot;카테고리_패션&quot;, &quot;2012110629&quot;, &quot;미니파우치 뽀글 지퍼주머니 체리 (37002942)&quot;, &quot;아트박스&quot;, &quot;패션&quot;, &quot;4500&quot;, &quot;#32&quot;, &quot;0&quot;);">
+												<!-- 이미지 불러오기 --> 
+												<img src="${contextPath}/download.do?productImageName1=${searchList.productImageName1}">
+										</a> 
+										<span class="hover"> <span class="wish "
+											data-itemidx="2012110629"></span> <span class="cart"
+											data-itemidx="2012110629" data-opidx="" data-itemoptioncd="N"></span>
+										<span class="ps" data-itemidx="2012110629">0</span>
 										</span>
-										<span class="stampicon new"></span>
-									</span>
-								</li>
-							</c:forEach>
-						</ul>
-						<a href="#">결과 전체 보기</a>
-						<div class="clear"></div>
+									</span> 
+										<span class="iteminfo"> 
+											<span class="text"> <!-- 제목 클릭했을때 그 인덱스값으로 가기 -->
+												<a href="/home/shop/itemdetail.asp?itemidx=2012110629" title="미니파우치 뽀글 지퍼주머니 체리 (37002942)">
+														${searchList.productName} <!-- 제목  -->
+												</a>
+											</span> 
+											<span class="price"> <!-- 상품 가격 --> 
+												<span class="won">${searchList.productPrice}<strong>원</strong></span>
+											</span>
+											<span class="stampicon new"></span>
+										</span>
+									</li>
+								</c:forEach>
+							</ul>
+							<div class="clear"></div>
+							<c:choose>
+								<c:when test="${searchCount>0}">
+									<div class="showAll"><a href="#">결과 전체 보기</a></div>
+								</c:when>
+							</c:choose>
+						</div>
+						</div>
+						
+						<div id="living">
+							<div class="info">
+								<c:choose>
+									<c:when test="${livingCount>0}">
+										<span class="count">총 <strong>${livingCount}</strong>개의 상품이 조회되었습니다.</span>
+									</c:when>
+									<c:otherwise>
+										<span class="count">총 <strong>0</strong>개의 상품이 조회되었습니다.</span>
+									</c:otherwise>
+								</c:choose>
+								<ul class='itemList'>
+									<c:forEach var="searchLiving" items="${searchLiving}">
+										<li>
+										<span class="img"> <!-- 사진 클릭했을때 그 인덱스값으로 가기 -->
+											<a href="/home/shop/itemdetail.asp?itemidx=2012110629" onclick="GA_event(&quot;카테고리&quot;, &quot;패션_상품&quot;, &quot;미니파우치 뽀글 지퍼주머니 체리 (37002942)&quot;); GA_onclick(&quot;카테고리_패션&quot;, &quot;2012110629&quot;, &quot;미니파우치 뽀글 지퍼주머니 체리 (37002942)&quot;, &quot;아트박스&quot;, &quot;패션&quot;, &quot;4500&quot;, &quot;#32&quot;, &quot;0&quot;);">
+													<!-- 이미지 불러오기 --> 
+													<img src="${contextPath}/download.do?productImageName1=${searchLiving.productImageName1}">
+											</a> 
+											<span class="hover"> <span class="wish "
+												data-itemidx="2012110629"></span> <span class="cart"
+												data-itemidx="2012110629" data-opidx="" data-itemoptioncd="N"></span>
+											<span class="ps" data-itemidx="2012110629">0</span>
+											</span>
+										</span> 
+											<span class="iteminfo"> 
+												<span class="text"> <!-- 제목 클릭했을때 그 인덱스값으로 가기 -->
+													<a href="/home/shop/itemdetail.asp?itemidx=2012110629" title="미니파우치 뽀글 지퍼주머니 체리 (37002942)">
+															${searchLiving.productName} <!-- 제목  -->
+													</a>
+												</span> 
+												<span class="price"> <!-- 상품 가격 --> 
+													<span class="won">${searchLiving.productPrice}<strong>원</strong></span>
+												</span>
+												<span class="stampicon new"></span>
+											</span>
+										</li>
+									</c:forEach>
+								</ul>
+								<div class="clear"></div>
+								<c:choose>
+									<c:when test="${livingCount>0}">
+										<div class="showAll"><a href="#">결과 전체 보기</a></div>
+									</c:when>
+								</c:choose>
+							</div>
+						</div>
+						
+						<div id="art">
+							<div class="info">
+								<c:choose>
+									<c:when test="${artCount>0}">
+										<span class="count">총 <strong>${artCount}</strong>개의 상품이 조회되었습니다.</span>
+									</c:when>
+									<c:otherwise>
+										<span class="count">총 <strong>0</strong>개의 상품이 조회되었습니다.</span>
+									</c:otherwise>
+								</c:choose>
+								<ul class='itemList'>
+									<c:forEach var="searchArt" items="${searchArt}">
+										<li>
+										<span class="img"> <!-- 사진 클릭했을때 그 인덱스값으로 가기 -->
+											<a href="/home/shop/itemdetail.asp?itemidx=2012110629" onclick="GA_event(&quot;카테고리&quot;, &quot;패션_상품&quot;, &quot;미니파우치 뽀글 지퍼주머니 체리 (37002942)&quot;); GA_onclick(&quot;카테고리_패션&quot;, &quot;2012110629&quot;, &quot;미니파우치 뽀글 지퍼주머니 체리 (37002942)&quot;, &quot;아트박스&quot;, &quot;패션&quot;, &quot;4500&quot;, &quot;#32&quot;, &quot;0&quot;);">
+													<!-- 이미지 불러오기 --> 
+													<img src="${contextPath}/download.do?productImageName1=${searchArt.productImageName1}">
+											</a> 
+											<span class="hover"> <span class="wish "
+												data-itemidx="2012110629"></span> <span class="cart"
+												data-itemidx="2012110629" data-opidx="" data-itemoptioncd="N"></span>
+											<span class="ps" data-itemidx="2012110629">0</span>
+											</span>
+										</span> 
+											<span class="iteminfo"> 
+												<span class="text"> <!-- 제목 클릭했을때 그 인덱스값으로 가기 -->
+													<a href="/home/shop/itemdetail.asp?itemidx=2012110629" title="미니파우치 뽀글 지퍼주머니 체리 (37002942)">
+															${searchArt.productName} <!-- 제목  -->
+													</a>
+												</span> 
+												<span class="price"> <!-- 상품 가격 --> 
+													<span class="won">${searchArt.productPrice}<strong>원</strong></span>
+												</span>
+												<span class="stampicon new"></span>
+											</span>
+										</li>
+									</c:forEach>
+								</ul>
+								<div class="clear"></div>
+								<c:choose>
+									<c:when test="${artCount>0}">
+										<div class="showAll"><a href="#">결과 전체 보기</a></div>
+									</c:when>
+								</c:choose>
+							</div>
+						</div>
+						
+						<div id="fancy">
+							<div class="info">
+								<c:choose>
+									<c:when test="${fancyCount>0}">
+										<span class="count">총 <strong>${fancyCount}</strong>개의 상품이 조회되었습니다.</span>
+									</c:when>
+									<c:otherwise>
+										<span class="count">총 <strong>0</strong>개의 상품이 조회되었습니다.</span>
+									</c:otherwise>
+								</c:choose>
+								<ul class='itemList'>
+									<c:forEach var="searchLiving" items="${searchFancy}">
+										<li>
+										<span class="img"> <!-- 사진 클릭했을때 그 인덱스값으로 가기 -->
+											<a href="/home/shop/itemdetail.asp?itemidx=2012110629" onclick="GA_event(&quot;카테고리&quot;, &quot;패션_상품&quot;, &quot;미니파우치 뽀글 지퍼주머니 체리 (37002942)&quot;); GA_onclick(&quot;카테고리_패션&quot;, &quot;2012110629&quot;, &quot;미니파우치 뽀글 지퍼주머니 체리 (37002942)&quot;, &quot;아트박스&quot;, &quot;패션&quot;, &quot;4500&quot;, &quot;#32&quot;, &quot;0&quot;);">
+													<!-- 이미지 불러오기 --> 
+													<img src="${contextPath}/download.do?productImageName1=${searchFancy.productImageName1}">
+											</a> 
+											<span class="hover"> <span class="wish "
+												data-itemidx="2012110629"></span> <span class="cart"
+												data-itemidx="2012110629" data-opidx="" data-itemoptioncd="N"></span>
+											<span class="ps" data-itemidx="2012110629">0</span>
+											</span>
+										</span> 
+											<span class="iteminfo"> 
+												<span class="text"> <!-- 제목 클릭했을때 그 인덱스값으로 가기 -->
+													<a href="/home/shop/itemdetail.asp?itemidx=2012110629" title="미니파우치 뽀글 지퍼주머니 체리 (37002942)">
+															${searchFancy.productName} <!-- 제목  -->
+													</a>
+												</span> 
+												<span class="price"> <!-- 상품 가격 --> 
+													<span class="won">${searchFancy.productPrice}<strong>원</strong></span>
+												</span>
+												<span class="stampicon new"></span>
+											</span>
+										</li>
+									</c:forEach>
+								</ul>
+								<div class="clear"></div>
+								<c:choose>
+									<c:when test="${fancyCount>0}">
+										<div class="showAll"><a href="#">결과 전체 보기</a></div>
+									</c:when>
+								</c:choose>
+							</div>
+						</div>
 					</div>
 				</form>
 			</section>
 		</div>
 	</div>
 	<jsp:include page="/Home/inc/footer.jsp" />
-
 </body>
 </html>

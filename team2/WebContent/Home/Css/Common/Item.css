@@ -39,7 +39,7 @@
 										   background:url(https://www.artboxmall.com/images/ver1/common/sel_arrow.png) no-repeat right center; background-size:0.53125rem 0.28125rem; background-position:right 0.3125rem center;}
 .sec_cont .inner .info:after { display:block; content:" "; clear:both; }
 
-.sec_cont .inner .itemList { width:100%; /*display:table;*/ }
+.sec_cont .inner .itemList { width:100%; margin-top: 30px; /*display:table;*/ }
 .sec_cont .inner .itemList li { width:25%; padding:0 15px; }
 .sec_cont .inner .itemList li.hide { display:none; }
 .sec_cont .inner .itemList li .img { display:block; width:270px; position:relative; }

@@ -49,11 +49,13 @@ public class SearchDAO {
 		try {
 			
 			con = getConnection();
-			String query = "SELECT * FROM living where productname like ?";
-			//select * from (select * from living where productname like ? 
-			//union select * from fancy where productname like ?) a;
+			String query = "select * from (select * from living where productname like ? "
+					+ "union select * from fancy where productname like ? "
+					+ "union select * from art where productname like ?) a";
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1,"%"+search+"%");
+			pstmt.setString(2,"%"+search+"%");
+			pstmt.setString(3,"%"+search+"%");
 			
 			rs = pstmt.executeQuery();
 			while(rs.next()){
@@ -79,9 +81,13 @@ public class SearchDAO {
 		int searchCount = 0;
 		try{
 			con = getConnection();
-			String query = "SELECT count(*) FROM living where productname like ?";
+			String query = "select count(*) from (select * from living where productname like ? "
+					+ "union select * from fancy where productname like ? "
+					+ "union select * from art where productname like ?) a";
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, "%"+search+"%");
+			pstmt.setString(2,"%"+search+"%");
+			pstmt.setString(3,"%"+search+"%");
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()){
@@ -93,6 +99,197 @@ public class SearchDAO {
 			release();
 		}
 		return searchCount;
-	}
+	}//searchCount메소드 끝
+
+	public int shopSearchCount(String search) {
+		int shopSearchCount = 0;
+		try{
+			con = getConnection();
+			String query = "SELECT count(shopname) from seller where shopname like ?";
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, "%"+search+"%");
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				shopSearchCount = rs.getInt(1);
+			}
+		}catch(Exception e){
+			System.out.println("shopSearchCount메소드 내부에서 오류 : " + e);
+		}finally{
+			release();
+		}
+		return shopSearchCount;
+	}//shopSearchCount메소드 끝
+
+	public List<SearchVO> shopSearch(String search) {
+		List<SearchVO> shopSearchList = new ArrayList<SearchVO>();
+		try {
+			
+			con = getConnection();
+			String query = "select shopname from seller where shopname like ?";
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1,"%"+search+"%");
+			
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				SearchVO vo = new SearchVO();
+				vo.setSellerName(rs.getString("shopName"));
+				shopSearchList.add(vo);
+			}
+		
+		} catch (Exception e) {
+			System.out.println("searchArticles 메소드 내부에서 오류 : " + e);
+		}finally {
+			release();
+		}
+	
+		return shopSearchList;
+		
+	}//shopSearchArticles메소드 끝
+
+	public int livingCount(String search) {
+		int livingCount = 0;
+		try{
+			con = getConnection();
+			String query = "SELECT count(*) FROM living where productname like ?";
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, "%"+search+"%");
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				livingCount = rs.getInt(1);
+			}
+		}catch(Exception e){
+			System.out.println("livingCount메소드 내부에서 오류 : " + e);
+		}finally{
+			release();
+		}
+		return livingCount;
+	}//livingCount메소드 끝
+	
+	public List<SearchVO> searchLiving(String search) {
+		List<SearchVO> searchList = new ArrayList<SearchVO>();
+		try {
+			
+			con = getConnection();
+			String query = "SELECT * FROM living where productname like ?";
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1,"%"+search+"%");
+			
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				SearchVO vo = new SearchVO();
+				vo.setProductImageName1(rs.getString("productImageName1"));
+				vo.setProductName(rs.getString("productName"));
+				vo.setProductPrice(rs.getInt("productPrice"));
+				vo.setSellerName(rs.getString("sellerName"));
+				searchList.add(vo);
+			}
+		
+		} catch (Exception e) {
+			System.out.println("searchLiving 메소드 내부에서 오류 : " + e);
+		}finally {
+			release();
+		}
+	
+		return searchList;
+		
+	}//searchLiving 메소드 끝
+
+	public int artCount(String search) {
+		int artCount = 0;
+		try{
+			con = getConnection();
+			String query = "SELECT count(*) FROM art where productname like ?";
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, "%"+search+"%");
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				artCount = rs.getInt(1);
+			}
+		}catch(Exception e){
+			System.out.println("artCount메소드 내부에서 오류 : " + e);
+		}finally{
+			release();
+		}
+		return artCount;
+	}//artCount메소드 끝
+
+	public List<SearchVO> searchArt(String search) {
+		List<SearchVO> searchArt = new ArrayList<SearchVO>();
+		try {
+			
+			con = getConnection();
+			String query = "SELECT * FROM art where productname like ?";
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1,"%"+search+"%");
+			
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				SearchVO vo = new SearchVO();
+				vo.setProductImageName1(rs.getString("productImageName1"));
+				vo.setProductName(rs.getString("productName"));
+				vo.setProductPrice(rs.getInt("productPrice"));
+				vo.setSellerName(rs.getString("sellerName"));
+				searchArt.add(vo);
+			}
+		
+		} catch (Exception e) {
+			System.out.println("searchArt 메소드 내부에서 오류 : " + e);
+		}finally {
+			release();
+		}
+	
+		return searchArt;
+	}//searchArt메소드 끝
+
+	public int fancyCount(String search) {
+		int fancyCount = 0;
+		try{
+			con = getConnection();
+			String query = "SELECT count(*) FROM fancy where productname like ?";
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, "%"+search+"%");
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				fancyCount = rs.getInt(1);
+			}
+		}catch(Exception e){
+			System.out.println("fancyCount메소드 내부에서 오류 : " + e);
+		}finally{
+			release();
+		}
+		return fancyCount;
+	}//fancyCount메소드 끝
+
+	public List<SearchVO> searchFancy(String search) {
+		List<SearchVO> searchFancy = new ArrayList<SearchVO>();
+		try {
+			
+			con = getConnection();
+			String query = "SELECT * FROM fancy where productname like ?";
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1,"%"+search+"%");
+			
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				SearchVO vo = new SearchVO();
+				vo.setProductImageName1(rs.getString("productImageName1"));
+				vo.setProductName(rs.getString("productName"));
+				vo.setProductPrice(rs.getInt("productPrice"));
+				vo.setSellerName(rs.getString("sellerName"));
+				searchFancy.add(vo);
+			}
+		
+		} catch (Exception e) {
+			System.out.println("searchFancy 메소드 내부에서 오류 : " + e);
+		}finally {
+			release();
+		}
+	
+		return searchFancy;
+	}//searchFancy메소드 끝
 	
 }

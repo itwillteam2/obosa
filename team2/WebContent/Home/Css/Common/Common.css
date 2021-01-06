@@ -329,6 +329,38 @@ span.stampicon.y2022   {width:30px; height:13px; background-size:30px 13px; back
 	font-size: 17px;
 }	
 
-/* .selectType{ */
-/* 	float: right; */
-/* } */
+.count{ 
+	font-size:16px; 
+	color:#646464; 
+	line-height:23px; 
+}
+
+.count strong { 
+	font-size:20px; 
+	color:#000000; 
+	line-height:23px; 
+}
+
+.showAll{
+	text-align: center;
+	margin: 50px 0;
+}
+
+.showAll a{
+	border: 1px solid;
+	border-radius:20px;
+	padding: 5px 10px;
+}
+
+.searchSeller{
+	display: inline;
+	border: 1px solid;
+	border-radius:20px;
+	padding: 5px 10px;
+	margin: 0 10px;
+}
+
+.categories{
+	margin: 40px 0 0 20px;
+	font-size: 20px;
+}
