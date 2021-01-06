@@ -186,25 +186,37 @@
 					<div class="clear"></div>
 					
 					<div class='paging'>
-						<span class='box'><span class="btn_pageprev opacity">
-								<a href="javascript:;"> <img class="paging_pc"
-									src="https://www.artboxmall.com/Images/Ver1/Common/btn_board_prev.gif" /><img
-									class="paging_mobile"
-									src="https://www.artboxmall.com/Images/Ver1/Common/btn_board_prev_m.gif" /></a>
-						</span><span class="txt_pagenum"> <a href="javascript:;"
-								class="btn_pageon">1</a></span><span class="txt_pagenum"> <a
-								href="javascript:;" class="btn_pageoff" onclick="fnGoPage(2)">2</a></span><span
-							class="txt_pagenum"> <a href="javascript:;"
-								class="btn_pageoff" onclick="fnGoPage(3)">3</a></span><span
-							class="txt_pagenum"> <a href="javascript:;"
-								class="btn_pageoff" onclick="fnGoPage(4)">4</a></span><span
-							class="txt_pagenum"> <a href="javascript:;"
-								class="btn_pageoff" onclick="fnGoPage(5)">5</a></span><span
-							class="btn_pagenext"> <a href="javascript:;"
-								onclick="fnGoPage(6);"> <img class="paging_pc"
-									src="https://www.artboxmall.com/Images/Ver1/Common/btn_board_next.gif" /><img
-									class="paging_mobile"
-									src="https://www.artboxmall.com/Images/Ver1/Common/btn_board_next_m.gif" /></a></span></span>
+						<span class='box'>
+							
+							
+							<!-- 번호 -->
+							
+					        <li><a href="javascript:PageMove(${paging.prevPageNo})">앞으로&nbsp; </a></li>
+
+
+
+							
+							<c:forEach var="i" begin="${paging.startPageNo }" end="${paging.endPageNo }" step="1">
+								<c:choose>
+									<c:when test="${i eq paging.pageNo }">
+										<li class="active"><a href="javascript:PageMove(${i})">${i}</a></li>
+									</c:when>
+									<c:otherwise>
+										<li><a href="javascript:PageMove(${i})">${i}</a></li>
+									</c:otherwise>
+								</c:choose>
+							</c:forEach>
+							
+							<!-- 번호 -->
+							<li><a href="javascript:PageMove(${paging.nextPageNo})">뒤로&nbsp; </a></li>
+    					    
+
+
+
+							
+							
+							
+						</span>
 					</div>
 				</div>
 			</form>
