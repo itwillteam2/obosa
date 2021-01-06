@@ -36,6 +36,7 @@ public class LivingService {
 	public int totalCountList() {
 		int totalCountList = livingDAO.selectTotalCount();
 		
+		
 		return totalCountList;
 	}
 	

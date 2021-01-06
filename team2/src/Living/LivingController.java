@@ -23,6 +23,8 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.FileUtils;
 
+import Page.Paging;
+
 @WebServlet("/living/*")
 public class LivingController extends HttpServlet {
 
@@ -69,7 +71,19 @@ public class LivingController extends HttpServlet {
 		if (action == null || action.equals("/listLiving.do")) {
 			System.out.println(action);
 			List <LivingVO> livingList = livingService.livingList();
-			request.setAttribute("livingList", livingList);			
+			request.setAttribute("livingList", livingList);	
+			
+			int totalCount = livingService.totalCountList();
+			int page = (request.getParameter("page") == null) ? 1 : Integer.parseInt(request.getParameter("page"));
+			
+			Paging paging = new Paging();
+			paging.setPageNo(page); // 현재 페이지 번호
+			paging.setPageSize(10); // 한페이지에서 불러낼 게시물의 갯수
+			paging.setTotalCount(totalCount); // 총 게시물 수
+			
+			page = (page -1) * 10; //select해오는 기준
+			
+			request.setAttribute("paging", paging);
 		
 			
 			nextPage="/Home/Living/living.jsp";
