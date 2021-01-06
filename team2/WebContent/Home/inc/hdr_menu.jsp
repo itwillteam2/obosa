@@ -42,7 +42,7 @@
 			<li class="Search">
 				<form action="${contextPath}/common/search.do" name="fr" method="post">
 					<div class="CommonSearch">
-						<input type="text" id="kwd" value="">
+						<input type="text" id="kwd" name="kwd">
 						<a href="javascript:fnCommonSearch();">
 							<img src="${contextPath}/Images/Ver1/Common/top_icon_search.png" />
 						</a>

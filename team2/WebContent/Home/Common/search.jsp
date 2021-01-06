@@ -3,7 +3,7 @@
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
-<c:set var="livingVO" value="${livingMap.livingVO }" />
+<c:set var="searchList" value="${searchList}"/>
 
 
 <!DOCTYPE html>
@@ -127,38 +127,38 @@
 		<section class="sec_header">
 			<div class="inner"></div>
 		</section>
-		<div>
-		<h1>상점 검색 결과</h1>
-		<section class="sec_cont">
-			<form name="frm">
-				<input type="hidden" name="page" value="1" />
+<!-- 		<div> -->
+<!-- 		<h1>상점 검색 결과</h1> -->
+<!-- 		<section class="sec_cont"> -->
+<!-- 			<form name="frm"> -->
+<!-- 				<input type="hidden" name="page" value="1" /> -->
 
-				<div class="inner">
+<!-- 				<div class="inner"> -->
 
-					<div class="info">
-						<span class="result">총 <strong>${totalCountList}</strong>개의 상점이 조회되었습니다.
-						</span>
-					</div>
-					<ul class='itemList'>
-						<c:if test="${livingListMap != null }">
-							<li><span class='img'>
-							 <a href=''>
-								 <img src="${LivingListMap.productImageName1 }" />
-								</a>
-							</span> <span class='iteminfo'> <span class='text'> <a
-										href='#'>${productName }</a>
-								</span> <span class='price won'> <span class='won'> <strong>${productPrice }원</strong>
-									</span>
-								</span>
-							</span></li>
-						</c:if>
-					</ul>
-					<a href="#">결과 전체 보기</a>
-					<div class="clear"></div>
-				</div>
-			</form>
-		</section>
-		</div>
+<!-- 					<div class="info"> -->
+<%-- 						<span class="result">총 <strong>${totalCountList}</strong>개의 상점이 조회되었습니다. --%>
+<!-- 						</span> -->
+<!-- 					</div> -->
+<!-- 					<ul class='itemList'> -->
+<%-- 						<c:if test="${livingListMap != null }"> --%>
+<!-- 							<li><span class='img'> -->
+<!-- 							 <a href=''> -->
+<%-- 								 <img src="${LivingListMap.productImageName1 }" /> --%>
+<!-- 								</a> -->
+<!-- 							</span> <span class='iteminfo'> <span class='text'> <a -->
+<%-- 										href='#'>${productName }</a> --%>
+<%-- 								</span> <span class='price won'> <span class='won'> <strong>${productPrice }원</strong> --%>
+<!-- 									</span> -->
+<!-- 								</span> -->
+<!-- 							</span></li> -->
+<%-- 						</c:if> --%>
+<!-- 					</ul> -->
+<!-- 					<a href="#">결과 전체 보기</a> -->
+<!-- 					<div class="clear"></div> -->
+<!-- 				</div> -->
+<!-- 			</form> -->
+<!-- 		</section> -->
+<!-- 		</div> -->
 		<hr>
 		<div>
 		<h1>상품 검색 결과</h1>
@@ -173,18 +173,35 @@
 						</span>
 					</div>
 					<ul class='itemList'>
-						<c:if test="${livingListMap != null }">
-							<li><span class='img'>
-							 <a href=''>
-								 <img src="${LivingListMap.productImageName1 }" />
-								</a>
-							</span> <span class='iteminfo'> <span class='text'> <a
-										href='#'>${productName }</a>
-								</span> <span class='price won'> <span class='won'> <strong>${productPrice }원</strong>
+						<c:forEach var="result" items="${searchList}">
+							<li>
+								<span class="img"> 
+										<!-- 사진 클릭했을때 그 인덱스값으로 가기 -->
+										<a href="/home/shop/itemdetail.asp?itemidx=2012110629"
+											onclick="GA_event(&quot;카테고리&quot;, &quot;패션_상품&quot;, &quot;미니파우치 뽀글 지퍼주머니 체리 (37002942)&quot;); GA_onclick(&quot;카테고리_패션&quot;, &quot;2012110629&quot;, &quot;미니파우치 뽀글 지퍼주머니 체리 (37002942)&quot;, &quot;아트박스&quot;, &quot;패션&quot;, &quot;4500&quot;, &quot;#32&quot;, &quot;0&quot;);">
+											<!-- 이미지 불러오기 -->
+											<img src="${contextPath}/download.do?productImageName1=${result.productImageName1}">
+										</a> 
+											<span class="hover">
+												<span class="wish " data-itemidx="2012110629"></span>										
+												<span class="cart" data-itemidx="2012110629" data-opidx="" data-itemoptioncd="N"></span>
+												<span class="ps" data-itemidx="2012110629">0</span>
+											</span>
+								</span> 
+								<span class="iteminfo"> 
+									<span class="text">
+										<!-- 제목 클릭했을때 그 인덱스값으로 가기 -->
+										<a href="/home/shop/itemdetail.asp?itemidx=2012110629" title="미니파우치 뽀글 지퍼주머니 체리 (37002942)">
+											${result.productName } <!-- 제목  -->
+										</a>
 									</span>
+									 <span class="price">
+									 						<!-- 상품 가격 -->
+								 		<span class="won">${result.productPrice }<strong>원</strong></span>
+							 		</span><span class="stampicon new"></span>
 								</span>
-							</span></li>
-						</c:if>
+							</li>
+						</c:forEach>
 					</ul>
 					<a href="#">결과 전체 보기</a>
 					<div class="clear"></div>
