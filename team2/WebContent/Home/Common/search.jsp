@@ -379,7 +379,7 @@
 									</c:otherwise>
 								</c:choose>
 								<ul class='itemList'>
-									<c:forEach var="searchLiving" items="${searchFancy}">
+									<c:forEach var="searchFancy" items="${searchFancy}">
 										<li>
 										<span class="img"> <!-- 사진 클릭했을때 그 인덱스값으로 가기 -->
 											<a href="/home/shop/itemdetail.asp?itemidx=2012110629" onclick="GA_event(&quot;카테고리&quot;, &quot;패션_상품&quot;, &quot;미니파우치 뽀글 지퍼주머니 체리 (37002942)&quot;); GA_onclick(&quot;카테고리_패션&quot;, &quot;2012110629&quot;, &quot;미니파우치 뽀글 지퍼주머니 체리 (37002942)&quot;, &quot;아트박스&quot;, &quot;패션&quot;, &quot;4500&quot;, &quot;#32&quot;, &quot;0&quot;);">

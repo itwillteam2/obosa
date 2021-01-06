@@ -2,12 +2,15 @@
 	pageEncoding="utf-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>	
+<c:set var="id" value="${sessionScope.id}"/>
+<c:set var="name" value="${sessionScope.name}"/>
+<c:set var="memtype" value="${sessionScope.memtype}"/>
+<header>	
 <script>
-	fnCommonSearch = function(){
+	function fnCommonSearch(){
 		document.fr.submit();
 	}
 </script>
-<header>	
 <div id="CommonHeader">
 	<div id="mymenu">
 			<c:choose>
@@ -16,6 +19,7 @@
 					<a href="${contextPath}/member/join.do">회원가입</a>
 				</c:when>
 				<c:otherwise>
+					<label>환영합니다 ${name}님!</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 					<a href="${contextPath}/member/userInfoCK.do">회원정보변경</a>&nbsp; | &nbsp;
 					<a href="${contextPath}/member/logout.do">로그아웃</a>
 				</c:otherwise>
@@ -46,12 +50,6 @@
 					</div>
 				</form>
 			</li>
-<!-- 			<li class="selectType"> -->
-<!-- 				<select> -->
-<!-- 					<option>판매자</option> -->
-<!-- 					<option>상품</option> -->
-<!-- 				</select> -->
-<!-- 			</li> -->
 		</ul>
 		<div class="clear"></div>
 	</div>

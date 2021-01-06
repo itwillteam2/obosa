@@ -118,8 +118,12 @@ public class MemberController extends HttpServlet{
 				String shopName = vo.getShopName();
 				if(shopName == null || shopName == ""){
 					session.setAttribute("memtype", "customer");
+					String name = vo.getName();
+					session.setAttribute("name", name);
 				}else{
 					session.setAttribute("memtype", "seller");
+					String name = vo.getShopName();
+					session.setAttribute("name", name);
 				}
 				PrintWriter pw = response.getWriter();
 				pw.print("<script>" 
