@@ -335,33 +335,33 @@ public class LivingDAO {
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, num);
 			ResultSet rs = pstmt.executeQuery();
-			rs.next();
-			int _num = rs.getInt("num");
-			String productName = rs.getString("productName");
-			String productContent = rs.getString("productContent");
-			String sellerName = rs.getString("SellerName");
-			int productPrice = rs.getInt("productPrice");
-			String productImageName1 = rs.getString("ProductImageName1");
-			String productImageName2 = rs.getString("ProductImageName2");
-			String productImageName3 = rs.getString("ProductImageName3");
-			int productQuantity = rs.getInt("ProductQuantity");
-			int shipping_fee = rs.getInt("Shipping_fee");
-			int point = rs.getInt("Point");
-			Timestamp regdate = rs.getTimestamp("regdate");
-
-			content.setNum(_num);
-			content.setProductName(productName);
-			content.setProductContent(productContent);
-			content.setSellerName(sellerName);
-			content.setProductPrice(productPrice);
-			content.setProductImageName1(productImageName1);
-			content.setProductImageName2(productImageName2);
-			content.setProductImageName3(productImageName3);
-			content.setProductQuantity(productQuantity);
-			content.setShipping_fee(shipping_fee);
-			content.setPoint(point);
-			content.setReg_date(regdate);
-
+			if(rs.next()){
+				int _num = rs.getInt("num");
+				String productName = rs.getString("productName");
+				String productContent = rs.getString("productContent");
+				String sellerName = rs.getString("SellerName");
+				int productPrice = rs.getInt("productPrice");
+				String productImageName1 = rs.getString("ProductImageName1");
+				String productImageName2 = rs.getString("ProductImageName2");
+				String productImageName3 = rs.getString("ProductImageName3");
+				int productQuantity = rs.getInt("ProductQuantity");
+				int shipping_fee = rs.getInt("Shipping_fee");
+				int point = rs.getInt("Point");
+				Timestamp regdate = rs.getTimestamp("regdate");
+	
+				content.setNum(_num);
+				content.setProductName(productName);
+				content.setProductContent(productContent);
+				content.setSellerName(sellerName);
+				content.setProductPrice(productPrice);
+				content.setProductImageName1(productImageName1);
+				content.setProductImageName2(productImageName2);
+				content.setProductImageName3(productImageName3);
+				content.setProductQuantity(productQuantity);
+				content.setShipping_fee(shipping_fee);
+				content.setPoint(point);
+				content.setReg_date(regdate);
+			}
 			
 		} catch (Exception e) {
 			System.out.println("selectContent error : " + e.toString());

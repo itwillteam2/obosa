@@ -91,14 +91,14 @@ input[type=button]{cursor:pointer;}
 #CommonHeader .OtherBrand li {margin:18px 28px 0 0; }
 #CommonHeader .OtherBrand li img {width:auto; height:26px;}
 
-#CommonHeader a.MainLogo {width:260px; height:50px; margin:10px auto 60px; display:block;}
-#CommonHeader a.MainLogo img {width:260px; height:95px;}
+#CommonHeader a.MainLogo {width:260px; margin:10px auto 60px; display:block;}
+#CommonHeader a.MainLogo img {width:260px;}
 
-#CommonHeader a.MainLogoScroll {width:180px; height:52px; margin:24px auto 4px; display:none;}
-#CommonHeader a.MainLogoScroll img {width:180px; height:70px;}
+#CommonHeader a.MainLogoScroll {width:180px; margin:0 auto; display:none;}
+#CommonHeader a.MainLogoScroll img {width:180px;;}
 
 #CommonHeader .CategoryLarge {height:57px;}
-#CommonHeader .CategoryLarge ul {display:table; height:57; width:1200px; margin-left: auto; position:relative;}
+#CommonHeader .CategoryLarge ul {display:table; height:57px; width:1200px; margin-left: auto; position:relative; margin-top:50px;}
 #CommonHeader .CategoryLarge li.CategoryMiddle {display:table-cell;margin:15px 35px 0 0;}
 #CommonHeader .CategoryLarge li.CategoryMiddle a {font-size:18px; color:#000000;}
 
@@ -304,36 +304,6 @@ input[type=button]{cursor:pointer;}
 
 .e35thMoBanner { display:none; }
 
-@media (max-width:599px) {
-	.paging { padding:1.875rem 0; text-align:center; }
-}
-
-@media (max-width:360px) {
-
-	.e35thMoBanner { display:block; }
-
-	input[type=checkbox] {width:1.0625rem; height:1.0625rem;} 
-	input[type=checkbox]:checked {background-image:url(../Images/Ver1/Common/check_51.png); background-size:1.0625rem 1.0625rem;}
-
-	input[type=radio] {width:1.0625rem; height:1.0625rem;} 
-	input[type=radio]:checked  {background-image:url(../Images/Ver1/Common/radio_51.png); background-size:1.0625rem 1.0625rem;}
-
-	input[type=checkbox]:checked::-ms-check {padding:20%;} 
-
-
-	#CommonHeaderArea {display:none;}
-	#CommonHeader {display:none;}
-	#CommonFooter {display:none;}
-	#CommonHeaderArea_M {display:block;}
-	#CommonHeader_M {display:block;}
-	#CommonFooter_M {display:block;}
-
-	.btn_top {display:block;}
-	.MyInfoSummaryArea {display:none;}
-
-
-}
-
 
 /*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ stamp ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/
 div.stampicongroup     {height:13px; line-height:13px;}
@@ -353,39 +323,9 @@ span.stampicon.y2020   {width:30px; height:13px; background-size:30px 13px; back
 span.stampicon.y2021   {width:30px; height:13px; background-size:30px 13px; background-image:url(../Images/Ver1/Common/Stamp/y2021.png);}
 span.stampicon.y2022   {width:30px; height:13px; background-size:30px 13px; background-image:url(../Images/Ver1/Common/Stamp/y2022.png);}
 
-@media (max-width:360px) {
-	div.stampicongroup     {height:0.8125rem; line-height:0.8125rem;}
-	span.stampicon         {margin:0 0.15rem;}
-	span.stampicon.coupon  {width:2.625rem; height:0.8125rem; background-size:2.625rem 0.8125rem; background-image:url(../Images/Ver1/Common/Stamp/coupon_m.png);}
-	span.stampicon.free    {width:3rem;     height:0.8125rem; background-size:3rem 0.8125rem;     background-image:url(../Images/Ver1/Common/Stamp/free_m.png);}
-	span.stampicon.gift    {width:1.875rem; height:0.8125rem; background-size:1.875rem 0.8125rem; background-image:url(../Images/Ver1/Common/Stamp/gift_m.png);}
-	span.stampicon.new     {width:1.875rem; height:0.8125rem; background-size:1.875rem 0.8125rem; background-image:url(../Images/Ver1/Common/Stamp/new_m.png);}
-	span.stampicon.only    {width:1.875rem; height:0.8125rem; background-size:1.875rem 0.8125rem; background-image:url(../Images/Ver1/Common/Stamp/only_m.png);}
-	span.stampicon.plus    {width:1.875rem; height:0.8125rem; background-size:1.875rem 0.8125rem; background-image:url(../Images/Ver1/Common/Stamp/plus_m.png);}
-	span.stampicon.reinto  {width:2.25rem;  height:0.8125rem; background-size:2.25rem 0.8125rem;  background-image:url(../Images/Ver1/Common/Stamp/reinto_m.png);}
-	span.stampicon.sale    {width:1.875rem; height:0.8125rem; background-size:1.875rem 0.8125rem; background-image:url(../Images/Ver1/Common/Stamp/sale_m.png);}
-	span.stampicon.soldout {width:1.875rem; height:0.8125rem; background-size:1.875rem 0.8125rem; background-image:url(../Images/Ver1/Common/Stamp/soldout_m.png);}
-	span.stampicon.y2018   {width:1.875rem; height:0.8125rem; background-size:1.875rem 0.8125rem; background-image:url(../Images/Ver1/Common/Stamp/y2018_m.png);}
-	span.stampicon.y2019   {width:1.875rem; height:0.8125rem; background-size:1.875rem 0.8125rem; background-image:url(../Images/Ver1/Common/Stamp/y2019_m.png);}
-	span.stampicon.y2020   {width:1.875rem; height:0.8125rem; background-size:1.875rem 0.8125rem; background-image:url(../Images/Ver1/Common/Stamp/y2020_m.png);}
-	span.stampicon.y2021   {width:1.875rem; height:0.8125rem; background-size:1.875rem 0.8125rem; background-image:url(../Images/Ver1/Common/Stamp/y2021_m.png);}
-	span.stampicon.y2022   {width:1.875rem; height:0.8125rem; background-size:1.875rem 0.8125rem; background-image:url(../Images/Ver1/Common/Stamp/y2022_m.png);}
-
-	
-	.paging_pc { display:none; }
-	.paging_mobile { display:block; }
-	.btn_pageprev, .btn_pagenext { width: 1.875rem;  height: 1.875rem;  margin: 0 0.625rem;	}
-	.btn_pageprev a, .btn_pagenext a, .txt_pagenum a { width: 1.5rem;  height: 1.875rem; padding:0; }
-
-
-	.btn_pageon  { color:#df2e38 !important;font-size:13px; }
-	.btn_pageoff { color:#000000 !important;font-size:13px; }
-
-}
-
 #mymenu{
 	text-align: right;
-	padding: 30px;
+	padding: 30px 30px 0px 30px;
 	font-size: 17px;
 }	
 
