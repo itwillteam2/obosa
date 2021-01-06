@@ -106,12 +106,12 @@
 					<c:when test="${sessionScope.id == 'admin'}">
 						<div class="more_info"><span onclick="location.href='${contextPath}/CsCenter/InquiryWrite.do';">FAQ 답변 작성</span></div>	
 					</c:when>	
-					<c:otherwise>
+					<c:when test="${sessionScope.id == InquiryList.id }">
 						<div class="more_info">
 							<span><a href="${contextPath}/CsCenter/InquiryModify.do?inqnum=${InquiryList.inqnum}" style="color : white;">FAQ 수정</a></span>
 							<span><a href="${contextPath}/Home/CsCenter/InquiryDelete.jsp?inqnum=${InquiryList.inqnum}" style="color : white;">FAQ 삭제</a></span>
 						</div>
-					</c:otherwise>	
+					</c:when>	
 				</c:choose>	
 			</div>
 		</c:forEach>
