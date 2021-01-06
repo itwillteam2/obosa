@@ -166,6 +166,16 @@ public class CsCenterController extends HttpServlet {
 			request.setAttribute("notice", notice);
 			
 			nextPage = "/Home/CsCenter/NoticeModify.jsp";
+			
+		}else if (action.equals("/InquiryModify.do")) {
+			
+			String inqnum = request.getParameter("inqnum");
+			
+			InquiryVO inquiry = CsCenterService.viewInquiry(Integer.parseInt(inqnum));
+			
+			request.setAttribute("inquiry", inquiry);
+			
+			nextPage = "/Home/CsCenter/InquiryModify.jsp";
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);

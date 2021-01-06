@@ -58,4 +58,10 @@ public class CsCenterService {
 		return notice;
 	}
 
+	public InquiryVO viewInquiry(int inqnum) {
+		InquiryVO inquiry = null;
+		inquiry = CsCenterDAO.selectInquiry(inqnum);
+		return inquiry;
+	}
+
 }

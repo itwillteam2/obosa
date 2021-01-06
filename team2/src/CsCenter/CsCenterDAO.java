@@ -328,4 +328,41 @@ public class CsCenterDAO {
 		}
 		return notice;
 	}
+
+	public InquiryVO selectInquiry(int inqnum) {
+		InquiryVO inquiry = new InquiryVO();
+		try {
+			conn = DBConnection.getConnection();
+			String query = "select * from inquiry where inqnum=?";
+			
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, inqnum);
+			ResultSet rs = pstmt.executeQuery();
+			if(rs.next()){
+				int _inqnum = rs.getInt("inqnum");
+				String id = rs.getString("id");
+				String pw = rs.getString("pw");
+				String title = rs.getString("title");
+				String email = rs.getString("email");
+				String content = rs.getString("content");
+				String category = rs.getString("category");
+				Timestamp date = rs.getTimestamp("date");
+				
+				inquiry.setInqnum(_inqnum);
+				inquiry.setId(id);
+				inquiry.setPw(pw);
+				inquiry.setTitle(title);
+				inquiry.setEmail(email);
+				inquiry.setContent(content);
+				inquiry.setCategory(category);
+				inquiry.setDate(date);
+			}
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			freeResource();
+		}
+		return inquiry;
+	}
 }

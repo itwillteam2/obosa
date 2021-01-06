@@ -6,7 +6,7 @@
 
 <%
 	request.setCharacterEncoding("UTF-8");
-String num = request.getParameter("nnum");
+	String nnum = request.getParameter("nnum");
 %>          
 
 <c:set var="contextPath"  value="${pageContext.request.contextPath}"  />  
