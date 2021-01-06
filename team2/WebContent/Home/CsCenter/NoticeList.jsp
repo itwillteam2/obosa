@@ -9,7 +9,6 @@
 %>
 
 <c:set var="contextPath" value="${pageContext.request.contextPath}" />
-<c:set  var="NoticeList"  value="${articlesMap.NoticeList}" />
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -70,18 +69,19 @@
 				<li>등록일</li>
 			</ul>
 		</div>
+		<c:forEach var="NoticeList" items="${NoticeList}">			
 		<div class="list_line">
-			<c:forEach var="NoticeList" items="${NoticeList}">			
 				<ul>							
 					<li>${NoticeList.nnum}</li>
 					<li>${NoticeList.title}</li>
 					<li><fmt:formatDate value="${NoticeList.date}" /></li>
 				</ul>
-			</c:forEach>
+			
 		</div>
 		<div class="list_cont" style="display: none;">
-			<p>${NoticeList.content }</p>
+			<p>${NoticeList.content}</p>
 		</div>
+		</c:forEach>
 		<div class="FAQ">
 			<div class="SearchContent" style="margin-top: 20px; float: right;">
 				<div class="selectbox">
