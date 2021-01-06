@@ -63,13 +63,13 @@ public class SearchDAO {
 				vo.setSellerName(rs.getString("sellerName"));
 				searchList.add(vo);
 			}
-			System.out.println(searchList);
+		
 		} catch (Exception e) {
 			System.out.println("searchArticles 메소드 내부에서 오류 : " + e);
 		}finally {
 			release();
 		}
-		System.out.println(searchList);
+	
 		return searchList;
 		
 	}//searchArticles 메소드 끝
