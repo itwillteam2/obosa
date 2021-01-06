@@ -19,26 +19,6 @@
 	href="${contextPath}/Home/Css/CsCenter/Cscenter.css" />
 
 <script type="text/javascript">
-	$(document).ready(function() {
-
-	});
-
-	$(document).on("click", ".file_x", function() {
-		var targetNum = $(this).attr("data");
-
-		$("[name=txFile" + targetNum + "]").val("");
-		$("[name=file" + targetNum + "]").val("");
-		$(this).css("display", "none");
-	});
-
-	function isEmail(asValue) {
-
-		var regExp = /^[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_\.]?[0-9a-zA-Z])*\.[a-zA-Z]{2,3}$/i;
-
-		return regExp.test(asValue); // 형식에 맞는 경우 true 리턴	
-
-	}
-
 	$(function(){		
 		$("#submit").click(function(){
 			if($("#id").val()==""){
@@ -49,6 +29,11 @@
 			if($("#email").val()==""){
 				alert("이메일을 입력해주세요.");
 				$("#email").focus();
+				return false;				
+			};
+			if($("#pw").val()==""){
+				alert("비밀번호를 입력해주세요.");
+				$("#pw").focus();
 				return false;				
 			};
 			if($("#category").val()==""){
@@ -87,7 +72,7 @@
 			</ul>
 		</div>
 
-		<form name="Inquiryfrm" method="post" action="InquiryAdd.do">
+		<form name="Inquiryfrm" method="post" action="${contextPath}/CsCenter/addInquiry.do">
 			<div class="warning_box">
 				<span>답변 가능 시간은 오전 9:00시부터 오후 6:00시까지입니다. (주말 및 공휴일 제외)</span>
 			</div>
@@ -102,6 +87,12 @@
 					</div>
 					<div>
 						<ul>
+							<li>*비밀번호</li>
+							<li><input type="text" name="pw" id="pw"/></li>
+						</ul>
+					</div>
+					<div>
+						<ul>
 							<li>*이메일</li>
 							<li><input type="text" name="email" id="email"/></li>
 						</ul>
@@ -112,10 +103,10 @@
 							<li>*문의분야</li>
 							<li><select id="category" name="category" title="상담유형 선택">
 									<option value="" selected="selected">상담유형 선택</option>
-									<option value="01">주문/결제</option>
-									<option value="02">배송</option>
-									<option value="03">취소/반품/교환</option>
-									<option value="04">기타</option>
+									<option value="order">주문/결제</option>
+									<option value="delivery">배송</option>
+									<option value="cancel">취소/반품/교환</option>
+									<option value="etc">기타</option>
 							</select></li>
 						</ul>
 					</div>

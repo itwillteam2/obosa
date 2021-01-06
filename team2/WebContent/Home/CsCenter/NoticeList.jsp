@@ -77,6 +77,10 @@
 		</div>
 		<div class="list_cont" style="display: none;">
 			<p>${fn:replace(NoticeList.content, newLineChar, "<br/>")}</p>
+			<div class="more_info">
+				<span><a href="${contextPath}/CsCenter/NoticeModify.do?nnum=${NoticeList.nnum}" style="color : white;">공지사항 수정</a></span>
+				<span><a href="${contextPath}/Home/CsCenter/NoticeDelete.jsp?nnum=${NoticeList.nnum}" style="color : white;">공지사항 삭제</a></span>
+			</div>
 		</div>
 		</c:forEach>
 		<div class="FAQ">

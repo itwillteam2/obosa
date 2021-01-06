@@ -6,6 +6,7 @@
 
 <%
 	request.setCharacterEncoding("UTF-8");
+String num = request.getParameter("nnum");
 %>          
 
 <c:set var="contextPath"  value="${pageContext.request.contextPath}"  />  
@@ -66,11 +67,11 @@ $(function(){
 
 <div>
 	<div>
-		<h2 style="text-align:center; margin: 30px 0; font-size:30px;">공지사항 등록</h2>
+		<h2 style="text-align:center; margin: 30px 0; font-size:30px;">공지사항 수정</h2>
 	</div>
 </div>
 <article class="product" style="width:1200px; margin : 0 auto" >
-	<form action="${contextPath}/CsCenter/addNotice.do" method="post">
+	<form action="${contextPath}/CsCenter/NoticeModify.do" method="post">
 		<table class="table">
 			<colgroup>
 				<col style="width:120px" />
@@ -81,7 +82,7 @@ $(function(){
 					<label for="title" class="m-0">제목</label>
 				</th>
 				<td>
-					<input style="width:700px; margin:0 auto;" class="form-control" type="text" name="title" id="title" />
+					<input style="width:700px; margin:0 auto;" class="form-control" type="text" name="title" id="title" value="${notice.title}"/>
 				</td>
 			</tr>
 			<tr>
@@ -97,7 +98,7 @@ $(function(){
 					<label for="Content"  class="m-0">내용</label>
 				</th>
 				<td>			
-					<textarea style="margin:0 auto; resize:none; height:400px; width:700px;"class="form-control" name="content" id="content" cols="40" rows="13"></textarea>
+					<textarea style="margin:0 auto; resize:none; height:400px; width:700px;"class="form-control" name="content" id="content" cols="40" rows="13">${notice.content}</textarea>
 				</td>
 			</tr>
 		</table>

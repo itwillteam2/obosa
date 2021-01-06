@@ -3,9 +3,11 @@
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <%
 	request.setCharacterEncoding("UTF-8");
+	pageContext.setAttribute("newLineChar", "\n");
 %>
 
 <c:set var="contextPath"  value="${pageContext.request.contextPath}"  />    
@@ -89,27 +91,34 @@
 				<li>등록일</li>
 			</ul>
 		</div>
+		<c:forEach var="InquiryList" items="${InquiryList}">			
 		<div class="list_line">
-			<ul>
-				<li>102</li>
-				<li>상품을 해외로 배송할 수 있나요?</li>
-				<li>2018-09-18</li>
-			</ul>
+				<ul>							
+					<li>${InquiryList.inqnum}</li>
+					<li>${InquiryList.title}</li>
+					<li><fmt:formatDate value="${InquiryList.date}" /></li>
+				</ul>
+			
 		</div>
-		<div class="list_cont" style="display:none;">
-			<p>현재 해외배송 서비스는 지원하지 않고 있습니다.</p><p>국내 배송지로 배송만 가능합니다.</p>
-			<div class="more_info"><span onclick="location.href='${contextPath}/CsCenter/InquiryWrite.do';">FAQ 답변 작성</span></div>
-		</div>
+			<div class="list_cont" style="display: none;">
+				<p>${fn:replace(InquiryList.content, newLineChar, "<br/>")}</p>
+				<div class="more_info">
+				<span><a href="#" style="color : white;">FAQ 수정</a></span>
+				<span><a href="${contextPath}/Home/CsCenter/InquiryDelete.jsp?inqnum=${InquiryList.inqnum}" style="color : white;">FAQ 삭제</a></span>
+				</div>
+	<%-- 		<div class="more_info"><span onclick="location.href='${contextPath}/CsCenter/InquiryWrite.do';">FAQ 답변 작성</span></div> --%>
+				</div>
+		</c:forEach>
 		<div class="FAQ">
 			<div class="SearchContent" style="margin-top:20px; float:right;" >
 				<div class="selectbox">
-					<select id='ClassIDX' name='ClassIDX' style="float:right;">
-						<option value=''>전체</option>
-						<option value='0'>주문/결제</option>
-						<option value='1'>취소/반품/환불</option>
-						<option value='2'>배송</option>
-						<option value='3'>기타</option>
-					</select>		
+					<select id='ClassIDX' name='ClassIDX' style="float: right;">
+						<option value="" selected="selected">상담유형 선택</option>
+						<option value="order">주문/결제</option>
+						<option value="delivery">배송</option>
+						<option value="cancel">취소/반품/교환</option>
+						<option value="etc">기타</option>
+					</select>
 					<ul>
 						<li class="Search" style="float:right; width:250px; height:40px; border-bottom:2px solid #787878; margin:20px 0 0 0;">
 							<div class="CommonSearch">
