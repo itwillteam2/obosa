@@ -29,7 +29,7 @@
 			<li class="CategoryMiddle"><a href="#">문구</a></li>
 			<li class="CategoryMiddle"><a href="#">패션</a></li>
 			<li class="CategoryMiddle"><a href="#">주방/욕실</a></li>
-			<li class="CategoryMiddle"><a href="#">리빙/데코</a></li>
+			<li class="CategoryMiddle"><a href="${contextPath}/living/listLiving.do">리빙/데코</a></li>
 			<li class="CategoryMiddle"><a href="#">디지털/가전</a></li>
 			<li class="CategoryMiddle"><a href="#">여행</a></li>
 			<li class="CategoryMiddle"><a href="#">뷰티</a></li>
