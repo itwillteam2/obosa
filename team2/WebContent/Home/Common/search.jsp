@@ -3,7 +3,6 @@
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
-<c:set var="searchList" value="${searchList}"/>
 
 
 <!DOCTYPE html>
@@ -173,14 +172,14 @@
 						</span>
 					</div>
 					<ul class='itemList'>
-						<c:forEach var="result" items="${searchList}">
+						<c:forEach var="searchList" items="${searchList}">
 							<li>
 								<span class="img"> 
 										<!-- 사진 클릭했을때 그 인덱스값으로 가기 -->
 										<a href="/home/shop/itemdetail.asp?itemidx=2012110629"
 											onclick="GA_event(&quot;카테고리&quot;, &quot;패션_상품&quot;, &quot;미니파우치 뽀글 지퍼주머니 체리 (37002942)&quot;); GA_onclick(&quot;카테고리_패션&quot;, &quot;2012110629&quot;, &quot;미니파우치 뽀글 지퍼주머니 체리 (37002942)&quot;, &quot;아트박스&quot;, &quot;패션&quot;, &quot;4500&quot;, &quot;#32&quot;, &quot;0&quot;);">
 											<!-- 이미지 불러오기 -->
-											<img src="${contextPath}/download.do?productImageName1=${result.productImageName1}">
+											<img src="${contextPath}/download.do?productImageName1=${searchList.productImageName1}">
 										</a> 
 											<span class="hover">
 												<span class="wish " data-itemidx="2012110629"></span>										
@@ -192,12 +191,12 @@
 									<span class="text">
 										<!-- 제목 클릭했을때 그 인덱스값으로 가기 -->
 										<a href="/home/shop/itemdetail.asp?itemidx=2012110629" title="미니파우치 뽀글 지퍼주머니 체리 (37002942)">
-											${result.productName } <!-- 제목  -->
+											${searchList.productName} <!-- 제목  -->
 										</a>
 									</span>
 									 <span class="price">
 									 						<!-- 상품 가격 -->
-								 		<span class="won">${result.productPrice }<strong>원</strong></span>
+								 		<span class="won">${searchList.productPrice}<strong>원</strong></span>
 							 		</span><span class="stampicon new"></span>
 								</span>
 							</li>
