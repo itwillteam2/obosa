@@ -145,22 +145,9 @@
 		<div class="left_box">
 			<div>
 				<ul>
-					<li>*이름</li>
+					<li>*아이디</li>
 					<li>
 							<input type="text" name="memname" value=""/>
-					</li>
-				</ul>
-			</div>
-			
-			<div>
-				<ul>
-					<li>*휴대전화</li>
-					<li>
-						<input type="num" name="txPhone1" maxlength="4" title="연락처를 입력하세요." value=""/>
-						<span class="dasi">-</span>
-						<input type="num" name="txPhone2" maxlength="4" title="연락처를 입력하세요." value=""/>
-						<span class="dasi">-</span>
-						<input type="num" name="txPhone3" maxlength="4" title="연락처를 입력하세요." value=""/>
 					</li>
 				</ul>
 			</div>
