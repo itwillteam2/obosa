@@ -82,7 +82,7 @@
 					<div>
 						<ul>
 							<li>*아이디</li>
-							<li><input type="text" name="id" id="id"/></li>
+							<li><input type="text" name="id" id="id" value="${id}" readonly/></li>
 						</ul>
 					</div>
 					<div>

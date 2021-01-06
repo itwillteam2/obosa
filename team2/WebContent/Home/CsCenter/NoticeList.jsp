@@ -52,9 +52,11 @@
 		</div>
 
 		<div class="sel_box">
-			<span
-				onclick="javascript:location.href='${contextPath}/CsCenter/NoticeWrite.do';">공지사항
-				쓰기</span>
+		<c:choose>
+			<c:when test="${sessionScope.id == 'admin'}">
+				<span onclick="javascript:location.href='${contextPath}/CsCenter/NoticeWrite.do';">공지사항쓰기</span>
+			</c:when>
+		</c:choose>
 		</div>
 		<span class="tot_cnt">총 <span>102</span>건의 FAQ가 있습니다.
 		</span>
@@ -77,10 +79,14 @@
 		</div>
 		<div class="list_cont" style="display: none;">
 			<p>${fn:replace(NoticeList.content, newLineChar, "<br/>")}</p>
-			<div class="more_info">
-				<span><a href="${contextPath}/CsCenter/NoticeModify.do?nnum=${NoticeList.nnum}" style="color : white;">공지사항 수정</a></span>
-				<span><a href="${contextPath}/Home/CsCenter/NoticeDelete.jsp?nnum=${NoticeList.nnum}" style="color : white;">공지사항 삭제</a></span>
-			</div>
+			<c:choose>
+				<c:when test="${sessionScope.id == 'admin'}">
+					<div class="more_info">
+					<span><a href="${contextPath}/CsCenter/NoticeModify.do?nnum=${NoticeList.nnum}" style="color : white;">공지사항 수정</a></span>
+					<span><a href="${contextPath}/Home/CsCenter/NoticeDelete.jsp?nnum=${NoticeList.nnum}" style="color : white;">공지사항 삭제</a></span>
+				</div>
+				</c:when>
+			</c:choose>		
 		</div>
 		</c:forEach>
 		<div class="FAQ">

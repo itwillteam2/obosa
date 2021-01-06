@@ -102,12 +102,18 @@
 		</div>
 			<div class="list_cont" style="display: none;">
 				<p>${fn:replace(InquiryList.content, newLineChar, "<br/>")}</p>
-				<div class="more_info">
-				<span><a href="#" style="color : white;">FAQ 수정</a></span>
-				<span><a href="${contextPath}/Home/CsCenter/InquiryDelete.jsp?inqnum=${InquiryList.inqnum}" style="color : white;">FAQ 삭제</a></span>
-				</div>
-	<%-- 		<div class="more_info"><span onclick="location.href='${contextPath}/CsCenter/InquiryWrite.do';">FAQ 답변 작성</span></div> --%>
-				</div>
+				<c:choose>
+					<c:when test="${sessionScope.id == 'admin'}">
+						<div class="more_info"><span onclick="location.href='${contextPath}/CsCenter/InquiryWrite.do';">FAQ 답변 작성</span></div>	
+					</c:when>	
+					<c:otherwise>
+						<div class="more_info">
+							<span><a href="#" style="color : white;">FAQ 수정</a></span>
+							<span><a href="${contextPath}/Home/CsCenter/InquiryDelete.jsp?inqnum=${InquiryList.inqnum}" style="color : white;">FAQ 삭제</a></span>
+						</div>
+					</c:otherwise>	
+				</c:choose>	
+			</div>
 		</c:forEach>
 		<div class="FAQ">
 			<div class="SearchContent" style="margin-top:20px; float:right;" >
