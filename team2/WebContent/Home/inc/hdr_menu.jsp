@@ -25,14 +25,11 @@
 	<a href="${contextPath}/common/index.do" class="MainLogoScroll"><img src="${contextPath}/Images/Ver1/Common/logo.png" /></a>
 	<div class="CategoryLarge">
 		<ul>
-			<li class="CategoryMiddle"><a href="#">인형/토이</a></li>
+			<li class="CategoryMiddle"><a href="${contextPath}/living/listLiving.do">리빙</a></li>
+			<li class="CategoryMiddle"><a href="#">공예</a></li>
 			<li class="CategoryMiddle"><a href="#">문구</a></li>
-			<li class="CategoryMiddle"><a href="#">패션</a></li>
-			<li class="CategoryMiddle"><a href="#">주방/욕실</a></li>
-			<li class="CategoryMiddle"><a href="${contextPath}/living/listLiving.do">리빙/데코</a></li>
-			<li class="CategoryMiddle"><a href="#">디지털/가전</a></li>
-			<li class="CategoryMiddle"><a href="#">여행</a></li>
-			<li class="CategoryMiddle"><a href="#">뷰티</a></li>
+			<li class="CategoryMiddle"><a href="${contextPath}/CsCenter/NoticeList.do">공지사항</a></li>
+			<li class="CategoryMiddle"><a href="#">평가받기</a></li>
 			
 			<li class="Cart">
 				<a href="Order/Cart.html" title="장바구니">			

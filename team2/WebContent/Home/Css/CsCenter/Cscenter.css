@@ -104,9 +104,9 @@
 
 	.wrap .btn_area { margin:30px auto 50px auto; width:514px;  }
 	.wrap .btn_area:after { content:" "; display:block; clear:both; }
-	.wrap .btn_area span { float:left; display:inline-block; font-size:22px; text-align:center; border-radius:5px; color:#ffffff; width:250px; height:60px; line-height:60px; border:1px solid #000000; cursor:pointer; }
-	.wrap .btn_area span:nth-child(1) { color:#000000; margin-right:14px; }
-	.wrap .btn_area span:nth-child(2) { background-color:#000000; }
+	.wrap .btn_area input { float:left; display:inline-block; font-size:22px; text-align:center; border-radius:5px; color:#ffffff; width:250px; height:60px; line-height:60px; border:1px solid #000000; cursor:pointer; }
+	.wrap .btn_area input:nth-child(1) { color:#000000; margin-right:14px; }
+	.wrap .btn_area input:nth-child(2) { background-color:#000000; }
 
 /*1:1 문의/상담*/
 

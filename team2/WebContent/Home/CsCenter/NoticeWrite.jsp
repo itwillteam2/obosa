@@ -53,13 +53,10 @@ $(function(){
 	});	
 	return false;
 });
-	
-	
-	//글목록 보기 버튼 클릭했을떄 호출되는 함수 
-	function backToList(obj){//클릭한 버튼이 속해 있는 <form>태그를 매개변수로 전달 받는다.
-		
+
+	function backToList(obj){	
 		obj.action="${contextPath}/CsCenter/NoticeList.do";
-		obj.submit();//form태그로 서블릿에  모든 글 조회 요청	
+		obj.submit();
 	}
 
 </script>

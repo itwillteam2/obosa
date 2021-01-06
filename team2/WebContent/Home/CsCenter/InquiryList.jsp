@@ -71,11 +71,11 @@
 	<div class="wrap">
 	<div class="top_title">고객감동센터</div>
 	<div class="MenuBar_Box">
-		<ul>
-			<li onclick="location.href='${contextPath}/Home/CsCenter/NoticeList.jsp';" >공지사항</li>
-			<li onclick="location.href='${contextPath}/Home/CsCenter/InquiryList.jsp';" class="on">상품Q&A</li>
-			<li onclick="location.href='${contextPath}/Home/CsCenter/InquiryWrite.jsp';" >1:1 문의/상담</li>
-		</ul>
+			<ul>
+				<li onclick="location.href='${contextPath}/CsCenter/NoticeList.do'" >공지사항</li>
+				<li onclick="location.href='${contextPath}/CsCenter/InquiryList.do'" class="on">FAQ</li>
+				<li onclick="location.href='${contextPath}/CsCenter/InquiryWrite.do'">1:1문의/상담</li>
+			</ul>
 	</div>
 
 	<div class="sel_box">
@@ -98,7 +98,7 @@
 		</div>
 		<div class="list_cont" style="display:none;">
 			<p>현재 해외배송 서비스는 지원하지 않고 있습니다.</p><p>국내 배송지로 배송만 가능합니다.</p>
-			<div class="more_info">답변이 충분하지 않으신가요?<strong class="mobile"></strong> 1:1 문의/상담을 이용해 주세요.<span onclick="location.href='${contextPath}/CsCenter/InquiryWrite.do';">1:1 문의/상담 작성</span></div>
+			<div class="more_info"><span onclick="location.href='${contextPath}/CsCenter/InquiryWrite.do';">FAQ 답변 작성</span></div>
 		</div>
 		<div class="FAQ">
 			<div class="SearchContent" style="margin-top:20px; float:right;" >

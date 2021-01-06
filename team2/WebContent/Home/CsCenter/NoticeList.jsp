@@ -24,10 +24,6 @@
 <jsp:include page="../inc/head.jsp" />
 
 <script type="text/javascript">
-	$(document).ready(function() {
-
-	});
-
 	$(document).on("click", ".list_line", function() {
 		if ($(this).next("div").css("display") == "none") {
 			$(this).next("div").css("display", "block");
@@ -49,7 +45,7 @@
 		<div class="MenuBar_Box">
 			<ul>
 				<li onclick="location.href='${contextPath}/CsCenter/NoticeList.do'" class="on">공지사항</li>
-				<li onclick="location.href='${contextPath}/CsCenter/InquiryList.do'">상품Q&A</li>
+				<li onclick="location.href='${contextPath}/CsCenter/InquiryList.do'">FAQ</li>
 				<li onclick="location.href='${contextPath}/CsCenter/InquiryWrite.do'">1:1문의/상담</li>
 			</ul>
 		</div>

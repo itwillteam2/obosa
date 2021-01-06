@@ -37,9 +37,9 @@ pageEncoding="UTF-8"%>
 			  			<b class="number">1234-1234</b> 운영시간 09:00 - 18:00, 점심시간 12:30 -
 					13:30 <small>*주말 및 공휴일은 1:1 문의/상담을 이용해주세요.</small></a>
 			</li>
-			<li class="TwoButton"><a href="${contextPath}/Home/CsCenter/InquiryList.jsp">
+			<li class="TwoButton"><a href="${contextPath}/CsCenter/InquiryList.do">
 			<img src="${contextPath}/Images/Ver1/Common/footer_btn1.png" />자주하는 질문</a>
-			<a href="${contextPath}/Home/CsCenter/InquiryWrite.jsp">
+			<a href="${contextPath}/CsCenter/InquiryWrite.do">
 			<img src="${contextPath}/Images/Ver1/Common/footer_btn2.png"  />1:1 문의/상담</a></li>
 			<li class="Information"><big>(주)TEAM2</big><br />
 				부산 아이티윌 2조&nbsp;&nbsp; <br>
