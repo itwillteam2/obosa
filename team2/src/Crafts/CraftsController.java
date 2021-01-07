@@ -82,7 +82,11 @@ public class CraftsController extends HttpServlet{
 			
 			request.setAttribute("paging", paging);
 			
+<<<<<<< HEAD
 			nextPage="/Home/Crafts/crafts.jsp";			
+=======
+			nextPage="/Home/Crafts/craft.jsp";			
+>>>>>>> branch 'main' of https://github.com/itwillteam2/obosa.git
 			
 		}else if(action.equals("/addCraftsItem.do")) {
 			Map<String, String> addItemMap = upload(request, response);
