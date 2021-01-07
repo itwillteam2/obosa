@@ -57,6 +57,7 @@ public class CraftsController extends HttpServlet{
 		
 		String nextPage="";
 		realPath = request.getServletContext().getRealPath("/files/crafts");
+		System.out.println("realPath : " + realPath);
 		
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
@@ -81,7 +82,7 @@ public class CraftsController extends HttpServlet{
 			
 			request.setAttribute("paging", paging);
 			
-			nextPage="/Home/Crafts/living.jsp";			
+			nextPage="/Home/Crafts/crafts.jsp";			
 			
 		}else if(action.equals("/addCraftsItem.do")) {
 			Map<String, String> addItemMap = upload(request, response);
@@ -237,54 +238,54 @@ public class CraftsController extends HttpServlet{
 	}
 	
 	private String getFileType1(int num, String productImageName1){
-		String livingFileType = "";
+		String craftsFileType = "";
 
 		try {
 			String filePath = realPath + "\\" + num + "\\" + productImageName1;
 			File file = new File(filePath);
 			
 			String mimeType = Files.probeContentType(file.toPath());
-			livingFileType = mimeType.split("/")[0];
+			craftsFileType = mimeType.split("/")[0];
 			
 		} catch (Exception e) {
 			System.out.println("getFileType()메소드 내부에서 오류 : " + e.toString());
 		}
 		
-		return livingFileType;
+		return craftsFileType;
 	}//end of getFileType1
 	
 	private String getFileType2(int num, String productImageName2){
-		String livingFileType = "";
+		String craftsFileType = "";
 
 		try {
 			String filePath = realPath + "\\" + num + "\\" + productImageName2;
 			File file = new File(filePath);
 			
 			String mimeType = Files.probeContentType(file.toPath());
-			livingFileType = mimeType.split("/")[0];
+			craftsFileType = mimeType.split("/")[0];
 			
 		} catch (Exception e) {
 			System.out.println("getFileType()메소드 내부에서 오류 : " + e.toString());
 		}
 		
-		return livingFileType;
+		return craftsFileType;
 	}//end of getFileType2
 	
 	private String getFileType3(int num, String productImageName3){
-		String livingFileType = "";
+		String craftsFileType = "";
 
 		try {
 			String filePath = realPath + "\\" + num + "\\" + productImageName3;
 			File file = new File(filePath);
 			
 			String mimeType = Files.probeContentType(file.toPath());
-			livingFileType = mimeType.split("/")[0];
+			craftsFileType = mimeType.split("/")[0];
 			
 		} catch (Exception e) {
 			System.out.println("getFileType()메소드 내부에서 오류 : " + e.toString());
 		}
 		
-		return livingFileType;
+		return craftsFileType;
 	}//end of getFileType3
 	
 }

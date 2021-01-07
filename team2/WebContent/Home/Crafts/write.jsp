@@ -103,7 +103,7 @@
 	</div>
 </div>
 <article class="product" style="width:1200px; margin : 0 auto" >
-	<form action="${contextPath}/living/addLiving.do" method="post" enctype="multipart/form-data" name="fr">
+	<form action="${contextPath}/crafts/addCraftsItem.do" method="post" enctype="multipart/form-data" name="fr">
 		<table class="table">
 			<colgroup>
 				<col style="width:120px" />
@@ -121,7 +121,8 @@
 				<td>
 					<select class="form-control" name="productCategoryNo" id="productCategoryNo" required>
 						<option value="">선택하세요</option>
-						<option value="Living">리빙</option>									
+						<option value="Living">리빙</option>
+						<option value="Living">공예</option>									
 					</select>
 				</td>
 			</tr>

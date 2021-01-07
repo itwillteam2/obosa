@@ -106,29 +106,40 @@ public class CraftsDAO {
 	
 	//insert new articles into crafts table;
 	public int insertCraftsNewArticle(CraftsVO craftsVO) {
-		int craftsNum = autoNum();
-		System.out.println(craftsNum);
+		
+		 int craftsNum = autoNum();
+		 System.out.println("craftsNum : " + craftsNum);
+		 
 		
 		int num = 1;
 		
 		try {
 			conn = DBConnection.getConnection();
 			String query = "INSERT INTO crafts"
-					+ "(productName,productContent,sellerName,productPrice,productImageName1,productImageName2,productImageName3,productQuantity,shipping_fee,point)"
-					+ "VALUES(?,?,?,?,?,?,?,?,?,?)";
+					+ "(num,productName,productContent,sellerName,productPrice,productImageName1,productImageName2,productImageName3,productQuantity,shipping_fee,point)"
+					+ "VALUES(?,?,?,?,?,?,?,?,?,?,?)";
 			pstmt = conn.prepareStatement(query);
-			pstmt.executeUpdate();
 			
-					
+			pstmt.setInt(1, craftsNum);
+			pstmt.setString(2, craftsVO.getProductName());
+			pstmt.setString(3, craftsVO.getProductContent());
+			pstmt.setString(4, craftsVO.getSellerName());
+			pstmt.setInt(5,craftsVO.getProductPrice());
+			pstmt.setString(6, craftsVO.getProductImageName1());
+			pstmt.setString(7, craftsVO.getProductImageName2());
+			pstmt.setString(8, craftsVO.getProductImageName3());
+			pstmt.setInt(9, craftsVO.getProductQuantity());
+			pstmt.setInt(10, craftsVO.getShipping_fee());
+			pstmt.setInt(11, craftsVO.getPoint());			
+			
+			pstmt.executeUpdate();					
 			
 		} catch (Exception e) {
 			System.out.println("insertCraftsNewArticle : " + e.toString());
 		}finally {
 			freeResource();
 		}
-		
-		return num;
-		
+		return num;		
 		
 	}//end of insertCraftsNewArticle
 
