@@ -80,7 +80,7 @@ public class CraftsController extends HttpServlet{
 			
 			request.setAttribute("paging", paging);
 			
-			nextPage="/Home/Crafts/living.jsp";			
+			nextPage="/Home/Crafts/craft.jsp";			
 			
 		}
 		
