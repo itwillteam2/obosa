@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,6 +21,8 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.FileUtils;
+
+import Page.Paging;
 
 @WebServlet("/crafts/*")
 public class CraftsController extends HttpServlet{
@@ -51,7 +54,7 @@ public class CraftsController extends HttpServlet{
 	}
 	protected void doHandle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String nextPath="";
+		String nextPage="";
 		realPath = request.getServletContext().getRealPath("/files/crafts");
 		
 		request.setCharacterEncoding("utf-8");
@@ -62,12 +65,32 @@ public class CraftsController extends HttpServlet{
 		if(action == null || action.equals("/listCrafts.do")) {
 			System.out.println(action);
 			
+			List<CraftsVO> craftsList = craftsService.craftsList();
+			request.setAttribute("craftsList", craftsList);
 			
+			int totalCount = craftsService.totalCountList();
+			int page = (request.getParameter("page") == null) ? 1 : Integer.parseInt(request.getParameter("page"));
 			
+			Paging paging = new Paging();
+			paging.setPageNo(page); // 현재 페이지 번호
+			paging.setPageSize(10); // 한페이지에서 불러낼 게시물의 갯수
+			paging.setTotalCount(totalCount); // 총 게시물 수
+			
+			page = (page -1) * 10; //select해오는 기준
+			
+			request.setAttribute("paging", paging);
+			
+			nextPage="/Home/Crafts/living.jsp";			
 			
 		}
 		
+		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
+
+		dispatcher.forward(request, response);
+		
 	}//end of doHandle
+	
+	
 	
 	private Map<String, String> upload(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -91,6 +114,7 @@ public class CraftsController extends HttpServlet{
 					System.out.println("파일이름:" + fileItem.getFieldName());
 					System.out.println("파일이름 : " + fileItem.getName());
 					System.out.println("파일크기 : " + fileItem.getSize() + "bytes");
+					System.out.println("존재여부 : " + currentDirPath.exists());					
 					if (fileItem.getSize() > 0) {
 						int idx = fileItem.getName().lastIndexOf("\\");
 						if (idx == -1) {
@@ -111,13 +135,13 @@ public class CraftsController extends HttpServlet{
 		return articleMap;
 	}
 	// temp to realPath on file of Image
-	public void moveFile(int CraftsNum, String fileName) {
+	public void moveFile(int num, String fileName) {
 		try {
 			File srcFile = new File(realPath + "\\" + fileName);
-			File destDir = new File(realPath + "\\" + CraftsNum);
+			File destDir = new File(realPath + "\\" + num);
 			boolean createDestDir = destDir.mkdir();
 
-			String filePath = realPath + "\\" + CraftsNum + "\\" + fileName;
+			String filePath = realPath + "\\" + num + "\\" + fileName;
 			File file = new File(filePath);
 
 			if (!file.exists()) {
@@ -130,9 +154,9 @@ public class CraftsController extends HttpServlet{
 	}// end of moveFile
 
 	// delete file when delete list
-	public void deleteFile(int CraftsNum, String fileName) {
+	public void deleteFile(int num, String fileName) {
 		try {
-			String filePath = realPath + "\\" + CraftsNum + "\\" + fileName;
+			String filePath = realPath + "\\" + num + "\\" + fileName;
 			File file = new File(filePath);
 
 			if (file.exists()) {
@@ -143,9 +167,9 @@ public class CraftsController extends HttpServlet{
 		}
 	}// end of deleteFile
 	
-	private void downloadFile(HttpServletResponse response, int CraftsNum, String fileName){
+	private void downloadFile(HttpServletResponse response, int num, String fileName){
 		try {			
-			String filePath = realPath + "\\" + CraftsNum + "\\" + fileName;
+			String filePath = realPath + "\\" + num + "\\" + fileName;
 			File file = new File(filePath);
 		
 			OutputStream out = response.getOutputStream();			
@@ -174,11 +198,11 @@ public class CraftsController extends HttpServlet{
 		}		
 	}
 	
-	private String getFileType1(int CraftsNum, String productImageName1){
+	private String getFileType1(int num, String productImageName1){
 		String livingFileType = "";
 
 		try {
-			String filePath = realPath + "\\" + CraftsNum + "\\" + productImageName1;
+			String filePath = realPath + "\\" + num + "\\" + productImageName1;
 			File file = new File(filePath);
 			
 			String mimeType = Files.probeContentType(file.toPath());
@@ -191,11 +215,11 @@ public class CraftsController extends HttpServlet{
 		return livingFileType;
 	}//end of getFileType1
 	
-	private String getFileType2(int CraftsNum, String productImageName2){
+	private String getFileType2(int num, String productImageName2){
 		String livingFileType = "";
 
 		try {
-			String filePath = realPath + "\\" + CraftsNum + "\\" + productImageName2;
+			String filePath = realPath + "\\" + num + "\\" + productImageName2;
 			File file = new File(filePath);
 			
 			String mimeType = Files.probeContentType(file.toPath());
@@ -208,11 +232,11 @@ public class CraftsController extends HttpServlet{
 		return livingFileType;
 	}//end of getFileType2
 	
-	private String getFileType3(int CraftsNum, String productImageName3){
+	private String getFileType3(int num, String productImageName3){
 		String livingFileType = "";
 
 		try {
-			String filePath = realPath + "\\" + CraftsNum + "\\" + productImageName3;
+			String filePath = realPath + "\\" + num + "\\" + productImageName3;
 			File file = new File(filePath);
 			
 			String mimeType = Files.probeContentType(file.toPath());

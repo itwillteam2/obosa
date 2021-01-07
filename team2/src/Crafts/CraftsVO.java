@@ -4,7 +4,7 @@ import java.sql.Timestamp;
 
 public class CraftsVO {
 	
-	private int CraftsNum;
+	private int num;
 	private String productName;
 	private String productContent;
 	private String sellerName;
@@ -21,11 +21,11 @@ public class CraftsVO {
 		// TODO Auto-generated constructor stub
 	}
 
-	public CraftsVO(int CraftsNum, String productName, String productContent, String sellerName, int productPrice,
+	public CraftsVO(int num, String productName, String productContent, String sellerName, int productPrice,
 			String productImageName1, String productImageName2, String productImageName3, int productQuantity,
 			int shipping_fee, int point) {
 		
-		this.CraftsNum = CraftsNum;
+		this.num = num;
 		this.productName = productName;
 		this.productContent = productContent;
 		this.sellerName = sellerName;
@@ -39,11 +39,11 @@ public class CraftsVO {
 	}
 
 	public int getNum() {
-		return CraftsNum;
+		return num;
 	}
 
 	public void setNum(int num) {
-		this.CraftsNum = num;
+		this.num = num;
 	}
 
 	public String getProductName() {

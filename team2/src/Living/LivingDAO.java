@@ -154,21 +154,25 @@ public class LivingDAO {
 	//get total record count
 	public int selectTotalCount() {
 		
+		int num = 0;
+		
 		try {
 			conn = DBConnection.getConnection();
 			String query = "SELECT count(*) FROM living";
 			pstmt = conn.prepareStatement(query);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				return rs.getInt(1);
+				 rs.getInt(1);
 			}
+			return num;
 		}catch (Exception e) {
 			System.out.println("selectTotalCount error : " + e.toString());
 		}finally {
 			freeResource();
 		}
+		return num;
 		
-		return 0;
+		
 		
 	}//end of selectTotalCount	
 	
