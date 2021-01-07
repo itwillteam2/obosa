@@ -8,6 +8,7 @@ public class CraftsService {
 	CraftsVO craftsVO;	
 	CraftsDAO craftsDAO;
 	
+	
 	public CraftsService() {
 	
 		craftsVO = new CraftsVO();

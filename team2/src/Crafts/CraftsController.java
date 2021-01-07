@@ -31,16 +31,16 @@ public class CraftsController extends HttpServlet{
 	private static String CRAFTS_IMAGE_REPO = "C:\\files\\crafts_image";
 	
 	CraftsVO craftsVO;
-	CraftsService craftsService;
-	CraftsDAO craftsDAO;
+	CraftsService craftsService;	
 	String realPath;
+	
 	
 	
 	@Override
 	public void init() throws ServletException {
 		craftsVO = new CraftsVO();
 		craftsService = new CraftsService();
-		craftsDAO = new CraftsDAO();
+		
 		
 	}
 
@@ -82,11 +82,11 @@ public class CraftsController extends HttpServlet{
 			
 			request.setAttribute("paging", paging);
 			
-<<<<<<< HEAD
-			nextPage="/Home/Crafts/crafts.jsp";			
-=======
+
+					
+
 			nextPage="/Home/Crafts/craft.jsp";			
->>>>>>> branch 'main' of https://github.com/itwillteam2/obosa.git
+
 			
 		}else if(action.equals("/addCraftsItem.do")) {
 			Map<String, String> addItemMap = upload(request, response);
@@ -117,7 +117,7 @@ public class CraftsController extends HttpServlet{
 			
 			if (isRegistSuccess > 0) {
 
-				nextPage = "/Home/Crafts/crafts.jsp";
+				nextPage = "/Home/Crafts/craft.jsp";
 
 			} else {
 				PrintWriter out = response.getWriter();
