@@ -48,7 +48,7 @@
 							
 						<ul>
 							<li>*비밀번호</li>
-							<li><input type="text" name="pw" id="pw"/></li>
+							<li><input type="password" name="pw" id="pw"/></li>
 							<li><input type="hidden" name="nnum" id="nnum" value="<%=nnum%>"/></li>
 						</ul>
 					</div>

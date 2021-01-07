@@ -176,6 +176,69 @@ public class CsCenterController extends HttpServlet {
 			request.setAttribute("inquiry", inquiry);
 			
 			nextPage = "/Home/CsCenter/InquiryModify.jsp";
+		
+		}else if (action.equals("/NoticeModifyUp.do")) {
+			
+			int check = 0;
+			
+			int nnum = Integer.parseInt(request.getParameter("nnum"));		
+			String pw = request.getParameter("pw");
+			String title = request.getParameter("title");
+			String content = request.getParameter("content");
+			
+			NoticeVO.setPw(pw);
+			NoticeVO.setNnum(nnum);
+			NoticeVO.setTitle(title);
+			NoticeVO.setContent(content);
+
+			check = CsCenterService.modifyNotice(NoticeVO);
+			
+			PrintWriter pw2 = response.getWriter();
+			
+			if(check == 1){
+				pw2.print("<script> alert('글이 수정되었습니다.');" + 
+						" location.href='" + request.getContextPath() + "/CsCenter/NoticeList.do'; " +
+						"</script>");	
+			}else{
+				pw2.print("<script> alert('비밀번호가 틀립니다.');" +
+				"history.back();" + 
+				"</script>");	
+			}
+			
+		}else if (action.equals("/modifyInquiry.do")) {
+			
+			int check = 0;
+			
+			int inqnum = Integer.parseInt(request.getParameter("inqnum"));
+			String id = request.getParameter("id");
+			String pw = request.getParameter("pw");
+			String title = request.getParameter("title");
+			String email = request.getParameter("email");
+			String content = request.getParameter("content");
+			String category = request.getParameter("category");
+			
+			InquiryVO.setInqnum(inqnum);
+			InquiryVO.setId(id);
+			InquiryVO.setPw(pw);
+			InquiryVO.setTitle(title);
+			InquiryVO.setEmail(email);
+			InquiryVO.setContent(content);
+			InquiryVO.setCategory(category);
+
+			check = CsCenterService.modifyInquiry(InquiryVO);
+			
+			PrintWriter pw2 = response.getWriter();
+			
+			if(check == 1){
+				pw2.print("<script> alert('글이 수정되었습니다.');" + 
+						" location.href='" + request.getContextPath() + "/CsCenter/InquiryList.do'; " +
+						"</script>");	
+			}else{
+				pw2.print("<script> alert('비밀번호가 틀립니다.');" +
+				"history.back();" + 
+				"</script>");	
+			}
+			
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);

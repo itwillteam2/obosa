@@ -73,7 +73,7 @@
 			</ul>
 		</div>
 
-		<form name="Inquiryfrm" method="post" action="${contextPath}/CsCenter/addInquiry.do">
+		<form name="Inquiryfrm" method="post" action="${contextPath}/CsCenter/modifyInquiry.do">
 			<div class="warning_box">
 				<span>답변 가능 시간은 오전 9:00시부터 오후 6:00시까지입니다. (주말 및 공휴일 제외)</span>
 			</div>
@@ -81,6 +81,7 @@
 			<div class="outter_box">
 				<div class="left_box">
 					<div>
+						<input type="hidden" name="inqnum" id="inqnum" value="<%=inqnum%>">
 						<ul>
 							<li>*아이디</li>
 							<li><input type="text" name="id" id="id" value="${inquiry.id}" readonly/></li>
@@ -167,7 +168,7 @@
 			</div>
 			<div class="btn_area">
 				<input type="button" value="취소" onclick="history.back()">
-				<input type="submit" value="등록" id="submit">
+				<input type="submit" value="수정" id="submit">
 			</div>
 		</form>
 	</div>

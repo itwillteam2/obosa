@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import DBUtil.DBConnection;
-import Living.LivingVO;
 
 public class CsCenterDAO {
 
@@ -364,5 +363,84 @@ public class CsCenterDAO {
 			freeResource();
 		}
 		return inquiry;
+	}
+
+	public int modifyNotice(NoticeVO noticeVO){
+		int check = 0;
+		String sql = "";
+		
+		try {
+			conn = DBConnection.getConnection();
+			
+			sql = "select pw from notice where nnum = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, noticeVO.getNnum());
+
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				if(noticeVO.getPw().equals(rs.getString("pw"))){
+					check = 1;
+					sql = "update notice set title=?, content=? where nnum=?";
+					pstmt = conn.prepareStatement(sql);
+					
+					pstmt.setString(1, noticeVO.getTitle());
+					pstmt.setString(2, noticeVO.getContent());
+					pstmt.setInt(3, noticeVO.getNnum());
+
+					pstmt.executeUpdate();
+				}else{
+					check = 0;
+				}
+			}			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally{
+			freeResource();
+		}
+		return check;	
+	}
+
+	public int modifyInquiry(InquiryVO inquiryVO){
+		int check = 0;
+		String sql = "";
+		
+		try {
+			conn = DBConnection.getConnection();
+			
+			sql = "select pw from Inquiry where inqnum = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, inquiryVO.getInqnum());
+
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				if(inquiryVO.getPw().equals(rs.getString("pw"))){
+					check = 1;
+					sql = "update inquiry set id=?, title=?, email=?, content=?, category=? where inqnum=?";
+					pstmt = conn.prepareStatement(sql);
+					
+					pstmt.setString(1, inquiryVO.getId());
+					pstmt.setString(2, inquiryVO.getTitle());
+					pstmt.setString(3, inquiryVO.getEmail());
+					pstmt.setString(4, inquiryVO.getContent());
+					pstmt.setString(5, inquiryVO.getCategory());
+					pstmt.setInt(6, inquiryVO.getInqnum());
+
+					pstmt.executeUpdate();
+				}else{
+					check = 0;
+				}
+			}			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally{
+			freeResource();
+		}
+		return check;	
 	}
 }

@@ -2,8 +2,6 @@ package CsCenter;
 
 import java.util.List;
 
-import Living.LivingVO;
-
 public class CsCenterService {
 	
 	CsCenterDAO CsCenterDAO;
@@ -62,6 +60,20 @@ public class CsCenterService {
 		InquiryVO inquiry = null;
 		inquiry = CsCenterDAO.selectInquiry(inqnum);
 		return inquiry;
+	}
+
+	public int modifyNotice(NoticeVO noticeVO) {
+		
+		int check = CsCenterDAO.modifyNotice(noticeVO);
+		
+		return check;
+	}
+
+	public int modifyInquiry(InquiryVO inquiryVO) {
+		
+		int check = CsCenterDAO.modifyInquiry(inquiryVO);
+		
+		return check;
 	}
 
 }

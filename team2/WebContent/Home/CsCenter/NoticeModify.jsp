@@ -71,7 +71,7 @@ $(function(){
 	</div>
 </div>
 <article class="product" style="width:1200px; margin : 0 auto" >
-	<form action="${contextPath}/CsCenter/NoticeModify.do" method="post">
+	<form action="${contextPath}/CsCenter/NoticeModifyUp.do" method="post">
 		<table class="table">
 			<colgroup>
 				<col style="width:120px" />
@@ -83,6 +83,7 @@ $(function(){
 				</th>
 				<td>
 					<input style="width:700px; margin:0 auto;" class="form-control" type="text" name="title" id="title" value="${notice.title}"/>
+					<input type="hidden" id="nnum" name="nnum" value="<%=nnum%>">
 				</td>
 			</tr>
 			<tr>
@@ -104,7 +105,7 @@ $(function(){
 		</table>
 		<div class="text-center my-5">
 			<button type="button" class="btn btn-secondary" onclick="history.back()">취소</button>
-			<button type="submit" id="submit" class="btn btn-primary">공지사항 등록하기</button>
+			<button type="submit" id="submit" class="btn btn-primary">공지사항 수정하기</button>
 		</div>
 	</form>
 </article>
