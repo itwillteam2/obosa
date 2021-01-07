@@ -81,5 +81,55 @@ public class CraftsDAO {
 		}
 		return num;
 	}//end of selectTotalCount
+	
+	//auto num+1
+	private int autoNum() {
+			int num = 1;
+			String query="";
+		try {
+			conn = DBConnection.getConnection();
+			query = "SELECT MAX(num) FROM crafts";
+			pstmt = conn.prepareStatement(query);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				num = rs.getInt(num) + 1;				
+			}			
+			return num;
+		} catch (Exception e) {
+			System.out.println("autoNum error : " + e.toString());
+		}finally {
+			freeResource();
+		}
+		return 0;
+	}//end of autoNum
+
+	
+	//insert new articles into crafts table;
+	public int insertCraftsNewArticle(CraftsVO craftsVO) {
+		int craftsNum = autoNum();
+		System.out.println(craftsNum);
+		
+		int num = 1;
+		
+		try {
+			conn = DBConnection.getConnection();
+			String query = "INSERT INTO crafts"
+					+ "(productName,productContent,sellerName,productPrice,productImageName1,productImageName2,productImageName3,productQuantity,shipping_fee,point)"
+					+ "VALUES(?,?,?,?,?,?,?,?,?,?)";
+			pstmt = conn.prepareStatement(query);
+			pstmt.executeUpdate();
+			
+					
+			
+		} catch (Exception e) {
+			System.out.println("insertCraftsNewArticle : " + e.toString());
+		}finally {
+			freeResource();
+		}
+		
+		return num;
+		
+		
+	}//end of insertCraftsNewArticle
 
 }
