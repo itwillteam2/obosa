@@ -27,4 +27,9 @@ public class CraftsService {
 		return totalCountList;
 		
 	}
+
+	public int insertCrafts(CraftsVO craftsVO) {
+		int num = craftsDAO.insertCraftsNewArticle(craftsVO);
+		return num;
+	}
 }
