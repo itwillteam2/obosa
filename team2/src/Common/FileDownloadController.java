@@ -16,7 +16,7 @@ import javax.servlet.http.HttpServletResponse;
 @WebServlet("/download.do")
 public class FileDownloadController extends HttpServlet{ //이미지를 다운받아 <img>태그에 제공 해주는 클래스 
 
-	private static String ARTICLE_IMAGE_REPO = "C:\\files\\article_image\\temp";
+	private static String ARTICLE_IMAGE_REPO = "C:\\files\\article_image\\";
 	
 	
 	@Override
@@ -42,13 +42,14 @@ public class FileDownloadController extends HttpServlet{ //이미지를 다운�
 		String productImageName1 = request.getParameter("productImageName1");
 		String productImageName2 = request.getParameter("productImageName2");
 		String productImageName3 = request.getParameter("productImageName3");
-		
+		String fileFolder = request.getParameter("fd");
+		String num = request.getParameter("num");
 		//요청한 클라이언트의 웹브라우저와 연결된 출력 스트림 통로 역할을 하는 객체생성
 		OutputStream out = response.getOutputStream();
 		
 		//글번호에 대한 파일 경로를 설정 합니다
 		
-		String path = ARTICLE_IMAGE_REPO + "\\"  + productImageName1;
+		String path = ARTICLE_IMAGE_REPO +fileFolder+"\\"+num+"\\"+productImageName1;
 					  //C:\board\article_image\9\예6_13.jpg
 		File imageFile = new File(path);
 		
@@ -76,6 +77,7 @@ public class FileDownloadController extends HttpServlet{ //이미지를 다운�
 			out.write(buffer, 0, count);
 			
 		}
+		System.out.println(path);
 		//입력 스트림 통로, 출력 스트림 통로  자원해제 
 		in.close();
 		out.close();

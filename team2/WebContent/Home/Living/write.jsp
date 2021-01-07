@@ -121,7 +121,8 @@
 				<td>
 					<select class="form-control" name="productCategoryNo" id="productCategoryNo" required>
 						<option value="">선택하세요</option>
-						<option value="Living">리빙</option>									
+						<option value="Living">리빙</option>
+							<option value="Crafts">공예</option>										
 					</select>
 				</td>
 			</tr>

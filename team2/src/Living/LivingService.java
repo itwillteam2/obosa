@@ -68,6 +68,7 @@ public class LivingService {
 	public LivingVO viewContent(int num) {
 		LivingVO content = null;
 		content = livingDAO.selectContent(num);
+		System.out.println("hello"+content.getNum());
 		return content;
 	}
 

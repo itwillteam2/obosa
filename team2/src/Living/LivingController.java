@@ -198,6 +198,21 @@ public class LivingController extends HttpServlet {
 
 			num = livingService.addLiving(livingVO);
 
+			if( productImageName1 != null &&  productImageName1.length() != 0 ){
+				
+				//temp폴더에 임시로 업로드된 파일에 접근하기 위해 File객체를 생성합니다
+				File srcFile = new File(ARTICLE_IMAGE_REPO + "\\" + "temp" + "\\" +  productImageName1);
+				
+				// C:\board\article_image 폴더 내부에  글번호 폴더를 생성합니다
+				File destDir = new File(ARTICLE_IMAGE_REPO + "\\living\\" + num);
+				destDir.mkdir();//글번호에 대한 폴더 생성 ~
+				
+				//temp폴더에 업로드된 이미지 파일을  글번호 폴더로 이동
+				FileUtils.moveFileToDirectory(srcFile, destDir, true);
+				
+			}
+			
+			
 			PrintWriter pw = response.getWriter();
 			pw.print("<script>" + "  alert('새글을 추가 했습니다.');" + " location.href='" + request.getContextPath()
 					+ "/living/listLiving.do';" + "</script>");
@@ -229,6 +244,7 @@ public class LivingController extends HttpServlet {
 			String num = request.getParameter("num");
 			LivingVO content = livingService.viewContent(Integer.parseInt(num));
 			request.setAttribute("content", content);
+			
 			nextPage = "/Home/Living/content.jsp";
 
 		}
@@ -255,12 +271,8 @@ public class LivingController extends HttpServlet {
 			for (int i = 0; i < items.size(); i++) {
 				FileItem fileItem = (FileItem) items.get(i);
 				if (fileItem.isFormField()) {
-					System.out.println(fileItem.getFieldName() + "=" + fileItem.getString(encoding));
 					articleMap.put(fileItem.getFieldName(), fileItem.getString(encoding));
 				} else {
-					System.out.println("파일이름:" + fileItem.getFieldName());
-					System.out.println("파일이름 : " + fileItem.getName());
-					System.out.println("파일크기 : " + fileItem.getSize() + "bytes");
 					if (fileItem.getSize() > 0) {
 						int idx = fileItem.getName().lastIndexOf("\\");
 						if (idx == -1) {
@@ -281,7 +293,7 @@ public class LivingController extends HttpServlet {
 		return articleMap;
 	}
 	// temp to realPath on file of Image
-	public void moveFile(int num, String fileName) {
+	/*public void moveFile(int num, String fileName) {
 		try {
 			File srcFile = new File(realPath + "\\" + fileName);
 			File destDir = new File(realPath + "\\" + num);
@@ -298,7 +310,8 @@ public class LivingController extends HttpServlet {
 			System.out.println("moveFile error : " + e.toString());
 		}
 	}// end of moveFile
-
+*/
+	
 	// delete file when delete list
 	public void deleteFile(int num, String fileName) {
 		try {

@@ -365,6 +365,8 @@ public class LivingDAO {
 				content.setShipping_fee(shipping_fee);
 				content.setPoint(point);
 				content.setReg_date(regdate);
+				
+				
 			}
 			
 		} catch (Exception e) {

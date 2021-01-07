@@ -191,7 +191,7 @@ $(window).load(function(){
 					<div class="swiper-container">
 						<ul class="swiper-wrapper">
 							<li class="swiper-slide">
-								<img src="${contextPath}/download.do?productImageName1=${content.productImageName1}" />
+								<img src="${contextPath}/download.do?fd=living&num=1&productImageName1=${content.productImageName1}" /><img src="${contextPath}/download.do?productImageName1=${content.productImageName1}" />
 							</li>
 							<li class="swiper-slide">
 								<img src="${contextPath}/download.do?productImageName1=${content.productImageName2}" />
@@ -278,9 +278,10 @@ $(window).load(function(){
 					<div class="contentsTopBottom">${content.productContent}</div>
 					<div class="content">
 						<div align="center" style="margin-top: 45px; padding: 0 30px;">
-							<img src="${contextPath}/download.do?productImageName1=${content.productImageName1}" />
-							<img src="${contextPath}/download.do?productImageName1=${content.productImageName2}" />
-							<img src="${contextPath}/download.do?productImageName1=${content.productImageName3}" />
+							<img src="${contextPath}/download.do?fd=living&num=${content.num}&productImageName1=${content.productImageName1}" />
+							<img src="${contextPath}/download.do?fd=living&num=${content.num}&productImageName2=${content.productImageName2}" />
+							<img src="${contextPath}/download.do?fd=living&num=${content.num}&productImageName3=${content.productImageName3}" />
+							
 						</div>
 					</div>
 
