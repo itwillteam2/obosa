@@ -18,7 +18,16 @@
 <link rel="stylesheet" href="${contextPath}/Home/Css/Write/board.css">
 
 </head>
-<script>
+<script type="text/javascript">
+
+  function change_action(){
+	  var form = $("form");
+      var action = "${contextPath}/"+$("#productCategoryNo option:selected").val()+"/addLivingItem.do";
+      form.attr("action", action);
+	  
+  }
+
+
 	function smcheck(){
 		var category = $("#productCategoryNo option:selected").val();
 		var name = $("#productName").val();
@@ -103,7 +112,7 @@
 	</div>
 </div>
 <article class="product" style="width:1200px; margin : 0 auto" >
-	<form action="${contextPath}/living/addLiving.do" method="post" enctype="multipart/form-data" name="fr">
+	<form action="" method="post" enctype="multipart/form-data" name="fr">
 		<table class="table">
 			<colgroup>
 				<col style="width:120px" />
@@ -119,16 +128,16 @@
 					<label for="productCategoryNo" class="m-0">카테고리</label>
 				</th>
 				<td>
-					<select class="form-control" name="productCategoryNo" id="productCategoryNo" required>
+					<select class="form-control" name="productCategoryNo" id="productCategoryNo" required onchange="change_action();">
 						<option value="">선택하세요</option>
-						<option value="Living">리빙</option>
-							<option value="Crafts">공예</option>										
+						<option value="living">리빙</option>
+						<option value="Crafts">공예</option>										
 					</select>
 				</td>
 			</tr>
 			<tr>
 				<th class="align-middle">
-					<label for="productName" class="m-0">이름</label>
+					<label for="productName" class="m-0">상품 이름</label>
 				</th>
 				<td>
 					<input class="form-control" type="text" name="productName" id="productName" required />

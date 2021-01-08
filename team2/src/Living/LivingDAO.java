@@ -256,8 +256,8 @@ public class LivingDAO {
 		try {
 			conn = DBConnection.getConnection();
 			String query = "INSERT INTO living"
-					+ "(productName,productContent,sellerName,productPrice,productImageName1,productImageName2,productImageName3,productQuantity,shipping_fee,point) "
-					+ "VALUES(?,?,?,?,?,?,?,?,?,?)";
+					+ "(productName,productContent,sellerName,productPrice,productImageName1,productImageName2,productImageName3,productQuantity,shipping_fee,point,num) "
+					+ "VALUES(?,?,?,?,?,?,?,?,?,?,5)";
 			pstmt = conn.prepareStatement(query);
 			
 			pstmt.setString(1, livingVO.getProductName());
