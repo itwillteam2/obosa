@@ -60,4 +60,48 @@ public class SearchService {
 		searchFancy = searchDAO.searchFancy(search);
 		return searchFancy;
 	}
+
+	public int shopCount(String kwd) {
+		int searchCount = searchDAO.shopCount(kwd);
+		return searchCount;
+	}
+	
+	public List<SearchVO> shopList(String search) {
+		  List<SearchVO> searchList = new ArrayList<SearchVO>();
+		  searchList = searchDAO.shopArticles(search);
+		  return searchList;
+	  }
+	
+	public int shopLivingCount(String search) {
+		int livingCount = searchDAO.shopLivingCount(search);
+		return livingCount;
+	}
+
+	public List<SearchVO> shopLiving(String search) {
+		List<SearchVO> searchLiving = new ArrayList<SearchVO>();
+		searchLiving = searchDAO.shopLiving(search);
+		return searchLiving;
+	}
+	
+	public int shopCraftsCount(String search) {
+		int craftsCount = searchDAO.shopCraftsCount(search);
+		return craftsCount;
+	}
+
+	public List<SearchVO> shopCrafts(String search) {
+		List<SearchVO> searchCrafts = new ArrayList<SearchVO>();
+		searchCrafts = searchDAO.shopCrafts(search);
+		return searchCrafts;
+	}
+
+	public int shopFancyCount(String search) {
+		int fancyCount = searchDAO.shopFancyCount(search);
+		return fancyCount;
+	}
+
+	public List<SearchVO> shopFancy(String search) {
+		List<SearchVO> searchFancy = new ArrayList<SearchVO>();
+		searchFancy = searchDAO.shopFancy(search);
+		return searchFancy;
+	}
 }

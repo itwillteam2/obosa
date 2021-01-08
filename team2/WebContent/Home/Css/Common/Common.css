@@ -344,7 +344,7 @@ span.stampicon.y2022   {width:30px; height:13px; background-size:30px 13px; back
 
 .showAll{
 	text-align: center;
-	margin: 50px 0;
+	margin-bottom: 30px;
 }
 
 .showAll a{
@@ -364,4 +364,25 @@ span.stampicon.y2022   {width:30px; height:13px; background-size:30px 13px; back
 .categories{
 	margin: 40px 0 0 20px;
 	font-size: 20px;
+}
+
+.searchShop{
+	text-align: center;
+}
+
+.admin{
+	float: right;
+	margin: 7px 20px 0 0;
+	border: 1px solid;
+	border-radius: 20px;
+	padding: 10px;
+}
+
+.writeBtn{
+	float: right;
+	border: 1px solid;
+	border-radius: 20px;
+	padding: 10px;
+	margin-top: 10px;
+	margin-right: 30px;
 }

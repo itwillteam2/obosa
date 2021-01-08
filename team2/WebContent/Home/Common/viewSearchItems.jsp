@@ -115,6 +115,8 @@
 		$(".overlay").removeClass("on");
 	});
 	
+	
+	
 	$(document).ready(function(){
 		$("#alla").css("color", "red");
 		
@@ -123,6 +125,39 @@
 		$("#fancy").css("display", "none");
 		
 		$("#kwd").val("${kwd}");
+		
+		var type='${type}';
+		if(type == "living"){
+			$("#all").css("display", "none");
+			$("#living").css("display", "");
+			$("#crafts").css("display", "none");
+			$("#fancy").css("display", "none");
+			
+			$("#alla").css("color", "");
+			$("#livinga").css("color", "red");
+			$("#craftsa").css("color", "");
+			$("#fancya").css("color", "");
+		}else if(type == "crafts"){
+			$("#all").css("display", "none");
+			$("#living").css("display", "none");
+			$("#crafts").css("display", "");
+			$("#fancy").css("display", "none");
+			
+			$("#alla").css("color", "");
+			$("#livinga").css("color", "");
+			$("#craftsa").css("color", "red");
+			$("#fancya").css("color", "");
+		}else if(type == "fancy"){
+			$("#all").css("display", "none");
+			$("#living").css("display", "none");
+			$("#crafts").css("display", "none");
+			$("#fancy").css("display", "");
+			
+			$("#alla").css("color", "");
+			$("#livinga").css("color", "");
+			$("#craftsa").css("color", "");
+			$("#fancya").css("color", "red");
+		}
 	});
 	
 	function fnSelectAll(){
@@ -183,36 +218,6 @@
 		<section class="sec_header">
 			<div class="inner"></div>
 		</section>
-			<div>
-				<h1>상점이름 검색 결과</h1>
-				<section class="sec_cont">
-					<form name="frm">
-						<input type="hidden" name="page" value="1" />
-						<div class="inner">
-							<div class="info">
-								<c:choose>
-									<c:when test="${shopSearchCount > 0}">
-										<span class="result">총 <strong>${shopSearchCount}</strong>개의 상점이 조회되었습니다.</span>
-									</c:when>
-									<c:otherwise>
-										<span class="result">총 <strong>0</strong>개의 상점이 조회되었습니다.</span>
-									</c:otherwise>
-								</c:choose>
-							</div>
-							<ul class='itemList'>
-								<c:forEach var="shopSearchList" items="${shopSearchList}" end="4">
-									<span class="iteminfo">
-										<a href="${contextPath}/common/viewSearchShop.do?kwd=${kwd}&name=${shopSearchList.sellerName}">
-											<span class="searchSeller">${shopSearchList.sellerName}</span>
-										</a>
-									</span>
-								</c:forEach>
-							</ul>
-						</div>
-					</form>
-				</section>
-			</div>
-		<hr>
 		<div>
 			<h1>상품 검색 결과</h1>
 			<div class="categories">
@@ -246,7 +251,7 @@
 									</c:otherwise>
 								</c:choose>
 								<ul class='itemList'>
-								<c:forEach var="searchList" items="${searchList}" end="4">
+								<c:forEach var="searchList" items="${searchList}">
 									<li>
 									<span class="img"> <!-- 사진 클릭했을때 그 인덱스값으로 가기 -->
 										<a href="${contextPath}/${searchList.category}/viewContent.do?fd=living&num=${searchList.num}&productImageName=${searchList.productImageName1}">
@@ -261,7 +266,7 @@
 									</span> 
 										<span class="iteminfo"> 
 											<span class="text"> <!-- 제목 클릭했을때 그 인덱스값으로 가기 -->
-												<a href="${contextPath}/${searchList.category}/viewContent.do?fd=living&num=${searchList.num}&productImageName=${searchList.productImageName1}">
+												<a href="/home/shop/itemdetail.asp?itemidx=2012110629" title="미니파우치 뽀글 지퍼주머니 체리 (37002942)">
 														${searchList.productName} <!-- 제목  -->
 												</a>
 											</span> 
@@ -274,11 +279,6 @@
 								</c:forEach>
 							</ul>
 							<div class="clear"></div>
-							<c:choose>
-								<c:when test="${searchCount>0}">
-									<div class="showAll"><a href="${contextPath}/common/viewSearchItems.do?kwd=${kwd}&type=all">결과 전체 보기</a></div>
-								</c:when>
-							</c:choose>
 						</div>
 						</div>
 						
@@ -303,7 +303,7 @@
 									</c:otherwise>
 								</c:choose>
 								<ul class='itemList'>
-									<c:forEach var="searchLiving" items="${searchLiving}" end="4">
+									<c:forEach var="searchLiving" items="${searchLiving}">
 										<li>
 										<span class="img"> <!-- 사진 클릭했을때 그 인덱스값으로 가기 -->
 											<a href="${contextPath}/living/viewContent.do?fd=living&num=${searchLiving.num}&productImageName=${searchLiving.productImageName1}">
@@ -318,7 +318,7 @@
 										</span> 
 											<span class="iteminfo"> 
 												<span class="text"> <!-- 제목 클릭했을때 그 인덱스값으로 가기 -->
-													<a href="${contextPath}/living/viewContent.do?fd=living&num=${searchLiving.num}&productImageName=${searchLiving.productImageName1}">
+													<a href="/home/shop/itemdetail.asp?itemidx=2012110629" title="미니파우치 뽀글 지퍼주머니 체리 (37002942)">
 															${searchLiving.productName} <!-- 제목  -->
 													</a>
 												</span> 
@@ -331,11 +331,6 @@
 									</c:forEach>
 								</ul>
 								<div class="clear"></div>
-								<c:choose>
-									<c:when test="${livingCount>0}">
-										<div class="showAll"><a href="${contextPath}/common/viewSearchItems.do?kwd=${kwd}&type=living">결과 전체 보기</a></div>
-									</c:when>
-								</c:choose>
 							</div>
 						</div>
 						
@@ -360,7 +355,7 @@
 									</c:otherwise>
 								</c:choose>
 								<ul class='itemList'>
-									<c:forEach var="searchCrafts" items="${searchCrafts}" end="4">
+									<c:forEach var="searchCrafts" items="${searchCrafts}">
 										<li>
 										<span class="img"> <!-- 사진 클릭했을때 그 인덱스값으로 가기 -->
 											<a href="${contextPath}/crafts/viewContent.do?fd=living&num=${searchCrafts.num}&productImageName=${searchCrafts.productImageName1}">
@@ -375,7 +370,7 @@
 										</span> 
 											<span class="iteminfo"> 
 												<span class="text"> <!-- 제목 클릭했을때 그 인덱스값으로 가기 -->
-													<a href="${contextPath}/crafts/viewContent.do?fd=living&num=${searchCrafts.num}&productImageName=${searchCrafts.productImageName1}">
+													<a href="/home/shop/itemdetail.asp?itemidx=2012110629" title="미니파우치 뽀글 지퍼주머니 체리 (37002942)">
 															${searchCrafts.productName} <!-- 제목  -->
 													</a>
 												</span> 
@@ -388,11 +383,6 @@
 									</c:forEach>
 								</ul>
 								<div class="clear"></div>
-								<c:choose>
-									<c:when test="${craftsCount>0}">
-										<div class="showAll"><a href="${contextPath}/common/viewSearchItems.do?kwd=${kwd}&type=crafts">결과 전체 보기</a></div>
-									</c:when>
-								</c:choose>
 							</div>
 						</div>
 						
@@ -417,7 +407,7 @@
 									</c:otherwise>
 								</c:choose>
 								<ul class='itemList'>
-									<c:forEach var="searchFancy" items="${searchFancy}" end="4">
+									<c:forEach var="searchFancy" items="${searchFancy}">
 										<li>
 										<span class="img"> <!-- 사진 클릭했을때 그 인덱스값으로 가기 -->
 											<a href="${contextPath}/fancy/viewContent.do?fd=living&num=${searchFancy.num}&productImageName=${searchFancy.productImageName1}">
@@ -432,7 +422,7 @@
 										</span> 
 											<span class="iteminfo"> 
 												<span class="text"> <!-- 제목 클릭했을때 그 인덱스값으로 가기 -->
-													<a href="${contextPath}/fancy/viewContent.do?fd=living&num=${searchFancy.num}&productImageName=${searchFancy.productImageName1}">
+													<a href="/home/shop/itemdetail.asp?itemidx=2012110629" title="미니파우치 뽀글 지퍼주머니 체리 (37002942)">
 															${searchFancy.productName} <!-- 제목  -->
 													</a>
 												</span> 
@@ -445,11 +435,6 @@
 									</c:forEach>
 								</ul>
 								<div class="clear"></div>
-								<c:choose>
-									<c:when test="${fancyCount>0}">
-										<div class="showAll"><a href="${contextPath}/common/viewSearchItems.do?kwd=${kwd}&type=fancy">결과 전체 보기</a></div>
-									</c:when>
-								</c:choose>
 							</div>
 						</div>
 					</div>

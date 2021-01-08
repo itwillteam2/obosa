@@ -50,6 +50,15 @@
 					</div>
 				</form>
 			</li>
+			<c:choose>
+				<c:when test="${memtype == 'seller'}">
+					<li class="admin">
+						<a href="${contextPath}/common/seller.do?shopName=${name}">			
+							상점관리페이지
+						</a>
+					</li>
+				</c:when>
+			</c:choose>
 		</ul>
 		<div class="clear"></div>
 	</div>

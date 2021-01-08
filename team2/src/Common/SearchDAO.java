@@ -51,7 +51,8 @@ public class SearchDAO {
 			con = getConnection();
 			String query = "select * from (select * from living where productname like ? "
 					+ "union select * from fancy where productname like ? "
-					+ "union select * from crafts where productname like ?) a";
+					+ "union select * from crafts where productname like ?) a "
+					+ "order by regdate desc";
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1,"%"+search+"%");
 			pstmt.setString(2,"%"+search+"%");
@@ -65,6 +66,7 @@ public class SearchDAO {
 				vo.setProductPrice(rs.getInt("productPrice"));
 				vo.setSellerName(rs.getString("sellerName"));
 				vo.setCategory(rs.getString("category"));
+				vo.setNum(rs.getInt("num"));
 				searchList.add(vo);
 			}
 		
@@ -173,7 +175,7 @@ public class SearchDAO {
 		try {
 			
 			con = getConnection();
-			String query = "SELECT * FROM living where productname like ?";
+			String query = "SELECT * FROM living where productname like ? order by regdate desc";
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1,"%"+search+"%");
 			
@@ -184,6 +186,7 @@ public class SearchDAO {
 				vo.setProductName(rs.getString("productName"));
 				vo.setProductPrice(rs.getInt("productPrice"));
 				vo.setSellerName(rs.getString("sellerName"));
+				vo.setNum(rs.getInt("num"));
 				searchList.add(vo);
 			}
 		
@@ -198,7 +201,7 @@ public class SearchDAO {
 	}//searchLiving 메소드 끝
 
 	public int craftsCount(String search) {
-		int artCount = 0;
+		int craftsCount = 0;
 		try{
 			con = getConnection();
 			String query = "SELECT count(*) FROM crafts where productname like ?";
@@ -207,22 +210,22 @@ public class SearchDAO {
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()){
-				artCount = rs.getInt(1);
+				craftsCount = rs.getInt(1);
 			}
 		}catch(Exception e){
 			System.out.println("craftsCount메소드 내부에서 오류 : " + e);
 		}finally{
 			release();
 		}
-		return artCount;
-	}//artCount메소드 끝
+		return craftsCount;
+	}//craftsCount메소드 끝
 
 	public List<SearchVO> searchCrafts(String search) {
-		List<SearchVO> searchArt = new ArrayList<SearchVO>();
+		List<SearchVO> searchCrafts = new ArrayList<SearchVO>();
 		try {
 			
 			con = getConnection();
-			String query = "SELECT * FROM crafts where productname like ?";
+			String query = "SELECT * FROM crafts where productname like ? order by regdate desc";
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1,"%"+search+"%");
 			
@@ -233,7 +236,8 @@ public class SearchDAO {
 				vo.setProductName(rs.getString("productName"));
 				vo.setProductPrice(rs.getInt("productPrice"));
 				vo.setSellerName(rs.getString("sellerName"));
-				searchArt.add(vo);
+				vo.setNum(rs.getInt("num"));
+				searchCrafts.add(vo);
 			}
 		
 		} catch (Exception e) {
@@ -242,7 +246,7 @@ public class SearchDAO {
 			release();
 		}
 	
-		return searchArt;
+		return searchCrafts;
 	}//searchArt메소드 끝
 
 	public int fancyCount(String search) {
@@ -270,7 +274,7 @@ public class SearchDAO {
 		try {
 			
 			con = getConnection();
-			String query = "SELECT * FROM fancy where productname like ?";
+			String query = "SELECT * FROM fancy where productname like ? order by regdate desc";
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1,"%"+search+"%");
 			
@@ -292,5 +296,212 @@ public class SearchDAO {
 	
 		return searchFancy;
 	}//searchFancy메소드 끝
+	
+	public int shopCount(String search) {
+		int searchCount = 0;
+		try{
+			con = getConnection();
+			String query = "select count(*) from (select * from living where sellername like ? "
+					+ "union select * from fancy where sellername like ? "
+					+ "union select * from crafts where sellername like ?) a";
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, search);
+			pstmt.setString(2, search);
+			pstmt.setString(3, search);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				searchCount = rs.getInt(1);
+			}
+		}catch(Exception e){
+			System.out.println("shopCount메소드 내부에서 오류 : " + e);
+		}finally{
+			release();
+		}
+		return searchCount;
+	}//shopCount메소드 끝
+	
+	public List<SearchVO> shopArticles(String search) {
+		List<SearchVO> searchList = new ArrayList<SearchVO>();
+		try {
+			
+			con = getConnection();
+			String query = "select * from (select * from living where sellername like ? "
+					+ "union select * from fancy where sellername like ? "
+					+ "union select * from crafts where sellername like ?) a "
+					+ "order by regdate desc";
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1,search);
+			pstmt.setString(2,search);
+			pstmt.setString(3,search);
+			
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				SearchVO vo = new SearchVO();
+				vo.setProductImageName1(rs.getString("productImageName1"));
+				vo.setProductName(rs.getString("productName"));
+				vo.setProductPrice(rs.getInt("productPrice"));
+				vo.setSellerName(rs.getString("sellerName"));
+				vo.setCategory(rs.getString("category"));
+				vo.setNum(rs.getInt("num"));
+				searchList.add(vo);
+			}
+		
+		} catch (Exception e) {
+			System.out.println("shopArticles 메소드 내부에서 오류 : " + e);
+		}finally {
+			release();
+		}
+	
+		return searchList;
+		
+	}//shopArticles 메소드 끝
+	
+	public List<SearchVO> shopLiving(String search) {
+		List<SearchVO> searchList = new ArrayList<SearchVO>();
+		try {
+			
+			con = getConnection();
+			String query = "SELECT * FROM living where sellername like ? order by regdate desc";
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1,search);
+			
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				SearchVO vo = new SearchVO();
+				vo.setProductImageName1(rs.getString("productImageName1"));
+				vo.setProductName(rs.getString("productName"));
+				vo.setProductPrice(rs.getInt("productPrice"));
+				vo.setSellerName(rs.getString("sellerName"));
+				vo.setNum(rs.getInt("num"));
+				searchList.add(vo);
+			}
+		
+		} catch (Exception e) {
+			System.out.println("shopLiving 메소드 내부에서 오류 : " + e);
+		}finally {
+			release();
+		}
+	
+		return searchList;
+		
+	}//shopLiving 메소드 끝
+	
+	public int shopLivingCount(String search) {
+		int livingCount = 0;
+		try{
+			con = getConnection();
+			String query = "SELECT count(*) FROM living where sellername like ?";
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, search);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				livingCount = rs.getInt(1);
+			}
+		}catch(Exception e){
+			System.out.println("shopLivingCount메소드 내부에서 오류 : " + e);
+		}finally{
+			release();
+		}
+		return livingCount;
+	}//shopLivingCount메소드 끝
+	
+	public int shopCraftsCount(String search) {
+		int craftsCount = 0;
+		try{
+			con = getConnection();
+			String query = "SELECT count(*) FROM crafts where sellername like ?";
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, search);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				craftsCount = rs.getInt(1);
+			}
+		}catch(Exception e){
+			System.out.println("shopCraftsCount메소드 내부에서 오류 : " + e);
+		}finally{
+			release();
+		}
+		return craftsCount;
+	}//shopCraftsCount메소드 끝
+
+	public List<SearchVO> shopCrafts(String search) {
+		List<SearchVO> searchCrafts = new ArrayList<SearchVO>();
+		try {
+			
+			con = getConnection();
+			String query = "SELECT * FROM crafts where sellername like ? order by regdate desc";
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1,search);
+			
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				SearchVO vo = new SearchVO();
+				vo.setProductImageName1(rs.getString("productImageName1"));
+				vo.setProductName(rs.getString("productName"));
+				vo.setProductPrice(rs.getInt("productPrice"));
+				vo.setSellerName(rs.getString("sellerName"));
+				vo.setNum(rs.getInt("num"));
+				searchCrafts.add(vo);
+			}
+		
+		} catch (Exception e) {
+			System.out.println("shopCrafts 메소드 내부에서 오류 : " + e);
+		}finally {
+			release();
+		}
+	
+		return searchCrafts;
+	}//shopCrafts메소드 끝
+
+	public int shopFancyCount(String search) {
+		int fancyCount = 0;
+		try{
+			con = getConnection();
+			String query = "SELECT count(*) FROM fancy where sellername like ?";
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, search);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				fancyCount = rs.getInt(1);
+			}
+		}catch(Exception e){
+			System.out.println("shopFancyCount메소드 내부에서 오류 : " + e);
+		}finally{
+			release();
+		}
+		return fancyCount;
+	}//shopFancyCount메소드 끝
+
+	public List<SearchVO> shopFancy(String search) {
+		List<SearchVO> searchFancy = new ArrayList<SearchVO>();
+		try {
+			
+			con = getConnection();
+			String query = "SELECT * FROM fancy where sellername like ? order by regdate desc";
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1,search);
+			
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				SearchVO vo = new SearchVO();
+				vo.setProductImageName1(rs.getString("productImageName1"));
+				vo.setProductName(rs.getString("productName"));
+				vo.setProductPrice(rs.getInt("productPrice"));
+				vo.setSellerName(rs.getString("sellerName"));
+				searchFancy.add(vo);
+			}
+		
+		} catch (Exception e) {
+			System.out.println("shopFancy 메소드 내부에서 오류 : " + e);
+		}finally {
+			release();
+		}
+	
+		return searchFancy;
+	}//shopFancy메소드 끝
 	
 }

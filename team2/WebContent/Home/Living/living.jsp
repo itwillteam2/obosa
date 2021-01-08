@@ -115,14 +115,16 @@
 
 					<div class="info">
 						<span class="result">총 <strong>${totalCountList}</strong>개의 상품이 조회되었습니다.
-						</span> <span class="selectbox"> <select name="ord">
+						</span> 
+						<span class="selectbox"> 
+							<select name="ord">
 								<option value="o1" selected="selected">신상품순</option>
 								<option value="o5">인기상품순</option>
 								<option value="o2">낮은가격순</option>
 								<option value="o3">높은가격순</option>
 								<option value="o4">높은할인율순</option>
 								<option value="o6">상품평순</option>
-						</select>
+							</select>
 						</span>
 					</div>
 					<ul class='itemList'>

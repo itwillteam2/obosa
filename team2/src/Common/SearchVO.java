@@ -6,6 +6,7 @@ public class SearchVO {
 	private int productPrice;
 	private String sellerName;
 	private String category;
+	private int num;
 	
 	public String getProductImageName1() {
 		return productImageName1;
@@ -36,5 +37,11 @@ public class SearchVO {
 	}
 	public void setCategory(String category) {
 		this.category = category;
+	}
+	public int getNum() {
+		return num;
+	}
+	public void setNum(int num) {
+		this.num = num;
 	}
 }
