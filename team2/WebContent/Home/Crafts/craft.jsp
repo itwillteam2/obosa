@@ -3,7 +3,7 @@
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
-<c:set var="livingList" value="${livingList}"/>
+<c:set var="craftsList" value="${craftsList}"/>
 
 
 <!DOCTYPE html>
@@ -129,7 +129,7 @@
 		</section>
 
 		<section class="sec_cont">
-			<form name="frm" action="${contextPath }/living/listLiving.do">
+			<form name="frm" action="${contextPath }/crafts/listCrafts.do">
 				<input type="hidden" name="page" value="1" />
 
 				<div class="inner">
@@ -149,7 +149,7 @@
 					<ul class='itemList'>
 						
 						
-						<c:forEach var="living" items="${livingList}">
+						<c:forEach var="crafts" items="${craftsList}">
 							<li>
 								<span class="img"> 
 										<!-- 사진 클릭했을때 그 인덱스값으로 가기 -->
@@ -168,12 +168,12 @@
 									<span class="text">
 										<!-- 제목 클릭했을때 그 인덱스값으로 가기 -->
 										<a href="/home/shop/itemdetail.asp?itemidx=2012110629" title="미니파우치 뽀글 지퍼주머니 체리 (37002942)">
-											${living.productName } <!-- 제목  -->
+											${crafts.productName } <!-- 제목  -->
 										</a>
 									</span>
 									 <span class="price">
 									 						<!-- 상품 가격 -->
-								 		<span class="won">${living.productPrice }<strong>원</strong></span>
+								 		<span class="won">${crafts.productPrice }<strong>원</strong></span>
 							 		</span><span class="stampicon new"></span>
 								</span>
 							</li>
