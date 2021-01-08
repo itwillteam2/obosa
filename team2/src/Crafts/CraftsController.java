@@ -118,7 +118,7 @@ public class CraftsController extends HttpServlet{
 			
 			if (isRegistSuccess > 0) {
 
-				nextPage = "/Home/Crafts/craft.jsp";
+				nextPage = "/crafts/listCrafts.do";
 
 			} else {
 				PrintWriter out = response.getWriter();
@@ -159,6 +159,8 @@ public class CraftsController extends HttpServlet{
 			request.setAttribute("result", result);
 			
 			nextPage=""; //수정되는 넘버와 페이지 주소 적기 
+		}else if(action.equals("")) {//여기는 삭제 메소드 적을꺼임
+			
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
