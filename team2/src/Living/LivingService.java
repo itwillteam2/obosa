@@ -15,67 +15,30 @@ public class LivingService {
 		livingVO = new LivingVO();
 	}	
 	
-	public Map<String,Object> detailLiving(int livingNum){
-		
-		Map<String, Object> livingMap = new HashMap<String, Object>();
-		
-		LivingVO livingVO = livingDAO.getLiving(livingNum);
-		livingMap.put("livingVO", livingVO);
-		
-		return livingMap;
-	}
-
-	
-	  public List<LivingVO> livingList() {
+	 public List<LivingVO> ContentList() {
 		  List<LivingVO> livingList = new ArrayList<LivingVO>();
-		  livingList = livingDAO.selectAllArticles();
+		  livingList = livingDAO.getAllContents();
 		  return livingList;
-	  }
-	 
+	  }//end
 	
-	public int totalCountList() {
-		int totalCountList = livingDAO.selectTotalCount();
-		
-		
-		return totalCountList;
-	}
+	public LivingVO  ContentDetail(int livingNum){
+		LivingVO livingVO = livingDAO.getContent(livingNum);
+		return livingVO;
+	}//end
 	
-	/*
-	 * public List listArticles(Map<String, Integer> paingMap){ Map livingListMap =
-	 * new HashMap(); List<LivingVO> livingList =
-	 * livingDAO.selectAllArticles(paingMap);
-	 * 
-	 * livingListMap.put("livingList", livingList);
-	 * 
-	 * return livingListMap;
-	 * 
-	 * }
-	 */
-	public int addLiving(LivingVO livingVO) {
-		return livingDAO.addLiving(livingVO);
-	}
+	public int totalCount() {
+		int totalCount = livingDAO.getTotalCount();
+		return totalCount;
+	}//end
 	
-	public int insertLiving(LivingVO livingVO) {
-		int num = livingDAO.addLiving(livingVO);
-		return num;
-	}
 	
-	public Map<String, Object> livingDetailProduct(int productNum){
-		return null;
-		
-	}
-
-	public LivingVO viewContent(int num) {
-		LivingVO content = null;
-		content = livingDAO.selectContent(num);
-		System.out.println("hello"+content.getNum());
-		return content;
-	}
+	public int insertContent(LivingVO livingVO) {
+		return livingDAO.insertContent(livingVO);
+	}//end
+	
 
 	public int addReply(LivingRepVO  livingRepVO){
-
 		return livingDAO.insertNewReply(livingRepVO);
-		 
-	}
+	}//end
 	
 }
