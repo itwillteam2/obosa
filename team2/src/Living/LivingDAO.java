@@ -29,62 +29,11 @@ public class LivingDAO {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	}//end of freeResource
-	/*
-	 * //get list of one page. public List<Map<String,Object>>
-	 * getLivingList(LivingVO livingVO){
-	 * 
-	 * List<Map<String, Object>> productList = new ArrayList<Map<String,Object>>();
-	 * 
-	 * int numberPerPage = 10; // int pageNo = (int)livingListMap.get("num"); int
-	 * offset = (pageNo - 1) * 10; String kwd = (String)livingListMap.get("kwd");
-	 * 
-	 * 
-	 * try { conn = DBConnection.getConnection(); String query =
-	 * "SELECT * FROM living ORDER BY num LIMIT ?,?";
-	 * 
-	 * pstmt = conn.prepareStatement(query); pstmt.setInt(1, offset);
-	 * pstmt.setInt(2, numberPerPage);
-	 * 
-	 * rs = pstmt.executeQuery();
-	 * 
-	 * if(rs.next()) {
-	 * 
-	 * Map<String,Object> livingMap = new HashMap<String, Object>(); int num =
-	 * rs.getInt("num"); String productName = rs.getString("productName"); String
-	 * productContent = rs.getString("productContent"); String sellerName =
-	 * rs.getString("sellerName"); int productPrice = rs.getInt("productPrice");
-	 * String productImageName1 = rs.getString("productImageName1"); String
-	 * productImageName2 = rs.getString("productImageName2"); String
-	 * productImageName3 = rs.getString("productImageName3"); int productQuantity =
-	 * rs.getInt("productQuantity"); int shipping_fee = rs.getInt("shipping_fee");
-	 * int point = rs.getInt("point"); Timestamp reg_date =
-	 * rs.getTimestamp("regDate");
-	 * 
-	 * 
-	 * livingVO = new LivingVO(); livingVO.setNum(num); livingVO.setPoint(point);
-	 * livingVO.setProductContent(productContent);
-	 * livingVO.setProductImageName1(productImageName1);
-	 * livingVO.setProductImageName2(productImageName2);
-	 * livingVO.setProductImageName3(productImageName3);
-	 * livingVO.setProductName(productName); livingVO.setProductPrice(productPrice);
-	 * livingVO.setProductQuantity(productQuantity); livingVO.setReg_date(reg_date);
-	 * livingVO.setSellerName(sellerName); livingVO.setShipping_fee(shipping_fee);
-	 * 
-	 * livingMap.put("livingVO", livingVO); productList.add(livingMap);
-	 * 
-	 * 
-	 * }
-	 * 
-	 * } catch (Exception e) { System.out.println("getProductList error " +
-	 * e.toString()); }finally { freeResource(); }
-	 * 
-	 * return productList;
-	 * 
-	 * }//end of getProductList
-	 */
-	//select part for select all items list
-	public List<LivingVO> selectAllArticles() {
+	}//end
+	
+	
+//  -------- 전체 상품 조회 ------- //
+	public List<LivingVO> getAllContents() {
 	
 		List<LivingVO> livingList = new ArrayList<LivingVO>();
 		try {
@@ -110,15 +59,17 @@ public class LivingDAO {
 			}
 			
 		} catch (Exception e) {
-			System.out.println("selectAllArticles error : " + e.toString());
+			System.out.println("getAllContents error : " + e.toString());
 		}finally {
 			freeResource();
 		}
 		return livingList;
 		
-	}//end of selectAllArticles
+	}//end
 	
-	public LivingVO getLiving(int livingNum) {
+	
+//  -------- 특정 상품 조회 ------- //
+	public LivingVO getContent(int livingNum) {
 		LivingVO livingVO = new LivingVO();
 		
 		try {
@@ -140,22 +91,18 @@ public class LivingDAO {
 				livingVO.setReg_date(rs.getTimestamp("regDate"));
 				livingVO.setSellerName(rs.getString("sellerName"));
 				livingVO.setShipping_fee(rs.getInt("shipping_fee"));
-				
 			}
 		} catch (Exception e) {
-			System.out.println("getLiving error : " + e.toString());
+			System.out.println("getContent error : " + e.toString());
 		}finally {
 			freeResource();
 		}
-		
 		return livingVO;
-	}
+	}//end
 	
-	//get total record count
-	public int selectTotalCount() {
-		
+//  -------- 전체 상품 개수 조회 ------- //
+	public int getTotalCount() {
 		int num = 0;
-		
 		try {
 			conn = DBConnection.getConnection();
 			String query = "SELECT count(*) FROM living";
@@ -166,57 +113,37 @@ public class LivingDAO {
 			}
 			return num;
 		}catch (Exception e) {
-			System.out.println("selectTotalCount error : " + e.toString());
+			System.out.println("getTotalCount error : " + e.toString());
 		}finally {
 			freeResource();
 		}
 		return num;
-		
-		
-		
-	}//end of selectTotalCount	
+	}//end
 	
-	//Increase plus 1 Number for NUM column
-	private int getNewLivingArticleNo() {
-		try {
-			conn = DBConnection.getConnection();
-			String query = "SELECT max(NUM) FROM living";
-			pstmt = conn.prepareStatement(query);
-			rs = pstmt.executeQuery();
-			if(rs.next()) {
-				return rs.getInt(1)+1;
-			}
-		} catch (Exception e) {
-			System.out.println("getNewLivingArticleNo error : " + e.toString());
-		}
-		return 0;
-	}//end of getNewLivingArticleNo
-	
-	public int addLiving(LivingVO livingVO) {
+//  -------- 상품 등록 ------- //	
+	public int insertContent(LivingVO livingVO) {
 		int num = 0;
-
 		String sql ="";
 		
 		try {
 			conn = DBConnection.getConnection();
 			sql = "select max(num) from living";
-			
 			pstmt = conn.prepareStatement(sql);
-			
 			rs = pstmt.executeQuery();
-			
-			if(rs.next()){
-				num = rs.getInt(1) + 1;
-			}else{
-				num = 1;
-			}
+			if(rs.next()){ num = rs.getInt(1) + 1;
+			}else{ num = 1; }
 
 			String query = "INSERT INTO living"
+<<<<<<< Updated upstream
 					+ "(num, productName,productContent,sellerName,productPrice,productImageName1,productImageName2,productImageName3,productQuantity,shipping_fee,point,category) "
 					+ "VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
+=======
+					+ "(num,productName,productContent,sellerName,productPrice,productImageName1,productImageName2,productImageName3,productQuantity,shipping_fee,point) "
+					+ "VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+>>>>>>> Stashed changes
 			pstmt = conn.prepareStatement(query);
 			
-			pstmt.setInt(1, num);
+			pstmt.setInt(1, num);		
 			pstmt.setString(2, livingVO.getProductName());
 			pstmt.setString(3, livingVO.getProductContent());
 			pstmt.setString(4, livingVO.getSellerName());
@@ -230,25 +157,16 @@ public class LivingDAO {
 			pstmt.setString(12, "living");
 			
 			pstmt.executeUpdate();
-			
-		} catch (Exception e) {
-			e.printStackTrace();
+					
+		}catch (Exception e) {
+			System.out.println("insertContent error : " + e.toString());
 		}finally {
-			
-			try {
-				if (rs != null) rs.close();
-				if (pstmt != null) pstmt.close();
-				if (conn != null) conn.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}finally {
-				freeResource();
-			}	
-		}
-
+			freeResource();
+		}		
 		return num;
-	}
+	}//end 
 	
+<<<<<<< Updated upstream
 	
 	//insert part for living item list
 //	public int insertLivingNewArticle(LivingVO livingVO) {
@@ -304,19 +222,42 @@ public class LivingDAO {
 			pstmt.setString(7, livingVO.getLiving_content());
 			pstmt.setString(9, livingVO.getPhoto_name());
 			pstmt.setInt(10, livingVO.getNum());
+=======
+//  -------- 상품 수정 ------- //		
+	public void updateContent(LivingVO livingVO) {
+		try {
+			conn = DBConnection.getConnection();
+			String query = "UPDATE living SET productName=?,productContent=?,sellerName=?,productPrice=?,"
+					+"productImageName1=?,productImageName2=?,productImageName3=?,"
+					+"productQuantity=?,shipping_fee,point=?"
+			        +" WHERE num=?";
+				
+			pstmt = conn.prepareStatement(query);
+			
+			pstmt.setString(1, livingVO.getProductName());
+			pstmt.setString(2, livingVO.getProductContent());
+			pstmt.setString(3, livingVO.getSellerName());
+			pstmt.setInt(4, livingVO.getProductPrice());
+			pstmt.setString(5, livingVO.getProductImageName1());
+			pstmt.setString(6, livingVO.getProductImageName2());
+			pstmt.setString(7, livingVO.getProductImageName3());
+			pstmt.setInt(8, livingVO.getProductQuantity());
+			pstmt.setInt(9, livingVO.getShipping_fee());
+			pstmt.setInt(10, livingVO.getPoint());	
+			pstmt.setInt(10, livingVO.getNum());	
+>>>>>>> Stashed changes
 			
 			pstmt.executeUpdate();
 			
 		} catch (Exception e) {
-			System.out.println("updateLivingArticle error : " + e.toString());
+			System.out.println("updateContent error : " + e.toString());
 		}finally {
 			freeResource();
 		}
-	}//end of updateLivingArticle
-	*/
+	}//end 
 	
-	//delete part for living one item.
-	public void deleteArticle(int NUM) {
+//  -------- 상품 삭제 ------- //	
+	public void deleteContent(int NUM) {
 		try {
 			conn = DBConnection.getConnection();
 			String query = "DELETE FROM living where NUM = ?";
@@ -325,78 +266,25 @@ public class LivingDAO {
 			pstmt.executeUpdate();					
 					
 		} catch (Exception e) {
-			System.out.println("deleteArticle error : " + e.toString());
+			System.out.println("deleteContent error : " + e.toString());
 		}finally {
 			freeResource();
 		}
-	}//end of deleteArticle
+	}//end
 
-	public LivingVO selectContent(int num) {
-		LivingVO content = new LivingVO();
-		try {
-			conn = DBConnection.getConnection();
-			String query = "select * from living where num=?";
-			
-			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, num);
-			ResultSet rs = pstmt.executeQuery();
-			if(rs.next()){
-				int _num = rs.getInt("num");
-				String productName = rs.getString("productName");
-				String productContent = rs.getString("productContent");
-				String sellerName = rs.getString("SellerName");
-				int productPrice = rs.getInt("productPrice");
-				String productImageName1 = rs.getString("ProductImageName1");
-				String productImageName2 = rs.getString("ProductImageName2");
-				String productImageName3 = rs.getString("ProductImageName3");
-				int productQuantity = rs.getInt("ProductQuantity");
-				int shipping_fee = rs.getInt("Shipping_fee");
-				int point = rs.getInt("Point");
-				Timestamp regdate = rs.getTimestamp("regdate");
 	
-				content.setNum(_num);
-				content.setProductName(productName);
-				content.setProductContent(productContent);
-				content.setSellerName(sellerName);
-				content.setProductPrice(productPrice);
-				content.setProductImageName1(productImageName1);
-				content.setProductImageName2(productImageName2);
-				content.setProductImageName3(productImageName3);
-				content.setProductQuantity(productQuantity);
-				content.setShipping_fee(shipping_fee);
-				content.setPoint(point);
-				content.setReg_date(regdate);
-				
-				
-			}
-			
-		} catch (Exception e) {
-			System.out.println("selectContent error : " + e.toString());
-		}finally {
-			freeResource();
-		}
-		return content;
-	}
-
 	public int insertNewReply(LivingRepVO livingRepVO) {
-
 		int rnum = 0;
-
 		String sql ="";
 		
 		try {
 			conn = DBConnection.getConnection();
 			sql = "select max(num) from living_rep";
-			
 			pstmt = conn.prepareStatement(sql);
-			
 			rs = pstmt.executeQuery();
 			
-			if(rs.next()){
-				rnum = rs.getInt(1) + 1;
-			}else{
-				rnum = 1;
-			}
+			if(rs.next()){ 	rnum = rs.getInt(1) + 1;
+			}else{	rnum = 1; }
 			
 			int num = livingRepVO.getNum();
 			System.out.println(num);
@@ -419,23 +307,11 @@ public class LivingDAO {
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-			try {
-				if (rs != null)
-					rs.close();
-				if (pstmt != null)
-					pstmt.close();
-				if (conn != null)
-					conn.close();
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+			freeResource();
 		}
-
 		return rnum;
+	}//end
 
-	}
-
-	
-	
+		
 	
 }//end DAO
