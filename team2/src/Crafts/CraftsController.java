@@ -29,7 +29,7 @@ import Page.Paging;
 @WebServlet("/crafts/*")
 public class CraftsController extends HttpServlet{
 
-	private static String CRAFTS_IMAGE_REPO = "C:\\files\\crafts_image";
+	private static String ARTICLE_IMAGE_REPO = "C:\\files\\article_image";
 	
 	CraftsVO craftsVO;
 	CraftsService craftsService;	
@@ -114,10 +114,15 @@ public class CraftsController extends HttpServlet{
 			craftsVO.setSellerName(sellerName);			
 			craftsVO.setShipping_fee(shipping_fee);
 			
-			int isRegistSuccess = craftsService.insertCrafts(craftsVO);
+			int num = craftsService.insertCrafts(craftsVO);
 			
-			if (isRegistSuccess > 0) {
-
+			if (num > 0) {
+				if( productImageName1 != null &&  productImageName1.length() != 0 ){
+					File srcFile = new File(ARTICLE_IMAGE_REPO + "\\" + "temp" + "\\" +  productImageName1);
+					File destDir = new File(ARTICLE_IMAGE_REPO + "\\crafts\\" + num);
+					destDir.mkdir();//글번호에 대한 폴더 생성 ~
+					FileUtils.moveFileToDirectory(srcFile, destDir, true);
+				}
 				nextPage = "/crafts/listCrafts.do";
 
 			} else {
@@ -174,7 +179,7 @@ public class CraftsController extends HttpServlet{
 
 		Map<String, String> articleMap = new HashMap<String, String>();
 		String encoding = "UTF-8";
-		File currentDirPath = new File(CRAFTS_IMAGE_REPO);
+		File currentDirPath = new File(ARTICLE_IMAGE_REPO);
 		DiskFileItemFactory factory = new DiskFileItemFactory();
 		factory.setRepository(currentDirPath);
 		factory.setSizeThreshold(1024 * 1024 * 1);
