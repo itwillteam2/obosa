@@ -75,7 +75,7 @@
 	<div class="MenuBar_Box">
 			<ul>
 				<li onclick="location.href='${contextPath}/CsCenter/NoticeList.do'" >공지사항</li>
-				<li onclick="location.href='${contextPath}/CsCenter/InquiryList.do'" class="on">FAQ</li>
+				<li onclick="location.href='${contextPath}/CsCenter/InquiryList.do'" class="on">Q&A</li>
 				<li onclick="location.href='${contextPath}/CsCenter/InquiryWrite.do'">1:1문의/상담</li>
 			</ul>
 	</div>
@@ -104,7 +104,7 @@
 				<p>${fn:replace(InquiryList.content, newLineChar, "<br/>")}</p>
 				<c:choose>
 					<c:when test="${sessionScope.id == 'admin'}">
-						<div class="more_info"><span onclick="location.href='${contextPath}/CsCenter/InquiryWrite.do';">FAQ 답변 작성</span></div>	
+						<div class="more_info"><span onclick="window.open('${contextPath}/Home/CsCenter/review.jsp?inqnum=${InquiryList.inqnum}', 'Q&A답변등록', 'width=500, height=400, location=no, status=no, scrollbars=no, resizable=no, left=500, top=100' );">Q&A 답변 작성</span></div>	
 					</c:when>	
 					<c:when test="${sessionScope.id == InquiryList.id }">
 						<div class="more_info">

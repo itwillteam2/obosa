@@ -35,8 +35,6 @@ public class LivingService {
 	
 	public int totalCountList() {
 		int totalCountList = livingDAO.selectTotalCount();
-		
-		
 		return totalCountList;
 	}
 	
@@ -56,7 +54,7 @@ public class LivingService {
 	}
 	
 	public int insertLiving(LivingVO livingVO) {
-		int num = livingDAO.insertLivingNewArticle(livingVO);
+		int num = livingDAO.addLiving(livingVO);
 		return num;
 	}
 	

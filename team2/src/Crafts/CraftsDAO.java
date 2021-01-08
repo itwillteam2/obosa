@@ -116,8 +116,8 @@ public class CraftsDAO {
 		try {
 			conn = DBConnection.getConnection();
 			String query = "INSERT INTO crafts"
-					+ "(num,productName,productContent,sellerName,productPrice,productImageName1,productImageName2,productImageName3,productQuantity,shipping_fee,point)"
-					+ "VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+					+ "(num,productName,productContent,sellerName,productPrice,productImageName1,productImageName2,productImageName3,productQuantity,shipping_fee,point,category)"
+					+ "VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
 			pstmt = conn.prepareStatement(query);
 			
 			pstmt.setInt(1, craftsNum);
@@ -130,7 +130,8 @@ public class CraftsDAO {
 			pstmt.setString(8, craftsVO.getProductImageName3());
 			pstmt.setInt(9, craftsVO.getProductQuantity());
 			pstmt.setInt(10, craftsVO.getShipping_fee());
-			pstmt.setInt(11, craftsVO.getPoint());			
+			pstmt.setInt(11, craftsVO.getPoint());
+			pstmt.setString(12, "crafts");
 			
 			pstmt.executeUpdate();					
 			

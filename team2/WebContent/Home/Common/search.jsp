@@ -119,55 +119,55 @@
 		$("#alla").css("color", "red");
 		
 		$("#living").css("display", "none");
-		$("#art").css("display", "none");
+		$("#crafts").css("display", "none");
 		$("#fancy").css("display", "none");
 	});
 	
 	function fnSelectAll(){
 		$("#all").css("display", "");
 		$("#living").css("display", "none");
-		$("#art").css("display", "none");
+		$("#crafts").css("display", "none");
 		$("#fancy").css("display", "none");
 		
 		$("#alla").css("color", "red");
 		$("#livinga").css("color", "");
-		$("#arta").css("color", "");
+		$("#craftsa").css("color", "");
 		$("#fancya").css("color", "");
 	}
 	
 	function fnSelectLiving(){
 		$("#all").css("display", "none");
 		$("#living").css("display", "");
-		$("#art").css("display", "none");
+		$("#crafts").css("display", "none");
 		$("#fancy").css("display", "none");
 		
 		$("#alla").css("color", "");
 		$("#livinga").css("color", "red");
-		$("#arta").css("color", "");
+		$("#craftsa").css("color", "");
 		$("#fancya").css("color", "");
 	}
 	
-	function fnSelectArt(){
+	function fnSelectCrafts(){
 		$("#all").css("display", "none");
 		$("#living").css("display", "none");
-		$("#art").css("display", "");
+		$("#crafts").css("display", "");
 		$("#fancy").css("display", "none");
 		
 		$("#alla").css("color", "");
 		$("#livinga").css("color", "");
-		$("#arta").css("color", "red");
+		$("#craftsa").css("color", "red");
 		$("#fancya").css("color", "");
 	}
 	
 	function fnSelectFancy(){
 		$("#all").css("display", "none");
 		$("#living").css("display", "none");
-		$("#art").css("display", "none");
+		$("#crafts").css("display", "none");
 		$("#fancy").css("display", "");
 		
 		$("#alla").css("color", "");
 		$("#livinga").css("color", "");
-		$("#arta").css("color", "");
+		$("#craftsa").css("color", "");
 		$("#fancya").css("color", "red");
 	}
 </script>
@@ -220,7 +220,7 @@
 			<div class="categories">
 				<a href="javascript:fnSelectAll();" id="alla">전체</a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
 				<a href="javascript:fnSelectLiving();" id="livinga">리빙</a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
-				<a href="javascript:fnSelectArt();" id="arta">공예</a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
+				<a href="javascript:fnSelectCrafts();" id="craftsa">공예</a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
 				<a href="javascript:fnSelectFancy();" id="fancya">문구</a>
 			</div>
 			<section class="sec_cont">
@@ -241,7 +241,7 @@
 								<c:forEach var="searchList" items="${searchList}">
 									<li>
 									<span class="img"> <!-- 사진 클릭했을때 그 인덱스값으로 가기 -->
-										<a href="/home/shop/itemdetail.asp?itemidx=2012110629" onclick="GA_event(&quot;카테고리&quot;, &quot;패션_상품&quot;, &quot;미니파우치 뽀글 지퍼주머니 체리 (37002942)&quot;); GA_onclick(&quot;카테고리_패션&quot;, &quot;2012110629&quot;, &quot;미니파우치 뽀글 지퍼주머니 체리 (37002942)&quot;, &quot;아트박스&quot;, &quot;패션&quot;, &quot;4500&quot;, &quot;#32&quot;, &quot;0&quot;);">
+										<a href="${contextPath}/living/viewContent.do?fd=living&num=${living.num}&productImageName=${living.productImageName1}">
 												<!-- 이미지 불러오기 --> 
 												<img src="${contextPath}/download.do?productImageName1=${searchList.productImageName1}">
 										</a> 
@@ -321,23 +321,23 @@
 							</div>
 						</div>
 						
-						<div id="art">
+						<div id="crafts">
 							<div class="info">
 								<c:choose>
-									<c:when test="${artCount>0}">
-										<span class="count">총 <strong>${artCount}</strong>개의 상품이 조회되었습니다.</span>
+									<c:when test="${craftsCount>0}">
+										<span class="count">총 <strong>${craftsCount}</strong>개의 상품이 조회되었습니다.</span>
 									</c:when>
 									<c:otherwise>
 										<span class="count">총 <strong>0</strong>개의 상품이 조회되었습니다.</span>
 									</c:otherwise>
 								</c:choose>
 								<ul class='itemList'>
-									<c:forEach var="searchArt" items="${searchArt}">
+									<c:forEach var="searchCrafts" items="${searchCrafts}">
 										<li>
 										<span class="img"> <!-- 사진 클릭했을때 그 인덱스값으로 가기 -->
 											<a href="/home/shop/itemdetail.asp?itemidx=2012110629" onclick="GA_event(&quot;카테고리&quot;, &quot;패션_상품&quot;, &quot;미니파우치 뽀글 지퍼주머니 체리 (37002942)&quot;); GA_onclick(&quot;카테고리_패션&quot;, &quot;2012110629&quot;, &quot;미니파우치 뽀글 지퍼주머니 체리 (37002942)&quot;, &quot;아트박스&quot;, &quot;패션&quot;, &quot;4500&quot;, &quot;#32&quot;, &quot;0&quot;);">
 													<!-- 이미지 불러오기 --> 
-													<img src="${contextPath}/download.do?productImageName1=${searchArt.productImageName1}">
+													<img src="${contextPath}/download.do?productImageName1=${searchCrafts.productImageName1}">
 											</a> 
 											<span class="hover"> <span class="wish "
 												data-itemidx="2012110629"></span> <span class="cart"
@@ -348,11 +348,11 @@
 											<span class="iteminfo"> 
 												<span class="text"> <!-- 제목 클릭했을때 그 인덱스값으로 가기 -->
 													<a href="/home/shop/itemdetail.asp?itemidx=2012110629" title="미니파우치 뽀글 지퍼주머니 체리 (37002942)">
-															${searchArt.productName} <!-- 제목  -->
+															${searchCrafts.productName} <!-- 제목  -->
 													</a>
 												</span> 
 												<span class="price"> <!-- 상품 가격 --> 
-													<span class="won">${searchArt.productPrice}<strong>원</strong></span>
+													<span class="won">${searchCrafts.productPrice}<strong>원</strong></span>
 												</span>
 												<span class="stampicon new"></span>
 											</span>
@@ -361,7 +361,7 @@
 								</ul>
 								<div class="clear"></div>
 								<c:choose>
-									<c:when test="${artCount>0}">
+									<c:when test="${craftsCount>0}">
 										<div class="showAll"><a href="#">결과 전체 보기</a></div>
 									</c:when>
 								</c:choose>

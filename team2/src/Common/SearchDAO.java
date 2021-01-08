@@ -51,7 +51,7 @@ public class SearchDAO {
 			con = getConnection();
 			String query = "select * from (select * from living where productname like ? "
 					+ "union select * from fancy where productname like ? "
-					+ "union select * from art where productname like ?) a";
+					+ "union select * from crafts where productname like ?) a";
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1,"%"+search+"%");
 			pstmt.setString(2,"%"+search+"%");
@@ -64,6 +64,7 @@ public class SearchDAO {
 				vo.setProductName(rs.getString("productName"));
 				vo.setProductPrice(rs.getInt("productPrice"));
 				vo.setSellerName(rs.getString("sellerName"));
+				vo.setCategory(rs.getString("category"));
 				searchList.add(vo);
 			}
 		
@@ -83,7 +84,7 @@ public class SearchDAO {
 			con = getConnection();
 			String query = "select count(*) from (select * from living where productname like ? "
 					+ "union select * from fancy where productname like ? "
-					+ "union select * from art where productname like ?) a";
+					+ "union select * from crafts where productname like ?) a";
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, "%"+search+"%");
 			pstmt.setString(2,"%"+search+"%");
@@ -196,11 +197,11 @@ public class SearchDAO {
 		
 	}//searchLiving 메소드 끝
 
-	public int artCount(String search) {
+	public int craftsCount(String search) {
 		int artCount = 0;
 		try{
 			con = getConnection();
-			String query = "SELECT count(*) FROM art where productname like ?";
+			String query = "SELECT count(*) FROM crafts where productname like ?";
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, "%"+search+"%");
 			rs = pstmt.executeQuery();
@@ -209,19 +210,19 @@ public class SearchDAO {
 				artCount = rs.getInt(1);
 			}
 		}catch(Exception e){
-			System.out.println("artCount메소드 내부에서 오류 : " + e);
+			System.out.println("craftsCount메소드 내부에서 오류 : " + e);
 		}finally{
 			release();
 		}
 		return artCount;
 	}//artCount메소드 끝
 
-	public List<SearchVO> searchArt(String search) {
+	public List<SearchVO> searchCrafts(String search) {
 		List<SearchVO> searchArt = new ArrayList<SearchVO>();
 		try {
 			
 			con = getConnection();
-			String query = "SELECT * FROM art where productname like ?";
+			String query = "SELECT * FROM crafts where productname like ?";
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1,"%"+search+"%");
 			

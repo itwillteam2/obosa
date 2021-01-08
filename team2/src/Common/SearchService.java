@@ -39,15 +39,15 @@ public class SearchService {
 		return searchLiving;
 	}
 
-	public int artCount(String search) {
-		int artCount = searchDAO.artCount(search);
-		return artCount;
+	public int craftsCount(String search) {
+		int craftsCount = searchDAO.craftsCount(search);
+		return craftsCount;
 	}
 
-	public List<SearchVO> searchArt(String search) {
-		List<SearchVO> searchArt = new ArrayList<SearchVO>();
-		searchArt = searchDAO.searchArt(search);
-		return searchArt;
+	public List<SearchVO> searchCrafts(String search) {
+		List<SearchVO> searchCrafts = new ArrayList<SearchVO>();
+		searchCrafts = searchDAO.searchCrafts(search);
+		return searchCrafts;
 	}
 
 	public int fancyCount(String search) {
