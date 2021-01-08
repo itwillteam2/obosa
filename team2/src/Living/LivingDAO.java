@@ -212,8 +212,8 @@ public class LivingDAO {
 			}
 
 			String query = "INSERT INTO living"
-					+ "(num, productName,productContent,sellerName,productPrice,productImageName1,productImageName2,productImageName3,productQuantity,shipping_fee,point) "
-					+ "VALUES(?,?,?,?,?,?,?,?,?,?,?)";
+					+ "(num, productName,productContent,sellerName,productPrice,productImageName1,productImageName2,productImageName3,productQuantity,shipping_fee,point,category) "
+					+ "VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
 			pstmt = conn.prepareStatement(query);
 			
 			pstmt.setInt(1, num);
@@ -227,6 +227,7 @@ public class LivingDAO {
 			pstmt.setInt(9, livingVO.getProductQuantity());
 			pstmt.setInt(10, livingVO.getShipping_fee());
 			pstmt.setInt(11, livingVO.getPoint());		
+			pstmt.setString(12, "living");
 			
 			pstmt.executeUpdate();
 			
@@ -250,36 +251,36 @@ public class LivingDAO {
 	
 	
 	//insert part for living item list
-	public int insertLivingNewArticle(LivingVO livingVO) {
-		int num = getNewLivingArticleNo();
-		
-		try {
-			conn = DBConnection.getConnection();
-			String query = "INSERT INTO living"
-					+ "(productName,productContent,sellerName,productPrice,productImageName1,productImageName2,productImageName3,productQuantity,shipping_fee,point,num) "
-					+ "VALUES(?,?,?,?,?,?,?,?,?,?,5)";
-			pstmt = conn.prepareStatement(query);
-			
-			pstmt.setString(1, livingVO.getProductName());
-			pstmt.setString(2, livingVO.getProductContent());
-			pstmt.setString(3, livingVO.getSellerName());
-			pstmt.setInt(4, livingVO.getProductPrice());
-			pstmt.setString(5, livingVO.getProductImageName1());
-			pstmt.setString(6, livingVO.getProductImageName2());
-			pstmt.setString(7, livingVO.getProductImageName3());
-			pstmt.setInt(8, livingVO.getProductQuantity());
-			pstmt.setInt(9, livingVO.getShipping_fee());
-			pstmt.setInt(10, livingVO.getPoint());		
-			
-			pstmt.executeUpdate();
-					
-		}catch (Exception e) {
-			System.out.println("insertNewArticle error : " + e.toString());
-		}finally {
-			freeResource();
-		}		
-		return num;
-	}//end of insertNewArticle
+//	public int insertLivingNewArticle(LivingVO livingVO) {
+//		int num = getNewLivingArticleNo();
+//		
+//		try {
+//			conn = DBConnection.getConnection();
+//			String query = "INSERT INTO living"
+//					+ "(productName,productContent,sellerName,productPrice,productImageName1,productImageName2,productImageName3,productQuantity,shipping_fee,point,num) "
+//					+ "VALUES(?,?,?,?,?,?,?,?,?,?,5)";
+//			pstmt = conn.prepareStatement(query);
+//			
+//			pstmt.setString(1, livingVO.getProductName());
+//			pstmt.setString(2, livingVO.getProductContent());
+//			pstmt.setString(3, livingVO.getSellerName());
+//			pstmt.setInt(4, livingVO.getProductPrice());
+//			pstmt.setString(5, livingVO.getProductImageName1());
+//			pstmt.setString(6, livingVO.getProductImageName2());
+//			pstmt.setString(7, livingVO.getProductImageName3());
+//			pstmt.setInt(8, livingVO.getProductQuantity());
+//			pstmt.setInt(9, livingVO.getShipping_fee());
+//			pstmt.setInt(10, livingVO.getPoint());		
+//			
+//			pstmt.executeUpdate();
+//					
+//		}catch (Exception e) {
+//			System.out.println("insertNewArticle error : " + e.toString());
+//		}finally {
+//			freeResource();
+//		}		
+//		return num;
+//	}//end of insertNewArticle
 	
 	/*
 	//update method part for living list

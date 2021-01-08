@@ -118,7 +118,7 @@ public class CraftsController extends HttpServlet{
 			
 			if (isRegistSuccess > 0) {
 
-				nextPage = "/Home/Crafts/craft.jsp";
+				nextPage = "/crafts/listCrafts.do";
 
 			} else {
 				PrintWriter out = response.getWriter();

@@ -154,7 +154,7 @@ public class LivingController extends HttpServlet {
 					
 				}
 				
-				nextPage = "/Home/Living/livingList.do";
+				nextPage = "/living/listLiving.do";
 
 			} else {
 				PrintWriter out = response.getWriter();

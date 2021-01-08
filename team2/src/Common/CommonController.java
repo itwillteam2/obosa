@@ -70,11 +70,11 @@ public class CommonController extends HttpServlet{
 			List<SearchVO> searchLiving = searchService.searchLiving(search);
 			request.setAttribute("searchLiving", searchLiving);
 			
-			int artCount = searchService.artCount(search);
-			request.setAttribute("artCount", artCount);
+			int craftsCount = searchService.craftsCount(search);
+			request.setAttribute("craftsCount", craftsCount);
 			
-			List<SearchVO> searchArt = searchService.searchArt(search);
-			request.setAttribute("searchArt", searchArt);
+			List<SearchVO> searchCrafts = searchService.searchCrafts(search);
+			request.setAttribute("searchCrafts", searchCrafts);
 			
 			int fancyCount = searchService.fancyCount(search);
 			request.setAttribute("fancyCount", fancyCount);

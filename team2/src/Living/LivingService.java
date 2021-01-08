@@ -56,7 +56,7 @@ public class LivingService {
 	}
 	
 	public int insertLiving(LivingVO livingVO) {
-		int num = livingDAO.insertLivingNewArticle(livingVO);
+		int num = livingDAO.addLiving(livingVO);
 		return num;
 	}
 	
