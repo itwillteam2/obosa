@@ -68,7 +68,7 @@
 		<div class="MenuBar_Box">
 			<ul>
 				<li onclick="location.href='${contextPath}/CsCenter/NoticeList.do'" >공지사항</li>
-				<li onclick="location.href='${contextPath}/CsCenter/InquiryList.do'" >FAQ</li>
+				<li onclick="location.href='${contextPath}/CsCenter/InquiryList.do'" >Q&A</li>
 				<li onclick="location.href='${contextPath}/CsCenter/InquiryWrite.do'" class="on">1:1문의/상담</li>
 			</ul>
 		</div>

@@ -95,7 +95,7 @@ input.inpt {
 input.inpt:focus {
   border-color: #999999;
 }
-.submit2{
+.submit{
   font-size: 12px;
   line-height: 42px;
   display: block;
@@ -112,7 +112,7 @@ input.inpt:focus {
   background: transparent;
   border-radius: 2px;
 }
-.submit2:hover {
+.submit:hover {
   background-color: #263238;
   color: #ffffff;
   transition: all 0.2s;
