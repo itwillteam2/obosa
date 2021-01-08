@@ -7,17 +7,25 @@ public class CsCenterService {
 	CsCenterDAO CsCenterDAO;
 	NoticeVO noticeVO;
 	InquiryVO inquiryVO;
+	InqRepVO InqRepVO;
 	
 	public CsCenterService() {
 		CsCenterDAO = new CsCenterDAO();
 		noticeVO = new NoticeVO();
 		inquiryVO = new InquiryVO();
+		InqRepVO = new InqRepVO();
 	}
 	
 	public int addNotice(NoticeVO noticeVO) {
 		
 		return CsCenterDAO.insertNewNotice(noticeVO);
 		
+		
+	}
+	
+	public int addInqRep(InqRepVO inqRepVO) {
+		
+		return CsCenterDAO.insertNewInqRep(inqRepVO);
 		
 	}
 
@@ -34,6 +42,11 @@ public class CsCenterService {
 	public List<InquiryVO> listInquiry() { 
 		List<InquiryVO> InquiryList = CsCenterDAO.selectAllInquiry();
 		return InquiryList;
+	}
+	
+	public List<InqRepVO> listInqRep() { 
+		List<InqRepVO> InqRepList = CsCenterDAO.selectAllInqRep();
+		return InqRepList;
 	}
 
 	public int delteInquiry(int inqnum, String pw) {
@@ -75,5 +88,22 @@ public class CsCenterService {
 		
 		return check;
 	}
+
+	public int delteReply(int inqnum, String pw) {
+		
+		int check = CsCenterDAO.deleteReply(inqnum, pw);
+		
+		return check;
+	}
+
+	public int modifyReply(InqRepVO inqRepVO) {
+		int check = CsCenterDAO.modifyReply(inqRepVO);
+		
+		return check;
+	}
+
+
+
+
 
 }

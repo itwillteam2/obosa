@@ -19,6 +19,7 @@ public class CsCenterController extends HttpServlet {
 	CsCenterService CsCenterService;
 	NoticeVO NoticeVO;
 	InquiryVO InquiryVO;
+	InqRepVO InqRepVO;
 	
 	//서블릿 초기화시 BoardService객체를 생성합니다.
 	@Override
@@ -26,6 +27,7 @@ public class CsCenterController extends HttpServlet {
 		CsCenterService = new CsCenterService();
 		NoticeVO = new NoticeVO();
 		InquiryVO = new InquiryVO();
+		InqRepVO = new InqRepVO();
 	}
 	
 	@Override
@@ -53,6 +55,7 @@ public class CsCenterController extends HttpServlet {
 
 		List<NoticeVO> NoticeList = null;
 		List<InquiryVO> InquiryList = null;
+		List<InqRepVO> InqRepList = null;
 		
 		if (action.equals("/NoticeWrite.do")) {
 			nextPage = "/Home/CsCenter/NoticeWrite.jsp";
@@ -66,8 +69,9 @@ public class CsCenterController extends HttpServlet {
 		}else if (action.equals("/InquiryList.do")) {
 			
 			InquiryList  = CsCenterService.listInquiry(); 
-			
+			InqRepList = CsCenterService.listInqRep();
 			request.setAttribute("InquiryList", InquiryList);
+			request.setAttribute("InqRepList", InqRepList);
 			System.out.println(InquiryList);
 			nextPage = "/Home/CsCenter/InquiryList.jsp";
 		}  
@@ -239,7 +243,73 @@ public class CsCenterController extends HttpServlet {
 				"</script>");	
 			}
 			
+		}else if (action.equals("/addReply.do")) {		
+				
+				int repnum = 0;
+			
+				int inqnum = Integer.parseInt(request.getParameter("inqnum"));
+				String content = request.getParameter("content");
+				String pw = request.getParameter("pw");
+				
+				InqRepVO.setRepnum(repnum);
+				InqRepVO.setInqnum(inqnum);
+				InqRepVO.setContent(content);
+				InqRepVO.setPw(pw);
+
+
+				repnum = CsCenterService.addInqRep(InqRepVO);
+				
+				PrintWriter pw2 = response.getWriter();
+				pw2.print("<script>" + "  alert('답변을 등록 했습니다.');" + "window.opener.location.reload(); " +
+				"window.close();"+ "</script>");	
+		
+		}else if (action.equals("/DeleteReply.do")) {
+			int check = 0;
+			
+			int inqnum = Integer.parseInt(request.getParameter("inqnum"));
+			String pw = request.getParameter("pw");
+			
+			check = CsCenterService.delteReply(inqnum, pw);
+			
+			PrintWriter pw2 = response.getWriter();
+			
+			if(check == 1){
+					pw2.print("<script> alert('답변이 삭제되었습니다.');" + 
+							" location.href='" + request.getContextPath() + "/CsCenter/InquiryList.do'; " +
+							"</script>");	
+					}else{
+						pw2.print("<script> alert('비밀번호가 틀립니다.');" +
+						"history.back();" + 
+						"</script>");	
+					}
+		
+		}else if (action.equals("/ModifyReply.do")) {
+			
+			int check = 0;
+			
+			int inqnum = Integer.parseInt(request.getParameter("inqnum"));
+			String content = request.getParameter("content");
+			String pw = request.getParameter("pw");
+			
+			InqRepVO.setInqnum(inqnum);
+			InqRepVO.setContent(content);
+			InqRepVO.setPw(pw);
+
+			check = CsCenterService.modifyReply(InqRepVO);
+			
+			PrintWriter pw2 = response.getWriter();
+			
+			if(check == 1){
+				pw2.print("<script>" + "  alert('답변을 수정 했습니다.');" + "window.opener.location.reload(); " +
+						"window.close();"+ "</script>");
+			}else{
+				pw2.print("<script> alert('비밀번호가 틀립니다.');" +
+				"history.back();" + 
+				"</script>");	
+			}
+			
 		}
+		
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 		// 실제 재요청(포워딩)시 request, response전달

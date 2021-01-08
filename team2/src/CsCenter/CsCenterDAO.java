@@ -140,13 +140,6 @@ public class CsCenterDAO {
 			String content = inquiryVO.getContent();
 			String category = inquiryVO.getCategory();
 
-			System.out.println(id);
-			System.out.println(pw);
-			System.out.println(title);
-			System.out.println(email);
-			System.out.println(content);
-			System.out.println(category);
-
 			String query = "INSERT INTO inquiry(inqnum, id, pw, title, email, content, category)"
 					+ "VALUES(?, ?, ?, ?, ?, ?, ?)";
 
@@ -169,7 +162,55 @@ public class CsCenterDAO {
 
 		return inqnum;
 	}
+	
+	public int insertNewInqRep(InqRepVO inqRepVO) {
 
+		int repnum = 0;
+
+		String sql = "";
+
+		try {
+			conn = DBConnection.getConnection();
+			sql = "select max(repnum) from inq_rep";
+
+			pstmt = conn.prepareStatement(sql);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				repnum = rs.getInt(1) + 1;
+			} else {
+				repnum = 1;
+			}
+			
+			int inqnum = inqRepVO.getInqnum();
+			String content = inqRepVO.getContent();
+			String pw = inqRepVO.getPw();
+
+			System.out.println(inqnum);
+			System.out.println(pw);
+			System.out.println(content);
+
+			String query = "INSERT INTO inq_rep(repnum, pw, content, inqnum)"
+					+ "VALUES(?, ?, ?, ?)";
+
+			pstmt = conn.prepareStatement(query);
+
+			pstmt.setInt(1, repnum);
+			pstmt.setString(2, pw);
+			pstmt.setString(3, content);
+			pstmt.setInt(4, inqnum);
+			pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			freeResource();
+		}
+
+		return repnum;
+	}
+	
 	public List selectAllInquiry() {
 
 		List InquiryList = new ArrayList();
@@ -214,6 +255,45 @@ public class CsCenterDAO {
 		}
 
 		return InquiryList;
+
+	}
+	
+	public List selectAllInqRep() {
+
+		List InqRepList = new ArrayList();
+
+		try {
+			conn = DBConnection.getConnection();
+
+			String query = "select * from inq_rep order by repnum desc";
+
+			pstmt = conn.prepareStatement(query);
+
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				int repnum = rs.getInt("repnum");
+				String content = rs.getString("content");
+				String pw = rs.getString("pw");		
+				int inqnum = rs.getInt("inqnum");
+
+				InqRepVO inqrep = new InqRepVO();
+				inqrep.setRepnum(repnum);
+				inqrep.setContent(content);
+				inqrep.setPw(pw);
+				inqrep.setInqnum(inqnum);
+				
+				InqRepList.add(inqrep);
+
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			freeResource();
+		}
+
+		return InqRepList;
 
 	}
 
@@ -430,6 +510,84 @@ public class CsCenterDAO {
 					pstmt.setString(4, inquiryVO.getContent());
 					pstmt.setString(5, inquiryVO.getCategory());
 					pstmt.setInt(6, inquiryVO.getInqnum());
+
+					pstmt.executeUpdate();
+				}else{
+					check = 0;
+				}
+			}			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally{
+			freeResource();
+		}
+		return check;	
+	}
+
+	public int deleteReply(int inqnum, String pw){
+		
+		int check = 0;
+		
+		String sql = "";
+		
+		try {
+			conn = DBConnection.getConnection();
+			
+			sql = "select pw from inq_rep where inqnum = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, inqnum);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				if(pw.equals(rs.getString("pw"))){
+
+					check = 1;
+
+					sql = "delete from inq_rep where inqnum=?";
+					
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setInt(1, inqnum);
+
+					
+					pstmt.executeUpdate();
+				}else{
+					check = 0;
+				}
+			}		
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally{
+			freeResource();
+		}
+		
+		return check;
+	}
+
+	public int modifyReply(InqRepVO inqRepVO){
+		int check = 0;
+		String sql = "";
+		
+		try {
+			conn = DBConnection.getConnection();
+			
+			sql = "select pw from Inq_rep where inqnum = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, inqRepVO.getInqnum());
+
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				if(inqRepVO.getPw().equals(rs.getString("pw"))){
+					check = 1;
+					sql = "update inq_rep set content=? where inqnum=?";
+					pstmt = conn.prepareStatement(sql);
+					
+					pstmt.setString(1, inqRepVO.getContent());
+					pstmt.setInt(2, inqRepVO.getInqnum());
 
 					pstmt.executeUpdate();
 				}else{

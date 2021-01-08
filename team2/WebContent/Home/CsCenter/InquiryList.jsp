@@ -4,14 +4,12 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
-
 <%
 	request.setCharacterEncoding("UTF-8");
 	pageContext.setAttribute("newLineChar", "\n");
 %>
 
 <c:set var="contextPath"  value="${pageContext.request.contextPath}"  />    
-    
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -19,50 +17,18 @@
 <jsp:include page="../inc/head.jsp" />
 
 <script type="text/javascript">
-
-	$(document).ready(function(){
-	
-	
-	});
-	
-	$(document).on("change",".searchType",function(){
-		location.href="/Home/MyPage/MyPageMyQna.asp?searchType=" + $(this).val() + "&CounselType=";
-	});
-	
-	$(document).on("change",".CounselType",function(){
-		location.href="/Home/MyPage/MyPageMyQna.asp?CounselType=" + $(this).val() + "&searchType=";
-	});
-	
-	function fnGoPage (page)
-	{
-		var term = $("[name=Term]").val();
-		var param = "?page=" + page + "&term=" + term;
-		
-		location.href="/Home/MyPage/MyPageMain.asp" + param
-	}
 	
 	$(document).on("click",".list_line",function(event){
 		if ( $(this).next("div").css("display") == "none" )
 		{
 			$(this).next("div").css("display","block");
+			
 		}
 		else
 		{
 			$(this).next("div").css("display","none");
 		}
 	});
-	
-	
-	//삭제
-	function funcDel(Idx)
-	{
-		if (confirm("삭제하시겠습니까?\n\n삭제하면 다시 복구할 수 없습니다.") )
-		{
-			location.href = "MyPageMyQnAItemDelete_P.asp?Idx="+Idx+"";
-	//		thisFrm.submit() ; 
-		}
-	}
-
 </script>
 </head>
 <body>
@@ -102,9 +68,32 @@
 		</div>
 			<div class="list_cont" style="display: none;">
 				<p>${fn:replace(InquiryList.content, newLineChar, "<br/>")}</p>
+				<div class="underbar"></div>
+				
+				<c:forEach var="InqRepList" items="${InqRepList}">
+					<c:if test="${InqRepList.inqnum == InquiryList.inqnum}">
+						<p>질문해주신 내용의 답변입니다.</p>
+						<p>${fn:replace(InqRepList.content, newLineChar, "<br/>")}</p>
+					</c:if>
+				</c:forEach>
+				
+				
 				<c:choose>
 					<c:when test="${sessionScope.id == 'admin'}">
-						<div class="more_info"><span onclick="window.open('${contextPath}/Home/CsCenter/review.jsp?inqnum=${InquiryList.inqnum}', 'Q&A답변등록', 'width=500, height=400, location=no, status=no, scrollbars=no, resizable=no, left=500, top=100' );">Q&A 답변 작성</span></div>	
+						<c:forEach var="InqRepList" items="${InqRepList}">
+								<c:if test="${InqRepList.inqnum == InquiryList.inqnum}">
+									<div class="more_info2">
+										<span onclick="window.open('${contextPath}/Home/CsCenter/ReplyModify.jsp?inqnum=${InquiryList.inqnum}', 
+										'Q&A답변수정', 'width=500, height=400, location=no, status=no, scrollbars=no, resizable=no, left=500, top=100' );">
+										답변 수정</span>
+										<a href="${contextPath}/Home/CsCenter/ReplyDelete.jsp?inqnum=${InqRepList.inqnum}">답변 삭제</a>
+									</div>
+								</c:if>
+						</c:forEach>
+						<div class="more_info">
+						<span onclick="window.open('${contextPath}/Home/CsCenter/Reply.jsp?inqnum=${InquiryList.inqnum}', 
+						'Q&A답변등록', 'width=500, height=400, location=no, status=no, scrollbars=no, resizable=no, left=500, top=100' );">
+						Q&A 답변 작성</span></div>													
 					</c:when>	
 					<c:when test="${sessionScope.id == InquiryList.id }">
 						<div class="more_info">

@@ -6,6 +6,7 @@
 <%
 	request.setCharacterEncoding("utf-8");
 	String inqnum = request.getParameter("inqnum");
+
 %>
    
 <!DOCTYPE html>
@@ -17,9 +18,6 @@
 
 </head>
 <body>	
-	<%
-		String id = (String)session.getAttribute("id");
-	%>
     <section class="container">
         <article class="half">
             <h1 style="margin-top : 10px;">Review</h1>
@@ -28,10 +26,10 @@
             </div>
             <div class="content">
                 <div class="signup-cont cont">
-                    <form action="${contextPath}/living/addReply.do" method="post">
+                    <form action="${contextPath}/CsCenter/addReply.do" method="post">
                     	<input type="hidden" name="inqnum" id="inqnum" class="inpt" value="<%=inqnum%>">
                         
-                        <textarea rows="12" cols="36" class="reviewcontent" id="content"></textarea>
+                        <textarea rows="12" cols="36" class="reviewcontent" id="content" name="content"></textarea>
                         
                         <input type="text" name="pw" id="pw" class="inpt" placeholder="Password" style="margin-top:20px;">
                         <div class="submit-wrap">
