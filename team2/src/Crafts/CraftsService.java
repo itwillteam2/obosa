@@ -33,4 +33,10 @@ public class CraftsService {
 		int num = craftsDAO.insertCraftsNewArticle(craftsVO);
 		return num;
 	}
+	
+	public int updateCrafts(CraftsVO craftsVO) {
+		int num = craftsDAO.updateCraftsArticle(craftsVO);
+		return num;
+		
+	}
 }

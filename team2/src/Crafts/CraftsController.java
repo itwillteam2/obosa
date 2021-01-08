@@ -7,6 +7,7 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.URLEncoder;
 import java.nio.file.Files;
+import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -125,6 +126,39 @@ public class CraftsController extends HttpServlet{
 				out.print("<alert='등록에 실패 했습니다.'>");
 				out.print("</script>");
 			}
+		}else if(action.equals("updateCraftItem.do")) {
+			Map<String, String> craftListMap = upload(request, response);
+			
+			int num = Integer.parseInt(craftListMap.get("num"));
+			String productName = craftListMap.get("productName");
+			String productContent = craftListMap.get("productContent");
+			String sellerName = craftListMap.get("sellerName");
+			int productPrice = Integer.parseInt(craftListMap.get("productPrice"));
+			String productImageName1 = craftListMap.get("productImageName1");
+			String productImageName2 = craftListMap.get("productImageName2");
+			String productImageName3 = craftListMap.get("productImageName3");
+			int productQuantity = Integer.parseInt(craftListMap.get("productQuantity"));
+			int shipping_fee = Integer.parseInt(craftListMap.get("shipping_fee"));
+			int point = Integer.parseInt(craftListMap.get("point"));
+			 
+			
+			craftsVO.setNum(num);
+			craftsVO.setPoint(point);
+			craftsVO.setProductContent(productContent);
+			craftsVO.setProductImageName1(productImageName1);
+			craftsVO.setProductImageName2(productImageName2);
+			craftsVO.setProductImageName3(productImageName3);
+			craftsVO.setProductName(productName);
+			craftsVO.setProductPrice(productPrice);
+			craftsVO.setProductQuantity(productQuantity);
+			craftsVO.setSellerName(sellerName);
+			craftsVO.setShipping_fee(shipping_fee);
+			
+			int result = craftsService.updateCrafts(craftsVO);
+			
+			request.setAttribute("result", result);
+			
+			nextPage=""; //수정되는 넘버와 페이지 주소 적기 
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);

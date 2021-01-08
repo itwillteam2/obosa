@@ -142,5 +142,37 @@ public class CraftsDAO {
 		return num;		
 		
 	}//end of insertCraftsNewArticle
+	
+	public int updateCraftsArticle(CraftsVO craftsVO) {
+		int num = 0;
+		
+		try {
+			conn = DBConnection.getConnection();
+			
+			String query = "UPDATE crafts SET productName = ?, productContent=?,sellerName=?,productPrice=?"
+						+ ",productImageName1=?,productImageName2=?,productImageName3=?,productQuantity=?"
+						+ ",shipping_fee=?,point=?";
+					pstmt = conn.prepareStatement(query);
+					pstmt.setString(1, craftsVO.getProductName());
+					pstmt.setString(2, craftsVO.getProductContent());
+					pstmt.setString(3, craftsVO.getSellerName());
+					pstmt.setInt(4, craftsVO.getProductPrice());
+					pstmt.setString(5, craftsVO.getProductImageName1());
+					pstmt.setString(6, craftsVO.getProductImageName2());
+					pstmt.setString(7, craftsVO.getProductImageName3());
+					pstmt.setInt(8, craftsVO.getProductQuantity());
+					pstmt.setInt(9, craftsVO.getShipping_fee());
+					pstmt.setInt(10, craftsVO.getPoint());
+					
+					pstmt.executeUpdate();
+					
+					return num;
+		} catch (Exception e) {
+			System.out.println("updateCraftsArticle error : " + e.toString());
+		}finally {
+			freeResource();
+		}
+		return num;
+	}//end of updateCrafts
 
 }
