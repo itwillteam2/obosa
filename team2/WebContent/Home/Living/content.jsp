@@ -191,13 +191,13 @@ $(window).load(function(){
 					<div class="swiper-container">
 						<ul class="swiper-wrapper">
 							<li class="swiper-slide">
-								<img src="${contextPath}/download.do?fd=living&num=1&productImageName1=${content.productImageName1}" /><img src="${contextPath}/download.do?productImageName1=${content.productImageName1}" />
+								<img src="${contextPath}/download.do?fd=living&num=${content.num}&productImageName=${content.productImageName1}" />
 							</li>
 							<li class="swiper-slide">
-								<img src="${contextPath}/download.do?productImageName1=${content.productImageName2}" />
+								<img src="${contextPath}/download.do?fd=living&num=${content.num}&productImageName=${content.productImageName2}" />
 							</li>
 							<li class="swiper-slide">
-								<img src="${contextPath}/download.do?productImageName1=${content.productImageName3}" />
+								<img src="${contextPath}/download.do?fd=living&num=${content.num}&productImageName=${content.productImageName3}" />
 							</li>
 						</ul>
 					</div>

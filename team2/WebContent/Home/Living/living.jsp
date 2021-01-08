@@ -3,31 +3,12 @@
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
-<c:set var="livingList" value="${livingList}"/>
-
-
 <!DOCTYPE html>
 <html lang="ko">
 
 <head>
 <jsp:include page="/Home/inc/head.jsp"/>
 <script type="text/javascript">
-	$(document)
-			.on(
-					"change",
-					"[name=ord]",
-					function() {
-
-						GA_event("카테고리", $(".category").text() + "_정렬", $(
-								"select[name=ord] option:selected").text());
-						$("[name=page]").val("1");
-						$("[name=frm]")
-								.attr("action",
-										"https://www.artboxmall.com/home/shop/category.asp")
-								.attr("target", "_self").attr("method", "get")
-								.submit();
-					});
-
 	function fnGoPage(page) {
 		$("[name=page]").val(page);
 		$("[name=frm]").attr("action",
@@ -119,9 +100,7 @@
 </script>
 </head>
 <body>
-
 	<jsp:include page="/Home/inc/hdr_menu.jsp" />
-
 
 	<div class="wrap">
 		<section class="sec_header">
@@ -153,9 +132,9 @@
 							<li>
 								<span class="img"> 
 										<!-- 사진 클릭했을때 그 인덱스값으로 가기 -->
-										<a href="${contextPath}/living/viewContent.do?fd=living&num=${living.num}&productImageName1=${living.productImageName1}">
+										<a href="${contextPath}/living/viewContent.do?fd=living&num=${living.num}&productImageName=${living.productImageName1}">
 											<!-- 이미지 불러오기 -->
-											<img src="${contextPath}/download.do?fd=living&num=${living.num}&productImageName1=${living.productImageName1}">
+											<img src="${contextPath}/download.do?fd=living&num=${living.num}&productImageName=${living.productImageName1}">
 										</a> 
 											<span class="hover">
 												<span class="wish " data-itemidx="2012110629"></span>										
