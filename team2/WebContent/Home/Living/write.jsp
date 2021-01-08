@@ -22,11 +22,15 @@
 
   function change_action(){
 	  var form = $("form");
-      var action = "${contextPath}/"+$("#productCategoryNo option:selected").val()+"/addLivingItem.do";
-      form.attr("action", action);
-	  
+	  var category = $("#productCategoryNo option:selected").val()
+      var action = "${contextPath}/"+category;
+	  if(category=="living"){
+	      form.attr("action", action +"/addLivingItem.do");
+	      alert(category);
+	      }else if(category=="crafts"){
+	      form.attr("action", action +"/addCraftsItem.do");
+	      }
   }
-
 
 	function smcheck(){
 		var category = $("#productCategoryNo option:selected").val();
@@ -131,7 +135,7 @@
 					<select class="form-control" name="productCategoryNo" id="productCategoryNo" required onchange="change_action();">
 						<option value="">선택하세요</option>
 						<option value="living">리빙</option>
-						<option value="Crafts">공예</option>										
+						<option value="crafts">공예</option>										
 					</select>
 				</td>
 			</tr>

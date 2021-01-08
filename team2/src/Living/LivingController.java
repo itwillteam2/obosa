@@ -143,24 +143,18 @@ public class LivingController extends HttpServlet {
 			/* livingVO.setReg_date(reg_date); */
 			livingVO.setShipping_fee(shipping_fee);
 
-			int isRegistSuccess = livingService.insertLiving(livingVO);
-			if (isRegistSuccess > 0) {
+			int num = livingService.insertLiving(livingVO);
+			if (num > 0) {
 
 				if( productImageName1 != null &&  productImageName1.length() != 0 ){
-					
-					//temp폴더에 임시로 업로드된 파일에 접근하기 위해 File객체를 생성합니다
 					File srcFile = new File(ARTICLE_IMAGE_REPO + "\\" + "temp" + "\\" +  productImageName1);
-					
-					// C:\board\article_image 폴더 내부에  글번호 폴더를 생성합니다
-					File destDir = new File(ARTICLE_IMAGE_REPO + "\\living\\" + isRegistSuccess);
+					File destDir = new File(ARTICLE_IMAGE_REPO + "\\living\\" + num);
 					destDir.mkdir();//글번호에 대한 폴더 생성 ~
-					
-					//temp폴더에 업로드된 이미지 파일을  글번호 폴더로 이동
 					FileUtils.moveFileToDirectory(srcFile, destDir, true);
 					
 				}
 				
-				nextPage = "/Home/Living/living.jsp";
+				nextPage = "/Home/Living/livingList.do";
 
 			} else {
 				PrintWriter out = response.getWriter();
