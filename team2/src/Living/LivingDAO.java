@@ -91,6 +91,7 @@ public class LivingDAO {
 				livingVO.setReg_date(rs.getTimestamp("regDate"));
 				livingVO.setSellerName(rs.getString("sellerName"));
 				livingVO.setShipping_fee(rs.getInt("shipping_fee"));
+				livingVO.setCategory(rs.getString("category"));
 			}
 		} catch (Exception e) {
 			System.out.println("getContent error : " + e.toString());
@@ -134,13 +135,9 @@ public class LivingDAO {
 			}else{ num = 1; }
 
 			String query = "INSERT INTO living"
-<<<<<<< Updated upstream
 					+ "(num, productName,productContent,sellerName,productPrice,productImageName1,productImageName2,productImageName3,productQuantity,shipping_fee,point,category) "
 					+ "VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
-=======
-					+ "(num,productName,productContent,sellerName,productPrice,productImageName1,productImageName2,productImageName3,productQuantity,shipping_fee,point) "
-					+ "VALUES(?,?,?,?,?,?,?,?,?,?,?)";
->>>>>>> Stashed changes
+
 			pstmt = conn.prepareStatement(query);
 			
 			pstmt.setInt(1, num);		
@@ -166,70 +163,14 @@ public class LivingDAO {
 		return num;
 	}//end 
 	
-<<<<<<< Updated upstream
-	
-	//insert part for living item list
-//	public int insertLivingNewArticle(LivingVO livingVO) {
-//		int num = getNewLivingArticleNo();
-//		
-//		try {
-//			conn = DBConnection.getConnection();
-//			String query = "INSERT INTO living"
-//					+ "(productName,productContent,sellerName,productPrice,productImageName1,productImageName2,productImageName3,productQuantity,shipping_fee,point,num) "
-//					+ "VALUES(?,?,?,?,?,?,?,?,?,?,5)";
-//			pstmt = conn.prepareStatement(query);
-//			
-//			pstmt.setString(1, livingVO.getProductName());
-//			pstmt.setString(2, livingVO.getProductContent());
-//			pstmt.setString(3, livingVO.getSellerName());
-//			pstmt.setInt(4, livingVO.getProductPrice());
-//			pstmt.setString(5, livingVO.getProductImageName1());
-//			pstmt.setString(6, livingVO.getProductImageName2());
-//			pstmt.setString(7, livingVO.getProductImageName3());
-//			pstmt.setInt(8, livingVO.getProductQuantity());
-//			pstmt.setInt(9, livingVO.getShipping_fee());
-//			pstmt.setInt(10, livingVO.getPoint());		
-//			
-//			pstmt.executeUpdate();
-//					
-//		}catch (Exception e) {
-//			System.out.println("insertNewArticle error : " + e.toString());
-//		}finally {
-//			freeResource();
-//		}		
-//		return num;
-//	}//end of insertNewArticle
-	
-	/*
-	//update method part for living list
-	public void updateLivingArticle(LivingVO livingVO) {
-		try {
-			conn = DBConnection.getConnection();
-			String query = "UPDATE living SET product_name = ?, seller=?,sellingprice=?,order_qty=?,shipping_fee=?,living_content=?";
-						if(livingVO.getPhoto_name() != null && livingVO.getPhoto_name().length() != 0) {
-							query += ",photo_name=?";
-						}
-			query += "WHERE num=?";
-			
-			System.out.println(query);
-			
-			pstmt = conn.prepareStatement(query);
-			pstmt.setString(1, livingVO.getProduct_name());
-			pstmt.setString(2, livingVO.getSeller());
-			pstmt.setInt(3, livingVO.getSellingprice());
-			pstmt.setInt(4, livingVO.getOrder_qty());
-			pstmt.setInt(6, livingVO.getShipping_fee());
-			pstmt.setString(7, livingVO.getLiving_content());
-			pstmt.setString(9, livingVO.getPhoto_name());
-			pstmt.setInt(10, livingVO.getNum());
-=======
+
 //  -------- 상품 수정 ------- //		
 	public void updateContent(LivingVO livingVO) {
 		try {
 			conn = DBConnection.getConnection();
 			String query = "UPDATE living SET productName=?,productContent=?,sellerName=?,productPrice=?,"
 					+"productImageName1=?,productImageName2=?,productImageName3=?,"
-					+"productQuantity=?,shipping_fee,point=?"
+					+"productQuantity=?,shipping_fee,point=?,category=?"
 			        +" WHERE num=?";
 				
 			pstmt = conn.prepareStatement(query);
@@ -244,8 +185,8 @@ public class LivingDAO {
 			pstmt.setInt(8, livingVO.getProductQuantity());
 			pstmt.setInt(9, livingVO.getShipping_fee());
 			pstmt.setInt(10, livingVO.getPoint());	
-			pstmt.setInt(10, livingVO.getNum());	
->>>>>>> Stashed changes
+			pstmt.setString(11, livingVO.getCategory());
+			pstmt.setInt(12, livingVO.getNum());
 			
 			pstmt.executeUpdate();
 			

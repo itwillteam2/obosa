@@ -68,10 +68,10 @@ public class LivingController extends HttpServlet {
 		System.out.println("action :" + action);
 
 		if (action == null || action.equals("/listLiving.do")) {
-			List <LivingVO> livingList = livingService.livingList();
+			List <LivingVO> livingList = livingService.ContentList();
 			request.setAttribute("livingList", livingList);	
 			
-			int totalCount = livingService.totalCountList();
+			int totalCount = livingService.totalCount();
 			int page = (request.getParameter("page") == null) ? 1 : Integer.parseInt(request.getParameter("page"));
 			
 			Paging paging = new Paging();
@@ -97,7 +97,7 @@ public class LivingController extends HttpServlet {
 			int productQuantity = Integer.parseInt(addItemMap.get("productQuantity"));
 			int shipping_fee = Integer.parseInt(addItemMap.get("shipping_fee"));
 			int point = Integer.parseInt(addItemMap.get("point"));
-			/* String reg_date = addItemMap.get("reg_date"); */
+		 // String reg_date = addItemMap.get("reg_date"); 
 
 			livingVO.setProductName(productName);
 			livingVO.setProductContent(productContent);
@@ -110,29 +110,25 @@ public class LivingController extends HttpServlet {
 			livingVO.setShipping_fee(shipping_fee);
 			livingVO.setPoint(point);
 
-			int num = livingService.insertLiving(livingVO);
+			int num = livingService.insertContent(livingVO);
 			if (num > 0) {
 				File destDir = new File(ARTICLE_IMAGE_REPO + "\\living\\" + num);
 				destDir.mkdir();
-				if( productImageName1 != null &&  productImageName1.length() != 0 ){
+			
+				
+				if( productImageName1 != null &&  !productImageName1.equals(productImageName3) ){
 					File srcFile = new File(ARTICLE_IMAGE_REPO + "\\" + "temp" + "\\" +  productImageName1);
 					FileUtils.moveFileToDirectory(srcFile, destDir, true);
 				}
-<<<<<<< Updated upstream
-				
-				nextPage = "/living/listLiving.do";
-=======
-				if( productImageName2 != null &&  productImageName2.length() != 0 ){
+				if( productImageName2 != null &&  !productImageName1.equals(productImageName2)){
 					File srcFile = new File(ARTICLE_IMAGE_REPO + "\\" + "temp" + "\\" +  productImageName2);
 					FileUtils.moveFileToDirectory(srcFile, destDir, true);
 				}
-				if( productImageName3 != null &&  productImageName3.length() != 0 ){
+				if( productImageName3 != null &&  !productImageName3.equals(productImageName2)){
 					File srcFile = new File(ARTICLE_IMAGE_REPO + "\\" + "temp" + "\\" +  productImageName3);
 					FileUtils.moveFileToDirectory(srcFile, destDir, true);
 				}
-				nextPage = "/Home/Living/livingList.do";
->>>>>>> Stashed changes
-
+				nextPage = "/living/listLiving.do";
 			} else {
 				PrintWriter out = response.getWriter();
 				out.print("<script>");
@@ -167,7 +163,7 @@ public class LivingController extends HttpServlet {
 
 		} else if (action.equals("/viewContent.do")) {
 			String num = request.getParameter("num");
-			LivingVO content = livingService.viewContent(Integer.parseInt(num));
+			LivingVO content = (LivingVO) livingService.ContentDetail(Integer.parseInt(num));
 			request.setAttribute("content", content);
 			
 			nextPage = "/Home/Living/content.jsp";
@@ -222,7 +218,7 @@ public class LivingController extends HttpServlet {
 
 						String fileName = fileItem.getName().substring(idx + 1);
 						articleMap.put(fileItem.getFieldName(), fileName);
-						File uploadFile = new File(currentDirPath + "\\temp\\" + fileName+i);
+						File uploadFile = new File(currentDirPath + "\\temp\\" + fileName);
 						fileItem.write(uploadFile);
 					}
 				}

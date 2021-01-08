@@ -26,7 +26,6 @@
       var action = "${contextPath}/"+category;
 	  if(category=="living"){
 	      form.attr("action", action +"/addLivingItem.do");
-	      alert(category);
 	      }else if(category=="crafts"){
 	      form.attr("action", action +"/addCraftsItem.do");
 	      }
