@@ -49,25 +49,33 @@ public class SearchDAO {
 		try {
 			
 			con = getConnection();
-			String order = "";
 			
 			if(ord.equals("신상품순") || ord.equals("") || ord == null){
-				order = "regdate desc";
+				String query = "select * from (select * from living where productname like ? "
+						+ "union select * from fancy where productname like ? "
+						+ "union select * from crafts where productname like ?) a "
+						+ "order by regdate desc";
+				
+				pstmt = con.prepareStatement(query);
 			}else if(ord.equals("낮은가격순")){
-				order = "price desc";
+				String query = "select * from (select * from living where productname like ? "
+						+ "union select * from fancy where productname like ? "
+						+ "union select * from crafts where productname like ?) a "
+						+ "order by productprice";
+				
+				pstmt = con.prepareStatement(query);
 			}else if(ord.equals("높은가격순")){
-				order = "price";
+				String query = "select * from (select * from living where productname like ? "
+						+ "union select * from fancy where productname like ? "
+						+ "union select * from crafts where productname like ?) a "
+						+ "order by productprice desc";
+				
+				pstmt = con.prepareStatement(query);
 			}
 			
-			String query = "select * from (select * from living where productname like ? "
-					+ "union select * from fancy where productname like ? "
-					+ "union select * from crafts where productname like ?) a "
-					+ "order by ?";
-			pstmt = con.prepareStatement(query);
 			pstmt.setString(1,"%"+search+"%");
 			pstmt.setString(2,"%"+search+"%");
 			pstmt.setString(3,"%"+search+"%");
-			pstmt.setString(4, order);
 			
 			rs = pstmt.executeQuery();
 			
@@ -188,20 +196,18 @@ public class SearchDAO {
 			
 			con = getConnection();
 			
-			String order = "";
-			
 			if(ord.equals("신상품순") || ord.equals("") || ord == null){
-				order = "regdate desc";
+				String query = "SELECT * FROM living where productname like ? order by regdate desc";
+				pstmt = con.prepareStatement(query);
 			}else if(ord.equals("낮은가격순")){
-				order = "price desc";
+				String query = "SELECT * FROM living where productname like ? order by productprice";
+				pstmt = con.prepareStatement(query);
 			}else if(ord.equals("높은가격순")){
-				order = "price";
+				String query = "SELECT * FROM living where productname like ? order by productprice desc";
+				pstmt = con.prepareStatement(query);
 			}
 			
-			String query = "SELECT * FROM living where productname like ? order by ?";
-			pstmt = con.prepareStatement(query);
 			pstmt.setString(1,"%"+search+"%");
-			pstmt.setString(2, order);
 			
 			rs = pstmt.executeQuery();
 			while(rs.next()){
@@ -250,20 +256,19 @@ public class SearchDAO {
 			
 			con = getConnection();
 			
-			String order = "";
-			
 			if(ord.equals("신상품순") || ord.equals("") || ord == null){
-				order = "regdate desc";
+				String query = "SELECT * FROM crafts where productname like ? order by regdate desc";
+				pstmt = con.prepareStatement(query);
 			}else if(ord.equals("낮은가격순")){
-				order = "price desc";
+				String query = "SELECT * FROM crafts where productname like ? order by productprice";
+				pstmt = con.prepareStatement(query);
 			}else if(ord.equals("높은가격순")){
-				order = "price";
+				String query = "SELECT * FROM crafts where productname like ? order by productprice desc";
+				pstmt = con.prepareStatement(query);
 			}
 			
-			String query = "SELECT * FROM crafts where productname like ? order by ?";
-			pstmt = con.prepareStatement(query);
+			
 			pstmt.setString(1,"%"+search+"%");
-			pstmt.setString(2, order);
 			
 			rs = pstmt.executeQuery();
 			while(rs.next()){
@@ -311,20 +316,18 @@ public class SearchDAO {
 			
 			con = getConnection();
 			
-			String order = "";
-			
 			if(ord.equals("신상품순") || ord.equals("") || ord == null){
-				order = "regdate desc";
+				String query = "SELECT * FROM fancy where productname like ? order by regdate desc";
+				pstmt = con.prepareStatement(query);
 			}else if(ord.equals("낮은가격순")){
-				order = "price desc";
+				String query = "SELECT * FROM fancy where productname like ? order by productprice";
+				pstmt = con.prepareStatement(query);
 			}else if(ord.equals("높은가격순")){
-				order = "price";
+				String query = "SELECT * FROM fancy where productname like ? order by productprice desc";
+				pstmt = con.prepareStatement(query);
 			}
 			
-			String query = "SELECT * FROM fancy where productname like ? order by ?";
-			pstmt = con.prepareStatement(query);
 			pstmt.setString(1,"%"+search+"%");
-			pstmt.setString(2, order);
 			
 			rs = pstmt.executeQuery();
 			while(rs.next()){

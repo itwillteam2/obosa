@@ -319,7 +319,7 @@
 							<div class="clear"></div>
 							<c:choose>
 								<c:when test="${searchCount>0}">
-									<div class="showAll"><a href="${contextPath}/common/viewSearchItems.do?kwd=${kwd}&type=all">결과 전체 보기</a></div>
+									<div class="showAll"><a href="${contextPath}/common/viewSearchItems.do?kwd=${kwd}&type=all&category=all&ord=${ord}">결과 전체 보기</a></div>
 								</c:when>
 							</c:choose>
 						</div>
@@ -384,7 +384,7 @@
 								<div class="clear"></div>
 								<c:choose>
 									<c:when test="${livingCount>0}">
-										<div class="showAll"><a href="${contextPath}/common/viewSearchItems.do?kwd=${kwd}&type=living">결과 전체 보기</a></div>
+										<div class="showAll"><a href="${contextPath}/common/viewSearchItems.do?kwd=${kwd}&type=living&category=living&ord=${ord}">결과 전체 보기</a></div>
 									</c:when>
 								</c:choose>
 							</div>
@@ -449,7 +449,7 @@
 								<div class="clear"></div>
 								<c:choose>
 									<c:when test="${craftsCount>0}">
-										<div class="showAll"><a href="${contextPath}/common/viewSearchItems.do?kwd=${kwd}&type=crafts">결과 전체 보기</a></div>
+										<div class="showAll"><a href="${contextPath}/common/viewSearchItems.do?kwd=${kwd}&type=crafts&category=crafts&ord=${ord}">결과 전체 보기</a></div>
 									</c:when>
 								</c:choose>
 							</div>
@@ -514,7 +514,7 @@
 								<div class="clear"></div>
 								<c:choose>
 									<c:when test="${fancyCount>0}">
-										<div class="showAll"><a href="${contextPath}/common/viewSearchItems.do?kwd=${kwd}&type=fancy">결과 전체 보기</a></div>
+										<div class="showAll"><a href="${contextPath}/common/viewSearchItems.do?kwd=${kwd}&type=fancy&category=fancy&ord=${ord}">결과 전체 보기</a></div>
 									</c:when>
 								</c:choose>
 							</div>

@@ -169,6 +169,15 @@ public class CommonController extends HttpServlet{
 			String name = request.getParameter("shopName");
 			request.setAttribute("shopName", name);
 			
+			String ord = request.getParameter("ord");
+			if(ord == null || ord ==""){
+				ord = "신상품순";
+			}
+			request.setAttribute("ord", ord);
+			
+			String category = request.getParameter("category");
+			request.setAttribute("category", category);
+			
 			int searchCount = searchService.shopCount(name);
 			request.setAttribute("searchCount", searchCount);
 			

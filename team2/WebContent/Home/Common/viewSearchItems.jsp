@@ -175,12 +175,6 @@
 			$("#fancya").css("color", "red");
 		}
 		
-		$("#alla").css("color", "red");
-		
-		$("#living").css("display", "none");
-		$("#crafts").css("display", "none");
-		$("#fancy").css("display", "none");
-		
 		$("#kwd").val("${kwd}");
 		
 		var type='${type}';

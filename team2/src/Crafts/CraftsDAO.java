@@ -109,9 +109,6 @@ public class CraftsDAO {
 		
 		 int craftsNum = autoNum();
 		 System.out.println("craftsNum : " + craftsNum);
-		 
-		
-		int num = 1;
 		
 		try {
 			conn = DBConnection.getConnection();
@@ -140,7 +137,7 @@ public class CraftsDAO {
 		}finally {
 			freeResource();
 		}
-		return num;		
+		return craftsNum;		
 		
 	}//end of insertCraftsNewArticle
 	
