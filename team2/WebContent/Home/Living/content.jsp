@@ -29,7 +29,7 @@ $(window).load(function(){
 					$(this).find("iframe").css("maxWidth", "100%");
 					$(this).find("iframe").css("width", "100%");
 				});
-
+								
 			});
 	
 	$(document).on("click",".tabBar>span", function(){
@@ -235,7 +235,7 @@ $(window).load(function(){
 							<span class="deliverytext">${content.shipping_fee} </span>
 						</span> 
 						<span class="pdtRight pdtpt"> 
-							<span>${content.point}점</span>
+							<span>${content.point}=${sessionScope.memtype}점</span>
 						</span> 
 						<div class="pdtOrderLayer">
 							<span class="btnOrderList"></span> 
@@ -249,14 +249,28 @@ $(window).load(function(){
 							<span class="pdtRight pdtTotalPrice"> 
 								<span class="totalprice"> ${content.productPrice}원 </span>
 							</span> 
+						<c:choose>
+			 				<c:when test="${sessionScope.memtype != 'seller'}">
 							<span class="pdtRight pdtBtnList"> 
-								<span class="btnCart">
-								<input type="button" value="장바구니 담기" />
+							    <span class="btnCart">
+								   <input type="button" value="장바구니 담기" />
 								</span> 
 								<span class="btnOrder">
 									<input type="button" value="바로 구매하기" />
 								</span> 
 							</span>
+						   </c:when>
+						<c:otherwise>	
+								<span class="pdtRight pdtBtnList" > 
+								<span class="btnCart">
+								<input type="button" value="상품 수정" />
+								</span> 
+								<span class="btnOrder">
+									<input type="button" value="상품 삭제" />
+								</span> 
+								</span>
+						</c:otherwise>
+							</c:choose>
 						</div>
 					</div>
 				</div>
