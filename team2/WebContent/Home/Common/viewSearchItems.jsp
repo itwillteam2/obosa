@@ -10,6 +10,25 @@
 <head>
 <jsp:include page="/Home/inc/head.jsp" />
 <script type="text/javascript">
+	for(var i=1; i<5; i++){
+		$(document).on("change", "[name=ord"+i+"]",function() {
+			var ord = $(this).val();
+			var category = "all";
+			
+			if($("#all").css("display") != "none"){
+				category = "all";
+			}else if($("#living").css("display") != "none"){
+				category = "living";
+			}else if($("#crafts").css("display") != "none"){
+				category = "crafts";
+			}else if($("#fancy").css("display") != "none"){
+				category = "fancy";
+			}
+			
+			location.href="${contextPath}/common/viewSearchItems.do?kwd=${kwd}&ord="+ord+"&category="+category+"&type="+category+"&kwd="+${kwd};
+		});
+	}
+
 	$(document)
 			.on(
 					"change",
@@ -118,6 +137,44 @@
 	
 	
 	$(document).ready(function(){
+		if("${category}"=="" || "${category}" == null || "${category}" =="all"){
+			$("#alla").css("color", "red");
+			
+			$("#living").css("display", "none");
+			$("#crafts").css("display", "none");
+			$("#fancy").css("display", "none");
+		}else if("${category}" == "living"){
+			$("#all").css("display", "none");
+			$("#living").css("display", "");
+			$("#crafts").css("display", "none");
+			$("#fancy").css("display", "none");
+			
+			$("#alla").css("color", "");
+			$("#livinga").css("color", "red");
+			$("#craftsa").css("color", "");
+			$("#fancya").css("color", "");
+		}else if("${category}" == "crafts"){
+			$("#all").css("display", "none");
+			$("#living").css("display", "none");
+			$("#crafts").css("display", "");
+			$("#fancy").css("display", "none");
+			
+			$("#alla").css("color", "");
+			$("#livinga").css("color", "");
+			$("#craftsa").css("color", "red");
+			$("#fancya").css("color", "");
+		}else if("${category}" == "fancy"){
+			$("#all").css("display", "none");
+			$("#living").css("display", "none");
+			$("#crafts").css("display", "none");
+			$("#fancy").css("display", "");
+			
+			$("#alla").css("color", "");
+			$("#livinga").css("color", "");
+			$("#craftsa").css("color", "");
+			$("#fancya").css("color", "red");
+		}
+		
 		$("#alla").css("color", "red");
 		
 		$("#living").css("display", "none");
@@ -236,14 +293,22 @@
 									<c:when test="${searchCount>0}">
 										<span class="count">총 <strong>${searchCount}</strong>개의 상품이 조회되었습니다.</span>
 										<span class="selectbox"> 
-											<select name="ord">
-												<option value="o1" selected="selected">신상품순</option>
-												<option value="o5">인기상품순</option>
-												<option value="o2">낮은가격순</option>
-												<option value="o3">높은가격순</option>
-												<option value="o4">높은할인율순</option>
-												<option value="o6">상품평순</option>
-											</select>
+											<c:choose>
+												<c:when test="${category == 'all'}">
+													<select name="ord1" id="ord1">
+														<option value="신상품순" <c:if test="${ord=='신상품순'}">selected=selected</c:if>>신상품순</option>
+														<option value="낮은가격순" <c:if test="${ord=='낮은가격순'}">selected=selected</c:if>>낮은가격순</option>
+														<option value="높은가격순" <c:if test="${ord=='높은가격순'}">selected=selected</c:if>>높은가격순</option>
+													</select>
+												</c:when>
+												<c:otherwise>
+													<select name="ord1" id="ord1">
+														<option value="신상품순" selected="selected">신상품순</option>
+														<option value="낮은가격순">낮은가격순</option>
+														<option value="높은가격순">높은가격순</option>
+													</select>
+												</c:otherwise>
+											</c:choose>
 										</span>
 									</c:when>
 									<c:otherwise>
@@ -288,14 +353,22 @@
 									<c:when test="${livingCount>0}">
 										<span class="count">총 <strong>${livingCount}</strong>개의 상품이 조회되었습니다.</span>
 										<span class="selectbox"> 
-											<select name="ord">
-												<option value="o1" selected="selected">신상품순</option>
-												<option value="o5">인기상품순</option>
-												<option value="o2">낮은가격순</option>
-												<option value="o3">높은가격순</option>
-												<option value="o4">높은할인율순</option>
-												<option value="o6">상품평순</option>
-											</select>
+											<c:choose>
+												<c:when test="${category == 'living'}">
+													<select name="ord2" id="ord2">
+														<option value="신상품순" <c:if test="${ord=='신상품순'}">selected=selected</c:if>>신상품순</option>
+														<option value="낮은가격순" <c:if test="${ord=='낮은가격순'}">selected=selected</c:if>>낮은가격순</option>
+														<option value="높은가격순" <c:if test="${ord=='높은가격순'}">selected=selected</c:if>>높은가격순</option>
+													</select>
+												</c:when>
+												<c:otherwise>
+													<select name="ord2" id="ord2">
+														<option value="신상품순" selected="selected">신상품순</option>
+														<option value="낮은가격순">낮은가격순</option>
+														<option value="높은가격순">높은가격순</option>
+													</select>
+												</c:otherwise>
+											</c:choose>
 										</span>
 									</c:when>
 									<c:otherwise>
@@ -340,14 +413,22 @@
 									<c:when test="${craftsCount>0}">
 										<span class="count">총 <strong>${craftsCount}</strong>개의 상품이 조회되었습니다.</span>
 										<span class="selectbox"> 
-										<select name="ord">
-											<option value="o1" selected="selected">신상품순</option>
-											<option value="o5">인기상품순</option>
-											<option value="o2">낮은가격순</option>
-											<option value="o3">높은가격순</option>
-											<option value="o4">높은할인율순</option>
-											<option value="o6">상품평순</option>
-										</select>
+										<c:choose>
+												<c:when test="${category == 'crafts'}">
+													<select name="ord3" id="ord3">
+														<option value="신상품순" <c:if test="${ord=='신상품순'}">selected=selected</c:if>>신상품순</option>
+														<option value="낮은가격순" <c:if test="${ord=='낮은가격순'}">selected=selected</c:if>>낮은가격순</option>
+														<option value="높은가격순" <c:if test="${ord=='높은가격순'}">selected=selected</c:if>>높은가격순</option>
+													</select>
+												</c:when>
+												<c:otherwise>
+													<select name="ord3" id="ord3">
+														<option value="신상품순" selected="selected">신상품순</option>
+														<option value="낮은가격순">낮은가격순</option>
+														<option value="높은가격순">높은가격순</option>
+													</select>
+												</c:otherwise>
+											</c:choose>
 									</span>
 									</c:when>
 									<c:otherwise>
@@ -392,14 +473,22 @@
 									<c:when test="${fancyCount>0}">
 										<span class="count">총 <strong>${fancyCount}</strong>개의 상품이 조회되었습니다.</span>
 										<span class="selectbox"> 
-											<select name="ord">
-												<option value="o1" selected="selected">신상품순</option>
-												<option value="o5">인기상품순</option>
-												<option value="o2">낮은가격순</option>
-												<option value="o3">높은가격순</option>
-												<option value="o4">높은할인율순</option>
-												<option value="o6">상품평순</option>
-											</select>
+											<c:choose>
+												<c:when test="${category == 'fancy'}">
+													<select name="ord4" id="ord4">
+														<option value="신상품순" <c:if test="${ord=='신상품순'}">selected=selected</c:if>>신상품순</option>
+														<option value="낮은가격순" <c:if test="${ord=='낮은가격순'}">selected=selected</c:if>>낮은가격순</option>
+														<option value="높은가격순" <c:if test="${ord=='높은가격순'}">selected=selected</c:if>>높은가격순</option>
+													</select>
+												</c:when>
+												<c:otherwise>
+													<select name="ord4" id="ord4">
+														<option value="신상품순" selected="selected">신상품순</option>
+														<option value="낮은가격순">낮은가격순</option>
+														<option value="높은가격순">높은가격순</option>
+													</select>
+												</c:otherwise>
+											</c:choose>
 										</span>
 									</c:when>
 									<c:otherwise>

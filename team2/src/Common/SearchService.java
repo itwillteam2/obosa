@@ -6,9 +6,9 @@ import java.util.List;
 public class SearchService {
 	SearchDAO searchDAO = new SearchDAO();
 	
-	public List<SearchVO> searchList(String search) {
+	public List<SearchVO> searchList(String search, String ord) {
 		  List<SearchVO> searchList = new ArrayList<SearchVO>();
-		  searchList = searchDAO.searchArticles(search);
+		  searchList = searchDAO.searchArticles(search, ord);
 		  return searchList;
 	  }
 
@@ -33,9 +33,9 @@ public class SearchService {
 		return livingCount;
 	}
 
-	public List<SearchVO> searchLiving(String search) {
+	public List<SearchVO> searchLiving(String search, String ord) {
 		List<SearchVO> searchLiving = new ArrayList<SearchVO>();
-		searchLiving = searchDAO.searchLiving(search);
+		searchLiving = searchDAO.searchLiving(search, ord);
 		return searchLiving;
 	}
 
@@ -44,9 +44,9 @@ public class SearchService {
 		return craftsCount;
 	}
 
-	public List<SearchVO> searchCrafts(String search) {
+	public List<SearchVO> searchCrafts(String search, String ord) {
 		List<SearchVO> searchCrafts = new ArrayList<SearchVO>();
-		searchCrafts = searchDAO.searchCrafts(search);
+		searchCrafts = searchDAO.searchCrafts(search, ord);
 		return searchCrafts;
 	}
 
@@ -55,9 +55,9 @@ public class SearchService {
 		return fancyCount;
 	}
 
-	public List<SearchVO> searchFancy(String search) {
+	public List<SearchVO> searchFancy(String search, String ord) {
 		List<SearchVO> searchFancy = new ArrayList<SearchVO>();
-		searchFancy = searchDAO.searchFancy(search);
+		searchFancy = searchDAO.searchFancy(search, ord);
 		return searchFancy;
 	}
 

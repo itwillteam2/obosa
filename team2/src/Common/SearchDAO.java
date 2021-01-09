@@ -44,21 +44,33 @@ public class SearchDAO {
 		}
 	}//release메소드 끝
 
-	public List<SearchVO> searchArticles(String search) {
+	public List<SearchVO> searchArticles(String search, String ord) {
 		List<SearchVO> searchList = new ArrayList<SearchVO>();
 		try {
 			
 			con = getConnection();
+			String order = "";
+			
+			if(ord.equals("신상품순") || ord.equals("") || ord == null){
+				order = "regdate desc";
+			}else if(ord.equals("낮은가격순")){
+				order = "price desc";
+			}else if(ord.equals("높은가격순")){
+				order = "price";
+			}
+			
 			String query = "select * from (select * from living where productname like ? "
 					+ "union select * from fancy where productname like ? "
 					+ "union select * from crafts where productname like ?) a "
-					+ "order by regdate desc";
+					+ "order by ?";
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1,"%"+search+"%");
 			pstmt.setString(2,"%"+search+"%");
 			pstmt.setString(3,"%"+search+"%");
+			pstmt.setString(4, order);
 			
 			rs = pstmt.executeQuery();
+			
 			while(rs.next()){
 				SearchVO vo = new SearchVO();
 				vo.setProductImageName1(rs.getString("productImageName1"));
@@ -170,14 +182,26 @@ public class SearchDAO {
 		return livingCount;
 	}//livingCount메소드 끝
 	
-	public List<SearchVO> searchLiving(String search) {
+	public List<SearchVO> searchLiving(String search, String ord) {
 		List<SearchVO> searchList = new ArrayList<SearchVO>();
 		try {
 			
 			con = getConnection();
-			String query = "SELECT * FROM living where productname like ? order by regdate desc";
+			
+			String order = "";
+			
+			if(ord.equals("신상품순") || ord.equals("") || ord == null){
+				order = "regdate desc";
+			}else if(ord.equals("낮은가격순")){
+				order = "price desc";
+			}else if(ord.equals("높은가격순")){
+				order = "price";
+			}
+			
+			String query = "SELECT * FROM living where productname like ? order by ?";
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1,"%"+search+"%");
+			pstmt.setString(2, order);
 			
 			rs = pstmt.executeQuery();
 			while(rs.next()){
@@ -220,14 +244,26 @@ public class SearchDAO {
 		return craftsCount;
 	}//craftsCount메소드 끝
 
-	public List<SearchVO> searchCrafts(String search) {
+	public List<SearchVO> searchCrafts(String search, String ord) {
 		List<SearchVO> searchCrafts = new ArrayList<SearchVO>();
 		try {
 			
 			con = getConnection();
-			String query = "SELECT * FROM crafts where productname like ? order by regdate desc";
+			
+			String order = "";
+			
+			if(ord.equals("신상품순") || ord.equals("") || ord == null){
+				order = "regdate desc";
+			}else if(ord.equals("낮은가격순")){
+				order = "price desc";
+			}else if(ord.equals("높은가격순")){
+				order = "price";
+			}
+			
+			String query = "SELECT * FROM crafts where productname like ? order by ?";
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1,"%"+search+"%");
+			pstmt.setString(2, order);
 			
 			rs = pstmt.executeQuery();
 			while(rs.next()){
@@ -269,14 +305,26 @@ public class SearchDAO {
 		return fancyCount;
 	}//fancyCount메소드 끝
 
-	public List<SearchVO> searchFancy(String search) {
+	public List<SearchVO> searchFancy(String search, String ord) {
 		List<SearchVO> searchFancy = new ArrayList<SearchVO>();
 		try {
 			
 			con = getConnection();
-			String query = "SELECT * FROM fancy where productname like ? order by regdate desc";
+			
+			String order = "";
+			
+			if(ord.equals("신상품순") || ord.equals("") || ord == null){
+				order = "regdate desc";
+			}else if(ord.equals("낮은가격순")){
+				order = "price desc";
+			}else if(ord.equals("높은가격순")){
+				order = "price";
+			}
+			
+			String query = "SELECT * FROM fancy where productname like ? order by ?";
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1,"%"+search+"%");
+			pstmt.setString(2, order);
 			
 			rs = pstmt.executeQuery();
 			while(rs.next()){
@@ -503,5 +551,5 @@ public class SearchDAO {
 	
 		return searchFancy;
 	}//shopFancy메소드 끝
-	
+
 }

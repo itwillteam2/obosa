@@ -51,7 +51,16 @@ public class CommonController extends HttpServlet{
 		}else if(action.equals("/search.do")){
 			String search = request.getParameter("kwd");
 			request.setAttribute("kwd", search);
-
+			
+			String ord = request.getParameter("ord");
+			if(ord == null || ord ==""){
+				ord = "신상품순";
+			}
+			request.setAttribute("ord", ord);
+			
+			String category = request.getParameter("category");
+			request.setAttribute("category", category);
+			
 			int shopSearchCount = searchService.shopSearchCount(search);
 			request.setAttribute("shopSearchCount", shopSearchCount);
 			
@@ -61,25 +70,25 @@ public class CommonController extends HttpServlet{
 			int searchCount = searchService.searchCount(search);
 			request.setAttribute("searchCount", searchCount);
 			
-			List<SearchVO> searchList = searchService.searchList(search);
+			List<SearchVO> searchList = searchService.searchList(search, ord);
 			request.setAttribute("searchList", searchList);
 
 			int livingCount = searchService.livingCount(search);
 			request.setAttribute("livingCount", livingCount);
 			
-			List<SearchVO> searchLiving = searchService.searchLiving(search);
+			List<SearchVO> searchLiving = searchService.searchLiving(search, ord);
 			request.setAttribute("searchLiving", searchLiving);
 			
 			int craftsCount = searchService.craftsCount(search);
 			request.setAttribute("craftsCount", craftsCount);
 			
-			List<SearchVO> searchCrafts = searchService.searchCrafts(search);
+			List<SearchVO> searchCrafts = searchService.searchCrafts(search, ord);
 			request.setAttribute("searchCrafts", searchCrafts);
 			
 			int fancyCount = searchService.fancyCount(search);
 			request.setAttribute("fancyCount", fancyCount);
 			
-			List<SearchVO> searchFancy = searchService.searchFancy(search);
+			List<SearchVO> searchFancy = searchService.searchFancy(search, ord);
 			request.setAttribute("searchFancy", searchFancy);
 			
 			nextPage = "/Home/Common/search.jsp";
@@ -87,31 +96,40 @@ public class CommonController extends HttpServlet{
 			String kwd = request.getParameter("kwd");
 			request.setAttribute("kwd", kwd);
 			
+			String ord = request.getParameter("ord");
+			if(ord == null || ord ==""){
+				ord = "신상품순";
+			}
+			request.setAttribute("ord", ord);
+			
+			String category = request.getParameter("category");
+			request.setAttribute("category", category);
+			
 			String type = request.getParameter("type");
 			request.setAttribute("type", type);
 			
 			int searchCount = searchService.searchCount(kwd);
 			request.setAttribute("searchCount", searchCount);
 			
-			List<SearchVO> searchList = searchService.searchList(kwd);
+			List<SearchVO> searchList = searchService.searchList(kwd, ord);
 			request.setAttribute("searchList", searchList);
 
 			int livingCount = searchService.livingCount(kwd);
 			request.setAttribute("livingCount", livingCount);
 			
-			List<SearchVO> searchLiving = searchService.searchLiving(kwd);
+			List<SearchVO> searchLiving = searchService.searchLiving(kwd, ord);
 			request.setAttribute("searchLiving", searchLiving);
 			
 			int craftsCount = searchService.craftsCount(kwd);
 			request.setAttribute("craftsCount", craftsCount);
 			
-			List<SearchVO> searchCrafts = searchService.searchCrafts(kwd);
+			List<SearchVO> searchCrafts = searchService.searchCrafts(kwd, ord);
 			request.setAttribute("searchCrafts", searchCrafts);
 			
 			int fancyCount = searchService.fancyCount(kwd);
 			request.setAttribute("fancyCount", fancyCount);
 			
-			List<SearchVO> searchFancy = searchService.searchFancy(kwd);
+			List<SearchVO> searchFancy = searchService.searchFancy(kwd, ord);
 			request.setAttribute("searchFancy", searchFancy);
 			
 			nextPage="/Home/Common/viewSearchItems.jsp";
