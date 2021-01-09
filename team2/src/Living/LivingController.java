@@ -22,6 +22,7 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.FileUtils;
+import org.apache.commons.io.filefilter.TrueFileFilter;
 
 import Page.Paging;
 
@@ -112,22 +113,14 @@ public class LivingController extends HttpServlet {
 
 			int num = livingService.insertContent(livingVO);
 			if (num > 0) {
+				File srcDir = new File(ARTICLE_IMAGE_REPO+"\\temp");
 				File destDir = new File(ARTICLE_IMAGE_REPO + "\\living\\" + num);
 				destDir.mkdir();
-			
-				
-				if( productImageName1 != null &&  !productImageName1.equals(productImageName3) ){
-					File srcFile = new File(ARTICLE_IMAGE_REPO + "\\" + "temp" + "\\" +  productImageName1);
+				File files[] = srcDir.listFiles();
+				for (int i = 0; i < files.length; i++) {
+					File srcFile = files[i];
 					FileUtils.moveFileToDirectory(srcFile, destDir, true);
-				}
-				if( productImageName2 != null &&  !productImageName1.equals(productImageName2)){
-					File srcFile = new File(ARTICLE_IMAGE_REPO + "\\" + "temp" + "\\" +  productImageName2);
-					FileUtils.moveFileToDirectory(srcFile, destDir, true);
-				}
-				if( productImageName3 != null &&  !productImageName3.equals(productImageName2)){
-					File srcFile = new File(ARTICLE_IMAGE_REPO + "\\" + "temp" + "\\" +  productImageName3);
-					FileUtils.moveFileToDirectory(srcFile, destDir, true);
-				}
+				}	
 				nextPage = "/living/listLiving.do";
 			} else {
 				PrintWriter out = response.getWriter();
@@ -135,10 +128,10 @@ public class LivingController extends HttpServlet {
 				out.print("<alert='등록에 실패 했습니다.'>");
 				out.print("</script>");
 			}
-
 		} else if (action.equals("/updateLivingItem.do")) {
 			Map<String, String> livingListMap = upload(request, response);
 
+			int num =Integer.parseInt(livingListMap.get("num"));
 			String productName = livingListMap.get("productName");
 			String productContent = livingListMap.get("productContent");
 			String sellerName = livingListMap.get("sellerName");
@@ -160,6 +153,28 @@ public class LivingController extends HttpServlet {
 			livingVO.setProductQuantity(productQuantity);
 			livingVO.setShipping_fee(shipping_fee);
 			livingVO.setPoint(point);
+
+			Boolean result = livingService.updateContent(livingVO);
+			if(result){
+				PrintWriter pw2 = response.getWriter();
+					pw2.print("<script>" + " alert('수정 되었습니다.');" + " location.href='" + "/living/viewContent.do?num="
+								+ num + "';" + "</script>");
+
+				File srcDir = new File(ARTICLE_IMAGE_REPO+"\\temp");
+				File destDir = new File(ARTICLE_IMAGE_REPO + "\\living\\" + num);
+				destDir.mkdir();
+				File files[] = srcDir.listFiles();
+				for (int i = 0; i < files.length; i++) {
+					File srcFile = files[i];
+					FileUtils.moveFileToDirectory(srcFile, destDir, true);
+				}	
+				nextPage = "/living/viewContent.do";
+			} else {
+				PrintWriter out = response.getWriter();
+				out.print("<script>");
+				out.print("<alert='등록에 실패 했습니다.'>");
+				out.print("</script>");
+			}
 
 		} else if (action.equals("/viewContent.do")) {
 			String num = request.getParameter("num");

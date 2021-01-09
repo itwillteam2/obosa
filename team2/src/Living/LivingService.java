@@ -32,6 +32,11 @@ public class LivingService {
 	}//end
 	
 	
+	public Boolean updateContent(LivingVO livingVO) {
+		return livingDAO.updateContent(livingVO);
+	}//end
+	
+	
 	public int insertContent(LivingVO livingVO) {
 		return livingDAO.insertContent(livingVO);
 	}//end

@@ -165,7 +165,8 @@ public class LivingDAO {
 	
 
 //  -------- 상품 수정 ------- //		
-	public void updateContent(LivingVO livingVO) {
+	public Boolean updateContent(LivingVO livingVO) {
+		
 		try {
 			conn = DBConnection.getConnection();
 			String query = "UPDATE living SET productName=?,productContent=?,sellerName=?,productPrice=?,"
@@ -190,11 +191,14 @@ public class LivingDAO {
 			
 			pstmt.executeUpdate();
 			
+			return true;
 		} catch (Exception e) {
 			System.out.println("updateContent error : " + e.toString());
 		}finally {
 			freeResource();
 		}
+	
+		return false;
 	}//end 
 	
 //  -------- 상품 삭제 ------- //	
