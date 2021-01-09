@@ -48,7 +48,7 @@ public class CsCenterController extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 
-		String action = request.getPathInfo(); // /memberForm.do
+		String action = request.getPathInfo();
 		System.out.println("action변수에 저장된 요청한 주소 : " + action);
 
 		String nextPage = null;

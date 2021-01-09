@@ -34,7 +34,9 @@
 </head>
 <body>
 <jsp:include page="/Home/inc/hdr_logo.jsp" />
-
+	<div id="CommonHeaderArea"></div>
+	<div id="CommonHeader_M"></div>
+	
 <form name="Check" method="post" action="${contextPath}/member/userInfo.do">
 <input type="hidden" name="recentURI" value="${recentURI}">
 <div class="LoginWrap">

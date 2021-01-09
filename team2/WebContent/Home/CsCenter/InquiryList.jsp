@@ -24,6 +24,7 @@
 			$(this).next("div").css("display","block");
 			
 		}
+		
 		else
 		{
 			$(this).next("div").css("display","none");
@@ -81,19 +82,23 @@
 				<c:choose>
 					<c:when test="${sessionScope.id == 'admin'}">
 						<c:forEach var="InqRepList" items="${InqRepList}">
-								<c:if test="${InqRepList.inqnum == InquiryList.inqnum}">
+							<c:choose>
+								<c:when test="${InqRepList.inqnum == InquiryList.inqnum && !empty InqRepList.content}">
 									<div class="more_info2">
 										<span onclick="window.open('${contextPath}/Home/CsCenter/ReplyModify.jsp?inqnum=${InquiryList.inqnum}', 
 										'Q&A답변수정', 'width=500, height=400, location=no, status=no, scrollbars=no, resizable=no, left=500, top=100' );">
 										답변 수정</span>
 										<a href="${contextPath}/Home/CsCenter/ReplyDelete.jsp?inqnum=${InqRepList.inqnum}">답변 삭제</a>
 									</div>
-								</c:if>
-						</c:forEach>
-						<div class="more_info">
-						<span onclick="window.open('${contextPath}/Home/CsCenter/Reply.jsp?inqnum=${InquiryList.inqnum}', 
-						'Q&A답변등록', 'width=500, height=400, location=no, status=no, scrollbars=no, resizable=no, left=500, top=100' );">
-						Q&A 답변 작성</span></div>													
+								</c:when>
+								<c:otherwise>
+								<div class="more_info">
+								<span onclick="window.open('${contextPath}/Home/CsCenter/Reply.jsp?inqnum=${InquiryList.inqnum}', 
+								'Q&A답변등록', 'width=500, height=400, location=no, status=no, scrollbars=no, resizable=no, left=500, top=100' );">
+								Q&A 답변 작성</span></div>	
+								</c:otherwise>
+							</c:choose>		
+						</c:forEach>																				
 					</c:when>	
 					<c:when test="${sessionScope.id == InquiryList.id }">
 						<div class="more_info">
@@ -104,10 +109,11 @@
 				</c:choose>	
 			</div>
 		</c:forEach>
+		<form method="post" action="InquirySearch.do" name="search">
 		<div class="FAQ">
 			<div class="SearchContent" style="margin-top:20px; float:right;" >
 				<div class="selectbox">
-					<select id='ClassIDX' name='ClassIDX' style="float: right;">
+					<select id='category' name='category' style="float: right;">
 						<option value="" selected="selected">상담유형 선택</option>
 						<option value="order">주문/결제</option>
 						<option value="delivery">배송</option>
@@ -119,7 +125,7 @@
 							<div class="CommonSearch">
 								<input type="text" id="kwd" value=""
 								style="display:inline-block; background-color:#ffffff; border:0; padding:0; margin:0; width:200px; height:35px; line-height:35px; vertical-align:top; font-size:16px; color:#000000;">
-									<a href="javascript:fnCommonSearch(1);">
+									<a href="javascript:search.submit();">
 										<img src="${contextPath}/Images/Ver1/Common/top_icon_search.png" />
 									</a>
 							</div>
@@ -128,6 +134,7 @@
 				</div>
 			</div>
 		</div>
+		</form>
 		<div style="clear: both;"></div>
 		<div class="paging">
 			<span class="box">

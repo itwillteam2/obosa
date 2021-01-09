@@ -235,7 +235,7 @@ $(window).load(function(){
 							<span class="deliverytext">${content.shipping_fee} </span>
 						</span> 
 						<span class="pdtRight pdtpt"> 
-							<span>${content.point}=${sessionScope.memtype}점</span>
+							<span>${content.point}점</span>
 						</span> 
 						<div class="pdtOrderLayer">
 							<span class="btnOrderList"></span> 
