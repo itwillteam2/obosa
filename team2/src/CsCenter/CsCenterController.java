@@ -11,7 +11,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import Living.LivingVO;
+import Living.ItemsVO;
 
 @WebServlet("/CsCenter/*")
 public class CsCenterController extends HttpServlet {

@@ -1,15 +1,15 @@
 package Living;
 
-public class LivingQnaRepVO {
+public class ItemsQnaRepVO {
 	private int rnum; 
 	private int num; 
 	private String content; 
 	
-	public LivingQnaRepVO() {
+	public ItemsQnaRepVO() {
 		
 	}
 	
-	public LivingQnaRepVO(int rnum, int num, String content) {
+	public ItemsQnaRepVO(int rnum, int num, String content) {
 		super();
 		this.rnum = rnum;
 		this.num = num;

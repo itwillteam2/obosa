@@ -1,32 +1,30 @@
-package Living;
+package Crafts;
 
 import java.sql.Timestamp;
 
-public class LivingRepVO {
-	private int rnum; 
+public class ItemsQnaVO {
+	private int qnum; 
 	private int num; 
 	private String pw;
 	private String content; 
-	private String writer; 
-	private Timestamp date;
 	
-	public LivingRepVO() {
-		
+	public ItemsQnaVO() {
+	
 	}
-
-	public LivingRepVO(int rnum, int num, String pw, String content, String writer, Timestamp date) {
-		this.rnum = rnum;
+	
+	public ItemsQnaVO(int qnum, int num, String pw, String content, String writer, Timestamp date) {
+		this.qnum = qnum;
 		this.num = num;
 		this.pw = pw;
 		this.content = content;
 		this.writer = writer;
 		this.date = date;
 	}
-	public int getRnum() {
-		return rnum;
+	public int getQnum() {
+		return qnum;
 	}
-	public void setRnum(int rnum) {
-		this.rnum = rnum;
+	public void setQnum(int qnum) {
+		this.qnum = qnum;
 	}
 	public int getNum() {
 		return num;
@@ -57,7 +55,7 @@ public class LivingRepVO {
 	}
 	public void setDate(Timestamp date) {
 		this.date = date;
-	} 
-	
-	
+	}
+	private String writer; 
+	private Timestamp date;
 }

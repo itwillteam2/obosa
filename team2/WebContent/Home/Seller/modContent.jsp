@@ -2,6 +2,7 @@
     pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>    
+
 <%
 	request.setCharacterEncoding("utf-8");
 	String id = (String)session.getAttribute("id");
@@ -19,17 +20,21 @@
 
 </head>
 <script type="text/javascript">
-
-  function change_action(){
-	  var form = $("form");
-	  var category = $("#productCategoryNo option:selected").val()
-      var action = "${contextPath}/"+category;
-	  if(category=="living"){
-	      form.attr("action", action +"/addLivingItem.do");
-	      }else if(category=="crafts"){
-	      form.attr("action", action +"/addCraftsItem.do");
-	      }
-  }
+	$(document).ready(
+	 function category(){
+		 var category = $("#select_category").val();
+			 
+		 if(category=="_living"){	
+			$('#productCategoryNo').val("living").prop("selected",true);
+		}else if(category=="_crafts"){
+			$('#productCategoryNo').val("crafts").prop("selected",true);
+		}else{
+			alert("잘못된 카테고리 입니다.")
+		}
+		
+		 $('#productName').focus();
+		 
+	 });
 
 	function smcheck(){
 		var category = $("#productCategoryNo option:selected").val();
@@ -103,7 +108,7 @@
 			return;
 		}
 		
-		document.fr.submit();
+		 $("form").attr("action", "${contextPath}/${content.category}/updateItem.do").submit();
 	}
 </script>
 <body>
@@ -111,7 +116,7 @@
 
 <div>
 	<div>
-		<h2 style="text-align:center; margin: 30px 0;">상품 등록</h2>
+		<h2 style="text-align:center; margin: 30px 0;">상품 수정</h2>
 	</div>
 </div>
 <article class="product" style="width:1200px; margin : 0 auto" >
@@ -132,18 +137,19 @@
 				</th>
 				<td>
 					<select class="form-control" name="productCategoryNo" id="productCategoryNo" required onchange="change_action();">
-						<option value="">선택하세요</option>
-						<option value="living">리빙</option>
-						<option value="crafts">공예</option>										
+						<option value="_${content.category}" id="select_category" disabled>선택하세요</option>
+						<option value="living" disabled>리빙</option>
+						<option value="crafts" disabled>공예</option>										
 					</select>
 				</td>
 			</tr>
 			<tr>
 				<th class="align-middle">
 					<label for="productName" class="m-0">상품 이름</label>
+					<input type="hidden" name="num" value="${content.num}">
 				</th>
 				<td>
-					<input class="form-control" type="text" name="productName" id="productName" required />
+					<input class="form-control" type="text" name="productName" id="productName" value="${content.productName}" required />
 				</td>
 			</tr>
 			<tr>
@@ -152,7 +158,7 @@
 				</th>
 				<td>
 					<div class="form-inline">
-						<input class="form-control" type="number" name="productPrice" id="productPrice" min="0" max="10000000000" step="100" value="0" required />
+						<input class="form-control" type="number" name="productPrice" id="productPrice" value="${content.productPrice}" min="0" max="10000000000" step="100" value="0" required />
 					</div>
 				</td>
 			</tr>
@@ -162,7 +168,7 @@
 				</th>
 				<td>
 					<div class="form-inline">
-						<input class="form-control d-inline-block" type="number" name="productQuantity" id="productQuantity" min="0" max="10000000000" value="0" required />
+						<input class="form-control d-inline-block" type="number" name="productQuantity" id="productQuantity" value="${content.productQuantity}" min="0" max="10000000000" value="0" required />
 					</div>
 				</td>
 			</tr>
@@ -172,7 +178,7 @@
 				</th>
 				<td>
 					<div class="form-inline">
-						<input class="form-control d-inline-block" type="number" name="shipping_fee" id="shipping_fee" value="0" min="0" max="10000000000" step="100" required />
+						<input class="form-control d-inline-block" type="number" name="shipping_fee" id="shipping_fee" value="${content.shipping_fee}" min="0" max="10000000000" step="100" required />
 					</div>
 				</td>
 			</tr>
@@ -182,7 +188,7 @@
 				</th>
 				<td>
 					<div class="form-inline">
-						<input class="form-control d-inline-block" type="number" name="point" id="point" value="0" min="0" max="10000000000" step="100" required />
+						<input class="form-control d-inline-block" type="number" name="point" id="point" value="${content.point}" min="0" max="10000000000" step="100" required />
 					</div>
 				</td>
 			</tr>
@@ -191,17 +197,17 @@
 					<label for="productContent" class="m-0">상세정보</label>
 				</th>
 				<td>			
-					<textarea class="form-control" name="productContent" id="productContent" cols="40" rows="13" required></textarea>
+					<textarea class="form-control" name="productContent" id="productContent" cols="40" rows="13" required>${content.productContent}</textarea>
 				</td>
 			</tr>
-			<tr>
+		<tr>
 				<th class="align-middle">
 					<label class="m-0">이미지1</label>
 				</th>
 				<td>
 					<div class="custom-file">
 						<input class="custom-file-input" type="file" name="productImageName1" id="productImageName1" onchange="showPreview(this, 'image')" required />
-						<label class="custom-file-label" for="productImageName1" id="imageLabel1">선택된 파일 없음</label>
+						<label class="custom-file-label" for="productImageName1" id="imageLabel1"></label>
 					</div>
 				</td>
 			</tr>
@@ -212,7 +218,7 @@
 				<td>
 					<div class="custom-file">
 						<input class="custom-file-input" type="file" name="productImageName2" id="productImageName2" onchange="showPreview(this, 'image')" />
-						<label class="custom-file-label" for="productImageName2"  id="imageLabel2">선택된 파일 없음</label>
+						<label class="custom-file-label" for="productImageName2"  id="imageLabel2"></label>
 					</div>
 				</td>
 			</tr>
@@ -223,14 +229,14 @@
 				<td>
 					<div class="custom-file">
 						<input class="custom-file-input" type="file" name="productImageName3" id="productImageName3" onchange="showPreview(this, 'image')" />
-						<label class="custom-file-label" for="productImageName3"  id="imageLabel3">선택된 파일 없음</label>
+						<label class="custom-file-label" for="productImageName3"  id="imageLabel3"></label>
 					</div>
 				</td>
 			</tr>
 		</table>
 		<div class="text-center my-5">
 			<button type="button" class="btn btn-secondary" onclick="history.back()">취소</button>
-			<button type="button" class="btn btn-primary" onclick="smcheck()">상품 등록하기</button>
+			<button type="button" class="btn btn-primary" onclick="smcheck()">상품 내용 수정하기</button>
 		</div>
 	</form>
 </article>

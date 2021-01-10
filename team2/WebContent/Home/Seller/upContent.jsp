@@ -25,9 +25,9 @@
 	  var category = $("#productCategoryNo option:selected").val()
       var action = "${contextPath}/"+category;
 	  if(category=="living"){
-	      form.attr("action", action +"/addLivingItem.do");
+	      form.attr("action", action +"/addItem.do");
 	      }else if(category=="crafts"){
-	      form.attr("action", action +"/addCraftsItem.do");
+	      form.attr("action", action +"/addItem.do");
 	      }
   }
 

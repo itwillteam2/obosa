@@ -174,8 +174,12 @@ $(window).load(function(){
 		{
 			$(this).parent().find(".qna").addClass("on");
 		}
+	
 	});
 
+	$(document).on("click", ".btnModItem", function() {
+		 $("form").attr("action", "${contextPath}/${content.category}/ToUpdateItem.do").submit();
+	});
 </script>
 </head>
 <body>
@@ -183,9 +187,7 @@ $(window).load(function(){
 	<div id="CommonHeaderArea"></div>
 	<div id="CommonHeader_M"></div>
 	<div class="wrap">
-		<form method="post" name="ItemDetail"
-			enctype="application/x-www-form-urlencoded" action="" target="proc">
-
+		<form method="post" action="" >
 			<section class="iteminfo">
 				<div class="inner swiper">
 					<div class="swiper-container">
@@ -262,10 +264,11 @@ $(window).load(function(){
 						   </c:when>
 						<c:otherwise>	
 								<span class="pdtRight pdtBtnList" > 
-								<span class="btnCart">
-								<input type="button" value="상품 수정" />
+								<span class="btnModItem">
+								  <input type="button"  class="btnModItem" value="상품 수정" />
+								    <input type="hidden" name="num" value="${content.num}" />
 								</span> 
-								<span class="btnOrder">
+								<span class="btnDelItem">
 									<input type="button" value="상품 삭제" />
 								</span> 
 								</span>

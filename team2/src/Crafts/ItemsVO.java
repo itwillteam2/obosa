@@ -1,9 +1,9 @@
-package Living;
+package Crafts;
 
 import java.sql.Timestamp;
 
-public class LivingVO {
-
+public class ItemsVO {
+	
 	private int num;
 	private String productName;
 	private String productContent;
@@ -18,14 +18,21 @@ public class LivingVO {
 	private Timestamp reg_date;
 	private String category;
 	
-	
-	public LivingVO() {
-	
+	public String getCategory() {
+		return category;
 	}
 
-	public LivingVO(int num, String productName, String productContent, String sellerName, int productPrice,
+	public void setCategory(String category) {
+		this.category = category;
+	}
+
+	public ItemsVO() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public ItemsVO(int num, String productName, String productContent, String sellerName, int productPrice,
 			String productImageName1, String productImageName2, String productImageName3, int productQuantity,
-			int shipping_fee, int point, String category) {
+			int shipping_fee, int point) {
 		
 		this.num = num;
 		this.productName = productName;
@@ -38,8 +45,6 @@ public class LivingVO {
 		this.productQuantity = productQuantity;
 		this.shipping_fee = shipping_fee;
 		this.point = point;
-		this.category = category;
-		
 	}
 
 	public int getNum() {
@@ -137,15 +142,7 @@ public class LivingVO {
 	public void setReg_date(Timestamp reg_date) {
 		this.reg_date = reg_date;
 	}
-
-	public String getCategory() {
-		return category;
-	}
-
-	public void setCategory(String category) {
-		this.category = category;
-	}
-
+	
 	
 	
 	

@@ -7,7 +7,6 @@ import java.io.OutputStream;
 import java.io.PrintWriter;
 import java.net.URLEncoder;
 import java.nio.file.Files;
-import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -26,52 +25,51 @@ import org.apache.commons.io.FileUtils;
 
 import Page.Paging;
 
+
 @WebServlet("/crafts/*")
 public class CraftsController extends HttpServlet{
-
-	private static String ARTICLE_IMAGE_REPO = "C:\\files\\article_image";
 	
-	CraftsVO craftsVO;
-	CraftsService craftsService;	
+	ItemsVO vo;
+	ItemsService service;
+	ItemsRepVO repVO;
 	String realPath;
-	
-	
-	
+	final String CATEGORY="crafts";
+	private static String ARTICLE_IMAGE_REPO = "C:\\files\\article_image";
+		
 	@Override
 	public void init() throws ServletException {
-		craftsVO = new CraftsVO();
-		craftsService = new CraftsService();
-		
-		
+		vo = new ItemsVO();
+		repVO = new ItemsRepVO();
+		service = new ItemsService();
 	}
 
 	@Override
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doHandle(request, response);
 	}
 
 	@Override
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		doHandle(request, response);
 	}
-	protected void doHandle(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+	protected void doHandle(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		request.setCharacterEncoding("utf-8");
+		response.setContentType("text/html; charset=utf-8");
 		
 		String nextPage="";
 		realPath = request.getServletContext().getRealPath("/files/crafts");
-		System.out.println("realPath : " + realPath);
-		
-		request.setCharacterEncoding("utf-8");
-		response.setContentType("text/html; charset=utf-8");
 		String action = request.getPathInfo();
-		System.out.println("action : " + action);
 		
-		if(action == null || action.equals("/listCrafts.do")) {
-			System.out.println(action);
-			
-			List<CraftsVO> craftsList = craftsService.craftsList();
-			request.setAttribute("craftsList", craftsList);
-			
-			int totalCount = craftsService.totalCountList();
+		if(action == null || action.equals("/list.do")) {
+			List<ItemsVO> contentList = service.ContentList();
+			request.setAttribute("contentList", contentList);
+			request.setAttribute("category", CATEGORY);	 //------ 카테고리 입력
+			int totalCount = service.totalCount();
 			int page = (request.getParameter("page") == null) ? 1 : Integer.parseInt(request.getParameter("page"));
 			
 			Paging paging = new Paging();
@@ -80,16 +78,11 @@ public class CraftsController extends HttpServlet{
 			paging.setTotalCount(totalCount); // 총 게시물 수
 			
 			page = (page -1) * 10; //select해오는 기준
-			
 			request.setAttribute("paging", paging);
 			
-
-					
-
-			nextPage="/Home/Crafts/craft.jsp";			
-
+			nextPage="/Home/Common/category.jsp";			
 			
-		}else if(action.equals("/addCraftsItem.do")) {
+		}else if(action.equals("/addItem.do")) {
 			Map<String, String> addItemMap = upload(request, response);
 			
 			String productName = addItemMap.get("productName");
@@ -103,76 +96,104 @@ public class CraftsController extends HttpServlet{
 			int shipping_fee = Integer.parseInt(addItemMap.get("shipping_fee"));
 			int point = Integer.parseInt(addItemMap.get("point"));
 			
-			craftsVO.setPoint(point);
-			craftsVO.setProductContent(productContent);
-			craftsVO.setProductImageName1(productImageName1);
-			craftsVO.setProductImageName2(productImageName2);
-			craftsVO.setProductImageName3(productImageName3);
-			craftsVO.setProductName(productName);
-			craftsVO.setProductPrice(productPrice);
-			craftsVO.setProductQuantity(productQuantity);
-			craftsVO.setSellerName(sellerName);			
-			craftsVO.setShipping_fee(shipping_fee);
+			vo.setProductName(productName);
+			vo.setProductContent(productContent);
+			vo.setSellerName(sellerName);			
+			vo.setProductImageName1(productImageName1);
+			vo.setProductImageName2(productImageName2);
+			vo.setProductImageName3(productImageName3);
+			vo.setProductPrice(productPrice);
+			vo.setProductQuantity(productQuantity);
+			vo.setShipping_fee(shipping_fee);
+			vo.setPoint(point);	
 			
-			int num = craftsService.insertCrafts(craftsVO);
-			
+			int num = service.insertContent(vo);
 			if (num > 0) {
-				if( productImageName1 != null &&  productImageName1.length() != 0 ){
-					File srcFile = new File(ARTICLE_IMAGE_REPO + "\\" + "temp" + "\\" +  productImageName1);
-					File destDir = new File(ARTICLE_IMAGE_REPO + "\\crafts\\" + num);
-					destDir.mkdir();//글번호에 대한 폴더 생성 ~
+				File srcDir = new File(ARTICLE_IMAGE_REPO+"\\temp");
+				File destDir = new File(ARTICLE_IMAGE_REPO + "\\crafts\\" + num);
+				destDir.mkdir();
+				File files[] = srcDir.listFiles();
+				for (int i = 0; i < files.length; i++) {
+					File srcFile = files[i];
 					FileUtils.moveFileToDirectory(srcFile, destDir, true);
-				}
-				nextPage = "/crafts/listCrafts.do";
-
+				}	
+				nextPage = "/"+CATEGORY+"/list.do";
 			} else {
 				PrintWriter out = response.getWriter();
 				out.print("<script>");
 				out.print("<alert='등록에 실패 했습니다.'>");
 				out.print("</script>");
 			}
-		}else if(action.equals("updateCraftItem.do")) {
-			Map<String, String> craftListMap = upload(request, response);
+		} else if (action.equals("/ToUpdateItem.do")) {
+			String num =request.getParameter("num");
+			ItemsVO content = (ItemsVO) service.ContentDetail(Integer.parseInt(num));
+			request.setAttribute("content", content);
 			
-			int num = Integer.parseInt(craftListMap.get("num"));
-			String productName = craftListMap.get("productName");
-			String productContent = craftListMap.get("productContent");
-			String sellerName = craftListMap.get("sellerName");
-			int productPrice = Integer.parseInt(craftListMap.get("productPrice"));
-			String productImageName1 = craftListMap.get("productImageName1");
-			String productImageName2 = craftListMap.get("productImageName2");
-			String productImageName3 = craftListMap.get("productImageName3");
-			int productQuantity = Integer.parseInt(craftListMap.get("productQuantity"));
-			int shipping_fee = Integer.parseInt(craftListMap.get("shipping_fee"));
-			int point = Integer.parseInt(craftListMap.get("point"));
-			 
+			nextPage = "/Home/Seller/modContent.jsp";	
 			
-			craftsVO.setNum(num);
-			craftsVO.setPoint(point);
-			craftsVO.setProductContent(productContent);
-			craftsVO.setProductImageName1(productImageName1);
-			craftsVO.setProductImageName2(productImageName2);
-			craftsVO.setProductImageName3(productImageName3);
-			craftsVO.setProductName(productName);
-			craftsVO.setProductPrice(productPrice);
-			craftsVO.setProductQuantity(productQuantity);
-			craftsVO.setSellerName(sellerName);
-			craftsVO.setShipping_fee(shipping_fee);
+		}else if(action.equals("/updateItem.do")) {
+			Map<String, String> addItemMap = upload(request, response);
+		
+			int num = Integer.parseInt(addItemMap.get("num"));
+			String productName = addItemMap.get("productName");
+			String productContent = addItemMap.get("productContent");
+			String sellerName = addItemMap.get("sellerName");
+			int productPrice = Integer.parseInt(addItemMap.get("productPrice"));
+			String productImageName1 = addItemMap.get("productImageName1");
+			String productImageName2 = addItemMap.get("productImageName2");
+			String productImageName3 = addItemMap.get("productImageName3");
+			int productQuantity = Integer.parseInt(addItemMap.get("productQuantity"));
+			int shipping_fee = Integer.parseInt(addItemMap.get("shipping_fee"));
+			int point = Integer.parseInt(addItemMap.get("point"));
 			
-			int result = craftsService.updateCrafts(craftsVO);
+			vo.setNum(num);
+			vo.setProductName(productName);
+			vo.setProductContent(productContent);
+			vo.setProductImageName1(productImageName1);
+			vo.setProductImageName2(productImageName2);
+			vo.setProductImageName3(productImageName3);
+			vo.setProductPrice(productPrice);
+			vo.setProductQuantity(productQuantity);
+			vo.setSellerName(sellerName);			
+			vo.setShipping_fee(shipping_fee);
+			vo.setPoint(point);
 			
-			request.setAttribute("result", result);
+			int result = service.updateContent(vo);
+			ItemsVO content = (ItemsVO) service.ContentDetail(result);
+			request.setAttribute("content", content);
 			
-			nextPage=""; //수정되는 넘버와 페이지 주소 적기 
+			nextPage = "/Home/Common/content.jsp";
+			
+		} else if (action.equals("/viewContent.do")) {
+			String num = request.getParameter("num");
+			ItemsVO content = (ItemsVO) service.ContentDetail(Integer.parseInt(num));
+			request.setAttribute("content", content);
+			
+			nextPage = "/Home/Common/content.jsp";
+		
+		} else if (action.equals("/addReply.do")) {
+
+			int rnum = service.addReply(repVO);
+			int num = Integer.parseInt(request.getParameter("num"));
+			String pw = request.getParameter("pw");
+			String content = request.getParameter("content");
+			String writer = request.getParameter("writer");
+
+			repVO.setRnum(rnum);
+			repVO.setNum(num);
+			repVO.setPw(pw);
+			repVO.setContent(content);
+			repVO.setWriter(writer);
+
+			PrintWriter pw2 = response.getWriter();
+			pw2.print("<script>" + " alert('상품후기를 등록 했습니다.');" + " location.href='" + "/crafts/viewContent.do?num="
+					+ num + "';" + "</script>");
+			return;
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
-
 		dispatcher.forward(request, response);
-		
 	}//end of doHandle
-	
-	
 	
 	private Map<String, String> upload(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -190,13 +211,8 @@ public class CraftsController extends HttpServlet{
 			for (int i = 0; i < items.size(); i++) {
 				FileItem fileItem = (FileItem) items.get(i);
 				if (fileItem.isFormField()) {
-					System.out.println(fileItem.getFieldName() + "=" + fileItem.getString(encoding));
 					articleMap.put(fileItem.getFieldName(), fileItem.getString(encoding));
 				} else {
-					System.out.println("파일이름:" + fileItem.getFieldName());
-					System.out.println("파일이름 : " + fileItem.getName());
-					System.out.println("파일크기 : " + fileItem.getSize() + "bytes");
-					System.out.println("존재여부 : " + currentDirPath.exists());					
 					if (fileItem.getSize() > 0) {
 						int idx = fileItem.getName().lastIndexOf("\\");
 						if (idx == -1) {
@@ -215,7 +231,14 @@ public class CraftsController extends HttpServlet{
 			System.out.println("upload error : " + e.toString());
 		}
 		return articleMap;
-	}
+	}//end
+	
+	
+	
+	
+	
+	
+	
 	// temp to realPath on file of Image
 	public void moveFile(int num, String fileName) {
 		try {

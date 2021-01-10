@@ -89,6 +89,10 @@
 .iteminfo .inner .pdtInfo .pdtOption .pdtOpbox .opname  { display:block; float:left; font-size:14px; color:#646464; line-height:35px;  }
 
 .iteminfo .inner .pdtInfo .pdtBtnList { padding:0 140px 0 0; }
+.iteminfo .inner .pdtInfo .pdtBtnList .btnModItem { width:50%; padding:0 5px 0 0; }
+.iteminfo .inner .pdtInfo .pdtBtnList .btnModItem input[type=button] { width:100%; height:55px; padding:0; margin:0; border:1px solid #646464; background-color:#ffffff; border-radius:5px; font-size:20px; color:#000000; }
+.iteminfo .inner .pdtInfo .pdtBtnList .btnDelItem { width:50%; padding:0 0 0 5px; }
+.iteminfo .inner .pdtInfo .pdtBtnList .btnDelItem input[type=button] { width:100%; height:55px; padding:0; margin:0; border:1px solid #e71e22; background-color:#e71e22; border-radius:5px; font-size:20px; color:#ffffff; font-weight:bold; }
 .iteminfo .inner .pdtInfo .pdtBtnList .btnCart  { width:50%; padding:0 5px 0 0; }
 .iteminfo .inner .pdtInfo .pdtBtnList .btnCart input[type=button] { width:100%; height:55px; padding:0; margin:0; border:1px solid #646464; background-color:#ffffff; border-radius:5px; font-size:20px; color:#000000; }
 .iteminfo .inner .pdtInfo .pdtBtnList .btnOrder { width:50%; padding:0 0 0 5px; }

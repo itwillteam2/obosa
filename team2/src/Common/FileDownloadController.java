@@ -40,10 +40,9 @@ public class FileDownloadController extends HttpServlet{ //이미지를 다운�
 		OutputStream out = response.getOutputStream();
 		String path = ARTICLE_IMAGE_REPO +fileFolder+"\\"+num+"\\"+productImageName;
 		File imageFile = new File(path);
-		
 		response.setHeader("Cache-Control", "no-cache");
 		response.addHeader("Content-disposition", "attachment;filename=" + productImageName);
-
+System.out.println(path);
 		FileInputStream in = new FileInputStream(imageFile);
 		
 		byte[] buffer = new byte[1024*8]; //8kb
@@ -55,7 +54,6 @@ public class FileDownloadController extends HttpServlet{ //이미지를 다운�
 			}
 			out.write(buffer, 0, count);
 		}
-		System.out.println(path);
 		in.close();
 		out.close();
 	}		

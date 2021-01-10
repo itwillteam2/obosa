@@ -1,24 +1,20 @@
 package Living;
 
-import java.net.URLEncoder;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import DBUtil.DBConnection;
 
-public class LivingDAO {
-
+public class ItemsDAO {
+	
 	private Connection conn;
 	private PreparedStatement pstmt;
 	private ResultSet rs;
+	final String CATEGORY = "living";
 	
 	public void freeResource() {
 		try {
@@ -26,23 +22,20 @@ public class LivingDAO {
 			if(pstmt != null) pstmt.close();
 			if(rs != null) rs.close();
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}//end
-	
-	
-//  -------- 전체 상품 조회 ------- //
-	public List<LivingVO> getAllContents() {
-	
-		List<LivingVO> livingList = new ArrayList<LivingVO>();
+
+	//select all articles list of crafts.
+	public List<ItemsVO> getAllContents() {
+		List<ItemsVO> contentLIst = new ArrayList<ItemsVO>();
 		try {
 			conn = DBConnection.getConnection();
-			String query = "SELECT * FROM living";
+			String query = "SELECT * FROM "+CATEGORY;
 			pstmt = conn.prepareStatement(query);
 			rs = pstmt.executeQuery();
-			while(rs.next()){
-				LivingVO vo = new LivingVO();
+			while(rs.next()) {
+				ItemsVO vo = new ItemsVO();
 				vo.setNum(rs.getInt("num"));
 				vo.setPoint(rs.getInt("point"));
 				vo.setProductContent(rs.getString("productContent"));
@@ -55,58 +48,23 @@ public class LivingDAO {
 				vo.setReg_date(rs.getTimestamp("regDate"));
 				vo.setSellerName(rs.getString("sellerName"));
 				vo.setShipping_fee(rs.getInt("shipping_fee"));
-				livingList.add(vo);
+				contentLIst.add(vo);
 			}
-			
+						
 		} catch (Exception e) {
 			System.out.println("getAllContents error : " + e.toString());
 		}finally {
 			freeResource();
 		}
-		return livingList;
-		
-	}//end
-	
-	
-//  -------- 특정 상품 조회 ------- //
-	public LivingVO getContent(int livingNum) {
-		LivingVO livingVO = new LivingVO();
-		
-		try {
-			conn = DBConnection.getConnection();
-			String query = "SELECT * FROM living WHERE NUM = ?";
-			pstmt = conn.prepareStatement(query);
-			pstmt.setInt(1, livingNum);
-			rs = pstmt.executeQuery();
-			if(rs.next()) {
-				livingVO.setNum(rs.getInt("num"));
-				livingVO.setPoint(rs.getInt("point"));
-				livingVO.setProductContent(rs.getString("productContent"));
-				livingVO.setProductImageName1(rs.getString("productImageName1"));
-				livingVO.setProductImageName2(rs.getString("productImageName2"));
-				livingVO.setProductImageName3(rs.getString("productImageName3"));
-				livingVO.setProductName(rs.getString("productName"));
-				livingVO.setProductPrice(rs.getInt("productPrice"));
-				livingVO.setProductQuantity(rs.getInt("productQuantity"));
-				livingVO.setReg_date(rs.getTimestamp("regDate"));
-				livingVO.setSellerName(rs.getString("sellerName"));
-				livingVO.setShipping_fee(rs.getInt("shipping_fee"));
-				livingVO.setCategory(rs.getString("category"));
-			}
-		} catch (Exception e) {
-			System.out.println("getContent error : " + e.toString());
-		}finally {
-			freeResource();
-		}
-		return livingVO;
-	}//end
+		return contentLIst;
+	}//end of selectAllArticles
 	
 //  -------- 전체 상품 개수 조회 ------- //
 	public int getTotalCount() {
 		int num = 0;
 		try {
 			conn = DBConnection.getConnection();
-			String query = "SELECT count(*) FROM living";
+			String query = "SELECT count(*) FROM "+CATEGORY;
 			pstmt = conn.prepareStatement(query);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
@@ -119,39 +77,39 @@ public class LivingDAO {
 			freeResource();
 		}
 		return num;
-	}//end
-	
+	}//end of selectTotalCount
+
 //  -------- 상품 등록 ------- //	
-	public int insertContent(LivingVO livingVO) {
+	public int insertContent(ItemsVO vo) {
 		int num = 0;
 		String sql ="";
 		
 		try {
 			conn = DBConnection.getConnection();
-			sql = "select max(num) from living";
+			sql = "select max(num) from "+CATEGORY;
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			if(rs.next()){ num = rs.getInt(1) + 1;
 			}else{ num = 1; }
 
-			String query = "INSERT INTO living"
+			String query = "INSERT INTO "+CATEGORY
 					+ "(num, productName,productContent,sellerName,productPrice,productImageName1,productImageName2,productImageName3,productQuantity,shipping_fee,point,category) "
 					+ "VALUES(?,?,?,?,?,?,?,?,?,?,?,?)";
 
 			pstmt = conn.prepareStatement(query);
 			
 			pstmt.setInt(1, num);		
-			pstmt.setString(2, livingVO.getProductName());
-			pstmt.setString(3, livingVO.getProductContent());
-			pstmt.setString(4, livingVO.getSellerName());
-			pstmt.setInt(5, livingVO.getProductPrice());
-			pstmt.setString(6, livingVO.getProductImageName1());
-			pstmt.setString(7, livingVO.getProductImageName2());
-			pstmt.setString(8, livingVO.getProductImageName3());
-			pstmt.setInt(9, livingVO.getProductQuantity());
-			pstmt.setInt(10, livingVO.getShipping_fee());
-			pstmt.setInt(11, livingVO.getPoint());		
-			pstmt.setString(12, "living");
+			pstmt.setString(2, vo.getProductName());
+			pstmt.setString(3, vo.getProductContent());
+			pstmt.setString(4, vo.getSellerName());
+			pstmt.setInt(5, vo.getProductPrice());
+			pstmt.setString(6, vo.getProductImageName1());
+			pstmt.setString(7, vo.getProductImageName2());
+			pstmt.setString(8, vo.getProductImageName3());
+			pstmt.setInt(9, vo.getProductQuantity());
+			pstmt.setInt(10, vo.getShipping_fee());
+			pstmt.setInt(11, vo.getPoint());		
+			pstmt.setString(12, CATEGORY);
 			
 			pstmt.executeUpdate();
 					
@@ -163,49 +121,80 @@ public class LivingDAO {
 		return num;
 	}//end 
 	
-
-//  -------- 상품 수정 ------- //		
-	public Boolean updateContent(LivingVO livingVO) {
+//  -------- 특정 상품 조회 ------- //
+	public ItemsVO getContent(int num) {
+		ItemsVO vo = new ItemsVO();
 		
 		try {
 			conn = DBConnection.getConnection();
-			String query = "UPDATE living SET productName=?,productContent=?,sellerName=?,productPrice=?,"
+			String query = "SELECT * FROM "+CATEGORY+ " WHERE num = ?";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, num);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				vo.setNum(rs.getInt("num"));
+				vo.setPoint(rs.getInt("point"));
+				vo.setProductContent(rs.getString("productContent"));
+				vo.setProductImageName1(rs.getString("productImageName1"));
+				vo.setProductImageName2(rs.getString("productImageName2"));
+				vo.setProductImageName3(rs.getString("productImageName3"));
+				vo.setProductName(rs.getString("productName"));
+				vo.setProductPrice(rs.getInt("productPrice"));
+				vo.setProductQuantity(rs.getInt("productQuantity"));
+				vo.setReg_date(rs.getTimestamp("regDate"));
+				vo.setSellerName(rs.getString("sellerName"));
+				vo.setShipping_fee(rs.getInt("shipping_fee"));
+				vo.setCategory(rs.getString("category"));
+			}
+		} catch (Exception e) {
+			System.out.println("getContent error : " + e.toString());
+		}finally {
+			freeResource();
+		}
+		return vo;
+	}//end
+
+//  -------- 상품 수정 ------- //		
+	public int updateContent(ItemsVO vo) {
+		int num = 0;
+		
+		try {
+			conn = DBConnection.getConnection();
+			String query = "UPDATE "+CATEGORY+" SET productName=?,productContent=?,sellerName=?,productPrice=?,"
 					+"productImageName1=?,productImageName2=?,productImageName3=?,"
-					+"productQuantity=?,shipping_fee,point=?,category=?"
+					+"productQuantity=?,shipping_fee=?,point=?"
 			        +" WHERE num=?";
 				
 			pstmt = conn.prepareStatement(query);
-			
-			pstmt.setString(1, livingVO.getProductName());
-			pstmt.setString(2, livingVO.getProductContent());
-			pstmt.setString(3, livingVO.getSellerName());
-			pstmt.setInt(4, livingVO.getProductPrice());
-			pstmt.setString(5, livingVO.getProductImageName1());
-			pstmt.setString(6, livingVO.getProductImageName2());
-			pstmt.setString(7, livingVO.getProductImageName3());
-			pstmt.setInt(8, livingVO.getProductQuantity());
-			pstmt.setInt(9, livingVO.getShipping_fee());
-			pstmt.setInt(10, livingVO.getPoint());	
-			pstmt.setString(11, livingVO.getCategory());
-			pstmt.setInt(12, livingVO.getNum());
+			pstmt.setString(1, vo.getProductName());
+			pstmt.setString(2, vo.getProductContent());
+			pstmt.setString(3, vo.getSellerName());
+			pstmt.setInt(4, vo.getProductPrice());
+			pstmt.setString(5, vo.getProductImageName1());
+			pstmt.setString(6, vo.getProductImageName2());
+			pstmt.setString(7, vo.getProductImageName3());
+			pstmt.setInt(8, vo.getProductQuantity());
+			pstmt.setInt(9, vo.getShipping_fee());
+			pstmt.setInt(10, vo.getPoint());	
+			pstmt.setInt(11, vo.getNum());
 			
 			pstmt.executeUpdate();
-			
-			return true;
+	
+			num = vo.getNum();
+			return num;
 		} catch (Exception e) {
 			System.out.println("updateContent error : " + e.toString());
 		}finally {
 			freeResource();
 		}
-	
-		return false;
+	return num;
 	}//end 
 	
 //  -------- 상품 삭제 ------- //	
 	public void deleteContent(int NUM) {
 		try {
 			conn = DBConnection.getConnection();
-			String query = "DELETE FROM living where NUM = ?";
+			String query = "DELETE FROM "+CATEGORY+" where NUM = ?";
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, NUM);
 			pstmt.executeUpdate();					
@@ -218,26 +207,27 @@ public class LivingDAO {
 	}//end
 
 	
-	public int insertNewReply(LivingRepVO livingRepVO) {
+	public int insertNewReply(ItemsRepVO repVO) {
 		int rnum = 0;
 		String sql ="";
 		
 		try {
 			conn = DBConnection.getConnection();
-			sql = "select max(num) from living_rep";
+			sql = "select max(num) from "
+			+CATEGORY+"_rep";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()){ 	rnum = rs.getInt(1) + 1;
 			}else{	rnum = 1; }
 			
-			int num = livingRepVO.getNum();
+			int num = repVO.getNum();
 			System.out.println(num);
-			String pw = livingRepVO.getPw();
-			String content = livingRepVO.getContent();
-			String writer = livingRepVO.getWriter();
+			String pw = repVO.getPw();
+			String content = repVO.getContent();
+			String writer = repVO.getWriter();
 
-			String query = "INSERT INTO living_rep(num, pw, content, writer)"
+			String query = "INSERT INTO "+CATEGORY+"_rep(num, pw, content, writer)"
 					+ "VALUES(?, ?, ?, ?)";
 
 			pstmt = conn.prepareStatement(query);
@@ -257,6 +247,4 @@ public class LivingDAO {
 		return rnum;
 	}//end
 
-		
-	
-}//end DAO
+}
