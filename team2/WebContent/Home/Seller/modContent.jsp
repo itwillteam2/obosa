@@ -108,7 +108,7 @@
 			return;
 		}
 		
-		 $("form").attr("action", "${contextPath}/${content.category}/updateItem.do").submit();
+		 $("form").attr("action", "${contextPath}/${content.category}/updateContent.do").submit();
 	}
 </script>
 <body>
@@ -137,9 +137,10 @@
 				</th>
 				<td>
 					<select class="form-control" name="productCategoryNo" id="productCategoryNo" required onchange="change_action();">
-						<option value="_${content.category}" id="select_category" disabled>선택하세요</option>
+						<option id="cat" value="${content.category}" style="display:none"></option>
+						<option disabled>선택하세요</option>
 						<option value="living" disabled>리빙</option>
-						<option value="crafts" disabled>공예</option>										
+						<option value="crafts" disabled>공예</option>
 					</select>
 				</td>
 			</tr>

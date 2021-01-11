@@ -97,7 +97,24 @@
 	$(document).on("click", ".overlay_close,.btnGoShopping", function() {
 		$(".overlay").removeClass("on");
 	});
+	
+	$(document).on("click", ".overlay_close,.btnGoShopping", function() {
+		$(".overlay").removeClass("on");
+	});
+	$(document).on("click", ".overlay_close,.btnGoShopping", function() {
+		$(".overlay").removeClass("on");
+	});
+	
+	function PageMove(page){
+		location.href="http://localhost:8080/${contextPath}/${category}/list.do?pageNO="+page
+
+	}
+	
+	
 </script>
+<style>
+li.active {font-size: 50px;}
+</style>
 </head>
 <body>
 	<jsp:include page="/Home/inc/hdr_menu.jsp" />
@@ -108,13 +125,13 @@
 		</section>
 
 		<section class="sec_cont">
-			<form name="frm" action="${contextPath }/${category}/list.do">
+			<form name="frm" action="${contextPath}/${category}/list.do">
 				<input type="hidden" name="page" value="1" />
 
 				<div class="inner">
 
 					<div class="info">
-						<span class="result">총 <strong>${totalCountList}</strong>개의 상품이 조회되었습니다.
+						<span class="result">총 <strong>${totalCount}</strong>개의 상품이 조회되었습니다.
 						</span> 
 						<span class="selectbox"> 
 							<select name="ord">
@@ -167,18 +184,11 @@
 					
 					<div class='paging'>
 						<span class='box'>
-							
-							
-							<!-- 번호 -->
-							
-					        <li><a href="javascript:PageMove(${paging.prevPageNo})">앞으로&nbsp; </a></li>
-
-
-
-							
-							<c:forEach var="i" begin="${paging.startPageNo }" end="${paging.endPageNo }" step="1">
+							<!-- 번호 -->							
+					        <li><a href="javascript:PageMove(${paging.prevPage})">이전</a></li>
+							<c:forEach var="i" begin="${paging.startPage}" end="${paging.endPage}" step="1">
 								<c:choose>
-									<c:when test="${i eq paging.pageNo }">
+									<c:when test="${i eq paging.pageNo}">
 										<li class="active"><a href="javascript:PageMove(${i})">${i}</a></li>
 									</c:when>
 									<c:otherwise>
@@ -186,9 +196,8 @@
 									</c:otherwise>
 								</c:choose>
 							</c:forEach>
-							
-							<!-- 번호 -->
-							<li><a href="javascript:PageMove(${paging.nextPageNo})">뒤로&nbsp; </a></li>
+														<!-- 번호 -->
+							<li><a href="javascript:PageMove(${paging.nextPage})">다음</a></li>
     					    
 
 
