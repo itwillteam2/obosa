@@ -235,7 +235,7 @@
 								</c:choose>
 							</div>
 							<ul class='itemList'>
-								<c:forEach var="shopSearchList" items="${shopSearchList}" end="4">
+								<c:forEach var="shopSearchList" items="${shopSearchList}">
 									<span class="iteminfo">
 										<a href="${contextPath}/common/viewSearchShop.do?kwd=${kwd}&name=${shopSearchList.sellerName}">
 											<span class="searchSeller">${shopSearchList.sellerName}</span>
@@ -289,7 +289,7 @@
 									</c:otherwise>
 								</c:choose>
 								<ul class='itemList'>
-								<c:forEach var="searchList" items="${searchList}" end="4">
+								<c:forEach var="searchList" items="${searchList}" end="3">
 									<li>
 									<span class="img"> <!-- 사진 클릭했을때 그 인덱스값으로 가기 -->
 										<a href="${contextPath}/${searchList.category}/viewContent.do?fd=living&num=${searchList.num}&productImageName=${searchList.productImageName1}">
@@ -354,7 +354,7 @@
 									</c:otherwise>
 								</c:choose>
 								<ul class='itemList'>
-									<c:forEach var="searchLiving" items="${searchLiving}" end="4">
+									<c:forEach var="searchLiving" items="${searchLiving}" end="3">
 										<li>
 										<span class="img"> <!-- 사진 클릭했을때 그 인덱스값으로 가기 -->
 											<a href="${contextPath}/living/viewContent.do?fd=living&num=${searchLiving.num}&productImageName=${searchLiving.productImageName1}">
@@ -419,7 +419,7 @@
 									</c:otherwise>
 								</c:choose>
 								<ul class='itemList'>
-									<c:forEach var="searchCrafts" items="${searchCrafts}" end="4">
+									<c:forEach var="searchCrafts" items="${searchCrafts}" end="3">
 										<li>
 										<span class="img"> <!-- 사진 클릭했을때 그 인덱스값으로 가기 -->
 											<a href="${contextPath}/crafts/viewContent.do?fd=living&num=${searchCrafts.num}&productImageName=${searchCrafts.productImageName1}">
@@ -484,7 +484,7 @@
 									</c:otherwise>
 								</c:choose>
 								<ul class='itemList'>
-									<c:forEach var="searchFancy" items="${searchFancy}" end="4">
+									<c:forEach var="searchFancy" items="${searchFancy}" end="3">
 										<li>
 										<span class="img"> <!-- 사진 클릭했을때 그 인덱스값으로 가기 -->
 											<a href="${contextPath}/fancy/viewContent.do?fd=living&num=${searchFancy.num}&productImageName=${searchFancy.productImageName1}">

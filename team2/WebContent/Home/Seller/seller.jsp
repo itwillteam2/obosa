@@ -25,7 +25,7 @@
 				category = "fancy";
 			}
 			
-			location.href="${contextPath}/common/seller.do?kwd=${kwd}&ord="+ord+"&category="+category;
+			location.href="${contextPath}/common/seller.do?shopName=${name}&ord="+ord+"&category="+category;
 		});
 	}
 

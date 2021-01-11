@@ -137,31 +137,40 @@ public class CommonController extends HttpServlet{
 			String kwd = request.getParameter("kwd");
 			request.setAttribute("kwd", kwd);
 			
+			String ord = request.getParameter("ord");
+			if(ord == null || ord ==""){
+				ord = "신상품순";
+			}
+			request.setAttribute("ord", ord);
+			
+			String category = request.getParameter("category");
+			request.setAttribute("category", category);
+			
 			String name = request.getParameter("name");
 			request.setAttribute("shopName", name);
 			
 			int searchCount = searchService.shopCount(name);
 			request.setAttribute("searchCount", searchCount);
 			
-			List<SearchVO> searchList = searchService.shopList(name);
+			List<SearchVO> searchList = searchService.shopList(name, ord);
 			request.setAttribute("searchList", searchList);
 
 			int livingCount = searchService.shopLivingCount(name);
 			request.setAttribute("livingCount", livingCount);
 			
-			List<SearchVO> searchLiving = searchService.shopLiving(name);
+			List<SearchVO> searchLiving = searchService.shopLiving(name, ord);
 			request.setAttribute("searchLiving", searchLiving);
 			
 			int craftsCount = searchService.shopCraftsCount(name);
 			request.setAttribute("craftsCount", craftsCount);
 			
-			List<SearchVO> searchCrafts = searchService.shopCrafts(name);
+			List<SearchVO> searchCrafts = searchService.shopCrafts(name, ord);
 			request.setAttribute("searchCrafts", searchCrafts);
 			
 			int fancyCount = searchService.shopFancyCount(name);
 			request.setAttribute("fancyCount", fancyCount);
 			
-			List<SearchVO> searchFancy = searchService.shopFancy(name);
+			List<SearchVO> searchFancy = searchService.shopFancy(name, ord);
 			request.setAttribute("searchFancy", searchFancy);
 			
 			nextPage="/Home/Common/viewSearchShop.jsp";
@@ -181,30 +190,30 @@ public class CommonController extends HttpServlet{
 			int searchCount = searchService.shopCount(name);
 			request.setAttribute("searchCount", searchCount);
 			
-			List<SearchVO> searchList = searchService.shopList(name);
+			List<SearchVO> searchList = searchService.shopList(name, ord);
 			request.setAttribute("searchList", searchList);
 
 			int livingCount = searchService.shopLivingCount(name);
 			request.setAttribute("livingCount", livingCount);
 			
-			List<SearchVO> searchLiving = searchService.shopLiving(name);
+			List<SearchVO> searchLiving = searchService.shopLiving(name, ord);
 			request.setAttribute("searchLiving", searchLiving);
 			
 			int craftsCount = searchService.shopCraftsCount(name);
 			request.setAttribute("craftsCount", craftsCount);
 			
-			List<SearchVO> searchCrafts = searchService.shopCrafts(name);
+			List<SearchVO> searchCrafts = searchService.shopCrafts(name, ord);
 			request.setAttribute("searchCrafts", searchCrafts);
 			
 			int fancyCount = searchService.shopFancyCount(name);
 			request.setAttribute("fancyCount", fancyCount);
 			
-			List<SearchVO> searchFancy = searchService.shopFancy(name);
+			List<SearchVO> searchFancy = searchService.shopFancy(name, ord);
 			request.setAttribute("searchFancy", searchFancy);
 			
 			nextPage="/Home/Seller/seller.jsp";
 		}else if(action.equals("/write.do")){
-			nextPage="/Home/Seller/write.jsp";
+			nextPage="/Home/Seller/upContent.jsp";
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
