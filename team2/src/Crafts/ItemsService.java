@@ -16,9 +16,9 @@ public class ItemsService {
 		dao = new ItemsDAO();
 	}	
 	
-	 public List<ItemsVO> ContentList(int pageNO, int listSize) {
+	 public List<ItemsVO> ContentList(int pageNO, int listSize, String ord) {
 		  List<ItemsVO> contentList = new ArrayList<ItemsVO>();
-		  contentList = dao.getAllContents(pageNO,listSize);
+		  contentList = dao.getAllContents(pageNO,listSize, ord);
 		  return contentList;
 	  }//end
 	

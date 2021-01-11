@@ -27,12 +27,22 @@ public class ItemsDAO {
 	}//end
 
 	//select all articles list of crafts.
-	public List<ItemsVO> getAllContents(int pageNO, int listSize) {
+	public List<ItemsVO> getAllContents(int pageNO, int listSize, String ord) {
 		List<ItemsVO> contentLIst = new ArrayList<ItemsVO>();
 		try {
 			conn = DBConnection.getConnection();
-			String query = "SELECT * FROM "+CATEGORY+" LIMIT "+pageNO+","+listSize;
-			pstmt = conn.prepareStatement(query);
+			
+			if(ord.equals("신상품순") || ord.equals("") || ord == null){
+				String query = "SELECT * FROM "+CATEGORY+" order by regdate desc "+" LIMIT "+pageNO+","+listSize;
+				pstmt = conn.prepareStatement(query);
+			}else if(ord.equals("낮은가격순")){
+				String query = "SELECT * FROM "+CATEGORY+" order by productprice "+" LIMIT "+pageNO+","+listSize;
+				pstmt = conn.prepareStatement(query);
+			}else if(ord.equals("높은가격순")){
+				String query = "SELECT * FROM "+CATEGORY+" order by productprice desc "+" LIMIT "+pageNO+","+listSize;
+				pstmt = conn.prepareStatement(query);
+			}
+			
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				ItemsVO vo = new ItemsVO();

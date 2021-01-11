@@ -68,8 +68,17 @@ public class LivingController extends HttpServlet {
 			int listSize = 8;  // 원하는 세팅 값 입력, 출력 게시물 개수
 			
 			paging.makePage(totalCount, pageNO, listSize, pageSize); 
-		
-			List <ItemsVO> contentList = service.ContentList(pageNO,listSize);
+			
+			String ord = request.getParameter("ord");
+			request.setAttribute("ord", ord);
+			
+			request.setAttribute("category", "living");
+			
+			if(ord == "" || ord == null){
+				ord="신상품순";
+			}
+			
+			List <ItemsVO> contentList = service.ContentList(pageNO,listSize, ord);
 			request.setAttribute("contentList", contentList);	
 			request.setAttribute("category", CATEGORY);	 //------ 카테고리 입력
 			request.setAttribute("totalCount", totalCount);

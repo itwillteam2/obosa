@@ -9,6 +9,15 @@
 <head>
 <jsp:include page="/Home/inc/head.jsp"/>
 <script type="text/javascript">
+	$(document).on("change", "[name=ord]",function() {
+		var ord = $(this).val();
+		if("${category}" == "living"){
+			location.href="${contextPath}/living/list.do?ord="+ord;
+		}else if("${category}" == "crafts"){
+			location.href="${contextPath}/crafts/list.do?ord="+ord;
+		}		
+	});
+
 	function fnGoPage(page) {
 		$("[name=page]").val(page);
 		$("[name=frm]").attr("action",
@@ -132,13 +141,10 @@
 						<span class="result">총 <strong>${totalCount}</strong>개의 상품이 조회되었습니다.
 						</span> 
 						<span class="selectbox"> 
-							<select name="ord">
-								<option value="o1" selected="selected">신상품순</option>
-								<option value="o5">인기상품순</option>
-								<option value="o2">낮은가격순</option>
-								<option value="o3">높은가격순</option>
-								<option value="o4">높은할인율순</option>
-								<option value="o6">상품평순</option>
+							<select name="ord" id="ord">
+								<option value="신상품순" <c:if test="${ord=='신상품순'}">selected=selected</c:if>>신상품순</option>
+								<option value="낮은가격순" <c:if test="${ord=='낮은가격순'}">selected=selected</c:if>>낮은가격순</option>
+								<option value="높은가격순" <c:if test="${ord=='높은가격순'}">selected=selected</c:if>>높은가격순</option>
 							</select>
 						</span>
 					</div>
