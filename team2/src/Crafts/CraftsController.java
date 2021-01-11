@@ -72,7 +72,7 @@ public class CraftsController extends HttpServlet{
 			String ord = request.getParameter("ord");
 			request.setAttribute("ord", ord);
 			
-			request.setAttribute("category", "living");
+			request.setAttribute("category", "crafts");
 			
 			if(ord == "" || ord == null){
 				ord="신상품순";
