@@ -105,6 +105,7 @@
 		$(".overlay").removeClass("on");
 	});
 	
+	
 	function PageMove(page){
 		location.href="http://localhost:8080/${contextPath}/${category}/list.do?pageNO="+page
 
@@ -112,9 +113,6 @@
 	
 	
 </script>
-<style>
-li.active {font-size: 50px;}
-</style>
 </head>
 <body>
 	<jsp:include page="/Home/inc/hdr_menu.jsp" />
@@ -181,7 +179,6 @@ li.active {font-size: 50px;}
 					
 					</ul>
 					<div class="clear"></div>
-					
 					<div class='paging'>
 						<span class='box'>
 							<!-- 번호 -->							
@@ -199,12 +196,6 @@ li.active {font-size: 50px;}
 														<!-- 번호 -->
 							<li><a href="javascript:PageMove(${paging.nextPage})">다음</a></li>
     					    
-
-
-
-							
-							
-							
 						</span>
 					</div>
 				</div>

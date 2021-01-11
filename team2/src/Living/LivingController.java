@@ -18,7 +18,6 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.filefilter.TrueFileFilter;
 
 import Page.Paging;
 
@@ -58,7 +57,7 @@ public class LivingController extends HttpServlet {
 		response.setContentType("text/html; charset=utf-8");
 		
 		String nextPage = "";
-		realPath = request.getServletContext().getRealPath("/files/living");
+		realPath = request.getServletContext().getRealPath("/files/"+CATEGORY);
 		String action = request.getPathInfo();
 
 		if (action == null || action.equals("/list.do")) {
@@ -106,7 +105,7 @@ public class LivingController extends HttpServlet {
 			int num = service.insertContent(vo);
 			if (num > 0) {
 				File srcDir = new File(ARTICLE_IMAGE_REPO+"\\temp");
-				File destDir = new File(ARTICLE_IMAGE_REPO + "\\living\\" + num);
+				File destDir = new File(ARTICLE_IMAGE_REPO + "\\"+CATEGORY+"\\" + num);
 				destDir.mkdir();
 				File files[] = srcDir.listFiles();
 				for (int i = 0; i < files.length; i++) {
@@ -128,19 +127,19 @@ public class LivingController extends HttpServlet {
 			nextPage = "/Home/Seller/modContent.jsp";
 			
 		}else if(action.equals("/updateContent.do")) {
-			Map<String, String> livingListMap = upload(request, response);
+			Map<String, String> ListMap = upload(request, response);
 
-			int num =Integer.parseInt(livingListMap.get("num"));
-			String productName = livingListMap.get("productName");
-			String productContent = livingListMap.get("productContent");
-			String sellerName = livingListMap.get("sellerName");
-			int productPrice = Integer.parseInt(livingListMap.get("productPrice"));
-			String productImageName1 = livingListMap.get("productImageName1");
-			String productImageName2 = livingListMap.get("productImageName2");
-			String productImageName3 = livingListMap.get("productImageName3");
-			int productQuantity = Integer.parseInt(livingListMap.get("productQuantity"));
-			int shipping_fee = Integer.parseInt(livingListMap.get("shipping_fee"));
-			int point = Integer.parseInt(livingListMap.get("point"));
+			int num =Integer.parseInt(ListMap.get("num"));
+			String productName = ListMap.get("productName");
+			String productContent = ListMap.get("productContent");
+			String sellerName = ListMap.get("sellerName");
+			int productPrice = Integer.parseInt(ListMap.get("productPrice"));
+			String productImageName1 = ListMap.get("productImageName1");
+			String productImageName2 = ListMap.get("productImageName2");
+			String productImageName3 = ListMap.get("productImageName3");
+			int productQuantity = Integer.parseInt(ListMap.get("productQuantity"));
+			int shipping_fee = Integer.parseInt(ListMap.get("shipping_fee"));
+			int point = Integer.parseInt(ListMap.get("point"));
 
 			vo.setNum(num);
 			vo.setProductName(productName);
@@ -188,9 +187,6 @@ public class LivingController extends HttpServlet {
 			repVO.setContent(content);
 			repVO.setWriter(writer);
 
-			PrintWriter pw2 = response.getWriter();
-			pw2.print("<script>" + " alert('상품후기를 등록 했습니다.');" + " location.href='" + "/living/viewContent.do?num="
-					+ num + "';" + "</script>");
 			return;
 		}
 
@@ -274,4 +270,4 @@ public class LivingController extends HttpServlet {
 	}// end of deleteFolder
 	
 
-}// end of LivingController
+}// end
