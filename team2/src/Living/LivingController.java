@@ -3,9 +3,6 @@ package Living;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.nio.file.Files;
-import java.sql.Date;
-import java.sql.Timestamp;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -16,13 +13,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.FileUtils;
-import org.apache.commons.io.filefilter.TrueFileFilter;
 
 import Page.Paging;
 
@@ -62,24 +57,33 @@ public class LivingController extends HttpServlet {
 		response.setContentType("text/html; charset=utf-8");
 		
 		String nextPage = "";
-		realPath = request.getServletContext().getRealPath("/files/living");
+		realPath = request.getServletContext().getRealPath("/files/"+CATEGORY);
 		String action = request.getPathInfo();
 
 		if (action == null || action.equals("/list.do")) {
-			List <ItemsVO> contentList = service.ContentList();
+			int totalCount = service.totalCount();
+			Paging paging = new Paging();
+			int pageNO = (request.getParameter("pageNO") == null) ? 1 : Integer.parseInt(request.getParameter("pageNO"));
+			int pageSize = 5;  // 원하는 세팅 값 입력, 페이지 하단 숫자 표시 개수
+			int listSize = 8;  // 원하는 세팅 값 입력, 출력 게시물 개수
+			
+			paging.makePage(totalCount, pageNO, listSize, pageSize); 
+			
+			String ord = request.getParameter("ord");
+			request.setAttribute("ord", ord);
+			
+			request.setAttribute("category", "living");
+			
+			if(ord == "" || ord == null){
+				ord="신상품순";
+			}
+			
+			List <ItemsVO> contentList = service.ContentList(pageNO,listSize, ord);
 			request.setAttribute("contentList", contentList);	
 			request.setAttribute("category", CATEGORY);	 //------ 카테고리 입력
-			int totalCount = service.totalCount();
-			int page = (request.getParameter("page") == null) ? 1 : Integer.parseInt(request.getParameter("page"));
-			
-			Paging paging = new Paging();
-			paging.setPageNo(page); // 현재 페이지 번호
-			paging.setPageSize(10); // 한페이지에서 불러낼 게시물의 갯수
-			paging.setTotalCount(totalCount); // 총 게시물 수
-			
-			page = (page -1) * 10; //select해오는 기준
+			request.setAttribute("totalCount", totalCount);
 			request.setAttribute("paging", paging);
-					
+	
 			nextPage="/Home/Common/category.jsp";
 		
 		}else  if (action.equals("/addItem.do")) {
@@ -110,7 +114,7 @@ public class LivingController extends HttpServlet {
 			int num = service.insertContent(vo);
 			if (num > 0) {
 				File srcDir = new File(ARTICLE_IMAGE_REPO+"\\temp");
-				File destDir = new File(ARTICLE_IMAGE_REPO + "\\living\\" + num);
+				File destDir = new File(ARTICLE_IMAGE_REPO + "\\"+CATEGORY+"\\" + num);
 				destDir.mkdir();
 				File files[] = srcDir.listFiles();
 				for (int i = 0; i < files.length; i++) {
@@ -124,27 +128,27 @@ public class LivingController extends HttpServlet {
 				out.print("<alert='등록에 실패 했습니다.'>");
 				out.print("</script>");
 			}
-		} else if (action.equals("/ToUpdateItem.do")) {
+		} else if (action.equals("/ToUpdateContent.do")) {
 			String num =request.getParameter("num");
 			ItemsVO content = (ItemsVO) service.ContentDetail(Integer.parseInt(num));
 			request.setAttribute("content", content);
 			
 			nextPage = "/Home/Seller/modContent.jsp";
 			
-		}else if(action.equals("/updateItem.do")) {
-			Map<String, String> livingListMap = upload(request, response);
+		}else if(action.equals("/updateContent.do")) {
+			Map<String, String> ListMap = upload(request, response);
 
-			int num =Integer.parseInt(livingListMap.get("num"));
-			String productName = livingListMap.get("productName");
-			String productContent = livingListMap.get("productContent");
-			String sellerName = livingListMap.get("sellerName");
-			int productPrice = Integer.parseInt(livingListMap.get("productPrice"));
-			String productImageName1 = livingListMap.get("productImageName1");
-			String productImageName2 = livingListMap.get("productImageName2");
-			String productImageName3 = livingListMap.get("productImageName3");
-			int productQuantity = Integer.parseInt(livingListMap.get("productQuantity"));
-			int shipping_fee = Integer.parseInt(livingListMap.get("shipping_fee"));
-			int point = Integer.parseInt(livingListMap.get("point"));
+			int num =Integer.parseInt(ListMap.get("num"));
+			String productName = ListMap.get("productName");
+			String productContent = ListMap.get("productContent");
+			String sellerName = ListMap.get("sellerName");
+			int productPrice = Integer.parseInt(ListMap.get("productPrice"));
+			String productImageName1 = ListMap.get("productImageName1");
+			String productImageName2 = ListMap.get("productImageName2");
+			String productImageName3 = ListMap.get("productImageName3");
+			int productQuantity = Integer.parseInt(ListMap.get("productQuantity"));
+			int shipping_fee = Integer.parseInt(ListMap.get("shipping_fee"));
+			int point = Integer.parseInt(ListMap.get("point"));
 
 			vo.setNum(num);
 			vo.setProductName(productName);
@@ -171,6 +175,13 @@ public class LivingController extends HttpServlet {
 			
 			nextPage = "/Home/Common/content.jsp";
 		
+		} else if (action.equals("/deleteContent.do")) {
+			String num = request.getParameter("num");
+			int result= service.deleteContent(Integer.parseInt(num));
+			System.out.println(result);
+			if(result==1) deleteFolder(Integer.parseInt(num));
+			nextPage = "/"+CATEGORY+"/list.do";
+			
 		} else if (action.equals("/addReply.do")) {
 
 			int rnum = service.addReply(repVO);
@@ -185,9 +196,6 @@ public class LivingController extends HttpServlet {
 			repVO.setContent(content);
 			repVO.setWriter(writer);
 
-			PrintWriter pw2 = response.getWriter();
-			pw2.print("<script>" + " alert('상품후기를 등록 했습니다.');" + " location.href='" + "/living/viewContent.do?num="
-					+ num + "';" + "</script>");
 			return;
 		}
 
@@ -233,13 +241,8 @@ public class LivingController extends HttpServlet {
 		return articleMap;
 	}//end 
 	
-
 	
-	
-	
-	
-	
-	// delete file when delete list
+	// delete file when delete content
 	public void deleteFile(int num, String fileName) {
 		try {
 			String filePath = realPath + "\\" + num + "\\" + fileName;
@@ -252,5 +255,28 @@ public class LivingController extends HttpServlet {
 			System.out.println("deleteFile error : " + e.toString());
 		}
 	}// end of deleteFile
+	
+	// delete folder when delete list
+	public void deleteFolder(int num) {
+		try {
+			String folderPath = ARTICLE_IMAGE_REPO +"\\"+CATEGORY+"\\" + num;
+			
+			System.out.println(folderPath);
+			File folder = new File(folderPath);
 
-}// end of LivingController
+			if (folder.exists()) {
+				File files[] = folder.listFiles();
+			
+				for (int i=0;i<files.length;i++) {
+				 File delFile = files[i];
+				 delFile.delete();
+				}
+				 folder.delete();
+			}
+		} catch (Exception e) {
+			System.out.println("deleteFile error : " + e.toString());
+		}
+	}// end of deleteFolder
+	
+
+}// end

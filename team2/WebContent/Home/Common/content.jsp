@@ -177,8 +177,11 @@ $(window).load(function(){
 	
 	});
 
-	$(document).on("click", ".btnModItem", function() {
-		 $("form").attr("action", "${contextPath}/${content.category}/ToUpdateItem.do").submit();
+	$(document).on("click", ".btnDelItem", function() {
+		 $("form").attr("action", "${contextPath}/${content.category}/ToUpdateContent.do").submit();
+	});
+	$(document).on("click", ".btnDelItem", function() {
+		 $("form").attr("action", "${contextPath}/${content.category}/deleteContent.do").submit();
 	});
 </script>
 </head>
@@ -240,6 +243,9 @@ $(window).load(function(){
 							<span>${content.point}점</span>
 						</span> 
 						<div class="pdtOrderLayer">
+						<c:choose>
+			 				<c:when test="${sessionScope.memtype != 'seller'}">
+						
 							<span class="btnOrderList"></span> 
 							<span class="pdtRight pdtQty pdtQtyLayer"> 
 								<span class="ipt_layer"> 
@@ -251,8 +257,6 @@ $(window).load(function(){
 							<span class="pdtRight pdtTotalPrice"> 
 								<span class="totalprice"> ${content.productPrice}원 </span>
 							</span> 
-						<c:choose>
-			 				<c:when test="${sessionScope.memtype != 'seller'}">
 							<span class="pdtRight pdtBtnList"> 
 							    <span class="btnCart">
 								   <input type="button" value="장바구니 담기" />
@@ -263,9 +267,12 @@ $(window).load(function(){
 							</span>
 						   </c:when>
 						<c:otherwise>	
+							<span class="pdtRight pdtQty pdtQtyLayer"> 
+							   100  개
+							</span> 
 								<span class="pdtRight pdtBtnList" > 
 								<span class="btnModItem">
-								  <input type="button"  class="btnModItem" value="상품 수정" />
+								    <input type="button"  class="btnModItem" value="상품 수정" />
 								    <input type="hidden" name="num" value="${content.num}" />
 								</span> 
 								<span class="btnDelItem">
@@ -273,7 +280,7 @@ $(window).load(function(){
 								</span> 
 								</span>
 						</c:otherwise>
-							</c:choose>
+						</c:choose>
 						</div>
 					</div>
 				</div>

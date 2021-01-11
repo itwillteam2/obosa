@@ -27,12 +27,22 @@ public class ItemsDAO {
 	}//end
 
 	//select all articles list of crafts.
-	public List<ItemsVO> getAllContents() {
+	public List<ItemsVO> getAllContents(int pageNO, int listSize, String ord) {
 		List<ItemsVO> contentLIst = new ArrayList<ItemsVO>();
 		try {
 			conn = DBConnection.getConnection();
-			String query = "SELECT * FROM "+CATEGORY;
-			pstmt = conn.prepareStatement(query);
+			
+			if(ord.equals("신상품순") || ord.equals("") || ord == null){
+				String query = "SELECT * FROM "+CATEGORY+" order by regdate desc "+" LIMIT "+pageNO+","+listSize;
+				pstmt = conn.prepareStatement(query);
+			}else if(ord.equals("낮은가격순")){
+				String query = "SELECT * FROM "+CATEGORY+" order by productprice "+" LIMIT "+pageNO+","+listSize;
+				pstmt = conn.prepareStatement(query);
+			}else if(ord.equals("높은가격순")){
+				String query = "SELECT * FROM "+CATEGORY+" order by productprice desc "+" LIMIT "+pageNO+","+listSize;
+				pstmt = conn.prepareStatement(query);
+			}
+			
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				ItemsVO vo = new ItemsVO();
@@ -68,14 +78,15 @@ public class ItemsDAO {
 			pstmt = conn.prepareStatement(query);
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
-				 rs.getInt(1);
+				num=rs.getInt(1);
 			}
-			return num;
+		
 		}catch (Exception e) {
 			System.out.println("getTotalCount error : " + e.toString());
 		}finally {
 			freeResource();
 		}
+
 		return num;
 	}//end of selectTotalCount
 
@@ -181,7 +192,7 @@ public class ItemsDAO {
 			pstmt.executeUpdate();
 	
 			num = vo.getNum();
-			return num;
+
 		} catch (Exception e) {
 			System.out.println("updateContent error : " + e.toString());
 		}finally {
@@ -191,19 +202,22 @@ public class ItemsDAO {
 	}//end 
 	
 //  -------- 상품 삭제 ------- //	
-	public void deleteContent(int NUM) {
+	public int deleteContent(int NUM) {
+		int num =0;
 		try {
 			conn = DBConnection.getConnection();
 			String query = "DELETE FROM "+CATEGORY+" where NUM = ?";
 			pstmt = conn.prepareStatement(query);
 			pstmt.setInt(1, NUM);
 			pstmt.executeUpdate();					
-					
+			
+			num=1;
 		} catch (Exception e) {
 			System.out.println("deleteContent error : " + e.toString());
 		}finally {
 			freeResource();
 		}
+		return num;
 	}//end
 
 	

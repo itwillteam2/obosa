@@ -66,9 +66,9 @@ public class SearchService {
 		return searchCount;
 	}
 	
-	public List<SearchVO> shopList(String search) {
+	public List<SearchVO> shopList(String search, String ord) {
 		  List<SearchVO> searchList = new ArrayList<SearchVO>();
-		  searchList = searchDAO.shopArticles(search);
+		  searchList = searchDAO.shopArticles(search, ord);
 		  return searchList;
 	  }
 	
@@ -77,9 +77,9 @@ public class SearchService {
 		return livingCount;
 	}
 
-	public List<SearchVO> shopLiving(String search) {
+	public List<SearchVO> shopLiving(String search, String ord) {
 		List<SearchVO> searchLiving = new ArrayList<SearchVO>();
-		searchLiving = searchDAO.shopLiving(search);
+		searchLiving = searchDAO.shopLiving(search, ord);
 		return searchLiving;
 	}
 	
@@ -88,9 +88,9 @@ public class SearchService {
 		return craftsCount;
 	}
 
-	public List<SearchVO> shopCrafts(String search) {
+	public List<SearchVO> shopCrafts(String search, String ord) {
 		List<SearchVO> searchCrafts = new ArrayList<SearchVO>();
-		searchCrafts = searchDAO.shopCrafts(search);
+		searchCrafts = searchDAO.shopCrafts(search, ord);
 		return searchCrafts;
 	}
 
@@ -99,9 +99,9 @@ public class SearchService {
 		return fancyCount;
 	}
 
-	public List<SearchVO> shopFancy(String search) {
+	public List<SearchVO> shopFancy(String search, String ord) {
 		List<SearchVO> searchFancy = new ArrayList<SearchVO>();
-		searchFancy = searchDAO.shopFancy(search);
+		searchFancy = searchDAO.shopFancy(search, ord);
 		return searchFancy;
 	}
 }
