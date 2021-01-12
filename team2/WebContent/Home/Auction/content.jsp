@@ -7,6 +7,7 @@
 	request.setCharacterEncoding("utf-8");
 	String num = request.getParameter("num");
 %>
+
 <c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
 
 <!DOCTYPE html>
@@ -15,6 +16,7 @@
 <jsp:include page="/Home/inc/head.jsp"/>
 <link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/Shop/ItemDetail.css">
 <link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/Shop/ScrollBar.css"/>
+<link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/bootstrap/bootstrap.css"/>
 
 <script type="text/javascript">
 
@@ -113,7 +115,7 @@ $(window).load(function(){
 
 		if ($(".overlay").hasClass("on")) {
 			$(".overlay").removeClass("on");
-		} else { 
+		} else {
 			$(".overlay.fullScreen").addClass("on");
 			obj.addClass("on");
 
@@ -227,63 +229,134 @@ $(window).load(function(){
 								});
 					</script>
 				</div>
-				<div class="inner togglebox on">
-					<span class="pdtName pc" style="margin-bottom:30px">${content.productName}</span>
-					<div class="pdtInfo">
-						<span class="pdtRight pdtseller">
-							<span>${content.sellerName}</span>
-						</span>
-						<span class="pdtRight pdtSaleprice"> 		
-							<span class="saleprice N">${content.productPrice}</span>
-						</span> 
-						<span class="pdtRight pdtDeliveryprice">
-							<span class="deliverytext">${content.shipping_fee} </span>
-						</span> 
-						<span class="pdtRight pdtpt"> 
-							<span>${content.point}점</span>
-						</span> 
-						<div class="pdtOrderLayer">
-						<c:choose>
-			 				<c:when test="${sessionScope.memtype != 'seller'}">
+				
+				<div class="product-detail-spec col-sm-12 col-md-6">
+					<div class="tableDefault style2">
+						<h3>
+							<div>현재가</div>
+							<div class="now-price">
+								
+									
+									500,000
+								
+							</div>
+							<div class="text-right"><p class="btn btn-blue"><i class="	fa fa-clock-o"></i> 남은시간 <span id="remain">14일 15시간 30분 2초</span></p></div>
+						</h3>
+						<table>
+						<caption></caption>
+						<colgroup>
+							<col>
+							<col>
+						</colgroup>	
+							<tbody>
+							<tr>
+								<th>경매번호</th>
+								<td>
+									7									
+								</td>
+							</tr>
+							<tr>
+								<th>물품번호</th>
+								<td>
+									2101M5RJONV									
+								</td>
+							</tr>
+							<tr>
+								<th>경매기간</th>
+								<td>2021/01/07 15:00:00 ~ <br class="visible-xs">2021/01/27 15:05:00</td>
+							</tr>
+							<tr>
+								<th>시작가</th>
+								<td>
+									
+										
+										500,000원
+									
+								</td>
+							</tr>
+								
+							<tr>
+								<th>입찰단위</th>
+								<td>50,000원</td>
+							</tr>
+							
+							<tr>
+								<th>최고입찰자</th>
+								<td></td>
+							</tr>
+							<tr>
+								<th>입찰방식</th>
+								<td>비공개</td>
+							</tr>
+							<tr>
+								<th>입찰 수</th>
+								<td>1<a href="#none" onclick="bidObj.bidListDefault();" class="btn btn-gray3 btn-sm fs14 ml20"><i class="fcGold fa fa-file-text-o"></i> 경매기록보기 &gt;</a></td>
+							</tr>
+							</tbody>
+							
+						</table>
+						<!--  -->
+						<table class="mt30 visible-lg visible-md visible-sm">
+							<caption></caption>
+							<colgroup>
+								<col>
+								<col>
+								<col>
+								<col>
+							</colgroup>
+							<tbody><tr class="bdr-bottom last">
+								<th>판매자 ID</th>
+								<td>allgoods</td>
+								<th class="pb8">판매자 다른물품</th>
+								<td class="pb8"><span class="lineH32">661건</span> <a href="#none" onclick="window.open('/kobay/unisrch/unisrch.do?qry=allgoods');" class="btn btn-gray2 pull-right">더보기 &gt;</a></td>
+							</tr>
+						</tbody></table>
+						<!-- 모바일 -->
+						<table class="mt30 visible-xs">
+							<caption></caption>
+							<colgroup>
+								<col>
+								<col>
+							</colgroup>
+							<tbody><tr class="bdr-bottom last">
+								<th>판매자 ID</th>
+								<td>allgoods</td>
+							</tr>
+							<tr class="bdr-bottom first last">
+								<th>판매자 다른물품</th>
+								<td><span class="lineH32">661건</span> <a href="#none" onclick="window.open('/kobay/unisrch/unisrch.do?qry=allgoods');" class="btn btn-gray2 pull-right">더보기 &gt;</a></td>
+							</tr>
+						</tbody></table>
+						<!-- //모바일 -->
+					</div>
+					<div class="row mt10">
+						<img src="/kobay/images/img_pc.jpg" class="visible-md visible-lg">
+						<img src="/kobay/images/img_m.jpg" class="visible-xs">
+					</div>
+					<div class="btnArea row mt30">
 						
-							<span class="btnOrderList"></span> 
-							<span class="pdtRight pdtQty pdtQtyLayer"> 
-								<span class="ipt_layer"> 
-									<input type="button" class="btnStockQty Minus" value="-" /> 
-									<input type="button" class="btnStockQty Plus" value="+" /> 
-									<input type="tel" name="stockqty" value="1" maxlength="4" onkeypress="fnOnlyNumber(this);" />
-								</span>
-							</span> 
-							<span class="pdtRight pdtTotalPrice"> 
-								<span class="totalprice"> ${content.productPrice}원 </span>
-							</span> 
-							<span class="pdtRight pdtBtnList"> 
-							    <span class="btnCart">
-								   <input type="button" value="장바구니 담기" />
-								</span> 
-								<span class="btnOrder">
-									<input type="button" value="바로 구매하기" />
-								</span> 
-							</span>
-						   </c:when>
-						<c:otherwise>	
-							<span class="pdtRight pdtQty pdtQtyLayer"> 
-							   100  개
-							</span> 
-								<span class="pdtRight pdtBtnList" > 
-								<span class="btnModItem">
-								    <input type="button"  class="btnModItem" value="상품 수정" />
-								    <input type="hidden" name="num" value="${content.num}" />
-								</span> 
-								<span class="btnDelItem">
-									<input type="button" value="상품 삭제" />
-								</span> 
-								</span>
-						</c:otherwise>
-						</c:choose>
-						</div>
+							
+								
+									
+										
+											
+												<p class="col-sm-3 btn-block-xs"><a href="#none" onclick="bidObj.bidFormLoad();" class="btn btn-blue btn-lg fs16 wp100">입찰하기</a></p>
+											
+											
+										
+										<p class="col-sm-3 btn-block-xs"><a href="#none" onclick="favrObj.favrAdd();" class="btn btn-gold btn-lg fs16 wp100">관심물품</a></p>
+										<p class="col-sm-3 btn-block-xs"><a href="#none" onclick="goInquiry('2101M5RJONV','7');" class="btn btn-gray2 btn-lg fs16 wp100">문의하기</a></p>
+										<p class="col-sm-3 btn-block-xs"><a href="#none" onclick="location.href='/kobay/item/planList.do?categoryid=01&amp;itemType=OK'" class="btn btn-gray2 btn-lg fs16 wp100">전체보기</a></p>
+										
+									
+									
+								
+							
+							
+						
 					</div>
 				</div>
+				
 			</section>
 		</form>
 			<section class="item_content_bar" style="z-index: 997 !important;">
