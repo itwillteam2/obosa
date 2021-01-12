@@ -20,12 +20,6 @@
 </head>
 <script type="text/javascript">
 
-  function change_action(){
-	  var form = $("form");
-	  var category = $("#productCategoryNo option:selected").val()
-      var action = "${contextPath}/"+category;
-      form.attr("action", action +"/addItem.do");
-  }
 
 	function smcheck(){
 		var category = $("#productCategoryNo option:selected").val();
@@ -111,7 +105,7 @@
 	</div>
 </div>
 <article class="product" style="width:1200px; margin : 0 auto" >
-	<form action="" method="post" enctype="multipart/form-data" name="fr">
+	<form action="${contextPath}/category/addItem.do" method="post" enctype="multipart/form-data" name="fr">
 		<table class="table">
 			<colgroup>
 				<col style="width:120px" />
@@ -127,7 +121,7 @@
 					<label for="productCategoryNo" class="m-0">카테고리</label>
 				</th>
 				<td>
-					<select class="form-control" name="productCategoryNo" id="productCategoryNo" required onchange="change_action();">
+					<select class="form-control" name="category" id="productCategoryNo" required onchange="change_action();">
 						<option value="">선택하세요</option>
 						<option value="living">리빙</option>
 						<option value="crafts">공예</option>										

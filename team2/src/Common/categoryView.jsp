@@ -10,13 +10,16 @@
 <jsp:include page="/Home/inc/head.jsp"/>
 <script type="text/javascript">
 	$(document).on("change", "[name=ord]",function() {
-		var ord = $(this).val();
-		if("${category}" == "living"){
-			location.href="${contextPath}/living/list.do?ord="+ord;
-		}else if("${category}" == "crafts"){
-			location.href="${contextPath}/crafts/list.do?ord="+ord;
-		}		
+		var ord = $(this).val();	
+			location.href="${contextPath}/category/list.do?category=${category}&ord="+ord;			
 	});
+
+	function fnGoPage(page) {
+		$("[name=page]").val(page);
+		$("[name=frm]").attr("action",
+				"https://www.artboxmall.com/home/shop/category.asp").attr(
+				"target", "_self").attr("method", "get").submit();
+	}
 
 	$(document).on({
 		mouseenter : function() {
@@ -26,6 +29,17 @@
 			$(this).find(".hover").removeClass("on");
 		}
 	}, ".itemList>li");
+
+	$(document)
+			.on(
+					"click",
+					".hover>.wish",
+					function() {
+
+						alert("회원 전용 서비스입니다.");
+						location.href = "https://www.artboxmall.com:443/Home/Member/Login.asp?rtnURL=%2Fhome%2Fshop%2Fcategory%2Easp";
+
+					});
 
 	$(document).on(
 			"click",
@@ -98,9 +112,9 @@
 	
 	
 	function PageMove(page){
-		location.href="http://localhost:8080/${contextPath}/${category}/list.do?pageNO="+page
-
-	}
+		var ord = $("#ord option:selected").val();
+		location.href="${contextPath}/category/list.do?category=${category}&ord=${ord}&pageNO="+page;
+			}
 	
 	
 </script>

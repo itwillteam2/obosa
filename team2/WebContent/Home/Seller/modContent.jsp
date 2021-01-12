@@ -22,8 +22,8 @@
 <script type="text/javascript">
 	$(document).ready(
 	 function category(){
-		 var category = $("#select_category").val();
-			 
+		 var category = $("#category").val();
+	
 		 if(category=="_living"){	
 			$('#productCategoryNo').val("living").prop("selected",true);
 		}else if(category=="_crafts"){
@@ -108,7 +108,7 @@
 			return;
 		}
 		
-		 $("form").attr("action", "${contextPath}/${content.category}/updateContent.do").submit();
+		 $("form").attr("action", "${contextPath}/category/updateContent.do").submit();
 	}
 </script>
 <body>
@@ -137,7 +137,7 @@
 				</th>
 				<td>
 					<select class="form-control" name="productCategoryNo" id="productCategoryNo" required onchange="change_action();">
-						<option id="cat" value="${content.category}" style="display:none"></option>
+						<option id="category" value="_${content.category}" style="display:none"></option>
 						<option disabled>선택하세요</option>
 						<option value="living" disabled>리빙</option>
 						<option value="crafts" disabled>공예</option>
@@ -147,7 +147,8 @@
 			<tr>
 				<th class="align-middle">
 					<label for="productName" class="m-0">상품 이름</label>
-					<input type="hidden" name="num" value="${content.num}">
+					<input type="hidden" name="num" value="${content.num}" />
+					<input type="hidden" name="category" value="${content.category}" />
 				</th>
 				<td>
 					<input class="form-control" type="text" name="productName" id="productName" value="${content.productName}" required />

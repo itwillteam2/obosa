@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import DBUtil.DBConnection;
+import Living.ItemsVO;
 
 public class CsCenterDAO {
 
@@ -600,5 +601,79 @@ public class CsCenterDAO {
 			freeResource();
 		}
 		return check;	
+	}
+
+	public int getTotalCount() {
+		int num = 0;
+		try {
+			conn = DBConnection.getConnection();
+			String query = "SELECT count(*) FROM NOTICE";
+			pstmt = conn.prepareStatement(query);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				num=rs.getInt(1);
+			}
+		
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			freeResource();
+		}
+
+		return num;
+	}
+
+	public List<NoticeVO> getAllNotices(int pageNO, int listSize) {
+		List<NoticeVO> pagingList = new ArrayList<NoticeVO>();
+		pageNO= (pageNO-1)*listSize;
+		try {
+			conn = DBConnection.getConnection();
+			
+				String query = "SELECT * FROM notice order by nnum desc "+" LIMIT "+pageNO+","+listSize;
+				pstmt = conn.prepareStatement(query);			
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				NoticeVO vo = new NoticeVO();
+				vo.setNnum(rs.getInt("nnum"));
+				vo.setPw(rs.getString("pw"));
+				vo.setTitle(rs.getString("title"));
+				vo.setContent(rs.getString("content"));
+				vo.setDate(rs.getTimestamp("date"));
+				pagingList.add(vo);
+			}
+						
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			freeResource();
+		}
+		return pagingList;
+	}
+
+	public List<NoticeVO> getselectNotices(int pageNO, int listSize, String category, String searchText) {
+		List<NoticeVO> NoticeSearchList = new ArrayList<NoticeVO>();
+		pageNO= (pageNO-1)*listSize;
+		try {
+			conn = DBConnection.getConnection();
+			
+				String query = "SELECT * FROM notice where " + category + " like '%" + searchText + "%' order by nnum desc "+" LIMIT "+pageNO+","+listSize;
+				pstmt = conn.prepareStatement(query);			
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				NoticeVO vo = new NoticeVO();
+				vo.setNnum(rs.getInt("nnum"));
+				vo.setPw(rs.getString("pw"));
+				vo.setTitle(rs.getString("title"));
+				vo.setContent(rs.getString("content"));
+				vo.setDate(rs.getTimestamp("date"));
+				NoticeSearchList.add(vo);
+			}
+						
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			freeResource();
+		}
+		return NoticeSearchList;
 	}
 }
