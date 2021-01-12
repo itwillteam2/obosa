@@ -18,13 +18,6 @@
 		}		
 	});
 
-	function fnGoPage(page) {
-		$("[name=page]").val(page);
-		$("[name=frm]").attr("action",
-				"https://www.artboxmall.com/home/shop/category.asp").attr(
-				"target", "_self").attr("method", "get").submit();
-	}
-
 	$(document).on({
 		mouseenter : function() {
 			$(this).find(".hover").addClass("on");
@@ -33,17 +26,6 @@
 			$(this).find(".hover").removeClass("on");
 		}
 	}, ".itemList>li");
-
-	$(document)
-			.on(
-					"click",
-					".hover>.wish",
-					function() {
-
-						alert("회원 전용 서비스입니다.");
-						location.href = "https://www.artboxmall.com:443/Home/Member/Login.asp?rtnURL=%2Fhome%2Fshop%2Fcategory%2Easp";
-
-					});
 
 	$(document).on(
 			"click",

@@ -1,6 +1,9 @@
 package CsCenter;
 
+import java.util.ArrayList;
 import java.util.List;
+
+import Living.ItemsVO;
 
 public class CsCenterService {
 	
@@ -101,6 +104,23 @@ public class CsCenterService {
 		
 		return check;
 	}
+
+	public int totalCount() {
+		int totalCount = CsCenterDAO.getTotalCount();
+		return totalCount;
+	}
+
+	public List<NoticeVO> pagingList(int pageNO, int listSize) {
+		  List<NoticeVO> pagingList = new ArrayList<NoticeVO>();
+		  pagingList = CsCenterDAO.getAllNotices(pageNO,listSize);
+		  return pagingList;
+	  }
+	
+	public List<NoticeVO> NoticeSearchList(int pageNO, int listSize, String category, String searchText) {
+		  List<NoticeVO> NoticeSearchList = new ArrayList<NoticeVO>();
+		  NoticeSearchList = CsCenterDAO.getselectNotices(pageNO,listSize,category,searchText);
+		  return NoticeSearchList;
+	  }
 
 
 

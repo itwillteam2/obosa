@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import Living.ItemsVO;
+import Page.Paging;
 
 @WebServlet("/CsCenter/*")
 public class CsCenterController extends HttpServlet {
@@ -61,11 +62,52 @@ public class CsCenterController extends HttpServlet {
 			nextPage = "/Home/CsCenter/NoticeWrite.jsp";
 		} else if (action.equals("/NoticeList.do")) {
 			
+			int totalCount = CsCenterService.totalCount();
+			Paging paging = new Paging();
+			int pageNO = (request.getParameter("pageNO") == null) ? 1 : Integer.parseInt(request.getParameter("pageNO"));
+			int pageSize = 5;
+			int listSize = 5;
+			
+			paging.makePage(totalCount, pageNO, pageSize, listSize); 
+			
 			NoticeList  = CsCenterService.listNotice(); 
 			
 			request.setAttribute("NoticeList", NoticeList);
+			
+			List <NoticeVO> pagingList = CsCenterService.pagingList(pageNO,listSize);
+			request.setAttribute("pagingList", pagingList);	
+			request.setAttribute("totalCount", totalCount);
+			request.setAttribute("paging", paging);
 
 			nextPage = "/Home/CsCenter/NoticeList.jsp";
+		
+		}else if (action.equals("/NoticeSearch.do")) {
+			
+			int totalCount = CsCenterService.totalCount();
+			Paging paging = new Paging();
+			int pageNO = (request.getParameter("pageNO") == null) ? 1 : Integer.parseInt(request.getParameter("pageNO"));
+			int pageSize = 5;
+			int listSize = 5;
+			
+			paging.makePage(totalCount, pageNO, pageSize, listSize); 
+			
+			NoticeList  = CsCenterService.listNotice(); 
+			
+			String searchText = request.getParameter("searchText");
+			String category = request.getParameter("category");
+			
+			request.setAttribute("NoticeList", NoticeList);
+			
+			request.setAttribute("category", category);
+			request.setAttribute("searchText", searchText);
+			
+			List <NoticeVO> pagingList = CsCenterService.NoticeSearchList(pageNO,listSize,category,searchText);
+			request.setAttribute("pagingList", pagingList);	
+			request.setAttribute("totalCount", totalCount);
+			request.setAttribute("paging", paging);
+
+			nextPage = "/Home/CsCenter/NoticeList.jsp";
+		
 		}else if (action.equals("/InquiryList.do")) {
 			
 			InquiryList  = CsCenterService.listInquiry(); 

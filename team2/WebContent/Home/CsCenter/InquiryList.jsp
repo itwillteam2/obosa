@@ -48,7 +48,11 @@
 	</div>
 
 	<div class="sel_box">
-		<span onclick="javascript:location.href='${contextPath}/CsCenter/InquiryWrite.do';">문의하기</span>
+		<c:choose>
+		<c:when test="${sessionScope.id ne 'admin'}">
+			<span onclick="javascript:location.href='${contextPath}/CsCenter/InquiryWrite.do';">문의하기</span>
+		</c:when>
+		</c:choose>
 		</div>
 		<div style="clear: both;"></div>
 		<div class="tab_gubn">
@@ -82,24 +86,23 @@
 				<c:choose>
 					<c:when test="${sessionScope.id == 'admin'}">
 						<c:forEach var="InqRepList" items="${InqRepList}">
-							<c:choose>
-								<c:when test="${InqRepList.inqnum == InquiryList.inqnum && !empty InqRepList.content}">
+								<c:if test="${InqRepList.inqnum == InquiryList.inqnum && !empty InqRepList.content}">
 									<div class="more_info2">
 										<span onclick="window.open('${contextPath}/Home/CsCenter/ReplyModify.jsp?inqnum=${InquiryList.inqnum}', 
 										'Q&A답변수정', 'width=500, height=400, location=no, status=no, scrollbars=no, resizable=no, left=500, top=100' );">
 										답변 수정</span>
 										<a href="${contextPath}/Home/CsCenter/ReplyDelete.jsp?inqnum=${InqRepList.inqnum}">답변 삭제</a>
 									</div>
-								</c:when>
-								<c:otherwise>
-								<div class="more_info">
-								<span onclick="window.open('${contextPath}/Home/CsCenter/Reply.jsp?inqnum=${InquiryList.inqnum}', 
-								'Q&A답변등록', 'width=500, height=400, location=no, status=no, scrollbars=no, resizable=no, left=500, top=100' );">
-								Q&A 답변 작성</span></div>	
-								</c:otherwise>
-							</c:choose>		
-						</c:forEach>																				
-					</c:when>	
+								</c:if>	
+						</c:forEach>
+						<div class="more_info" style="margin-top:20px;">
+						<span onclick="window.open('${contextPath}/Home/CsCenter/Reply.jsp?inqnum=${InquiryList.inqnum}', 
+						'Q&A답변등록', 'width=500, height=400, location=no, status=no, scrollbars=no, resizable=no, left=500, top=100' );">
+						Q&A 답변 작성</span></div>																					
+					</c:when>
+					
+					
+									
 					<c:when test="${sessionScope.id == InquiryList.id }">
 						<div class="more_info">
 							<span><a href="${contextPath}/CsCenter/InquiryModify.do?inqnum=${InquiryList.inqnum}" style="color : white;">FAQ 수정</a></span>
