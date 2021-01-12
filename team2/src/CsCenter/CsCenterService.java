@@ -122,6 +122,23 @@ public class CsCenterService {
 		  return NoticeSearchList;
 	  }
 
+	public int totalCount2() {
+		int totalCount = CsCenterDAO.getTotalCount2();
+		return totalCount;
+	}
+
+	public List<InquiryVO> pagingList2(int pageNO, int listSize) {
+		List<InquiryVO> pagingList = new ArrayList<InquiryVO>();
+		  pagingList = CsCenterDAO.getAllInquiry(pageNO,listSize);
+		  return pagingList;
+	}
+
+	public List<InquiryVO> InquirySearchList(int pageNO, int listSize, String category, String searchText) {
+		List<InquiryVO> InquirySearchList = new ArrayList<InquiryVO>();
+		InquirySearchList = CsCenterDAO.getselectInquiry(pageNO,listSize,category,searchText);
+		  return InquirySearchList;
+	}
+
 
 
 

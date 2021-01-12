@@ -676,4 +676,84 @@ public class CsCenterDAO {
 		}
 		return NoticeSearchList;
 	}
+
+	public int getTotalCount2() {
+		int num = 0;
+		try {
+			conn = DBConnection.getConnection();
+			String query = "SELECT count(*) FROM Inquiry";
+			pstmt = conn.prepareStatement(query);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				num=rs.getInt(1);
+			}
+		
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			freeResource();
+		}
+
+		return num;
+	}
+
+	public List<InquiryVO> getAllInquiry(int pageNO, int listSize) {
+		List<InquiryVO> pagingList = new ArrayList<InquiryVO>();
+		pageNO= (pageNO-1)*listSize;
+		try {
+			conn = DBConnection.getConnection();
+			
+				String query = "SELECT * FROM Inquiry order by inqnum desc "+" LIMIT "+pageNO+","+listSize;
+				pstmt = conn.prepareStatement(query);			
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				InquiryVO vo = new InquiryVO();
+				vo.setInqnum(rs.getInt("inqnum"));
+				vo.setId(rs.getString("id"));
+				vo.setPw(rs.getString("pw"));
+				vo.setTitle(rs.getString("title"));
+				vo.setEmail(rs.getString("email"));
+				vo.setContent(rs.getString("content"));
+				vo.setDate(rs.getTimestamp("date"));
+				vo.setCategory(rs.getString("category"));
+				pagingList.add(vo);
+			}
+						
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			freeResource();
+		}
+		return pagingList;
+	}
+
+	public List<InquiryVO> getselectInquiry(int pageNO, int listSize, String category, String searchText) {
+		List<InquiryVO> InquirySearchList = new ArrayList<InquiryVO>();
+		pageNO= (pageNO-1)*listSize;
+		try {
+			conn = DBConnection.getConnection();
+			
+				String query = "SELECT * FROM inquiry where " + category + " like '%" + searchText + "%' order by inqnum desc "+" LIMIT "+pageNO+","+listSize;
+				pstmt = conn.prepareStatement(query);			
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				InquiryVO vo = new InquiryVO();
+				vo.setInqnum(rs.getInt("inqnum"));
+				vo.setId(rs.getString("id"));
+				vo.setPw(rs.getString("pw"));
+				vo.setTitle(rs.getString("title"));
+				vo.setEmail(rs.getString("email"));
+				vo.setContent(rs.getString("content"));
+				vo.setDate(rs.getTimestamp("date"));
+				vo.setCategory(rs.getString("category"));
+				InquirySearchList.add(vo);
+			}
+						
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			freeResource();
+		}
+		return InquirySearchList;
+	}
 }

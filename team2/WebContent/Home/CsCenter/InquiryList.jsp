@@ -30,6 +30,11 @@
 			$(this).next("div").css("display","none");
 		}
 	});
+	
+	function PageMove(page){
+		location.href="${contextPath}/CsCenter/InquiryList.do?pageNO="+page
+
+	}
 </script>
 </head>
 <body>
@@ -62,7 +67,7 @@
 				<li>등록일</li>
 			</ul>
 		</div>
-		<c:forEach var="InquiryList" items="${InquiryList}">			
+		<c:forEach var="InquiryList" items="${pagingList}">			
 		<div class="list_line">
 				<ul>							
 					<li>${InquiryList.inqnum}</li>
@@ -112,38 +117,45 @@
 				</c:choose>	
 			</div>
 		</c:forEach>
-		<form method="post" action="InquirySearch.do" name="search">
+		
 		<div class="FAQ">
 			<div class="SearchContent" style="margin-top:20px; float:right;" >
 				<div class="selectbox">
+				<form method="post" action="InquirySearch.do" name="search">
 					<select id='category' name='category' style="float: right;">
-						<option value="" selected="selected">상담유형 선택</option>
-						<option value="order">주문/결제</option>
-						<option value="delivery">배송</option>
-						<option value="cancel">취소/반품/교환</option>
-						<option value="etc">기타</option>
+						<option value="id" selected>작성자</option>
+						<option value="title">제목</option>
 					</select>
 					<ul>
 						<li class="Search" style="float:right; width:250px; height:40px; border-bottom:2px solid #787878; margin:20px 0 0 0;">
 							<div class="CommonSearch">
-								<input type="text" id="kwd" value=""
-								style="display:inline-block; background-color:#ffffff; border:0; padding:0; margin:0; width:200px; height:35px; line-height:35px; vertical-align:top; font-size:16px; color:#000000;">
+								<input type="text" id="searchText" name="searchText" style="display:inline-block; background-color:#ffffff; border:0; padding:0; margin:0; width:200px; height:35px; line-height:35px; vertical-align:top; font-size:16px; color:#000000;">
 									<a href="javascript:search.submit();">
 										<img src="${contextPath}/Images/Ver1/Common/top_icon_search.png" />
 									</a>
 							</div>
 						</li>
 					</ul>
+				</form>
 				</div>
 			</div>
 		</div>
-		</form>
+		
 		<div style="clear: both;"></div>
 		<div class="paging">
 			<span class="box">
-				<span class="btn_pageprev opacity"><a href="javascript:;"><img class="paging_pc" src="${contextPath}/Images/Ver1/Common/btn_board_prev.gif"></a></span>
-				<span class="txt_pagenum"><a href="javascript:;" class="btn_pageon">1</a></span>
-				<span class="btn_pagenext opacity"><a href="javascript:;" onclick="alert('마지막 페이지입니다.');">	<img class="paging_pc" src="${contextPath}/Images/Ver1/Common/btn_board_next.gif"></a></span>
+				<span class="btn_pageprev"><a href="javascript:PageMove(${paging.prevPage})"><img class="paging_pc" src="${contextPath}/Images/Ver1/Common/btn_board_prev.gif" /></a></span>
+					<c:forEach var="i" begin="${paging.startPage}" end="${paging.endPage}" step="1">
+						<c:choose>
+							<c:when test="${i eq paging.pageNo}">
+								<span class="txt_pagenum"><a href="javascript:PageMove(${i})" class="btn_pageon">${i}</a></span>
+							</c:when>
+							<c:otherwise>
+								<span class="txt_pagenum"><a href="javascript:PageMove(${i})">${i}</a></span>
+							</c:otherwise>
+						</c:choose>
+					</c:forEach>
+				<span class="btn_pagenext"><a href="javascript:PageMove(${paging.nextPage})"><img class="paging_pc" src="${contextPath}/Images/Ver1/Common/btn_board_next.gif" /></a></span>
 			</span>
 		</div>
 	</div>

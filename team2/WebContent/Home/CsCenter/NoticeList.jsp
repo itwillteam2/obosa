@@ -136,8 +136,7 @@
 							</c:otherwise>
 						</c:choose>
 					</c:forEach>
-					<span class="btn_pagenext"><a href="javascript:PageMove(${paging.nextPage})"><img class="paging_pc" src="${contextPath}/Images/Ver1/Common/btn_board_next.gif" /></a></span>
-				</span>
+				<span class="btn_pagenext"><a href="javascript:PageMove(${paging.nextPage})"><img class="paging_pc" src="${contextPath}/Images/Ver1/Common/btn_board_next.gif" /></a></span>
 			</span>
 		</div>
 	</div>

@@ -110,16 +110,54 @@ public class CsCenterController extends HttpServlet {
 		
 		}else if (action.equals("/InquiryList.do")) {
 			
+			int totalCount2= CsCenterService.totalCount2();
+			Paging paging = new Paging();
+			int pageNO = (request.getParameter("pageNO") == null) ? 1 : Integer.parseInt(request.getParameter("pageNO"));
+			int pageSize = 5;
+			int listSize = 5;
+			
+			paging.makePage(totalCount2, pageNO, pageSize, listSize); 
+			
 			InquiryList  = CsCenterService.listInquiry(); 
 			InqRepList = CsCenterService.listInqRep();
 			request.setAttribute("InquiryList", InquiryList);
 			request.setAttribute("InqRepList", InqRepList);
-			System.out.println(InquiryList);
+
+			List <InquiryVO> pagingList = CsCenterService.pagingList2(pageNO,listSize);
+			request.setAttribute("pagingList", pagingList);	
+			request.setAttribute("totalCount", totalCount2);
+			request.setAttribute("paging", paging);
+			
 			nextPage = "/Home/CsCenter/InquiryList.jsp";
-		}  
+		}else if (action.equals("/InquirySearch.do")) {
+			
+			int totalCount2 = CsCenterService.totalCount2();
+			Paging paging = new Paging();
+			int pageNO = (request.getParameter("pageNO") == null) ? 1 : Integer.parseInt(request.getParameter("pageNO"));
+			int pageSize = 5;
+			int listSize = 5;
+			
+			paging.makePage(totalCount2, pageNO, pageSize, listSize); 
+			
+			InquiryList  = CsCenterService.listInquiry(); 
+			InqRepList = CsCenterService.listInqRep();
+			request.setAttribute("InquiryList", InquiryList);
+			request.setAttribute("InqRepList", InqRepList);
+			
+			String searchText = request.getParameter("searchText");
+			String category = request.getParameter("category");
+			
+			request.setAttribute("category", category);
+			request.setAttribute("searchText", searchText);
+			
+			List <InquiryVO> pagingList = CsCenterService.InquirySearchList(pageNO,listSize,category,searchText);
+			request.setAttribute("pagingList", pagingList);	
+			request.setAttribute("totalCount", totalCount2);
+			request.setAttribute("paging", paging);
+
+			nextPage = "/Home/CsCenter/InquiryList.jsp";
 		
-		
-		  else if (action.equals("/InquiryWrite.do")) {
+		}else if (action.equals("/InquiryWrite.do")) {
 			nextPage = "/Home/CsCenter/InquiryWrite.jsp";
 		} else if (action.equals("/addNotice.do")) {
 			
