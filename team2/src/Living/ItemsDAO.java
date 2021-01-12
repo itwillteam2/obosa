@@ -29,6 +29,7 @@ public class ItemsDAO {
 	//select all articles list of crafts.
 	public List<ItemsVO> getAllContents(int pageNO, int listSize, String ord) {
 		List<ItemsVO> contentLIst = new ArrayList<ItemsVO>();
+		pageNO = pageNO-1; // limit 구문 인덱스 값 조정
 		try {
 			conn = DBConnection.getConnection();
 			
