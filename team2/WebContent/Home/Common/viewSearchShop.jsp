@@ -258,6 +258,26 @@
 		$("#craftsa").css("color", "");
 		$("#fancya").css("color", "red");
 	}
+	
+	function allPageMove(page){
+		var ord=$("#ord1").val();
+		location.href="http://localhost:8080/${contextPath}/common/viewSearchItems.do?allPageNO="+page+"&ord="+ord+"&category=all&type=all&kwd=${kwd}";
+	}
+	
+	function livingPageMove(page){
+		var ord=$("#ord2").val();
+		location.href="http://localhost:8080/${contextPath}/common/viewSearchItems.do?livingPageNO="+page+"&ord="+ord+"&category=living&type=living&kwd=${kwd}";
+	}
+	
+	function craftsPageMove(page){
+		var ord=$("#ord3").val();
+		location.href="http://localhost:8080/${contextPath}/common/viewSearchItems.do?craftsPageNO="+page+"&ord="+ord+"&category=crafts&type=crafts&kwd=${kwd}";
+	}
+	
+	function fancyPageMove(page){
+		var ord=$("#ord4").val();
+		location.href="http://localhost:8080/${contextPath}/common/viewSearchItems.do?fancyPageNO="+page+"&ord="+ord+"&category=fancy&type=fancy&kwd=${kwd}";
+	}
 </script>
 </head>
 <body>
@@ -338,6 +358,24 @@
 								</c:forEach>
 							</ul>
 							<div class="clear"></div>
+							<div class='paging'>
+								<span class='box'>
+									<!-- 번호 -->							
+							        <li><a href="javascript:allPageMove(${allPaging.prevPage})">이전</a></li>
+									<c:forEach var="i" begin="${allPaging.startPage}" end="${allPaging.endPage}" step="1">
+										<c:choose>
+											<c:when test="${i eq allPaging.pageNo}">
+												<li class="active"><a href="javascript:allPageMove(${i})">${i}</a></li>
+											</c:when>
+											<c:otherwise>
+												<li><a href="javascript:allPageMove(${i})">${i}</a></li>
+											</c:otherwise>
+										</c:choose>
+									</c:forEach>
+																<!-- 번호 -->
+									<li><a href="javascript:allPageMove(${allPaging.nextPage})">다음</a></li>
+								</span>
+							</div>
 						</div>
 						</div>
 						
@@ -398,6 +436,24 @@
 									</c:forEach>
 								</ul>
 								<div class="clear"></div>
+								<div class='paging'>
+									<span class='box'>
+										<!-- 번호 -->							
+								        <li><a href="javascript:livingPageMove(${livingPaging.prevPage})">이전</a></li>
+										<c:forEach var="i" begin="${livingPaging.startPage}" end="${livingPaging.endPage}" step="1">
+											<c:choose>
+												<c:when test="${i eq livingPaging.pageNo}">
+													<li class="active"><a href="javascript:livingPageMove(${i})">${i}</a></li>
+												</c:when>
+												<c:otherwise>
+													<li><a href="javascript:livingPageMove(${i})">${i}</a></li>
+												</c:otherwise>
+											</c:choose>
+										</c:forEach>
+																	<!-- 번호 -->
+										<li><a href="javascript:livingPageMove(${livingPaging.nextPage})">다음</a></li>
+									</span>
+								</div>
 							</div>
 						</div>
 						
@@ -458,6 +514,24 @@
 									</c:forEach>
 								</ul>
 								<div class="clear"></div>
+								<div class='paging'>
+									<span class='box'>
+										<!-- 번호 -->							
+								        <li><a href="javascript:craftsPageMove(${craftsPaging.prevPage})">이전</a></li>
+										<c:forEach var="i" begin="${craftsPaging.startPage}" end="${craftsPaging.endPage}" step="1">
+											<c:choose>
+												<c:when test="${i eq craftsPaging.pageNo}">
+													<li class="active"><a href="javascript:craftsPageMove(${i})">${i}</a></li>
+												</c:when>
+												<c:otherwise>
+													<li><a href="javascript:craftsPageMove(${i})">${i}</a></li>
+												</c:otherwise>
+											</c:choose>
+										</c:forEach>
+																	<!-- 번호 -->
+										<li><a href="javascript:craftsageMove(${craftsPaging.nextPage})">다음</a></li>
+									</span>
+								</div>
 							</div>
 						</div>
 						
@@ -518,6 +592,24 @@
 									</c:forEach>
 								</ul>
 								<div class="clear"></div>
+								<div class='paging'>
+									<span class='box'>
+										<!-- 번호 -->							
+								        <li><a href="javascript:fancyPageMove(${fancyPaging.prevPage})">이전</a></li>
+										<c:forEach var="i" begin="${fancyPaging.startPage}" end="${fancyPaging.endPage}" step="1">
+											<c:choose>
+												<c:when test="${i eq fancyPaging.pageNo}">
+													<li class="active"><a href="javascript:fancyPageMove(${i})">${i}</a></li>
+												</c:when>
+												<c:otherwise>
+													<li><a href="javascript:fancyPageMove(${i})">${i}</a></li>
+												</c:otherwise>
+											</c:choose>
+										</c:forEach>
+																	<!-- 번호 -->
+										<li><a href="javascript:fancyPageMove(${fancyPaging.nextPage})">다음</a></li>
+									</span>
+								</div>
 							</div>
 						</div>
 					</div>

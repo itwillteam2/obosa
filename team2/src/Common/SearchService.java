@@ -66,9 +66,9 @@ public class SearchService {
 		return searchCount;
 	}
 	
-	public List<SearchVO> shopList(String search, String ord) {
+	public List<SearchVO> shopList(int pageNO, int listSize, String search, String ord) {
 		  List<SearchVO> searchList = new ArrayList<SearchVO>();
-		  searchList = searchDAO.shopArticles(search, ord);
+		  searchList = searchDAO.shopArticles(pageNO, listSize, search, ord);
 		  return searchList;
 	  }
 	
@@ -77,9 +77,9 @@ public class SearchService {
 		return livingCount;
 	}
 
-	public List<SearchVO> shopLiving(String search, String ord) {
+	public List<SearchVO> shopLiving(int pageNO, int listSize, String search, String ord) {
 		List<SearchVO> searchLiving = new ArrayList<SearchVO>();
-		searchLiving = searchDAO.shopLiving(search, ord);
+		searchLiving = searchDAO.shopLiving(pageNO, listSize, search, ord);
 		return searchLiving;
 	}
 	
@@ -88,9 +88,9 @@ public class SearchService {
 		return craftsCount;
 	}
 
-	public List<SearchVO> shopCrafts(String search, String ord) {
+	public List<SearchVO> shopCrafts(int pageNO, int listSize, String search, String ord) {
 		List<SearchVO> searchCrafts = new ArrayList<SearchVO>();
-		searchCrafts = searchDAO.shopCrafts(search, ord);
+		searchCrafts = searchDAO.shopCrafts(pageNO, listSize, search, ord);
 		return searchCrafts;
 	}
 
@@ -99,9 +99,33 @@ public class SearchService {
 		return fancyCount;
 	}
 
-	public List<SearchVO> shopFancy(String search, String ord) {
+	public List<SearchVO> shopFancy(int pageNO, int listSize, String search, String ord) {
 		List<SearchVO> searchFancy = new ArrayList<SearchVO>();
-		searchFancy = searchDAO.shopFancy(search, ord);
+		searchFancy = searchDAO.shopFancy(pageNO, listSize, search, ord);
+		return searchFancy;
+	}
+
+	public List<SearchVO> viewSearchList(int allPageNO, int listSize, String kwd, String ord) {
+		List<SearchVO> viewSearchList = new ArrayList<SearchVO>();
+		  viewSearchList = searchDAO.viewSearchArticles(allPageNO, listSize, kwd, ord);
+		  return viewSearchList;
+	}
+	
+	public List<SearchVO> viewSearchLiving(int livingPageNO, int listSize, String search, String ord) {
+		List<SearchVO> searchLiving = new ArrayList<SearchVO>();
+		searchLiving = searchDAO.viewSearchLiving(livingPageNO, listSize, search, ord);
+		return searchLiving;
+	}
+	
+	public List<SearchVO> viewSearchCrafts(int craftsPageNO, int listSize, String search, String ord) {
+		List<SearchVO> searchCrafts = new ArrayList<SearchVO>();
+		searchCrafts = searchDAO.viewSearchCrafts(craftsPageNO, listSize, search, ord);
+		return searchCrafts;
+	}
+	
+	public List<SearchVO> viewSearchFancy(int fancyPageNO, int listSize, String search, String ord) {
+		List<SearchVO> searchFancy = new ArrayList<SearchVO>();
+		searchFancy = searchDAO.viewSearchFancy(fancyPageNO, listSize, search, ord);
 		return searchFancy;
 	}
 }
