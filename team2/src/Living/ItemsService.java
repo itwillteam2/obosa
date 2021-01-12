@@ -10,10 +10,12 @@ public class ItemsService {
 	
 	ItemsDAO dao;
 	ItemsVO vo;
+	ItemsRepVO repVO;
 	
 	public ItemsService() {
 		vo = new ItemsVO();
 		dao = new ItemsDAO();
+		repVO = new ItemsRepVO();
 	}	
 	
 	 public List<ItemsVO> ContentList(int pageNO, int listSize, String ord) {
@@ -46,7 +48,7 @@ public class ItemsService {
 	}//end
 	
 
-	public int addReply(ItemsRepVO  repVO){
+	public int addReply(ItemsRepVO repVO){
 		return dao.insertNewReply(repVO);
 	}//end
 	

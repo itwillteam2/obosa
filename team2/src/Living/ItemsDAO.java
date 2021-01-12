@@ -237,20 +237,20 @@ public class ItemsDAO {
 			}else{	rnum = 1; }
 			
 			int num = repVO.getNum();
-			System.out.println(num);
 			String pw = repVO.getPw();
 			String content = repVO.getContent();
 			String writer = repVO.getWriter();
 
-			String query = "INSERT INTO "+CATEGORY+"_rep(num, pw, content, writer)"
-					+ "VALUES(?, ?, ?, ?)";
+			String query = "INSERT INTO "+CATEGORY+"_rep(rnum, num, pw, content, writer)"
+					+ "VALUES(?, ?, ?, ?, ?)";
 
 			pstmt = conn.prepareStatement(query);
-
-			pstmt.setInt(1, num);
-			pstmt.setString(2, pw);
-			pstmt.setString(3, content);
-			pstmt.setString(4, writer);
+			
+			pstmt.setInt(1, rnum);
+			pstmt.setInt(2, num);
+			pstmt.setString(3, pw);
+			pstmt.setString(4, content);
+			pstmt.setString(5, writer);
 
 			pstmt.executeUpdate();
 

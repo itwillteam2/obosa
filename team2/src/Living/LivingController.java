@@ -183,20 +183,25 @@ public class LivingController extends HttpServlet {
 			nextPage = "/"+CATEGORY+"/list.do";
 			
 		} else if (action.equals("/addReply.do")) {
-
-			int rnum = service.addReply(repVO);
+			
+			int rnum = 0;
+			
 			int num = Integer.parseInt(request.getParameter("num"));
 			String pw = request.getParameter("pw");
 			String content = request.getParameter("content");
 			String writer = request.getParameter("writer");
-
+			
 			repVO.setRnum(rnum);
 			repVO.setNum(num);
 			repVO.setPw(pw);
 			repVO.setContent(content);
 			repVO.setWriter(writer);
+			
+			rnum = service.addReply(repVO);
 
-			return;
+			PrintWriter pw2 = response.getWriter();
+			pw2.print("<script>" + "  alert('상품후기를 등록 했습니다.');" + "window.opener.location.reload(); " +
+			"window.close();"+ "</script>");	
 		}
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);

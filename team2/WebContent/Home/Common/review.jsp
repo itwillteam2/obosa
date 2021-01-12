@@ -6,6 +6,7 @@
 <%
 	request.setCharacterEncoding("utf-8");
 	String num = request.getParameter("num");
+	String category = request.getParameter("category");
 %>
    
 <!DOCTYPE html>
@@ -28,9 +29,10 @@
             </div>
             <div class="content">
                 <div class="signup-cont cont">
-                    <form action="${contextPath}/living/addReply.do" method="post">
+                    <form action="${contextPath}/<%=category%>/addReply.do" method="post">
                     	<input type="hidden" name="num" id="num" class="inpt" value="<%=num%>">
-                        <input type="text" name="writer" id="writer" class="inpt">
+                    	<input type="hidden" name="category" id="category" class="inpt" value="<%=category %>">
+                        <input type="text" name="writer" id="writer" class="inpt" value="${sessionScope.id}">
                         <input type="text" name="pw" id="pw" class="inpt" placeholder="Password">
                         <textarea rows="12" cols="36" class="reviewcontent" id="content"></textarea>
                         <div class="submit-wrap">
