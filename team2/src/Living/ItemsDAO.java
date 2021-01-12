@@ -29,18 +29,20 @@ public class ItemsDAO {
 	//select all articles list of crafts.
 	public List<ItemsVO> getAllContents(int pageNO, int listSize, String ord) {
 		List<ItemsVO> contentLIst = new ArrayList<ItemsVO>();
-		pageNO = pageNO-1; // limit 구문 인덱스 값 조정
+		pageNO= (pageNO-1)*listSize;
+		int start = pageNO==0?0:pageNO;        // limit 구문 인덱스 값 조정
+		System.out.println(start);
 		try {
 			conn = DBConnection.getConnection();
 			
 			if(ord.equals("신상품순") || ord.equals("") || ord == null){
-				String query = "SELECT * FROM "+CATEGORY+" order by regdate desc "+" LIMIT "+pageNO+","+listSize;
+				String query = "SELECT * FROM "+CATEGORY+" order by regdate desc "+" LIMIT "+start+","+listSize;
 				pstmt = conn.prepareStatement(query);
 			}else if(ord.equals("낮은가격순")){
-				String query = "SELECT * FROM "+CATEGORY+" order by productprice "+" LIMIT "+pageNO+","+listSize;
+				String query = "SELECT * FROM "+CATEGORY+" order by productprice "+" LIMIT "+start+","+listSize;
 				pstmt = conn.prepareStatement(query);
 			}else if(ord.equals("높은가격순")){
-				String query = "SELECT * FROM "+CATEGORY+" order by productprice desc "+" LIMIT "+pageNO+","+listSize;
+				String query = "SELECT * FROM "+CATEGORY+" order by productprice desc "+" LIMIT "+start+","+listSize;
 				pstmt = conn.prepareStatement(query);
 			}
 			
