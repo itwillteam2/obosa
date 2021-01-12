@@ -3,9 +3,11 @@
 
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>    
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%
 	request.setCharacterEncoding("utf-8");
 	String num = request.getParameter("num");
+	pageContext.setAttribute("newLineChar", "\n");
 %>
 <c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
 
@@ -319,7 +321,7 @@ $(window).load(function(){
 							<span class='td'>${Rep.writer }</span>
 						</span>
 						<div class='ps on'>
-							<div class='ps_sub2'>${Rep.content }</div>
+							<div class='ps_sub2'>${fn:replace(Rep.content, newLineChar, "<br/>")}</div>
 						</div>
 					</c:forEach>	
 					</div>
