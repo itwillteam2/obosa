@@ -39,13 +39,10 @@
 .iteminfo .inner .pdtInfo .pdtOption .pdtOpbox:after, .item_content_bar .inner .tabBar:after,
 .item_content.on .table .tr:after, .item_content.postscript.on .table .ps .ps_sub1:after { display:block; content:" "; clear:both; }
 
+.iteminfo .inner .pdtInfo .pdtseller:before     { display:block; content:" "; content:"판매자"; }
 .iteminfo .inner .pdtInfo .pdtSaleprice:before     { display:block; content:" "; content:"판매가"; }
-.iteminfo .inner .pdtInfo .pdtCouponprice:before   { display:block; content:" "; content:"쿠폰적용가"; }
 .iteminfo .inner .pdtInfo .pdtDeliveryprice:before { display:block; content:" "; content:"배송비"; }
-.iteminfo .inner .pdtInfo .pdtMileage:before	   { display:block; content:" "; content:"꿈캔디"; }
-.iteminfo .inner .pdtInfo .pdtGradeprice:before	   { display:block; content:" "; content:"등급할인가"; }
-.iteminfo .inner .pdtInfo .pdtCode:before		   { display:block; content:" "; content:"상품코드"; }
-.iteminfo .inner .pdtInfo .pdtOKcashbag:before	   { display:block; content:" "; content:"OK캐쉬백"; }
+.iteminfo .inner .pdtInfo .pdtpt:before	   { display:block; content:" "; content:"포인트" }
 .iteminfo .inner .pdtInfo .pdtQty:before		   { display:block; content:" "; content:"주문수량"; top:50%; margin-top:-10px; }
 .iteminfo .inner .pdtInfo .pdtTotalPrice:before    { display:block; content:" "; content:"총 합계금액";
 													 top:50%; margin-top:-14px; font-size:20px; color:#000000; line-height:22px; }

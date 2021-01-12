@@ -327,7 +327,7 @@ $(window).load(function(){
 			</section>
 
 			<section class="item_content postscript">
-				<input class='btnOverlay btnProductQnA' type='button' value='상품후기 작성'  onclick="window.open('${contextPath}/Home/living/review.jsp?num=<%=num %>', '상품후기등록', 'width=500, height=500, location=no, status=no, scrollbars=no, resizable=no, left=500, top=100' );"  />
+				<input class='btnOverlay btnProductQnA' type='button' value='상품후기 작성'  onclick="window.open('${contextPath}/Home/Common/review.jsp?category=${content.category}&num=<%=num %>', '상품후기등록', 'width=500, height=500, location=no, status=no, scrollbars=no, resizable=no, left=500, top=100' );"  />
 				<div class='inner'>
 					<div class='table'>
 						<span class='tr ClickPs'> 
