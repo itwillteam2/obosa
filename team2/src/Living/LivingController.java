@@ -19,6 +19,7 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.FileUtils;
 
+import CsCenter.NoticeVO;
 import Page.Paging;
 
 @WebServlet("/living/*")
@@ -56,7 +57,7 @@ public class LivingController extends HttpServlet {
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 		
-		String nextPage = "";
+		String nextPage = null;
 		realPath = request.getServletContext().getRealPath("/files/"+CATEGORY);
 		String action = request.getPathInfo();
 
@@ -169,9 +170,21 @@ public class LivingController extends HttpServlet {
 			nextPage = "/Home/Common/content.jsp";
 
 		} else if (action.equals("/viewContent.do")) {
-			String num = request.getParameter("num");
-			ItemsVO content = (ItemsVO) service.ContentDetail(Integer.parseInt(num));
+			int num = Integer.parseInt(request.getParameter("num"));
+			int totalCount = service.totalCountRep();
+			Paging paging = new Paging();
+			int pageNO = (request.getParameter("pageNO") == null) ? 1 : Integer.parseInt(request.getParameter("pageNO"));
+			int pageSize = 5;
+			int listSize = 5;
+			paging.makePage(totalCount, pageNO, pageSize, listSize); 
+			
+			ItemsVO content = (ItemsVO) service.ContentDetail(num);
 			request.setAttribute("content", content);
+			
+			List <ItemsRepVO> ReppagingList = service.ReppagingList(pageNO,listSize, num);
+			request.setAttribute("ReppagingList", ReppagingList);	
+			request.setAttribute("totalCount", totalCount);
+			request.setAttribute("paging", paging);
 			
 			nextPage = "/Home/Common/content.jsp";
 		
@@ -187,12 +200,14 @@ public class LivingController extends HttpServlet {
 			int rnum = 0;
 			
 			int num = Integer.parseInt(request.getParameter("num"));
+			String title = request.getParameter("title");
 			String pw = request.getParameter("pw");
 			String content = request.getParameter("content");
 			String writer = request.getParameter("writer");
 			
 			repVO.setRnum(rnum);
 			repVO.setNum(num);
+			repVO.setTitle(title);
 			repVO.setPw(pw);
 			repVO.setContent(content);
 			repVO.setWriter(writer);

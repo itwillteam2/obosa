@@ -18,9 +18,6 @@
 
 </head>
 <body>	
-	<%
-		String id = (String)session.getAttribute("id");
-	%>
     <section class="container">
         <article class="half">
             <h1>Review</h1>
@@ -32,9 +29,10 @@
                     <form action="${contextPath}/<%=category%>/addReply.do" method="post">
                     	<input type="hidden" name="num" id="num" class="inpt" value="<%=num%>">
                     	<input type="hidden" name="category" id="category" class="inpt" value="<%=category %>">
-                        <input type="text" name="writer" id="writer" class="inpt" value="${sessionScope.id}">
+                        <input type="text" name="writer" id="writer" class="inpt" value="${sessionScope.id}" readonly>
+                        <input type="text" name="title" id="title" class="inpt" placeholder="Title">
                         <input type="text" name="pw" id="pw" class="inpt" placeholder="Password">
-                        <textarea rows="12" cols="36" class="reviewcontent" id="content"></textarea>
+                        <textarea rows="9" cols="36" class="reviewcontent" id="content" name="content"></textarea>
                         <div class="submit-wrap">
                             <input type="submit" value="상품후기 등록" class="submit">
                         </div>

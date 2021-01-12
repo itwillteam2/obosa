@@ -107,20 +107,6 @@ $(window).load(function(){
 		}
 	});
 
-	$(document).on("click", ".btnOverlay", function() {
-
-		var obj = $(".overlay." + $(this).attr("data") + "Layer");
-
-		if ($(".overlay").hasClass("on")) {
-			$(".overlay").removeClass("on");
-		} else {
-			$(".overlay.fullScreen").addClass("on");
-			obj.addClass("on");
-
-			$(".overlay." + $(this).attr("data") + "Layer").center();
-		}
-	});
-
 	$(document).on("click", ".overlay_close", function() {
 		$(".overlay").removeClass("on");
 	});
@@ -143,24 +129,12 @@ $(window).load(function(){
 		}
 	});
 	
-	$(document).on("click",".ClickPs", function(){
-		
-		if ($(this).parent().find(".ps").hasClass("on"))
-		{
-			$(this).parent().find(".ps").removeClass("on");
-		}
-		else
-		{
-			$(this).parent().find(".ps").addClass("on");
-		}
 
-		if ($(this).parent().find(".ps_reply").hasClass("on"))
-		{
-			$(this).parent().find(".ps_reply").removeClass("on");
-		}
-		else
-		{
-			$(this).parent().find(".ps_reply").addClass("on");
+	$(document).on("click", ".ClickPs", function() {
+		if ($(this).next("div").css("display") == "none") {
+			$(this).next("div").css("display", "block");
+		} else {
+			$(this).next("div").css("display", "none");
 		}
 	});
 
@@ -183,6 +157,11 @@ $(window).load(function(){
 	$(document).on("click", ".btnDelItem", function() {
 		 $("form").attr("action", "${contextPath}/${content.category}/deleteContent.do").submit();
 	});
+	
+	function PageMove(page){
+		location.href="${contextPath}/${content.category}/viewContent.do?num=${content.num}&pageNO="+page
+
+	}
 </script>
 </head>
 <body>
@@ -330,32 +309,35 @@ $(window).load(function(){
 				<input class='btnOverlay btnProductQnA' type='button' value='상품후기 작성'  onclick="window.open('${contextPath}/Home/Common/review.jsp?category=${content.category}&num=<%=num %>', '상품후기등록', 'width=500, height=500, location=no, status=no, scrollbars=no, resizable=no, left=500, top=100' );"  />
 				<div class='inner'>
 					<div class='table'>
+					<c:forEach var="Rep" items="${ReppagingList}">
 						<span class='tr ClickPs'> 
-							<span class='td'>1</span> 
+							<span class='td'>${Rep.rnum}</span> 
 							<span class='td type2'>
-								<span class='type01'>title</span>
+								<span class='type01'>${Rep.title}</span>
 							</span> 
-							<span class='td'>Date</span>
-							<span class='td'>Writer</span>
+							<span class='td'><fmt:formatDate value="${Rep.date}" /></span>
+							<span class='td'>${Rep.writer }</span>
 						</span>
-						<div class='ps'>
-							<div class='ps_sub2'>Content</div>
+						<div class='ps on'>
+							<div class='ps_sub2'>${Rep.content }</div>
 						</div>
+					</c:forEach>	
 					</div>
-					<div class='paging'>
-						<span class='box'><span class="btn_pageprev opacity">
-								<a href="javascript:;"> <img class="paging_pc"
-									src="../../Images/Ver1/Common/btn_board_prev.gif" /><img
-									class="paging_mobile"
-									src="../../Images/Ver1/Common/btn_board_prev_m.gif" /></a>
-						</span><span class="txt_pagenum"> <a href="javascript:;"
-								class="btn_pageon">1</a></span><span class="txt_pagenum"> <a
-								href="javascript:;" class="btn_pageoff" onclick="fnGoPsPage(2)">2</a></span><span
-							class="btn_pagenext opacity"> <a href="javascript:;"
-								onclick="alert('마지막 페이지입니다.');"> <img class="paging_pc"
-									src="../../Images/Ver1/Common/btn_board_next.gif" /><img
-									class="paging_mobile"
-									src="../../Images/Ver1/Common/btn_board_next_m.gif" /></a></span></span>
+					<div class="paging">
+						<span class="box">
+							<span class="btn_pageprev"><a href="javascript:PageMove(${paging.prevPage})"><img class="paging_pc" src="${contextPath}/Images/Ver1/Common/btn_board_prev.gif" /></a></span>
+								<c:forEach var="i" begin="${paging.startPage}" end="${paging.endPage}" step="1">
+									<c:choose>
+										<c:when test="${i eq paging.pageNo}">
+											<span class="txt_pagenum"><a href="javascript:PageMove(${i})" class="btn_pageon">${i}</a></span>
+										</c:when>
+										<c:otherwise>
+											<span class="txt_pagenum"><a href="javascript:PageMove(${i})">${i}</a></span>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+							<span class="btn_pagenext"><a href="javascript:PageMove(${paging.nextPage})"><img class="paging_pc" src="${contextPath}/Images/Ver1/Common/btn_board_next.gif" /></a></span>
+						</span>
 					</div>
 				</div>
 
@@ -377,26 +359,21 @@ $(window).load(function(){
 						</div>
 					</div>
 					</div>
-					<div class='paging'>
-						<span class='box'><span class="btn_pageprev opacity">
-								<a href="javascript:;"> <img class="paging_pc"
-									src="../../Images/Ver1/Common/btn_board_prev.gif" /><img
-									class="paging_mobile"
-									src="../../Images/Ver1/Common/btn_board_prev_m.gif" /></a>
-						</span><span class="txt_pagenum"> <a href="javascript:;"
-								class="btn_pageon">1</a></span><span class="txt_pagenum"> <a
-								href="javascript:;" class="btn_pageoff" onclick="fnGoQnaPage(2)">2</a></span><span
-							class="txt_pagenum"> <a href="javascript:;"
-								class="btn_pageoff" onclick="fnGoQnaPage(3)">3</a></span><span
-							class="txt_pagenum"> <a href="javascript:;"
-								class="btn_pageoff" onclick="fnGoQnaPage(4)">4</a></span><span
-							class="txt_pagenum"> <a href="javascript:;"
-								class="btn_pageoff" onclick="fnGoQnaPage(5)">5</a></span><span
-							class="btn_pagenext"> <a href="javascript:;"
-								onclick="fnGoQnaPage(6);"> <img class="paging_pc"
-									src="../../Images/Ver1/Common/btn_board_next.gif" /><img
-									class="paging_mobile"
-									src="../../Images/Ver1/Common/btn_board_next_m.gif" /></a></span></span>
+					<div class="paging">
+						<span class="box">
+							<span class="btn_pageprev"><a href="javascript:PageMove(${paging.prevPage})"><img class="paging_pc" src="${contextPath}/Images/Ver1/Common/btn_board_prev.gif" /></a></span>
+								<c:forEach var="i" begin="${paging.startPage}" end="${paging.endPage}" step="1">
+									<c:choose>
+										<c:when test="${i eq paging.pageNo}">
+											<span class="txt_pagenum"><a href="javascript:PageMove(${i})" class="btn_pageon">${i}</a></span>
+										</c:when>
+										<c:otherwise>
+											<span class="txt_pagenum"><a href="javascript:PageMove(${i})">${i}</a></span>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+							<span class="btn_pagenext"><a href="javascript:PageMove(${paging.nextPage})"><img class="paging_pc" src="${contextPath}/Images/Ver1/Common/btn_board_next.gif" /></a></span>
+						</span>
 					</div>
 				</section>
 			</div>

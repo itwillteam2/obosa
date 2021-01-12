@@ -190,7 +190,7 @@
 .item_content.on .table { border-bottom:1px solid #cacaca; }
 .item_content.on .table:nth-last-child(1) { border-bottom:0; }
 .item_content.on .table .tr { display:block; cursor:pointer; position:relative; }
-.item_content.on .table .tr .td { width:150px;  display:block; float:left; font-size:18px; color:#000000; text-align:center; line-height:62px; }
+.item_content.on .table .tr .td { padding : 10px 0;width:150px;  display:block; float:left; font-size:18px; color:#000000; text-align:center; line-height:62px; }
 .item_content.on .table .tr .td.type2 { width:750px; text-align:left;}
 .item_content.on .table .tr .td.type3 { width:750px; text-align:left; padding:0 0 0 20px; background:url(/images/ver1/shop/reply_bullet.gif) no-repeat left center; }
 .item_content.on .table .tr .td.type2 span { position:relative; }
@@ -202,7 +202,7 @@
 .item_content.on .table .tr .td.border { border-top:1px solid #cacaca; }
 
 .item_content.postscript.on .table .ps { display:none; }
-.item_content.postscript.on .table .ps.on { display:block; position:relative; padding:0 0 50px 150px; background-color:#fafafa; border-top:1px solid #cacaca; }
+.item_content.postscript.on .table .ps.on { display:none; position:relative; padding:0 0 50px 150px; background-color:#fafafa; border-top:1px solid #cacaca; }
 .item_content.postscript.on .table .ps.on .ps_sub1 { padding:37px 0; }
 .item_content.postscript.on .table .ps.on .ps_sub1 span { display:block; float:left; padding:0 35px; font-size:17px; color:#000000; position:relative; }
 .item_content.postscript.on .table .ps.on .ps_sub1 .type2 { padding:0 35px 0 50px; }

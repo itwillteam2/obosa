@@ -7,6 +7,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import CsCenter.InquiryVO;
 import DBUtil.DBConnection;
 
 public class ItemsDAO {
@@ -228,7 +229,7 @@ public class ItemsDAO {
 		
 		try {
 			conn = DBConnection.getConnection();
-			sql = "select max(num) from "
+			sql = "select max(rnum) from "	
 			+CATEGORY+"_rep";
 			pstmt = conn.prepareStatement(sql);
 			rs = pstmt.executeQuery();
@@ -237,20 +238,22 @@ public class ItemsDAO {
 			}else{	rnum = 1; }
 			
 			int num = repVO.getNum();
+			String title = repVO.getTitle();
 			String pw = repVO.getPw();
 			String content = repVO.getContent();
 			String writer = repVO.getWriter();
 
-			String query = "INSERT INTO "+CATEGORY+"_rep(rnum, num, pw, content, writer)"
-					+ "VALUES(?, ?, ?, ?, ?)";
+			String query = "INSERT INTO "+CATEGORY+"_rep(rnum, num, title, pw, content, writer)"
+					+ "VALUES(?, ?, ?, ?, ?, ?)";
 
 			pstmt = conn.prepareStatement(query);
 			
 			pstmt.setInt(1, rnum);
 			pstmt.setInt(2, num);
-			pstmt.setString(3, pw);
-			pstmt.setString(4, content);
-			pstmt.setString(5, writer);
+			pstmt.setString(3, title);
+			pstmt.setString(4, pw);
+			pstmt.setString(5, content);
+			pstmt.setString(6, writer);
 
 			pstmt.executeUpdate();
 
@@ -261,5 +264,53 @@ public class ItemsDAO {
 		}
 		return rnum;
 	}//end
+	public int getTotalCountRep() {
+		int num = 0;
+		try {
+			conn = DBConnection.getConnection();
+			String query = "SELECT count(*) FROM "+CATEGORY+"_rep";
+			pstmt = conn.prepareStatement(query);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				num=rs.getInt(1);
+			}
+		
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			freeResource();
+		}
+
+		return num;
+	}
+	
+	public List<ItemsRepVO> getAllReply(int pageNO, int listSize, int num) {
+		List<ItemsRepVO> ReppagingList = new ArrayList<ItemsRepVO>();
+		pageNO= (pageNO-1)*listSize;
+		try {
+			conn = DBConnection.getConnection();
+			
+				String query = "SELECT * FROM "+CATEGORY+"_rep where num = " + num + " order by rnum desc "+" LIMIT "+pageNO+","+listSize;
+				pstmt = conn.prepareStatement(query);			
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				ItemsRepVO vo = new ItemsRepVO();
+				vo.setRnum(rs.getInt("rnum"));
+				vo.setNum(rs.getInt("num"));
+				vo.setTitle(rs.getString("title"));
+				vo.setWriter(rs.getString("writer"));
+				vo.setPw(rs.getString("pw"));
+				vo.setContent(rs.getString("content"));
+				vo.setDate(rs.getTimestamp("date"));
+				ReppagingList.add(vo);
+			}
+						
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			freeResource();
+		}
+		return ReppagingList;
+	}
 
 }
