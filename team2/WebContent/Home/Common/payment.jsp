@@ -113,14 +113,14 @@ pay = function(){
 			<hr>
 			<h3>주문자 정보</h3>
 			<div class="address">
-				<input type="text" id="name" value="${name}"/>&nbsp;&nbsp;&nbsp;
+				<input type="text" id="name" value="${name}" placeholder="이름"/>&nbsp;&nbsp;&nbsp;
 				<input type="text" id="cpnum1" class="cpnum"> - 
 				<input type="text" id="cpnum2" class="cpnum"> - 
 				<input type="text" id="cpnum3" class="cpnum"><br><br>
 				
-				<input type="text" id="postcode" name="mempostcode" maxlength="5" value="${user.postcode}" readonly>
+				<input type="text" id="postcode" name="mempostcode" maxlength="5" value="${user.postcode}" placeholder="우편번호" readonly>
 	            <a class="button" href="javascript:fnGetAddressInfo();" id="addrBtn">우편번호 찾기</a><br>
-	            <input type="text" id="addr1" class="addr" value="${user.addr1}" readonly><br>
+	            <input type="text" id="addr1" class="addr" value="${user.addr1}" placeholder="주소" readonly><br>
 	            <input type="text" id="addr2" class="addr" placeholder="상세주소" value="${user.addr2}">
 			</div>
 			<div class="clear"></div>
