@@ -19,6 +19,15 @@
 <link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/Shop/ScrollBar.css"/>
 
 <script type="text/javascript">
+function payment(){
+	var id = "${id}";
+	var qty = $("#stockqty").val();
+	if(id == "" || id == null){
+		alert("로그인 해 주세요.");
+		return;
+	}
+	location.href='${contextPath}/common/payment.do?fd=${content.category}&num=${content.num}&qty='+qty;
+}
 
 $(window).load(function(){
 	$(".item_content_bar>.inner").sticky({ topSpacing:13.3});
@@ -162,7 +171,6 @@ $(window).load(function(){
 	
 	function PageMove(page){
 		location.href="${contextPath}/${content.category}/viewContent.do?num=${content.num}&pageNO="+page
-
 	}
 </script>
 </head>
@@ -232,7 +240,7 @@ $(window).load(function(){
 								<span class="ipt_layer"> 
 									<input type="button" class="btnStockQty Minus" value="-" /> 
 									<input type="button" class="btnStockQty Plus" value="+" /> 
-									<input type="tel" name="stockqty" value="1" maxlength="4" onkeypress="fnOnlyNumber(this);" />
+									<input type="tel" id="stockqty" name="stockqty" value="1" maxlength="4" onkeypress="fnOnlyNumber(this);" />
 								</span>
 							</span> 
 							<span class="pdtRight pdtTotalPrice"> 
@@ -243,7 +251,7 @@ $(window).load(function(){
 								   <input type="button" value="장바구니 담기" />
 								</span> 
 								<span class="btnOrder">
-									<input type="button" value="바로 구매하기" />
+									<input type="button" value="바로 구매하기" onclick="payment()"/>
 								</span> 
 							</span>
 						   </c:when>

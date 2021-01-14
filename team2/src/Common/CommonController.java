@@ -9,8 +9,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import Crafts.ItemsVO;
+import Living.ItemsDAO;
+import Member.MemberDAO;
+import Member.MemberVO;
 import Page.Paging;
 
 
@@ -310,6 +314,40 @@ public class CommonController extends HttpServlet{
 			nextPage="/Home/Seller/seller.jsp";
 		}else if(action.equals("/write.do")){
 			nextPage="/Home/Seller/upContent.jsp";
+		}else if(action.equals("/payment.do")){
+			String fd = request.getParameter("fd");
+			request.setAttribute("fd", fd);
+			
+			int num = Integer.parseInt(request.getParameter("num"));
+			request.setAttribute("num", num);
+			
+			int qty = Integer.parseInt(request.getParameter("qty"));
+			request.setAttribute("qty", qty);
+			
+			MemberDAO memberdao = new MemberDAO();
+			MemberVO membervo = new MemberVO();
+			
+			HttpSession session = request.getSession();
+			String id = (String)session.getAttribute("id");
+			
+			membervo = memberdao.searchUser(id);
+			request.setAttribute("user", membervo);
+			
+			ItemsDAO livingdao = new ItemsDAO();
+			Living.ItemsVO livingvo = new Living.ItemsVO();
+			
+			Crafts.ItemsDAO craftsdao = new Crafts.ItemsDAO();
+			ItemsVO craftsvo = new ItemsVO();
+			
+			if(fd.equals("living")){
+				livingvo = livingdao.getContent(num);
+				request.setAttribute("item", livingvo);
+			}else if(fd.equals("crafts")){
+				craftsvo = craftsdao.getContent(num);
+				request.setAttribute("item", craftsvo);
+			}
+			
+			nextPage="/Home/Common/payment.jsp";
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
