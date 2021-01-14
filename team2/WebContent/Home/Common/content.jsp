@@ -151,13 +151,10 @@ $(window).load(function(){
 
 	$(document).on("click",".ClickQna", function(){
 		
-		if ($(this).parent().find(".qna").hasClass("on"))
-		{
-			$(this).parent().find(".qna").removeClass("on");
-		}
-		else
-		{
-			$(this).parent().find(".qna").addClass("on");
+		if ($(this).next("div").css("display") == "none") {
+			$(this).next("div").css("display", "block");
+		} else {
+			$(this).next("div").css("display", "none");
 		}
 	
 	});
@@ -316,7 +313,9 @@ $(window).load(function(){
 			</section>
 
 			<section class="item_content postscript">
-				<input class='btnOverlay btnProductQnA' type='button' value='상품후기 작성'  onclick="window.open('${contextPath}/Home/Common/review.jsp?category=${content.category}&num=<%=num %>', '상품후기등록', 'width=500, height=500, location=no, status=no, scrollbars=no, resizable=no, left=500, top=100' );"  />
+				<c:if test="${sessionScope.name != content.sellerName }">
+					<input class='btnOverlay btnProductQnA' type='button' value='상품후기 작성'  onclick="window.open('${contextPath}/Home/Common/review.jsp?category=${content.category}&num=<%=num %>', '상품후기등록', 'width=500, height=500, location=no, status=no, scrollbars=no, resizable=no, left=500, top=100' );"  />
+				</c:if>
 				<div class='inner'>
 					<div class='table'>
 					<c:forEach var="Rep" items="${ReppagingList}">
@@ -354,19 +353,55 @@ $(window).load(function(){
 			</section>
 
 			<section class="item_content productqna">
-				<input class='btnOverlay btnProductQnA' type='button' value='Q&A작성' onclick="window.open('qna.jsp', '질문등록', 'width=500, height=500, location=no, status=no, scrollbars=no, resizable=no, left=500, top=100' );"/>
+				<c:if test="${content.sellerName != sessionScope.name }">
+					<input class='btnOverlay btnProductQnA' type='button' value='Q&A작성' onclick="window.open('${contextPath}/Home/Common/qna.jsp?category=${content.category}&num=<%=num %>', '질문등록', 'width=500, height=500, location=no, status=no, scrollbars=no, resizable=no, left=500, top=100' );"/>
+				</c:if>
 				<div class='inner'>
 					<div class='table'>
-						<span class='tr ClickQna'> 
-							<span class='td'>답변완료</span> 
-							<span class='td type2'>title</span> 
-							<span class='td'>date</span>
-							<span class='td'>writer</span>
+						<c:forEach var="Qna" items="${QnaPagingList}" varStatus="status">
+						<c:forEach var="QR" items="${QnaRepList }">
+						<span class='tr ClickQna'>
+							<c:choose>
+								<c:when test="${QR.qnum == Qna.qnum }"> 
+									<c:if test="${QR.complete == 1}">
+										<span class='td'>답변완료</span>
+									</c:if>
+								</c:when>
+								<c:otherwise>
+									<span class='td'>답변대기</span>
+								</c:otherwise>
+							</c:choose> 
+							<span class='td type2'>${Qna.title }</span> 
+							<span class='td'><fmt:formatDate value="${Qna.date}" /></span>
+							<span class='td'>${Qna.writer }</span>
 						</span>
-						<div class='qna'>
-							<span class='qna_q'>구매고객 CONTENT</span> 
-							<span class='qna_a'>판매자 CONTENT</span>
+						<div class='qna on'>
+							<span class='qna_q'>${fn:replace(Qna.content, newLineChar, "<br/>")}</span>
+							
+							<c:choose>
+								<c:when test="${QR.qnum == Qna.qnum }"> 
+									<span class='qna_a'>${fn:replace(QR.content, newLineChar, "<br/>")}</span>
+										<c:if test="${content.sellerName == sessionScope.name }"> 
+										<span class="buttonreply" style="float:right;" onclick="window.open('${contextPath}/Home/Common/qnaReply.jsp?category=${content.category}&qnum=${Qna.qnum}', 
+										'Q&A답변등록', 'width=500, height=400, location=no, status=no, scrollbars=no, resizable=no, left=500, top=100' );">
+										Q&A 답변 수정</span>
+										<span class="buttonreply" style="float:right;" onclick="window.open('${contextPath}/Home/Common/qnaReply.jsp?category=${content.category}&qnum=${Qna.qnum}', 
+										'Q&A답변등록', 'width=500, height=400, location=no, status=no, scrollbars=no, resizable=no, left=500, top=100' );">
+										Q&A 답변 삭제</span>
+										</c:if>
+								</c:when>
+								<c:otherwise>
+									<span class='qna_a'>&nbsp;</span>
+									<c:if test="${content.sellerName == sessionScope.name }"> 
+									<span class="buttonreply" style="float:right;" onclick="window.open('${contextPath}/Home/Common/qnaReply.jsp?category=${content.category}&qnum=${Qna.qnum}', 
+									'Q&A답변등록', 'width=500, height=400, location=no, status=no, scrollbars=no, resizable=no, left=500, top=100' );">
+									Q&A 답변 작성</span>
+									</c:if>
+								</c:otherwise>
+							</c:choose> 			
 						</div>
+						</c:forEach>
+						</c:forEach>
 					</div>
 					</div>
 					<div class="paging">
@@ -387,67 +422,11 @@ $(window).load(function(){
 					</div>
 				</section>
 			</div>
-
-			
-
 			<input type="hidden" name="itemidx" value="2012140130" /> 
 			<input type="hidden" name="itemoptioncd" value="N" /> 
 			<input type="hidden" name="itemprice" value="${content.productPrice}" /> 
 			<input type="hidden" name="type" />
 			<input type="hidden" name="opcnt" />
-			
-	<section class="item_content productqna">
-		<input class='btnOverlay btnProductQnA' type='button' value='Q&A작성' data='btnProductQnA'>/>
-		<div class='inner'>
-			<div class='table'>
-				<span class='tr ClickQna'> <span class='td'>답변완료</span> <span
-					class='td type2'>배송조회가 안되요</span> <span class='td'>2020-12-24</span>
-					<span class='td'>gue**</span>
-				</span>
-				<div class='qna'>
-					<span class='qna_q'>송장반호가 나왔는데 왜 배송조회가 안되는건가요?물건을 보냈다는 카톡은
-						왔는데 배송조회하면 조회가 안되요...</span> <span class='qna_a'>고객님 안녕하세요.<br />비회원으로
-						문의 글을 남겨주셔서 고객님의 주문내역 확인이 어렵습니다. ㅠㅠ<br />주문자 성함 혹은 주문번호를 확인해 주시거나
-						[고객감동센터 1577-9081]로 문의를 부탁드립니다. <br />감사합니다. <br />
-					<br /></span>
-				</div>
-			</div>
-			<div class='table'>
-				<span class='tr ClickQna'> <span class='td'>답변완료</span> <span
-					class='td type2'>상품문의</span> <span class='td'>2020-12-23</span> <span
-					class='td'>gmark**</span>
-				</span>
-				<div class='qna'>
-					<span class='qna_q'>오늘발송합니까?검수해서 새상품으로 발송바랍니다.</span> <span
-						class='qna_a'>고객님 안녕하세요.<br />주문하신 상품은 12월 23일 출고를
-						도와드렸습니다.<br />상품 출고 후 보통 1~2일 안에 배송이 완료되지만&#44; 택배사 물류 사정으로 인하여
-						배송일은 지연될 수 있는 점 양해 부탁드리며<br />운송장 번호를 확인 시 상품은 12월 26일 배송 완료된 것으로
-						확인되고 있습니다. <br />감사합니다. <br /></span>
-				</div>
-			</div>
-			<div class='paging'>
-				<span class='box'><span class="btn_pageprev opacity">
-						<a href="javascript:;"> <img class="paging_pc"
-							src="/Images/Ver1/Common/btn_board_prev.gif" /><img
-							class="paging_mobile"
-							src="/Images/Ver1/Common/btn_board_prev_m.gif" /></a>
-				</span><span class="txt_pagenum"> <a href="javascript:;"
-						class="btn_pageon">1</a></span><span class="txt_pagenum"> <a
-						href="javascript:;" class="btn_pageoff" onclick="fnGoQnaPage(2)">2</a></span><span
-					class="txt_pagenum"> <a href="javascript:;"
-						class="btn_pageoff" onclick="fnGoQnaPage(3)">3</a></span><span
-					class="txt_pagenum"> <a href="javascript:;"
-						class="btn_pageoff" onclick="fnGoQnaPage(4)">4</a></span><span
-					class="txt_pagenum"> <a href="javascript:;"
-						class="btn_pageoff" onclick="fnGoQnaPage(5)">5</a></span><span
-					class="btn_pagenext"> <a href="javascript:;"
-						onclick="fnGoQnaPage(6);"> <img class="paging_pc"
-							src="/Images/Ver1/Common/btn_board_next.gif" /><img
-							class="paging_mobile"
-							src="/Images/Ver1/Common/btn_board_next_m.gif" /></a></span></span>
-			</div>
-		</div>
-	</section>
 	<jsp:include page="../inc/footer.jsp" />
 </body>
 </html>

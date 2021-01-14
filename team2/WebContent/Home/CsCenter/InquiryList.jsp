@@ -68,53 +68,49 @@
 			</ul>
 		</div>
 		<c:forEach var="InquiryList" items="${pagingList}">			
-		<div class="list_line">
+			<div class="list_line">
 				<ul>							
 					<li>${InquiryList.inqnum}</li>
 					<li>${InquiryList.title}</li>
 					<li><fmt:formatDate value="${InquiryList.date}" /></li>
-				</ul>
-			
-		</div>
+				</ul>	
+			</div>
 			<div class="list_cont" style="display: none;">
 				<p>${fn:replace(InquiryList.content, newLineChar, "<br/>")}</p>
 				<div class="underbar"></div>
 				
 				<c:forEach var="InqRepList" items="${InqRepList}">
-					<c:if test="${InqRepList.inqnum == InquiryList.inqnum}">
-						<p>질문해주신 내용의 답변입니다.</p>
-						<p>${fn:replace(InqRepList.content, newLineChar, "<br/>")}</p>
-					</c:if>
+					
+					<c:choose>
+						<c:when test="${InqRepList.inqnum == InquiryList.inqnum }">
+							<p>질문해주신 내용의 답변입니다.</p>
+							<p>${fn:replace(InqRepList.content, newLineChar, "<br/>")}</p>
+							<div class="more_info2">
+								<c:if test="${sessionScope.id == 'admin'}">	
+								<span onclick="window.open('${contextPath}/Home/CsCenter/ReplyModify.jsp?inqnum=${InquiryList.inqnum}', 
+								'Q&A답변수정', 'width=500, height=400, location=no, status=no, scrollbars=no, resizable=no, left=500, top=100' );">답변 수정</span>
+								<a href="${contextPath}/Home/CsCenter/ReplyDelete.jsp?inqnum=${InqRepList.inqnum}">답변 삭제</a>
+								</c:if>
+							</div>
+						</c:when>
+						<c:otherwise>
+						<c:if test="${sessionScope.id == 'admin'}">	
+							<div class="more_info" style="margin-top:20px;">
+							<span onclick="window.open('${contextPath}/Home/CsCenter/Reply.jsp?inqnum=${InquiryList.inqnum}', 
+							'Q&A답변등록', 'width=500, height=400, location=no, status=no, scrollbars=no, resizable=no, left=500, top=100' );">
+							Q&A 답변 작성</span></div>
+							</c:if>
+						</c:otherwise>
+					</c:choose>																		
+					
 				</c:forEach>
-				
-				
-				<c:choose>
-					<c:when test="${sessionScope.id == 'admin'}">
-						<c:forEach var="InqRepList" items="${InqRepList}">
-								<c:if test="${InqRepList.inqnum == InquiryList.inqnum && !empty InqRepList.content}">
-									<div class="more_info2">
-										<span onclick="window.open('${contextPath}/Home/CsCenter/ReplyModify.jsp?inqnum=${InquiryList.inqnum}', 
-										'Q&A답변수정', 'width=500, height=400, location=no, status=no, scrollbars=no, resizable=no, left=500, top=100' );">
-										답변 수정</span>
-										<a href="${contextPath}/Home/CsCenter/ReplyDelete.jsp?inqnum=${InqRepList.inqnum}">답변 삭제</a>
-									</div>
-								</c:if>	
-						</c:forEach>
-						<div class="more_info" style="margin-top:20px;">
-						<span onclick="window.open('${contextPath}/Home/CsCenter/Reply.jsp?inqnum=${InquiryList.inqnum}', 
-						'Q&A답변등록', 'width=500, height=400, location=no, status=no, scrollbars=no, resizable=no, left=500, top=100' );">
-						Q&A 답변 작성</span></div>																					
-					</c:when>
 					
-					
-									
-					<c:when test="${sessionScope.id == InquiryList.id }">
+					<c:if test="${sessionScope.id == InquiryList.id }">
 						<div class="more_info">
 							<span><a href="${contextPath}/CsCenter/InquiryModify.do?inqnum=${InquiryList.inqnum}" style="color : white;">FAQ 수정</a></span>
 							<span><a href="${contextPath}/Home/CsCenter/InquiryDelete.jsp?inqnum=${InquiryList.inqnum}" style="color : white;">FAQ 삭제</a></span>
 						</div>
-					</c:when>	
-				</c:choose>	
+					</c:if>	
 			</div>
 		</c:forEach>
 		

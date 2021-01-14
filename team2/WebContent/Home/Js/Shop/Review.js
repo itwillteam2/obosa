@@ -5,6 +5,11 @@ $(function(){
 			$("#id2").focus();
 			return false;				
 		};
+		if($("#title").val()==""){
+			alert("제목을 입력해주세요.");
+			$("#title").focus();
+			return false;
+		};
 		if($("#pw").val()==""){
 			alert("비밀번호를 입력해주세요.");
 			$("#pw").focus();

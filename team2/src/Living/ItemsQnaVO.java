@@ -5,21 +5,28 @@ import java.sql.Timestamp;
 public class ItemsQnaVO {
 	private int qnum; 
 	private int num; 
+	private String title;
 	private String pw;
 	private String content; 
+	private String writer; 
+	private Timestamp date;
 	
 	public ItemsQnaVO() {
-	
+		
 	}
 	
-	public ItemsQnaVO(int qnum, int num, String pw, String content, String writer, Timestamp date) {
+	public ItemsQnaVO(int qnum, int num, String title, String pw, String content, String writer, Timestamp date) {
 		this.qnum = qnum;
 		this.num = num;
+		this.title = title;
 		this.pw = pw;
 		this.content = content;
 		this.writer = writer;
 		this.date = date;
 	}
+
+
+
 	public int getQnum() {
 		return qnum;
 	}
@@ -31,6 +38,12 @@ public class ItemsQnaVO {
 	}
 	public void setNum(int num) {
 		this.num = num;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
 	}
 	public String getPw() {
 		return pw;
@@ -56,6 +69,6 @@ public class ItemsQnaVO {
 	public void setDate(Timestamp date) {
 		this.date = date;
 	}
-	private String writer; 
-	private Timestamp date;
+	
+	
 }

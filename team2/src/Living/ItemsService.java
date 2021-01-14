@@ -3,6 +3,7 @@ package Living;
 import java.util.ArrayList;
 import java.util.List;
 
+import CsCenter.InqRepVO;
 import CsCenter.NoticeVO;
 
 
@@ -13,11 +14,13 @@ public class ItemsService {
 	ItemsDAO dao;
 	ItemsVO vo;
 	ItemsRepVO repVO;
+	ItemsQnaVO qnaVO;
 	
 	public ItemsService() {
 		vo = new ItemsVO();
 		dao = new ItemsDAO();
 		repVO = new ItemsRepVO();
+		qnaVO = new ItemsQnaVO();
 	}	
 	
 	 public List<ItemsVO> ContentList(int pageNO, int listSize, String ord) {
@@ -63,6 +66,42 @@ public class ItemsService {
 		List<ItemsRepVO> ReppagingList = new ArrayList<ItemsRepVO>();
 		ReppagingList = dao.getAllReply(pageNO,listSize,num);
 		return ReppagingList;
+	}
+
+	public int addQna(ItemsQnaVO qnaVO) {
+		return dao.insertNewQna(qnaVO);
+	}
+
+	public int totalCountQna() {
+		int totalCount2 = dao.getTotalCountQna();
+		return totalCount2;
+	}
+
+	public List<ItemsQnaVO> QnaPagingList(int pageNO, int listSize, int num) {
+		List<ItemsQnaVO> QnaPagingList = new ArrayList<ItemsQnaVO>();
+		QnaPagingList = dao.getAllQna(pageNO,listSize,num);
+		return QnaPagingList;
+	}
+
+	public int addQnaRep(ItemsQnaRepVO qnarepVO) {
+		return dao.insertNewQnaRep(qnarepVO);
+		
+	}
+
+	public List<ItemsQnaRepVO> listQnaRep() {
+		List<ItemsQnaRepVO> listQnaRep = dao.selectAllQnaRep();
+		return listQnaRep;
+	}
+
+	public int totalCountQnaRep() {
+		int totalCount3 = dao.getTotalCountQnaRep();
+		return totalCount3;
+	}
+
+	public List<ItemsQnaRepVO> QnaRepPagingList(int pageNO, int listSize, int num) {
+		List<ItemsQnaRepVO> QnaRepPagingList = new ArrayList<ItemsQnaRepVO>();
+		QnaRepPagingList = dao.getAllQnaRep(pageNO,listSize,num);
+		return QnaRepPagingList;
 	}
 	
 }

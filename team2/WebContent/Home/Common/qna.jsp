@@ -20,13 +20,13 @@
 <body>	
     <section class="container">
         <article class="half">
-            <h1>Review</h1>
+            <h1>Q&A</h1>
             <div class="tabs">
-                <span class="tab signup active"><a href="#">상품후기</a></span>
+                <span class="tab signup active"><a href="#">QnA작성</a></span>
             </div>
             <div class="content">
                 <div class="signup-cont cont">
-                    <form action="${contextPath}/<%=category%>/addReply.do" method="post">
+                    <form action="${contextPath}/<%=category%>/addQna.do" method="post">
                     	<input type="hidden" name="num" id="num" class="inpt" value="<%=num%>">
                     	<input type="hidden" name="category" id="category" class="inpt" value="<%=category %>">
                         <input type="text" name="writer" id="writer" class="inpt" value="${sessionScope.id}" readonly>
@@ -34,7 +34,7 @@
                         <input type="text" name="pw" id="pw" class="inpt" placeholder="Password">
                         <textarea rows="9" cols="36" class="reviewcontent" id="content" name="content"></textarea>
                         <div class="submit-wrap">
-                            <input type="submit" value="상품후기 등록" class="submit">
+                            <input type="submit" value="질문 등록" class="submit">
                         </div>
                     </form>            
                 </div>

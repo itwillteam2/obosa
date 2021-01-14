@@ -1,32 +1,43 @@
 package Living;
 
 public class ItemsQnaRepVO {
-	private int rnum; 
-	private int num; 
-	private String content; 
+	private int qrnum; 
+	private int qnum;
+	private String pw;
+	private String content;
+	private int complete;
 	
 	public ItemsQnaRepVO() {
 		
 	}
-	
-	public ItemsQnaRepVO(int rnum, int num, String content) {
+
+	public ItemsQnaRepVO(int qrnum, int qnum, String pw, String content, int complete) {
 		super();
-		this.rnum = rnum;
-		this.num = num;
+		this.qrnum = qrnum;
+		this.qnum = qnum;
+		this.pw = pw;
 		this.content = content;
+		this.complete = complete;
 	}
-	
-	public int getRnum() {
-		return rnum;
+
+
+	public int getQrnum() {
+		return qrnum;
 	}
-	public void setRnum(int rnum) {
-		this.rnum = rnum;
+	public void setQrnum(int qrnum) {
+		this.qrnum = qrnum;
 	}
-	public int getNum() {
-		return num;
+	public int getQnum() {
+		return qnum;
 	}
-	public void setNum(int num) {
-		this.num = num;
+	public void setQnum(int qnum) {
+		this.qnum = qnum;
+	}
+	public String getPw() {
+		return pw;
+	}
+	public void setPw(String pw) {
+		this.pw = pw;
 	}
 	public String getContent() {
 		return content;
@@ -34,4 +45,15 @@ public class ItemsQnaRepVO {
 	public void setContent(String content) {
 		this.content = content;
 	}
+
+	public int getComplete() {
+		return complete;
+	}
+
+	public void setComplete(int complete) {
+		this.complete = complete;
+	}
+
+	
+
 }

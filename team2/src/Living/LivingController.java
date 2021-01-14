@@ -19,6 +19,7 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.FileUtils;
 
+import CsCenter.InqRepVO;
 import CsCenter.NoticeVO;
 import Page.Paging;
 
@@ -28,6 +29,8 @@ public class LivingController extends HttpServlet {
 	ItemsVO vo;
 	ItemsService service;
 	ItemsRepVO repVO;
+	ItemsQnaVO qnaVO;
+	ItemsQnaRepVO qnarepVO;
 	String realPath;
 	final String CATEGORY="living";
 	private static String ARTICLE_IMAGE_REPO = "C:\\files\\article_image";
@@ -36,6 +39,8 @@ public class LivingController extends HttpServlet {
 	public void init() throws ServletException {
 		vo = new ItemsVO();
 		repVO = new ItemsRepVO();
+		qnaVO = new ItemsQnaVO();
+		qnarepVO = new ItemsQnaRepVO();
 		service = new ItemsService();
 	}
 
@@ -60,6 +65,8 @@ public class LivingController extends HttpServlet {
 		String nextPage = null;
 		realPath = request.getServletContext().getRealPath("/files/"+CATEGORY);
 		String action = request.getPathInfo();
+		
+		List<ItemsQnaRepVO> QnaRepList = null;
 
 		if (action == null || action.equals("/list.do")) {
 			int totalCount = service.totalCount();
@@ -172,6 +179,8 @@ public class LivingController extends HttpServlet {
 		} else if (action.equals("/viewContent.do")) {
 			int num = Integer.parseInt(request.getParameter("num"));
 			int totalCount = service.totalCountRep();
+			int totalCount2 = service.totalCountQna();
+			int totalCount3 = service.totalCountQnaRep();
 			Paging paging = new Paging();
 			int pageNO = (request.getParameter("pageNO") == null) ? 1 : Integer.parseInt(request.getParameter("pageNO"));
 			int pageSize = 5;
@@ -185,6 +194,21 @@ public class LivingController extends HttpServlet {
 			request.setAttribute("ReppagingList", ReppagingList);	
 			request.setAttribute("totalCount", totalCount);
 			request.setAttribute("paging", paging);
+			
+			List <ItemsQnaVO> QnaPagingList = service.QnaPagingList(pageNO,listSize, num);
+			request.setAttribute("QnaPagingList", QnaPagingList);	
+			request.setAttribute("totalCount", totalCount2);
+			request.setAttribute("paging", paging);
+			
+			QnaRepList = service.listQnaRep();
+			request.setAttribute("QnaRepList", QnaRepList);
+			
+			List <ItemsQnaRepVO> QnaRepPagingList = service.QnaRepPagingList(pageNO,listSize, num);
+			request.setAttribute("QnaRepPagingList", QnaRepPagingList);	
+			request.setAttribute("totalCount", totalCount3);
+			request.setAttribute("paging", paging);
+			
+			
 			
 			nextPage = "/Home/Common/content.jsp";
 		
@@ -216,6 +240,46 @@ public class LivingController extends HttpServlet {
 
 			PrintWriter pw2 = response.getWriter();
 			pw2.print("<script>" + "  alert('상품후기를 등록 했습니다.');" + "window.opener.location.reload(); " +
+			"window.close();"+ "</script>");	
+		} else if (action.equals("/addQna.do")) {
+			
+			int qnum = 0;
+			
+			int num = Integer.parseInt(request.getParameter("num"));
+			String title = request.getParameter("title");
+			String pw = request.getParameter("pw");
+			String content = request.getParameter("content");
+			String writer = request.getParameter("writer");
+			
+			qnaVO.setQnum(qnum);
+			qnaVO.setNum(num);
+			qnaVO.setTitle(title);
+			qnaVO.setPw(pw);
+			qnaVO.setContent(content);
+			qnaVO.setWriter(writer);
+			
+			
+			qnum = service.addQna(qnaVO);
+
+			PrintWriter pw2 = response.getWriter();
+			pw2.print("<script>" + "  alert('질문을 등록 했습니다.');" + "window.opener.location.reload(); " +
+			"window.close();"+ "</script>");	
+		} else if (action.equals("/addQnaReply.do")) {
+			int qrnum = 0;
+			
+			int qnum = Integer.parseInt(request.getParameter("qnum"));
+			String content = request.getParameter("content");
+			String pw = request.getParameter("pw");
+			
+			qnarepVO.setQrnum(qrnum);
+			qnarepVO.setQnum(qnum);
+			qnarepVO.setContent(content);
+			qnarepVO.setPw(pw);
+
+			qnum = service.addQnaRep(qnarepVO);
+			
+			PrintWriter pw2 = response.getWriter();
+			pw2.print("<script>" + "  alert('답변을 등록 했습니다.');" + "window.opener.location.reload(); " +
 			"window.close();"+ "</script>");	
 		}
 

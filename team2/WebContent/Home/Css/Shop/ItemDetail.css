@@ -202,7 +202,7 @@
 .item_content.on .table .tr .td.border { border-top:1px solid #cacaca; }
 
 .item_content.postscript.on .table .ps { display:none; }
-.item_content.postscript.on .table .ps.on { display:none; position:relative; padding:0 0 50px 150px; background-color:#fafafa; border-top:1px solid #cacaca; }
+.item_content.postscript.on .table .ps.on { display:none; position:relative; padding:0 0 50px 150px; background-color:#dad8ff;}
 .item_content.postscript.on .table .ps.on .ps_sub1 { padding:37px 0; }
 .item_content.postscript.on .table .ps.on .ps_sub1 span { display:block; float:left; padding:0 35px; font-size:17px; color:#000000; position:relative; }
 .item_content.postscript.on .table .ps.on .ps_sub1 .type2 { padding:0 35px 0 50px; }
@@ -224,7 +224,7 @@
 .item_content.postscript.on .btnProductPS { margin:0; padding:0; border:0; position:absolute; top:45px; right:0; line-height:35px; background-color:#424242; padding:0 25px; color:#ffffff; font-size:16px; border-radius:5px; }
 
 .item_content.productqna.on .table .qna { display:none; }
-.item_content.productqna.on .table .qna.on { display:block; padding:35px 0 35px 0; background-color:#fafafa; border-top:1px solid #cacaca; }
+.item_content.productqna.on .table .qna.on { display:none; padding:35px 0 35px 0; background-color:#dad8ff;}
 .item_content.productqna.on .table .qna.on .qna_q { display:block; position:relative; padding:0 0 0 150px; line-height:28px; font-size:16px; color:#000000; }
 .item_content.productqna.on .table .qna.on .qna_a { display:block; position:relative; padding:0 0 0 150px; margin:16px 0 0 0; line-height:28px; font-size:16px; color:#000000; }
 .item_content.productqna.on .table .qna.on .qna_q:after { position:absolute; top:0; left:0; width:150px; content:"Q."; font-size:28px; color:#ff8e8e; text-align:center; }
