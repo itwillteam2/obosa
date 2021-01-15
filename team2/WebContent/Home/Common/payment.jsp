@@ -3,6 +3,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <c:set var="contextPath"  value="${pageContext.request.contextPath}"  />
+<c:set var="recentURI" value="${header.referer}"/>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
@@ -13,6 +14,7 @@
 <title>Insert title here</title>
 </head>
 <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
+<script type="text/javascript" src="https://cdn.iamport.kr/js/iamport.payment-1.1.5.js"></script>
 <script>
 $(document).ready(function(){
 	 var cpnum = "${user.cpnum}";
@@ -68,7 +70,7 @@ fnGetAddressInfo = function(){
 		}).open();
 }
 
-pay = function(){
+function submitPay(){
 	if($("#name").val() == "" || $("#name").val() == null){
 		alert("수취인명을 입력해주세요.");
 		$("#name").focus();
@@ -97,31 +99,43 @@ pay = function(){
 		alert("주소를 입력해주세요");
 		$("#addr2").focus();
 		return;
+	}else if($("#email").val() == "" || $("#email").val() == null){
+		alert("메일을 입력해주세요");
+		$("#email").focus();
+		return;
 	}else{
-		document.fr.submit();
+		var cpnum = $("#cpnum1").val()+"-"+$("#cpnum2").val()+"-"+$("#cpnum3").val();
+		$("#cpnum").val(cpnum);
+		
+		var address = $("#addr1").val() + " " + $("#addr2").val();
+		$("#address").val(address);
+		
+		document.payForm.submit();
 	}
-	
 }
 </script>
 <body>
 	<jsp:include page="../inc/hdr_menu.jsp" />
 	<div id="CommonHeaderArea"></div>
 	<div id="CommonHeader_M"></div>
-	<form action="#" name="fr" method="post">
+	<form action="${contextPath}/common/pay.do" name="payForm" method="post">
+		<input type="hidden" name="recentURI" value="${recentURI}">
 		<div class="payment">
 			<h1>주문 / 결제</h1>
 			<hr>
 			<h3>주문자 정보</h3>
 			<div class="address">
-				<input type="text" id="name" value="${name}" placeholder="이름"/>&nbsp;&nbsp;&nbsp;
+				<input type="text" name="oname" id="name" value="${name}" placeholder="이름"/>&nbsp;&nbsp;&nbsp;
 				<input type="text" id="cpnum1" class="cpnum"> - 
 				<input type="text" id="cpnum2" class="cpnum"> - 
 				<input type="text" id="cpnum3" class="cpnum"><br><br>
+				<input type="hidden" name="cpnum" id="cpnum">
 				
-				<input type="text" id="postcode" name="mempostcode" maxlength="5" value="${user.postcode}" placeholder="우편번호" readonly>
+				<input type="text" id="postcode" name="postcode" maxlength="5" value="${user.postcode}" placeholder="우편번호" readonly>
 	            <a class="button" href="javascript:fnGetAddressInfo();" id="addrBtn">우편번호 찾기</a><br>
-	            <input type="text" id="addr1" class="addr" value="${user.addr1}" placeholder="주소" readonly><br>
-	            <input type="text" id="addr2" class="addr" placeholder="상세주소" value="${user.addr2}">
+	            <input type="text" id="addr1" name="addr1" class="addr" value="${user.addr1}" placeholder="주소" readonly><br>
+	            <input type="text" id="addr2" name="addr2" class="addr" placeholder="상세주소" value="${user.addr2}">
+	            <input type="hidden" id="address" name="address">
 			</div>
 			<div class="clear"></div>
 			<br>
@@ -130,11 +144,15 @@ pay = function(){
 			<h3>주문상품</h3>
 			<div class="items">
 				<img src="${contextPath}/download.do?fd=${fd}&num=${num}&productImageName=${item.productImageName1}" />
+				<input type="hidden" name="fd" value="${fd }">
+				<input type="hidden" name="num" value="${num}">
+				<input type="hidden" name="productImageName" value="${item.productImageName1}">
 				<div id="item">
 					${item.sellerName}<br>
 					${item.productName}<br>
 					수량 : ${qty}개
-				</div>
+					<input type="hidden" name="productName" value="${item.productName}">
+					<input type="hidden" name="qty" value="${qty}">
 				<div id="price">
 					<strong>${item.productPrice * qty}</strong>원<br>
 					배송비 : ${item.shipping_fee}원
@@ -144,6 +162,7 @@ pay = function(){
 			<div class="total">
 				<span id="totalPrice">총 <strong>${item.productPrice * qty + item.shipping_fee}</strong>원</span><br>
 				<span>${item.point}포인트가 적립됩니다</span>
+				<input type="hidden" name="totalPrice" value="${item.productPrice * qty + item.shipping_fee}">
 			</div>
 			<div class="clear"></div>
 			<br>
@@ -155,7 +174,10 @@ pay = function(){
 					<input type="radio" name="pay" value="카드" checked>&nbsp;&nbsp;카드&nbsp;&nbsp;&nbsp;&nbsp;
 					<input type="radio" name="pay" value="무통장입금">&nbsp;&nbsp;무통장입금
 				</div>
-				<a class="payBtn" href = "javascript:pay();">결제하기</a>
+				<div class="email">
+					결제 확인 이메일  &nbsp;&nbsp;&nbsp;<input type="email"  id="email" name="email" placeholder="sangsang@abc.com">
+				</div>
+				<input type="button" onclick="submitPay();" class="payBtn" value="결제하기">
 			</div>
 		</div>
 	</form>

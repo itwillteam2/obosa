@@ -103,11 +103,63 @@ strong{
 	height:56px; 
 	line-height:56px; 
 	font-size:22px; 
-	color:#ffffff; 
+	color:#ffffff !important; 
 	background-color:#000000; 
 	font-weight:bold; 
 	text-align:center; 
 	border:0; 
 	border-radius:5px; 
 	margin:0 auto;
+}
+
+.email{
+	margin: 50px 0 50px 30px !important;
+}
+
+.email input[type=email]{
+	width: 300px !important;
+	height: 40px !important;
+	color: #777777;
+    font-size: 15px;
+    border: 0;
+    background-color: #f3f3f3;
+    border-radius: 5px;
+    padding: 0 22px;
+    margin: 0;
+    line-height: 56px;
+}
+
+.success{
+	margin: 50px 0;
+	text-align: center;
+	display: block;
+	font-size: 20px;
+}
+
+.success b{
+	color: skyblue;
+}
+
+.itemInfo{
+	margin: 20px auto;
+	width: 500px;
+	border: 1px solid;
+	border-radius: 20px;
+	display: inline-block;
+}
+
+.itemInfo img{
+	width: 100px;
+	height: 100px;
+	float: left;
+	margin: 20px;
+	border: 1px solid none;
+	border-radius: 20px;
+}
+
+#content{
+	margin-top: 40px;
+	margin-right: 20px;
+	float: right;
+	text-align: right;
 }

@@ -348,6 +348,65 @@ public class CommonController extends HttpServlet{
 			}
 			
 			nextPage="/Home/Common/payment.jsp";
+		}else if(action.equals("/pay.do")){
+			String oname = request.getParameter("oname");
+			request.setAttribute("oname", oname);
+			
+			String email = request.getParameter("email");
+			request.setAttribute("email", email);
+			
+			String cpnum = request.getParameter("cpnum");
+			request.setAttribute("cpnum", cpnum);
+			
+			String address = request.getParameter("address");
+			request.setAttribute("address", address);
+			
+			String postcode = request.getParameter("postcode");
+			request.setAttribute("postcode", postcode);
+			
+			String productName = request.getParameter("productName");
+			request.setAttribute("productName", productName);
+			
+			String qty = request.getParameter("qty");
+			request.setAttribute("qty", qty);
+			
+			int totalPrice = Integer.parseInt(request.getParameter("totalPrice"));
+			request.setAttribute("totalPrice", totalPrice);
+			
+			String fd = request.getParameter("fd");
+			request.setAttribute("fd", fd);
+			
+			String num = request.getParameter("num");
+			request.setAttribute("num", num);
+			
+			String productImageName = request.getParameter("productImageName");
+			request.setAttribute("productImageName", productImageName);
+			
+			String recentURI = request.getParameter("recentURI");
+			request.setAttribute("recentURI", recentURI);
+			
+			nextPage="/Home/Common/pay.jsp";
+		}else if(action.equals("/success.do")){
+			String productName = request.getParameter("productName");
+			request.setAttribute("productName", productName);
+			
+			String qty = request.getParameter("qty");
+			request.setAttribute("qty", qty);
+			
+			int totalPrice = Integer.parseInt(request.getParameter("totalPrice"));
+			request.setAttribute("totalPrice", totalPrice);
+			
+			String fd = request.getParameter("fd");
+			request.setAttribute("fd", fd);
+			
+			String num = request.getParameter("num");
+			request.setAttribute("num", num);
+			
+			String productImageName = request.getParameter("productImageName");
+			request.setAttribute("productImageName", productImageName);
+			System.out.println("★★" + productImageName);
+			
+			nextPage="/Home/Common/success.jsp";
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
