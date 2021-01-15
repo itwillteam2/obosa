@@ -30,7 +30,7 @@
 	</div>
 </div>
 <article class="product" style="width:1200px; margin : 0 auto" >
-	<form action="${contextPath}/crafts/addCraftsItem.do" method="post" enctype="multipart/form-data" name="fr">
+	<form action="${contextPath}/auction/addAuctionItem.do" method="post" enctype="multipart/form-data" name="fr">
 		<table class="table">
 			<colgroup>
 				<col style="width:120px" />
@@ -61,11 +61,11 @@
 			</tr>
 			<tr>
 				<th class="align-middle">
-					<label for="productPrice" class="m-0">시작가격</label>
+					<label for="startPrice" class="m-0">시작가격</label>
 				</th>
 				<td>
 					<div class="form-inline">
-						<input class="form-control" type="number" name="productPrice" id="productPrice" min="0" max="10000000000" step="100" value="0" required />
+						<input class="form-control" type="number" name="startPrice" id="startPrice" min="0" max="10000000000" step="100" value="0" required />
 					</div>
 				</td>
 			</tr>
@@ -134,8 +134,8 @@
 			</tr>
 		</table>
 		<div class="text-center my-5">
-			<button type="button" class="btn btn-secondary" onclick="history.back()">취소</button>
-			<button type="button" class="btn btn-primary" onclick="smcheck()">상품 등록하기</button>
+			<input type="submit" class="btn btn-primary" value="상품 등록하기">
+			<input type="reset" class="btn btn-secondary" value="취소">			
 		</div>
 	</form>
 </article>

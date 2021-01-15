@@ -1,14 +1,29 @@
 package Auction;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.OutputStream;
+import java.net.URLEncoder;
+import java.nio.file.Files;
+import java.sql.Timestamp;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("auction/*")
+import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.disk.DiskFileItemFactory;
+import org.apache.commons.fileupload.servlet.ServletFileUpload;
+import org.apache.commons.io.FileUtils;
+
+@WebServlet("/auction/*")
 public class AuctionController extends HttpServlet{
 
 	AuctionVO auctionVO;
@@ -52,13 +67,171 @@ public class AuctionController extends HttpServlet{
 		if(action==null || action.equals("/auctionList.do")) {
 			//리스트 불러오기
 		}else if(action.equals("/addAuctionItem.do")) {
-			int num = Integer.parseInt(request.getParameter("num"));
+			Map<String, String> addItemMap = upload(request, response);
 			
+			
+			String productName = addItemMap.get("productName");
+			String productContent = addItemMap.get("productContent");
+			String sellerName = addItemMap.get("sellerName");
+			int startPrice = Integer.parseInt(addItemMap.get("startPrice"));
+			String productImageName1 = addItemMap.get("productImageName1");
+			String productImageName2 = addItemMap.get("productImageName2");
+			String productImageName3 = addItemMap.get("productImageName3");
+			int productQuantity = Integer.parseInt(addItemMap.get("productQuantity"));
+			int shipping_fee = Integer.parseInt(addItemMap.get("shipping_fee"));
+			
+			
+			
+			auctionVO.setProductContent(productContent);
+			auctionVO.setProductImageName1(productImageName1);
+			auctionVO.setProductImageName2(productImageName2);
+			auctionVO.setProductImageName3(productImageName3);
+			auctionVO.setProductName(productName);
+			auctionVO.setProductQuantity(productQuantity);
+			auctionVO.setSellerName(sellerName);
+			auctionVO.setShipping_fee(shipping_fee);
+			auctionVO.setStartPrice(startPrice);
+			
+			int maxNum = auctionService.insertAuctionItem(auctionVO);
+			
+			nextPage ="/Home/Auction/list.jsp";
 		}
 		
+		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
+		dispatcher.forward(request, response);		
 		
 	}//end of doHandle
 	
-	
+	//upload
+	private Map<String, String> upload(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		Map<String, String> articleMap = new HashMap<String, String>();
+		String encoding = "utf-8";
+		File currentDirPath = new File(ARTICLE_IMAGE_REPO);
+		DiskFileItemFactory factory = new DiskFileItemFactory();
+		factory.setRepository(currentDirPath);
+		factory.setSizeThreshold(1024 * 1024 * 1);
+		ServletFileUpload upload = new ServletFileUpload(factory);
+		
+		try {
+			List items = upload.parseRequest(request);
+			for (int i = 0; i < items.size(); i++) {
+				FileItem fileItem = (FileItem) items.get(i);
+				if (fileItem.isFormField()) {
+					articleMap.put(fileItem.getFieldName(), fileItem.getString(encoding));
+				} else {
+					if (fileItem.getSize() > 0) {
+						int idx = fileItem.getName().lastIndexOf("\\");
+						if (idx == -1) {
+							idx = fileItem.getName().lastIndexOf("/");
+						}
 
+						String fileName = fileItem.getName().substring(idx + 1);
+						articleMap.put(fileItem.getFieldName(), fileName);
+						File uploadFile = new File(currentDirPath + "\\temp\\" + fileName);
+						fileItem.write(uploadFile);
+					}
+				}
+			}
+			
+		} catch (Exception e) {
+			System.out.println("upload error : " + e.toString());
+		}
+		
+		return articleMap;		
+		
+	}//end of upload
+	
+	// delete file when delete content
+		private void deleteFile(int num, String fileName) {
+			try {
+				String filePath = realPath + "\\" + num + "\\" + fileName;
+				File file = new File(filePath);
+
+				if (file.exists()) {
+					file.delete();
+				}
+			} catch (Exception e) {
+				System.out.println("deleteFile error : " + e.toString());
+			}
+		}// end of deleteFile
+		
+		//movefile
+		private void moveFile(int num, String fileName) {
+			try {
+				File srcFile = new File(realPath + "\\temp\\" + fileName);
+				File destDir = new File(realPath + "\\" + num);
+				Boolean createDestDir = destDir.mkdir();
+				
+				String filePath = realPath + "\\" + num + "\\" + fileName;
+				File file = new File(filePath);
+				
+				if(!file.exists()) {
+					FileUtils.moveFileToDirectory(srcFile, destDir, createDestDir);
+				}	
+			}catch (Exception e) {
+				System.out.println("moveFile error : " + e.toString());
+			}
+		}//end of moveFile
+		
+		private void downloadFile(HttpServletResponse response, int num, String fileName){
+			try {			
+				String filePath = realPath + "\\" + num + "\\" + fileName;
+				File file = new File(filePath);
+			
+				OutputStream out = response.getOutputStream();			
+				
+				response.setHeader("Cache-Control", "no-chche");
+				response.addHeader("Cache-Control", "no-store");			
+				response.setHeader("Content-disposition", "attachment; fileName=\"" + URLEncoder.encode(fileName,"UTF-8") + "\";");
+				
+				FileInputStream in = new FileInputStream(file);	
+				
+				byte[] buffer = new byte[1024*8];
+				
+				while(true) {
+					int count = in.read(buffer);
+					
+					if(count == -1) {
+						break;
+					}
+					out.write(buffer, 0, count);;
+				}
+				
+				in.close();
+				out.close();
+			} catch (Exception e) {
+				System.out.println("downloadFile()메소드 내부에서 오류 : " + e.toString());
+			}		
+		}//end of downloadFile
+		
+		private String getFileType(int num, String fileName){
+			String campingFileType = "";
+
+			try {
+				String filePath = realPath + "\\" + num + "\\" + fileName;
+				File file = new File(filePath);
+				
+				String mimeType = Files.probeContentType(file.toPath());
+				campingFileType = mimeType.split("/")[0];
+				
+			} catch (Exception e) {
+				System.out.println("getFileType()메소드 내부에서 오류 : " + e.toString());
+			}
+			
+			return campingFileType;
+		}//end of getFileType
+
+		private void deleteDirectory(int num){
+			try {
+				String realDirPath = realPath + "\\" + num;
+				File realDir = new File(realDirPath);
+				
+				if(realDir.exists()) {
+					FileUtils.deleteDirectory(realDir);
+				}
+			} catch (Exception e) {
+				System.out.println("deleteFile()메소드 내부에서 오류 : " + e.toString());
+			}
+		}//end of deleteDirectory
 }
