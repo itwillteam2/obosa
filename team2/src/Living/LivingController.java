@@ -31,6 +31,7 @@ public class LivingController extends HttpServlet {
 	ItemsRepVO repVO;
 	ItemsQnaVO qnaVO;
 	ItemsQnaRepVO qnarepVO;
+	LivingJoinVO joinVO;
 	String realPath;
 	final String CATEGORY="living";
 	private static String ARTICLE_IMAGE_REPO = "C:\\files\\article_image";
@@ -41,6 +42,7 @@ public class LivingController extends HttpServlet {
 		repVO = new ItemsRepVO();
 		qnaVO = new ItemsQnaVO();
 		qnarepVO = new ItemsQnaRepVO();
+		joinVO = new LivingJoinVO();
 		service = new ItemsService();
 	}
 
@@ -67,6 +69,7 @@ public class LivingController extends HttpServlet {
 		String action = request.getPathInfo();
 		
 		List<ItemsQnaRepVO> QnaRepList = null;
+		List<LivingJoinVO> joinList = null;
 
 		if (action == null || action.equals("/list.do")) {
 			int totalCount = service.totalCount();
@@ -208,6 +211,11 @@ public class LivingController extends HttpServlet {
 			request.setAttribute("totalCount", totalCount3);
 			request.setAttribute("paging", paging);
 			
+			List <LivingJoinVO> QnaPagingJoinList = service.QnaPagingJoinList(pageNO,listSize, num);
+			request.setAttribute("QnaPagingJoinList", QnaPagingJoinList);	
+			request.setAttribute("totalCount", totalCount2);
+			request.setAttribute("paging", paging);
+			
 			
 			
 			nextPage = "/Home/Common/content.jsp";
@@ -281,6 +289,24 @@ public class LivingController extends HttpServlet {
 			PrintWriter pw2 = response.getWriter();
 			pw2.print("<script>" + "  alert('답변을 등록 했습니다.');" + "window.opener.location.reload(); " +
 			"window.close();"+ "</script>");	
+		
+		}else if (action.equals("/QnaReplyDelete.do")) {
+			int check = 0;
+			
+			int qrnum = Integer.parseInt(request.getParameter("qrnum"));
+			String pw = request.getParameter("pw");
+			int num = Integer.parseInt(request.getParameter("num"));
+			
+			check = service.QnaReplyDelete(qrnum, pw);
+			
+			PrintWriter pw2 = response.getWriter();
+			
+			if (check == 1) {
+				pw2.print("<script> alert('답변이 삭제되었습니다.');" + " location.href='" + request.getContextPath()
+						+ "/"+CATEGORY+"/contentView.do?num='"+num+"; " + "</script>");
+			} else {
+				pw2.print("<script> alert('비밀번호가 틀립니다.');" + "history.back();" + "</script>");
+			}
 		}
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);

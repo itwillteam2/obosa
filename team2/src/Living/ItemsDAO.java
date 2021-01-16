@@ -395,7 +395,9 @@ public class ItemsDAO {
 				vo.setContent(rs.getString("content"));
 				vo.setDate(rs.getTimestamp("date"));
 				QnaPagingList.add(vo);
+
 			}
+			
 						
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -533,6 +535,79 @@ public class ItemsDAO {
 			freeResource();
 		}
 		return QnaRepPagingList;
+	}
+
+	public List<LivingJoinVO> JoinQna(int pageNO, int listSize, int num) {
+		List<LivingJoinVO> QnaPagingJoinList = new ArrayList<LivingJoinVO>();
+		pageNO= (pageNO-1)*listSize;
+		try {
+			conn = DBConnection.getConnection();
+				String query = "select q.qnum, q.title, q.content, q.writer, q.date, ifnull(r.qrnum,0) qrnum, ifnull(r.content,0) rcontent, ifnull(r.complete, 0) complete "
+								+ "FROM "+CATEGORY+"_qna q left outer join "+CATEGORY+"_qna_rep r on q.qnum = r.qnum order by qnum desc"+" LIMIT "+pageNO+","+listSize;
+				pstmt = conn.prepareStatement(query);			
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				LivingJoinVO vo = new LivingJoinVO();
+				vo.setQnum(rs.getInt("qnum"));
+				vo.setTitle(rs.getString("title"));
+				vo.setContent(rs.getString("content"));
+				vo.setWriter(rs.getString("writer"));
+				vo.setDate(rs.getTimestamp("date"));
+				vo.setQrnum(rs.getInt("qrnum"));
+				vo.setRcontent(rs.getString("rcontent"));
+				vo.setComplete(rs.getInt("complete"));
+				QnaPagingJoinList.add(vo);	
+				
+				System.out.println(rs.getInt("qnum"));
+				System.out.println(rs.getString("title"));
+			}
+						
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			freeResource();
+		}
+		return QnaPagingJoinList;
+	}
+
+	public int QnaReplyDelete(int qrnum, String pw) {
+		int check = 0;
+		
+		String sql = "";
+		
+		try {
+			conn = DBConnection.getConnection();
+			
+			sql = "select pw from "+CATEGORY+"_qna_rep where qrnum = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, qrnum);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				if(pw.equals(rs.getString("pw"))){
+
+					check = 1;
+
+					sql = "delete from "+CATEGORY+"_qna_rep where qrnum=?";
+					
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setInt(1, qrnum);
+
+					
+					pstmt.executeUpdate();
+				}else{
+					check = 0;
+				}
+			}		
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally{
+			freeResource();
+		}
+		
+		return check;
 	}
 
 }

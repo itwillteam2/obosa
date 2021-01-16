@@ -358,14 +358,11 @@ $(window).load(function(){
 				</c:if>
 				<div class='inner'>
 					<div class='table'>
-						<c:forEach var="Qna" items="${QnaPagingList}" varStatus="status">
-						<c:forEach var="QR" items="${QnaRepList }">
+						<c:forEach var="Qna" items="${QnaPagingJoinList}" varStatus="status">
 						<span class='tr ClickQna'>
 							<c:choose>
-								<c:when test="${QR.qnum == Qna.qnum }"> 
-									<c:if test="${QR.complete == 1}">
-										<span class='td'>답변완료</span>
-									</c:if>
+								<c:when test="${Qna.complete == 1}"> 
+									<span class='td'>답변완료</span>
 								</c:when>
 								<c:otherwise>
 									<span class='td'>답변대기</span>
@@ -379,14 +376,13 @@ $(window).load(function(){
 							<span class='qna_q'>${fn:replace(Qna.content, newLineChar, "<br/>")}</span>
 							
 							<c:choose>
-								<c:when test="${QR.qnum == Qna.qnum }"> 
-									<span class='qna_a'>${fn:replace(QR.content, newLineChar, "<br/>")}</span>
+								<c:when test="${Qna.complete == 1}"> 
+									<span class='qna_a'>${fn:replace(Qna.rcontent, newLineChar, "<br/>")}</span>
 										<c:if test="${content.sellerName == sessionScope.name }"> 
-										<span class="buttonreply" style="float:right;" onclick="window.open('${contextPath}/Home/Common/qnaReply.jsp?category=${content.category}&qnum=${Qna.qnum}', 
-										'Q&A답변등록', 'width=500, height=400, location=no, status=no, scrollbars=no, resizable=no, left=500, top=100' );">
+										<span class="buttonreply" style="float:right;" onclick="window.open('${contextPath}/Home/Common/qnaReplyModify.jsp?category=${content.category}&qnum=${Qna.qnum}', 
+										'Q&A답변수정', 'width=500, height=400, location=no, status=no, scrollbars=no, resizable=no, left=500, top=100' );">
 										Q&A 답변 수정</span>
-										<span class="buttonreply" style="float:right;" onclick="window.open('${contextPath}/Home/Common/qnaReply.jsp?category=${content.category}&qnum=${Qna.qnum}', 
-										'Q&A답변등록', 'width=500, height=400, location=no, status=no, scrollbars=no, resizable=no, left=500, top=100' );">
+										<span class="buttonreply" style="float:right;" onclick="location.href='${contextPath}/Home/Common/qnaReplyDelete.jsp?category=${content.category}&qrnum=${Qna.qrnum}&num=${content.num}'">
 										Q&A 답변 삭제</span>
 										</c:if>
 								</c:when>
@@ -400,7 +396,6 @@ $(window).load(function(){
 								</c:otherwise>
 							</c:choose> 			
 						</div>
-						</c:forEach>
 						</c:forEach>
 					</div>
 					</div>

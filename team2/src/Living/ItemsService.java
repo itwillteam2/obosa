@@ -15,12 +15,14 @@ public class ItemsService {
 	ItemsVO vo;
 	ItemsRepVO repVO;
 	ItemsQnaVO qnaVO;
+	LivingJoinVO joinVO;
 	
 	public ItemsService() {
 		vo = new ItemsVO();
 		dao = new ItemsDAO();
 		repVO = new ItemsRepVO();
 		qnaVO = new ItemsQnaVO();
+		joinVO = new LivingJoinVO();
 	}	
 	
 	 public List<ItemsVO> ContentList(int pageNO, int listSize, String ord) {
@@ -102,6 +104,18 @@ public class ItemsService {
 		List<ItemsQnaRepVO> QnaRepPagingList = new ArrayList<ItemsQnaRepVO>();
 		QnaRepPagingList = dao.getAllQnaRep(pageNO,listSize,num);
 		return QnaRepPagingList;
+	}
+
+	public List<LivingJoinVO> QnaPagingJoinList(int pageNO, int listSize, int num) {
+		List<LivingJoinVO> QnaPagingJoinList = new ArrayList<LivingJoinVO>();
+		QnaPagingJoinList = dao.JoinQna(pageNO,listSize,num);
+		return QnaPagingJoinList;
+	}
+
+	public int QnaReplyDelete(int qrnum, String pw) {
+		int check = dao.QnaReplyDelete(qrnum, pw);
+		
+		return check;
 	}
 	
 }
