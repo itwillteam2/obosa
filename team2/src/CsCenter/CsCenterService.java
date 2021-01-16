@@ -139,6 +139,12 @@ public class CsCenterService {
 		  return InquirySearchList;
 	}
 
+	public List<InquiryJoinVO> JoinList(int pageNO, int listSize) {
+		List<InquiryJoinVO> JoinList = new ArrayList<InquiryJoinVO>();
+		JoinList = CsCenterDAO.JoinList(pageNO,listSize);
+		  return JoinList;
+	}
+
 
 
 

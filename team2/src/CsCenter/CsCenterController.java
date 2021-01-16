@@ -21,6 +21,8 @@ public class CsCenterController extends HttpServlet {
 	NoticeVO NoticeVO;
 	InquiryVO InquiryVO;
 	InqRepVO InqRepVO;
+	InquiryJoinVO InqJoinVO;
+
 	
 	//서블릿 초기화시 BoardService객체를 생성합니다.
 	@Override
@@ -29,6 +31,7 @@ public class CsCenterController extends HttpServlet {
 		NoticeVO = new NoticeVO();
 		InquiryVO = new InquiryVO();
 		InqRepVO = new InqRepVO();
+		InqJoinVO = new InquiryJoinVO();
 	}
 	
 	@Override
@@ -125,6 +128,11 @@ public class CsCenterController extends HttpServlet {
 
 			List <InquiryVO> pagingList = CsCenterService.pagingList2(pageNO,listSize);
 			request.setAttribute("pagingList", pagingList);	
+			request.setAttribute("totalCount", totalCount2);
+			request.setAttribute("paging", paging);
+			
+			List <InquiryJoinVO> JoinList = CsCenterService.JoinList(pageNO,listSize);
+			request.setAttribute("JoinList", JoinList);	
 			request.setAttribute("totalCount", totalCount2);
 			request.setAttribute("paging", paging);
 			

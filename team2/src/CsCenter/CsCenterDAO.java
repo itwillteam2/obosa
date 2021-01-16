@@ -756,4 +756,34 @@ public class CsCenterDAO {
 		}
 		return InquirySearchList;
 	}
+
+	public List<InquiryJoinVO> JoinList(int pageNO, int listSize) {
+		List<InquiryJoinVO> JoinList = new ArrayList<InquiryJoinVO>();
+		pageNO= (pageNO-1)*listSize;
+		try {
+			conn = DBConnection.getConnection();
+				String query = "SELECT i.id, i.inqnum, i.title, i.content, i.date, ifnull(r.repnum,0) repnum,  ifnull(r.content,0) rcontent "
+						+ "from inquiry i left outer join inq_rep r on i.inqnum = r.inqnum "
+						+ " order by inqnum desc "+" LIMIT "+pageNO+","+listSize;
+				pstmt = conn.prepareStatement(query);			
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				InquiryJoinVO vo = new InquiryJoinVO();
+				vo.setId(rs.getString("id"));
+				vo.setInqnum(rs.getInt("inqnum"));
+				vo.setTitle(rs.getString("title"));
+				vo.setContent(rs.getString("content"));
+				vo.setDate(rs.getTimestamp("date"));
+				vo.setRepnum(rs.getInt("repnum"));
+				vo.setRcontent(rs.getString("rcontent"));
+				JoinList.add(vo);
+			}
+						
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			freeResource();
+		}
+		return JoinList;
+	}
 }
