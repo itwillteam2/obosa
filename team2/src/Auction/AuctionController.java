@@ -7,6 +7,7 @@ import java.io.OutputStream;
 import java.net.URLEncoder;
 import java.nio.file.Files;
 import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -23,6 +24,8 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.FileUtils;
 
+import Page.Paging;
+
 @WebServlet("/auction/*")
 public class AuctionController extends HttpServlet{
 
@@ -30,6 +33,7 @@ public class AuctionController extends HttpServlet{
 	AuctionService auctionService;
 	String realPath;
 	private static String ARTICLE_IMAGE_REPO = "C:\\files\\auction";
+
 	
 	@Override
 	public void init() throws ServletException {
@@ -65,7 +69,31 @@ public class AuctionController extends HttpServlet{
 		String action = request.getPathInfo();
 		System.out.println(action);
 		if(action==null || action.equals("/auctionList.do")) {
-			//리스트 불러오기
+			List<AuctionVO> articleList = new ArrayList<AuctionVO>();
+			Paging paging = new Paging();
+			
+			//paging 
+			int pageNo=1;
+			int listSize = 10;
+			int totalPages = paging.getTotalPages(); //총 페이지수
+			int startPage = paging.getStartPage();//시작페이지
+			int endPage = paging.getEndPage();//끝페이지
+			
+			if(request.getParameter("pageNo") !=null) {
+				pageNo = Integer.parseInt(request.getParameter("pageNo"));
+			}
+			int listCount = auctionService.totalCount();//글 총 갯수 받아오기
+			articleList = auctionService.getArticleList(pageNo, listSize); //한페이지에 글 갯수 받아오기
+			
+			paging.setTotalPages(totalPages);
+			paging.setStartPage(startPage);
+			paging.setEndPage(endPage);
+			request.setAttribute("paging", paging);
+			request.setAttribute("listCount", listCount);
+			request.setAttribute("articleList", articleList);			
+			
+			nextPage="Home/Auction/list.jsp";						
+			
 		}else if(action.equals("/addAuctionItem.do")) {
 			Map<String, String> addItemMap = upload(request, response);
 			
@@ -124,12 +152,19 @@ public class AuctionController extends HttpServlet{
 						int idx = fileItem.getName().lastIndexOf("\\");
 						if (idx == -1) {
 							idx = fileItem.getName().lastIndexOf("/");
-						}
+						
+							
 
 						String fileName = fileItem.getName().substring(idx + 1);
 						articleMap.put(fileItem.getFieldName(), fileName);
-						File uploadFile = new File(currentDirPath + "\\temp\\" + fileName);
+						File uploadFile = new File(currentDirPath + "\\temp\\" + fileName);						
 						fileItem.write(uploadFile);
+						
+						if(!uploadFile.exists()) {
+							uploadFile.mkdir();
+						}
+						
+						}
 					}
 				}
 			}
@@ -141,6 +176,24 @@ public class AuctionController extends HttpServlet{
 		return articleMap;		
 		
 	}//end of upload
+	
+	private void moveFile(int num, String fileName) {
+		try {
+			File srcFile = new File(realPath + "\\temp\\" + fileName);
+			File destDir = new File(realPath + "\\" + num);
+			Boolean createDestDir = destDir.mkdirs();
+			
+			String filePath = realPath + "\\" + num + "\\" + fileName;
+			File file = new File(filePath);
+			
+			if(!file.exists()) {
+				FileUtils.moveFileToDirectory(srcFile, destDir, createDestDir);
+				
+			}	
+		}catch (Exception e) {
+			System.out.println("moveFile error : " + e.toString());
+		}
+	}//end of moveFile
 	
 	// delete file when delete content
 		private void deleteFile(int num, String fileName) {
@@ -157,22 +210,7 @@ public class AuctionController extends HttpServlet{
 		}// end of deleteFile
 		
 		//movefile
-		private void moveFile(int num, String fileName) {
-			try {
-				File srcFile = new File(realPath + "\\temp\\" + fileName);
-				File destDir = new File(realPath + "\\" + num);
-				Boolean createDestDir = destDir.mkdir();
-				
-				String filePath = realPath + "\\" + num + "\\" + fileName;
-				File file = new File(filePath);
-				
-				if(!file.exists()) {
-					FileUtils.moveFileToDirectory(srcFile, destDir, createDestDir);
-				}	
-			}catch (Exception e) {
-				System.out.println("moveFile error : " + e.toString());
-			}
-		}//end of moveFile
+		
 		
 		private void downloadFile(HttpServletResponse response, int num, String fileName){
 			try {			
