@@ -159,7 +159,23 @@ $(window).load(function(){
 	
 	});
 
-	$(document).on("click", ".btnDelItem", function() {
+	$(document).on("click", ".btnCart", function() {
+		var cartQuantity = $("input[name='stockqty']").val();
+		alert(cartQuantity);
+		$.ajax({
+			type:"post",
+			async:true,
+			url:"${contextPath}/cart/addCart.do",  
+			data: {customer_id:"${id}",category:"${content.category}",pnum:"${content.num}",cartQuantity:cartQuantity},
+			contentType: 'application/x-www-form-urlencoded; charset=UTF-8', 
+	        dataType: 'html',
+			success:function(){ alert("장바구니에 추가되었습니다.");countCart();  
+			},
+			error:function(){ alert("다시 시도해 주시기 바랍니다."); }
+			});
+	});
+	
+	$(document).on("click", ".btnModItem", function() {
 		 $("form").attr("action", "${contextPath}/${content.category}/ToUpdateContent.do").submit();
 	});
 	$(document).on("click", ".btnDelItem", function() {
@@ -245,7 +261,7 @@ $(window).load(function(){
 							</span> 
 							<span class="pdtRight pdtBtnList"> 
 							    <span class="btnCart">
-								   <input type="button" value="장바구니 담기" />
+								   <input type="button"  value="장바구니 담기" />
 								</span> 
 								<span class="btnOrder">
 									<input type="button" value="바로 구매하기" onclick="payment()"/>
@@ -258,7 +274,7 @@ $(window).load(function(){
 							</span> 
 								<span class="pdtRight pdtBtnList" > 
 								<span class="btnModItem">
-								    <input type="button"  class="btnModItem" value="상품 수정" />
+								    <input type="button"  value="상품 수정" />
 								    <input type="hidden" name="num" value="${content.num}" />
 								</span> 
 								<span class="btnDelItem">
