@@ -7,9 +7,30 @@
 <c:set var="memtype" value="${sessionScope.memtype}"/>
 <header>	
 <script>
+//초기 장바구니 내용 개수 가져오기
+$(document).ready(function(){
+	if("${id}"!=""){
+		cartCount();
+	}
+});
+	
+// 장바구니 내용 개수 가져오기
+	function cartCount(){
+		var id="${id}";
+	 $.post("${contextPath}/cart/countCart.do",
+			 {customer_id:"${id}"},
+			 function(result){
+				$("#countCart").val(result);
+			 });
+	}		 
+
 	function fnCommonSearch(){
 		document.fr.submit();
 	}
+	function pageMove(category){
+		location.href="${contextPath}/category/list.do?category="+category;
+	}
+	
 </script>
 <div id="CommonHeader">
 	<div id="mymenu">
