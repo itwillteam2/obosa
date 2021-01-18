@@ -379,7 +379,7 @@ $(window).load(function(){
 								<c:when test="${Qna.complete == 1}"> 
 									<span class='qna_a'>${fn:replace(Qna.rcontent, newLineChar, "<br/>")}</span>
 										<c:if test="${content.sellerName == sessionScope.name }"> 
-										<span class="buttonreply" style="float:right;" onclick="window.open('${contextPath}/Home/Common/qnaReplyModify.jsp?category=${content.category}&qnum=${Qna.qnum}', 
+										<span class="buttonreply" style="float:right;" onclick="window.open('${contextPath}/Home/Common/qnaReplyModify.jsp?category=${content.category}&qrnum=${Qna.qrnum}&num=${content.num}', 
 										'Q&A답변수정', 'width=500, height=400, location=no, status=no, scrollbars=no, resizable=no, left=500, top=100' );">
 										Q&A 답변 수정</span>
 										<span class="buttonreply" style="float:right;" onclick="location.href='${contextPath}/Home/Common/qnaReplyDelete.jsp?category=${content.category}&qrnum=${Qna.qrnum}&num=${content.num}'">

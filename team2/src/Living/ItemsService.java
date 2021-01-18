@@ -117,5 +117,11 @@ public class ItemsService {
 		
 		return check;
 	}
+
+	public int modifyReply(ItemsQnaRepVO qnarepVO) {
+		int check = dao.modifyReply(qnarepVO);
+		
+		return check;
+	}
 	
 }
