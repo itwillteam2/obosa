@@ -22,13 +22,13 @@
             pg : 'inicis',
             pay_method : 'card',
             merchant_uid : 'merchant_' + new Date().getTime(),
-            name : '${productName}',
-            amount : '${totalPrice}',
-            buyer_email : '${email}',
-            buyer_name : '${name}',
-            buyer_tel : '${cpnum}',
-            buyer_addr : '${address}',
-            buyer_postcode : '${postcode}',
+            name : '${paymentMap.productName}',
+            amount : '${paymentMap.totalPrice}',
+            buyer_email : '${paymentMap.email}',
+            buyer_name : '${paymentMap.name}',
+            buyer_tel : '${paymentMap.cpnum}',
+            buyer_addr : '${paymentMap.address}',
+            buyer_postcode : '${paymentMap.postcode}',
             m_redirect_url : 'http://www.naver.com'
         }, function(rsp) {
             if (rsp.success ) {
@@ -56,16 +56,29 @@
                     }
                 });
                 //성공시 이동할 페이지
-               location.href='${contextPath}/common/success.do?productName=${productName}&qty=${qty}&totalPrice=${totalPrice}&fd=${fd}&num=${num}&productImageName=${productImageName}'
+                document.success.submit();
             } else {
                 msg = '결제에 실패하였습니다.';
                 msg += '에러내용 : ' + rsp.error_msg;
                 alert(msg);
                 //실패시 이동할 페이지
-                location.href="${recentURI}";
+                location.href="${paymentMap.recentURI}";
             }
         });
     });
     </script> 
+    <form action="${contextPath}/common/success.do" name="success"method="post">
+    	<input type="hidden" name="oname" value="${paymentMap.oname}">
+    	<input type="hidden" name="email" value="${paymentMap.email}">
+    	<input type="hidden" name="cpnum" value="${paymentMap.cpnum}">
+    	<input type="hidden" name="address" value="${paymentMap.address}">
+    	<input type="hidden" name="postcode" value="${paymentMap.postcode}">
+    	<input type="hidden" name="productName" value="${paymentMap.productName}">
+    	<input type="hidden" name="qty" value="${paymentMap.qty}">
+    	<input type="hidden" name="totalPrice" value="${paymentMap.totalPrice}">
+    	<input type="hidden" name="fd" value="${paymentMap.fd}">
+    	<input type="hidden" name="num" value="${paymentMap.num}">
+    	<input type="hidden" name="productImageName" value="${paymentMap.productImageName}">
+    </form>
 </body>
 </html>

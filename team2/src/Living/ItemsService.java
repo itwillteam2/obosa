@@ -118,4 +118,9 @@ public class ItemsService {
 		return check;
 	}
 	
+	public ItemsVO getContent(int num){
+		vo = dao.getContent(num);
+		return vo;
+	}
+	
 }

@@ -50,4 +50,9 @@ public class ItemsService {
 		return dao.insertNewReply(repVO);
 	}//end
 	
+	public ItemsVO getContent(int num){
+		vo = dao.getContent(num);
+		return vo;
+	}
+	
 }

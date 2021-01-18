@@ -1,7 +1,10 @@
 package Common;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -11,10 +14,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import Crafts.ItemsService;
 import Crafts.ItemsVO;
-import Living.ItemsDAO;
-import Member.MemberDAO;
+import Member.MemberService;
 import Member.MemberVO;
+import Order.OrderService;
+import Order.OrderVO;
 import Page.Paging;
 
 
@@ -51,8 +56,6 @@ public class CommonController extends HttpServlet{
 
 		if(action.equals("/index.do")){
 			nextPage = "/Home/index.jsp";
-		}else if(action.equals("/cart.do")){
-			nextPage = "/Home/Order/Cart.jsp";
 		}else if(action.equals("/living.do")){
 			nextPage = "/Home/Living/living.jsp";
 		}else if(action.equals("/search.do")){
@@ -324,87 +327,74 @@ public class CommonController extends HttpServlet{
 			int qty = Integer.parseInt(request.getParameter("qty"));
 			request.setAttribute("qty", qty);
 			
-			MemberDAO memberdao = new MemberDAO();
+			MemberService mservice = new MemberService();
 			MemberVO membervo = new MemberVO();
 			
 			HttpSession session = request.getSession();
 			String id = (String)session.getAttribute("id");
 			
-			membervo = memberdao.searchUser(id);
+			membervo = mservice.searchUser(id);
 			request.setAttribute("user", membervo);
 			
-			ItemsDAO livingdao = new ItemsDAO();
+			Living.ItemsService lservice = new Living.ItemsService();
 			Living.ItemsVO livingvo = new Living.ItemsVO();
 			
-			Crafts.ItemsDAO craftsdao = new Crafts.ItemsDAO();
+			ItemsService cservice = new ItemsService();
 			ItemsVO craftsvo = new ItemsVO();
 			
 			if(fd.equals("living")){
-				livingvo = livingdao.getContent(num);
+				livingvo = lservice.getContent(num);
 				request.setAttribute("item", livingvo);
 			}else if(fd.equals("crafts")){
-				craftsvo = craftsdao.getContent(num);
+				craftsvo = cservice.getContent(num);
 				request.setAttribute("item", craftsvo);
 			}
 			
 			nextPage="/Home/Common/payment.jsp";
 		}else if(action.equals("/pay.do")){
-			String oname = request.getParameter("oname");
-			request.setAttribute("oname", oname);
-			
-			String email = request.getParameter("email");
-			request.setAttribute("email", email);
-			
-			String cpnum = request.getParameter("cpnum");
-			request.setAttribute("cpnum", cpnum);
-			
-			String address = request.getParameter("address");
-			request.setAttribute("address", address);
-			
-			String postcode = request.getParameter("postcode");
-			request.setAttribute("postcode", postcode);
-			
-			String productName = request.getParameter("productName");
-			request.setAttribute("productName", productName);
-			
-			String qty = request.getParameter("qty");
-			request.setAttribute("qty", qty);
-			
-			int totalPrice = Integer.parseInt(request.getParameter("totalPrice"));
-			request.setAttribute("totalPrice", totalPrice);
-			
-			String fd = request.getParameter("fd");
-			request.setAttribute("fd", fd);
-			
-			String num = request.getParameter("num");
-			request.setAttribute("num", num);
-			
-			String productImageName = request.getParameter("productImageName");
-			request.setAttribute("productImageName", productImageName);
-			
-			String recentURI = request.getParameter("recentURI");
-			request.setAttribute("recentURI", recentURI);
+			Map<String, String> paymentMap = paymentMap(request, response);
+			request.setAttribute("paymentMap",  paymentMap);
 			
 			nextPage="/Home/Common/pay.jsp";
 		}else if(action.equals("/success.do")){
-			String productName = request.getParameter("productName");
-			request.setAttribute("productName", productName);
+			Map<String, String> paymentMap = paymentMap(request, response);
+			request.setAttribute("paymentMap",  paymentMap);
 			
-			String qty = request.getParameter("qty");
-			request.setAttribute("qty", qty);
+			String fd = paymentMap.get("fd");
+			int num = Integer.parseInt(paymentMap.get("num"));
 			
-			int totalPrice = Integer.parseInt(request.getParameter("totalPrice"));
-			request.setAttribute("totalPrice", totalPrice);
-			
-			String fd = request.getParameter("fd");
-			request.setAttribute("fd", fd);
-			
-			String num = request.getParameter("num");
-			request.setAttribute("num", num);
-			
-			String productImageName = request.getParameter("productImageName");
-			request.setAttribute("productImageName", productImageName);
-			System.out.println("★★" + productImageName);
+			if(fd.equals("living")){
+				Living.ItemsService lservice = new Living.ItemsService();
+				Living.ItemsVO lvo = lservice.getContent(num);
+				String sellerName = lvo.getSellerName();
+				int shipping_fee = lvo.getShipping_fee();
+				
+				OrderService oservice = new OrderService();
+				OrderVO ovo = new OrderVO();
+				
+				HttpSession session = request.getSession();
+				String id = (String)session.getAttribute("id");
+				
+				ovo.setId(id);
+				ovo.setName(paymentMap.get("oname"));
+				ovo.setCpnum(paymentMap.get("cpnum"));
+				ovo.setEmail(paymentMap.get("email"));
+				ovo.setPostcode(paymentMap.get("postcode"));
+				ovo.setAddress(paymentMap.get("address"));
+				ovo.setCategory(fd);
+				ovo.setItemnum(num);
+				ovo.setProductName(paymentMap.get("productName"));
+				ovo.setSellerName(sellerName);
+				ovo.setQuantity(Integer.parseInt(paymentMap.get("qty")));
+				ovo.setPrice(Integer.parseInt(paymentMap.get("totalPrice")));
+				ovo.setShipping_fee(shipping_fee);
+				
+				oservice.addOrder(ovo);
+			}else if(fd.equals("crafts")){
+				ItemsService cservice = new ItemsService();
+				ItemsVO cvo = cservice.getContent(num);
+				String sellerName = cvo.getSellerName();
+			}
 			
 			nextPage="/Home/Common/success.jsp";
 		}
@@ -414,4 +404,38 @@ public class CommonController extends HttpServlet{
 	
 	}//doHandle메소드 끝	
 	
+	private Map<String, String> paymentMap(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		Map<String, String> paymentMap = new HashMap<String, String>();
+		
+		String oname = request.getParameter("oname");
+		String email = request.getParameter("email");
+		String cpnum = request.getParameter("cpnum");
+		String address = request.getParameter("address");
+		String postcode = request.getParameter("postcode");
+		String productName = request.getParameter("productName");
+		String qty = request.getParameter("qty");
+		String totalPrice = request.getParameter("totalPrice");
+		String fd = request.getParameter("fd");
+		String num = request.getParameter("num");
+		String productImageName = request.getParameter("productImageName");
+		String recentURI = request.getParameter("recentURI");
+		
+		paymentMap.put("oname", oname);
+		paymentMap.put("email", email);
+		paymentMap.put("cpnum", cpnum);
+		paymentMap.put("address", address);
+		paymentMap.put("postcode", postcode);
+		paymentMap.put("productName", productName);
+		paymentMap.put("qty", qty);
+		paymentMap.put("totalPrice", totalPrice);
+		paymentMap.put("fd", fd);
+		paymentMap.put("num", num);
+		paymentMap.put("productImageName", productImageName);
+		paymentMap.put("recentURI", recentURI);
+		
+		return paymentMap;
+	}//end 
+
 }//CommonController서블릿 클래스 끝
