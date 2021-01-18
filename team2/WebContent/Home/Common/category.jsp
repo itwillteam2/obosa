@@ -111,9 +111,9 @@ function goUrl(pnum){
 											<img src="${contextPath}/download.do?fd=${category}&num=${content.num}&productImageName=${content.productImageName1}">
 										</a> 
 											<span class="hover">
-												<span class="wish " data-itemidx="2012110629"></span>										
-												<span class="cart" data-itemidx="2012110629" data-opidx="" data-itemoptioncd="N"></span>
-												<span class="ps" data-itemidx="2012110629">0</span>
+												<span class="wish " ></span>										
+												<span class="cart" data-pnum="${content.num}" data-category="${category}" data-opt="cart"></span>
+												<span class="ps" data-pnum="${content.num}" data-category="${category}" data-opt="ps">${content.num}</span>
 											</span>
 								</span> 
 								<span class="iteminfo"> 
