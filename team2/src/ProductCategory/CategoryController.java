@@ -80,7 +80,7 @@ public class CategoryController extends HttpServlet {
 			request.setAttribute("paging", paging);
 			request.setAttribute("ord", ord);
 			System.out.println(ord+","+setCategory);
-			nextPage="/Home/Common/categoryView.jsp";
+			nextPage="/Home/Common/category.jsp";
 		
 		} else if (action.equals("/GoAddItem.do")) {	
 			nextPage = "/Home/Seller/upContent.jsp";
@@ -209,7 +209,7 @@ public class CategoryController extends HttpServlet {
 			ItemsVO content = (ItemsVO) service.ContentDetail(Integer.parseInt(num),setCategory);
 			request.setAttribute("content", content);
 			
-			nextPage = "/Home/Common/contentView.jsp";
+			nextPage = "/Home/Common/content.jsp";
 		
 		} else if (action.equals("/deleteContent.do")) {
 			String num = request.getParameter("num");
