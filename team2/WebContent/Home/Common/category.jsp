@@ -136,23 +136,20 @@ function goUrl(pnum){
 					
 					</ul>
 					<div class="clear"></div>
-					<div class='paging'>
-						<span class='box'>
-							<!-- 번호 -->							
-					        <li><a href="javascript:PageMove(${paging.prevPage})">이전</a></li>
-							<c:forEach var="i" begin="${paging.startPage}" end="${paging.endPage}" step="1">
-								<c:choose>
-									<c:when test="${i eq paging.pageNo}">
-										<li class="active"><a href="javascript:PageMove(${i})">${i}</a></li>
-									</c:when>
-									<c:otherwise>
-										<li><a href="javascript:PageMove(${i})">${i}</a></li>
-									</c:otherwise>
-								</c:choose>
-							</c:forEach>
-														<!-- 번호 -->
-							<li><a href="javascript:PageMove(${paging.nextPage})">다음</a></li>
-    					    
+					<div class="paging">
+						<span class="box">
+							<span class="btn_pageprev"><a href="javascript:PageMove(${paging.prevPage})"><img class="paging_pc" src="${contextPath}/Images/Ver1/Common/btn_board_prev.gif" /></a></span>
+								<c:forEach var="i" begin="${paging.startPage}" end="${paging.endPage}" step="1">
+									<c:choose>
+										<c:when test="${i eq paging.pageNo}">
+											<span class="txt_pagenum"><a href="javascript:PageMove(${i})" class="btn_pageon">${i}</a></span>
+										</c:when>
+										<c:otherwise>
+											<span class="txt_pagenum"><a href="javascript:PageMove(${i})">${i}</a></span>
+										</c:otherwise>
+									</c:choose>
+								</c:forEach>
+							<span class="btn_pagenext"><a href="javascript:PageMove(${paging.nextPage})"><img class="paging_pc" src="${contextPath}/Images/Ver1/Common/btn_board_next.gif" /></a></span>
 						</span>
 					</div>
 				</div>

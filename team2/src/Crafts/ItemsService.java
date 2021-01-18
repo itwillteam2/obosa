@@ -45,9 +45,5 @@ public class ItemsService {
 		return dao.insertContent(vo);
 	}//end
 	
-
-	public int addReply(Crafts.ItemsRepVO  repVO){
-		return dao.insertNewReply(repVO);
-	}//end
 	
 }

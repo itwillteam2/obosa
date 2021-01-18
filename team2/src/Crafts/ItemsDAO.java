@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import CsCenter.InqRepVO;
+import CsCenter.InquiryVO;
 import DBUtil.DBConnection;
 
 public class ItemsDAO {
@@ -29,6 +31,7 @@ public class ItemsDAO {
 	//select all articles list of crafts.
 	public List<ItemsVO> getAllContents(int pageNO, int listSize, String ord) {
 		List<ItemsVO> contentLIst = new ArrayList<ItemsVO>();
+		pageNO= (pageNO-1)*listSize;
 		try {
 			conn = DBConnection.getConnection();
 			
@@ -42,7 +45,7 @@ public class ItemsDAO {
 				String query = "SELECT * FROM "+CATEGORY+" order by productprice desc "+" LIMIT "+pageNO+","+listSize;
 				pstmt = conn.prepareStatement(query);
 			}
-
+			
 			rs = pstmt.executeQuery();
 			while(rs.next()) {
 				ItemsVO vo = new ItemsVO();
@@ -218,47 +221,6 @@ public class ItemsDAO {
 			freeResource();
 		}
 		return num;
-	}//end
-
-	
-	public int insertNewReply(ItemsRepVO repVO) {
-		int rnum = 0;
-		String sql ="";
-		
-		try {
-			conn = DBConnection.getConnection();
-			sql = "select max(num) from "
-			+CATEGORY+"_rep";
-			pstmt = conn.prepareStatement(sql);
-			rs = pstmt.executeQuery();
-			
-			if(rs.next()){ 	rnum = rs.getInt(1) + 1;
-			}else{	rnum = 1; }
-			
-			int num = repVO.getNum();
-			System.out.println(num);
-			String pw = repVO.getPw();
-			String content = repVO.getContent();
-			String writer = repVO.getWriter();
-
-			String query = "INSERT INTO "+CATEGORY+"_rep(num, pw, content, writer)"
-					+ "VALUES(?, ?, ?, ?)";
-
-			pstmt = conn.prepareStatement(query);
-
-			pstmt.setInt(1, num);
-			pstmt.setString(2, pw);
-			pstmt.setString(3, content);
-			pstmt.setString(4, writer);
-
-			pstmt.executeUpdate();
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			freeResource();
-		}
-		return rnum;
 	}//end
 
 }
