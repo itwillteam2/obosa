@@ -9,99 +9,68 @@
 <head>
 <jsp:include page="/Home/inc/head.jsp"/>
 <script type="text/javascript">
-	$(document).on("change", "[name=ord]",function() {
-		var ord = $(this).val();
-		if("${category}" == "living"){
-			location.href="${contextPath}/living/list.do?ord="+ord;
-		}else if("${category}" == "crafts"){
-			location.href="${contextPath}/crafts/list.do?ord="+ord;
-		}		
-	});
+$(document).on("change", "[name=ord]",function() {
+	var ord = $(this).val();	
+		location.href="${contextPath}/category/list.do?category=${category}&ord="+ord;			
+});
 
-	$(document).on({
-		mouseenter : function() {
-			$(this).find(".hover").addClass("on");
-		},
-		mouseleave : function() {
-			$(this).find(".hover").removeClass("on");
-		}
-	}, ".itemList>li");
-
-	$(document).on(
-			"click",
-			".hover>.cart",
-			function() {
-
-				var where = $(this);
-
-				if ($(this).attr("data-itemoptioncd") == "Y") {
-					$(".overlay").addClass("on");
-					$(".btnGoItemDetail").click(
-							function() {
-								$(location).attr(
-										"href",
-										"https://www.artboxmall.com/home/shop/itemdetail.asp?itemidx="
-												+ where.attr("data-itemidx"));
-							});
-				} else {
-
-					var param = "";
-					param += "type=ItemDetailCART";
-					param += "&type2=ListCart";
-					param += "&opcnt=1";
-					param += "&itemidx=" + $(this).attr("data-itemidx");
-					param += "&opidx=" + $(this).attr("data-opidx");
-					param += "&itemoptioncd="
-							+ $(this).attr("data-itemoptioncd");
-					param += "&stockqty=1";
-
-					var request = $.ajax({
-						url : "/home/shop/QtyCheck_P.xmls.asp",
-						type : "post",
-						data : param
-					});
-
-					request.done(function(response, textStatus, jqXHR) {
-						eval(response);
-
-						if (result == "on") {
-							where.addClass("on");
-						} else {
-							where.removeClass("on")
-						}
-
-					});
-				}
-
-			});
-
-	$(document).on(
-			"click",
-			".hover>.ps",
-			function() {
-				$(location).attr(
-						"href",
-						"https://www.artboxmall.com/home/shop/itemdetail.asp?itemidx="
-								+ $(this).attr("data-itemidx") + "&ps=go");
-			});
-
-	$(document).on("click", ".overlay_close,.btnGoShopping", function() {
-		$(".overlay").removeClass("on");
-	});
-	
-	$(document).on("click", ".overlay_close,.btnGoShopping", function() {
-		$(".overlay").removeClass("on");
-	});
-	$(document).on("click", ".overlay_close,.btnGoShopping", function() {
-		$(".overlay").removeClass("on");
-	});
-	
-	
-	function PageMove(page){
-		location.href="http://localhost:8080/${contextPath}/${category}/list.do?pageNO="+page
-
+$(document).on({
+	mouseenter : function() {
+		$(this).find(".hover").addClass("on");
+	},
+	mouseleave : function() {
+		$(this).find(".hover").removeClass("on");
 	}
+}, ".itemList>li");
+
+$(document).on(	"click", ".hover>.wish", function() {
+	alert("현재 지원하지 않는 기능입니다.")	
+	location.href = "#";
+});
+
+// 장바구니 등록
+$(document).on(	"click", ".hover>.cart", function() {
+	var customer_id ="${id}" ;   
+	if(customer_id!=""){
+	$(location).attr("href",
+				"${contextPath}/cart/addCart.do?"
+						+"category="+ $(this).attr("data-category") 
+						+"&pnum="+ $(this).attr("data-pnum")
+						+"&customer_id="+customer_id
+						+"&cartQuantity=1");
 	
+	    cartCount();
+	}else{
+		alert("회원 전용 서비스 입니다.");
+	}
+});
+	
+$(document).on(	"click", ".hover>.ps", function() {
+	
+	alert("현재 지원하지 않는 기능입니다.")	;
+});
+
+$(document).on("click", ".overlay_close,.btnGoShopping", function() {
+	$(".overlay").removeClass("on");
+});
+
+$(document).on("click", ".overlay_close,.btnGoShopping", function() {
+	$(".overlay").removeClass("on");
+});
+
+$(document).on("click", ".overlay_close,.btnGoShopping", function() {
+	$(".overlay").removeClass("on");
+});
+
+// 페이지 이동
+function PageMove(page){
+	var ord = $("#ord option:selected").val();
+	location.href="${contextPath}/category/list.do?category=${category}&ord=${ord}&pageNO="+page;
+		}
+
+function goUrl(pnum){
+    location.href="${contextPath}/category/viewContent.do?&num="+pnum;
+}	
 	
 </script>
 </head>
