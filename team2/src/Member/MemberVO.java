@@ -15,6 +15,7 @@ public class MemberVO {
 	private String postcode;
 	private String addr1;
 	private String addr2;
+	private int point;
 	
 	public String getId() {
 		return id;
@@ -81,6 +82,12 @@ public class MemberVO {
 	}
 	public void setAddr2(String addr2) {
 		this.addr2 = addr2;
+	}
+	public int getPoint() {
+		return point;
+	}
+	public void setPoint(int point) {
+		this.point = point;
 	}
 	
 }

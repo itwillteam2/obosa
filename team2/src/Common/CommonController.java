@@ -362,39 +362,50 @@ public class CommonController extends HttpServlet{
 			
 			String fd = paymentMap.get("fd");
 			int num = Integer.parseInt(paymentMap.get("num"));
+			String sellerName = "";
+			int shipping_fee = 0;
+			int point = Integer.parseInt(paymentMap.get("point"));
+			int gainPoint = Integer.parseInt(paymentMap.get("gainPoint"));
+			int usingPoint = Integer.parseInt(paymentMap.get("usingPoint"));
+			int p = gainPoint - usingPoint + point;
+			System.out.println(gainPoint + "-" + usingPoint + "+" + point + " = " + p);
 			
 			if(fd.equals("living")){
 				Living.ItemsService lservice = new Living.ItemsService();
 				Living.ItemsVO lvo = lservice.getContent(num);
-				String sellerName = lvo.getSellerName();
-				int shipping_fee = lvo.getShipping_fee();
-				
-				OrderService oservice = new OrderService();
-				OrderVO ovo = new OrderVO();
-				
-				HttpSession session = request.getSession();
-				String id = (String)session.getAttribute("id");
-				
-				ovo.setId(id);
-				ovo.setName(paymentMap.get("oname"));
-				ovo.setCpnum(paymentMap.get("cpnum"));
-				ovo.setEmail(paymentMap.get("email"));
-				ovo.setPostcode(paymentMap.get("postcode"));
-				ovo.setAddress(paymentMap.get("address"));
-				ovo.setCategory(fd);
-				ovo.setItemnum(num);
-				ovo.setProductName(paymentMap.get("productName"));
-				ovo.setSellerName(sellerName);
-				ovo.setQuantity(Integer.parseInt(paymentMap.get("qty")));
-				ovo.setPrice(Integer.parseInt(paymentMap.get("totalPrice")));
-				ovo.setShipping_fee(shipping_fee);
-				
-				oservice.addOrder(ovo);
+				sellerName = lvo.getSellerName();
+				shipping_fee = lvo.getShipping_fee();
 			}else if(fd.equals("crafts")){
 				ItemsService cservice = new ItemsService();
 				ItemsVO cvo = cservice.getContent(num);
-				String sellerName = cvo.getSellerName();
+				sellerName = cvo.getSellerName();
+				shipping_fee = cvo.getShipping_fee();
 			}
+			
+			OrderService oservice = new OrderService();
+			OrderVO ovo = new OrderVO();
+			
+			HttpSession session = request.getSession();
+			String id = (String)session.getAttribute("id");
+			
+			ovo.setId(id);
+			ovo.setName(paymentMap.get("oname"));
+			ovo.setCpnum(paymentMap.get("cpnum"));
+			ovo.setEmail(paymentMap.get("email"));
+			ovo.setPostcode(paymentMap.get("postcode"));
+			ovo.setAddress(paymentMap.get("address"));
+			ovo.setCategory(fd);
+			ovo.setItemnum(num);
+			ovo.setProductName(paymentMap.get("productName"));
+			ovo.setSellerName(sellerName);
+			ovo.setQuantity(Integer.parseInt(paymentMap.get("qty")));
+			ovo.setPrice(Integer.parseInt(paymentMap.get("totalPrice")));
+			ovo.setShipping_fee(shipping_fee);
+			
+			oservice.addOrder(ovo);
+			
+			MemberService mservice = new MemberService();
+			mservice.addPoint(id, p);
 			
 			nextPage="/Home/Common/success.jsp";
 		}
@@ -421,6 +432,9 @@ public class CommonController extends HttpServlet{
 		String num = request.getParameter("num");
 		String productImageName = request.getParameter("productImageName");
 		String recentURI = request.getParameter("recentURI");
+		String point = request.getParameter("point");
+		String gainPoint = request.getParameter("gainPoint");
+		String usingPoint = request.getParameter("usingPoint");
 		
 		paymentMap.put("oname", oname);
 		paymentMap.put("email", email);
@@ -434,6 +448,9 @@ public class CommonController extends HttpServlet{
 		paymentMap.put("num", num);
 		paymentMap.put("productImageName", productImageName);
 		paymentMap.put("recentURI", recentURI);
+		paymentMap.put("point", point);
+		paymentMap.put("gainPoint", gainPoint);
+		paymentMap.put("usingPoint", usingPoint);
 		
 		return paymentMap;
 	}//end 
