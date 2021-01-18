@@ -19,15 +19,17 @@
 	<div class="success">
 		<h1>거래에 <b>성공</b>했습니다!</h1>
 		<div class="itemInfo">
-			<img src="${contextPath}/download.do?fd=${fd}&num=${num}&productImageName=${productImageName}" />
+			<a href="${contextPath}/${paymentMap.fd}/viewContent.do?num=${paymentMap.num}">
+				<img src="${contextPath}/download.do?fd=${paymentMap.fd}&num=${paymentMap.num}&productImageName=${paymentMap.productImageName}" />
+			</a>
 			<span id="content">
-				${productName}<br>
-				${qty}개<br>
-				${totalPrice}원
+				<a href="${contextPath}/${paymentMap.fd}/viewContent.do?num=${paymentMap.num}">
+					${paymentMap.productName}
+				</a><br>
+				${paymentMap.qty}개<br>
+				${paymentMap.totalPrice}원
 			</span>
 		</div>
-<%-- 		${productName} ${qty}개 --%>
-<%-- 		${totalPrice}원 --%>
 		<a href="${contextPath}/common/index.do" class="payBtn">홈으로</a>
 	</div>
 	<jsp:include page="../inc/footer.jsp" />

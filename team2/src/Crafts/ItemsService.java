@@ -46,4 +46,9 @@ public class ItemsService {
 	}//end
 	
 	
+	public ItemsVO getContent(int num){
+		vo = dao.getContent(num);
+		return vo;
+	}
+	
 }
