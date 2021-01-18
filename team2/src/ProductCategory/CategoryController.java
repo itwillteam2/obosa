@@ -65,8 +65,8 @@ public class CategoryController extends HttpServlet {
 			int totalCount = service.totalCount(setCategory);
 			Paging paging = new Paging();
 			int pageNO = (request.getParameter("pageNO") == null) ? 1 : Integer.parseInt(request.getParameter("pageNO"));
-			int pageSize = 2;  // 원하는 세팅 값 입력, 페이지 하단 숫자 표시 개수
-			int listSize = 2;  // 원하는 세팅 값 입력, 출력 게시물 개수
+			int pageSize = 5;  // 원하는 세팅 값 입력, 페이지 하단 숫자 표시 개수
+			int listSize = 4;  // 원하는 세팅 값 입력, 출력 게시물 개수
 			
 			paging.makePage(totalCount, pageNO, pageSize, listSize); 
 			String ord = request.getParameter("ord");
