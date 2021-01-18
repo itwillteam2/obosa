@@ -41,7 +41,7 @@
 			$.ajax({
 				type:"post",
 				async:true,
-				url:"${contextPath}/Cart/modCart.do",  
+				url:"${contextPath}/cart/modCart.do",  
 				data: form,
 				contentType: 'application/x-www-form-urlencoded; charset=UTF-8', 
 		        dataType: 'html',
