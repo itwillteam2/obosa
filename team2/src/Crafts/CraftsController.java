@@ -182,21 +182,6 @@ public class CraftsController extends HttpServlet{
 			if(result==1) deleteFolder(Integer.parseInt(num));
 			nextPage = "/"+CATEGORY+"/list.do";
 			
-		} else if (action.equals("/addReply.do")) {
-
-			int rnum = service.addReply(repVO);
-			int num = Integer.parseInt(request.getParameter("num"));
-			String pw = request.getParameter("pw");
-			String content = request.getParameter("content");
-			String writer = request.getParameter("writer");
-
-			repVO.setRnum(rnum);
-			repVO.setNum(num);
-			repVO.setPw(pw);
-			repVO.setContent(content);
-			repVO.setWriter(writer);
-
-			return;
 		}
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
