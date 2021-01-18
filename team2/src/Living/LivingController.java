@@ -295,7 +295,7 @@ public class LivingController extends HttpServlet {
 			
 			int qrnum = Integer.parseInt(request.getParameter("qrnum"));
 			String pw = request.getParameter("pw");
-			int num = Integer.parseInt(request.getParameter("num"));
+			String num = request.getParameter("num");
 			
 			check = service.QnaReplyDelete(qrnum, pw);
 			
@@ -303,9 +303,33 @@ public class LivingController extends HttpServlet {
 			
 			if (check == 1) {
 				pw2.print("<script> alert('답변이 삭제되었습니다.');" + " location.href='" + request.getContextPath()
-						+ "/"+CATEGORY+"/contentView.do?num='"+num+"; " + "</script>");
+						+ "/"+CATEGORY+"/viewContent.do?num="+num+"'; " + "</script>");
 			} else {
 				pw2.print("<script> alert('비밀번호가 틀립니다.');" + "history.back();" + "</script>");
+			}
+		}else if (action.equals("/QnaReplyModify.do")) {
+			
+			int check = 0;
+			
+			int qrnum = Integer.parseInt(request.getParameter("qrnum"));
+			String content = request.getParameter("content");
+			String pw = request.getParameter("pw");
+			
+			qnarepVO.setQrnum(qrnum);
+			qnarepVO.setContent(content);
+			qnarepVO.setPw(pw);
+
+			check = service.modifyReply(qnarepVO);
+			 
+			PrintWriter pw2 = response.getWriter();
+			
+			if(check == 1){
+				pw2.print("<script>" + "  alert('답변을 수정 했습니다.');" + "window.opener.location.reload(); " +
+						"window.close();"+ "</script>");
+			}else{
+				pw2.print("<script> alert('비밀번호가 틀립니다.');" +
+				"history.back();" + 
+				"</script>");	
 			}
 		}
 

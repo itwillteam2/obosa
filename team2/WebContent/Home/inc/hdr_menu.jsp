@@ -60,6 +60,7 @@ $(document).ready(function(){
 				<a href="Order/Cart.html" title="장바구니">			
 					<img src="${contextPath}/Images/Ver1/Common/top_icon_cart.png" />
 				</a>
+				  <input type="text" id="countCart" value="" readonly>
 			</li>
 			<li class="Search">
 				<form action="${contextPath}/common/search.do" name="fr" method="post">

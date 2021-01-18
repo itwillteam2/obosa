@@ -610,4 +610,41 @@ public class ItemsDAO {
 		return check;
 	}
 
+	public int modifyReply(ItemsQnaRepVO qnarepVO) {
+		int check = 0;
+		String sql = "";
+		
+		try {
+			conn = DBConnection.getConnection();
+			
+			sql = "select pw from "+CATEGORY+"_qna_rep where qrnum = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, qnarepVO.getQrnum());
+
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				if(qnarepVO.getPw().equals(rs.getString("pw"))){
+					check = 1;
+					sql = "update "+CATEGORY+"_qna_rep set content=? where qrnum=?";
+					pstmt = conn.prepareStatement(sql);
+					
+					pstmt.setString(1, qnarepVO.getContent());
+					pstmt.setInt(2, qnarepVO.getQrnum());
+
+					pstmt.executeUpdate();
+				}else{
+					check = 0;
+				}
+			}			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally{
+			freeResource();
+		}
+		return check;
+	}
+
 }
