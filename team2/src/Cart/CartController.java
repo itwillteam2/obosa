@@ -56,7 +56,6 @@ public class CartController extends HttpServlet{
 			String category=request.getParameter("category");		
 			String customer_id=request.getParameter("customer_id");
 			int cartQuantity=Integer.parseInt(request.getParameter("cartQuantity"));
-			
 			int count = service.insertContent(pnum,category,customer_id,cartQuantity);
 			if(count!=0) { 
 				request.setAttribute("cartCount", count);
@@ -84,7 +83,6 @@ public class CartController extends HttpServlet{
 			for(int i=0;i<pnums.length;i++) {
 				int pnum = Integer.parseInt(pnums[i]);
 				int result = service.deleteContent(pnum,categorys[i],customer_id);
-			System.out.println(result);
 			}
 			return;
 		} else if (action.equals("/modCart.do")) {

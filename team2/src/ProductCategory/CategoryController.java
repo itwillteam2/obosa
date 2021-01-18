@@ -79,7 +79,7 @@ public class CategoryController extends HttpServlet {
 			request.setAttribute("totalCount", totalCount);
 			request.setAttribute("paging", paging);
 			request.setAttribute("ord", ord);
-			System.out.println(ord+","+setCategory);
+		
 			nextPage="/Home/Common/category.jsp";
 		
 		} else if (action.equals("/GoAddItem.do")) {	
@@ -114,7 +114,7 @@ public class CategoryController extends HttpServlet {
 			if (num > 0) {
 				deleteFolder(num,setCategory);
 				
-				File srcDir = new File(ARTICLE_IMAGE_REPO+"\\tmp");
+				File srcDir = new File(ARTICLE_IMAGE_REPO+"\\temp");
 				File destDir = new File(ARTICLE_IMAGE_REPO + "\\"+setCategory+"\\" + num);
 				destDir.mkdir();
 				File files[] = srcDir.listFiles();
@@ -179,7 +179,7 @@ public class CategoryController extends HttpServlet {
 			if(result!=0) {
 				deleteFolder(result,setCategory);
 				
-				File srcDir = new File(ARTICLE_IMAGE_REPO+"\\tmp");
+				File srcDir = new File(ARTICLE_IMAGE_REPO+"\\temp");
 				File destDir = new File(ARTICLE_IMAGE_REPO + "\\"+setCategory+"\\" + num);
 				File files[] = srcDir.listFiles();
 				for (int i = 0; i < files.length; i++) {
@@ -280,7 +280,7 @@ public class CategoryController extends HttpServlet {
 
 						String fileName = fileItem.getName().substring(idx + 1);
 						articleMap.put(fileItem.getFieldName(), fileName);
-						File uploadFile = new File(currentDirPath + "\\tmp\\" + fileName);
+						File uploadFile = new File(currentDirPath + "\\temp\\" + fileName);
 						fileItem.write(uploadFile);
 					}
 				}

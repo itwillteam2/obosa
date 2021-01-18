@@ -31,7 +31,6 @@ public class CartDAO {
 			if(pstmt != null) pstmt.close();
 			if(rs != null) rs.close();
 			if(conn != null) conn.close();
-			System.out.println("해제");
 		}catch(Exception exception){
 			System.out.println("freeResource error : " + exception);
 		}
@@ -126,8 +125,6 @@ public class CartDAO {
 	
 	public int getContentCount(int pnum, String category,String customer_id) {
 		int num = 0;
-		System.out.println(customer_id);
-		
 		try {
 			conn = DBConnection.getConnection();
 			String query = "SELECT count(*) FROM cart WHERE pnum=? and category=? and customer_id=?";
@@ -139,7 +136,6 @@ public class CartDAO {
 			rs = pstmt.executeQuery();
 			if(rs.next()) {
 				num=rs.getInt(1);
-				System.out.println("count:" +num);
 				if(num==0) num=1;
 			}
 		}catch (Exception e) {
@@ -152,9 +148,6 @@ public class CartDAO {
 
 //  -------- 장바구니 내용 및 중복 조회 ------- //
 	public CartVO getCartContent(int pnum, String category,String customer_id) {
-		
-		System.out.println("gcc:"+pnum+","+category+","+customer_id);
-		
 		CartVO vo = new CartVO();
 		try {
 			conn = DBConnection.getConnection();
@@ -234,8 +227,6 @@ public class CartDAO {
 //  -------- 장바구니 수정 ------- //		
 	public int updateContent(int pnum, String category, String customer_id, int cartQuantity, int totalPrice) {
 		int num=0;
-		System.out.println("utc var:"+ cartQuantity+","+totalPrice );
-		
 		try {
 			conn = DBConnection.getConnection();
 			String query = "UPDATE cart SET cartQuantity=?,totalPrice=? "
