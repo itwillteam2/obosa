@@ -647,4 +647,48 @@ public class ItemsDAO {
 		return check;
 	}
 
+	public int getCountRep(int num) {
+		int count = 0;
+		try {
+			conn = DBConnection.getConnection();
+			String query = "SELECT ifnull(count(*),0)count FROM "+CATEGORY+"_rep where num = ?";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, num);
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				count=rs.getInt(1);
+			}
+		
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			freeResource();
+		}
+
+		return count;
+	}
+
+	public int getCountQna(int num) {
+		int count = 0;
+		try {
+			conn = DBConnection.getConnection();
+			String query = "SELECT ifnull(count(*),0)count FROM "+CATEGORY+"_qna where num = ?";
+			pstmt = conn.prepareStatement(query);
+			pstmt.setInt(1, num);
+			
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				count=rs.getInt(1);
+			}
+		
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			freeResource();
+		}
+
+		return count;
+	}
+
 }

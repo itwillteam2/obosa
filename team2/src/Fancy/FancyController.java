@@ -198,7 +198,7 @@ public class FancyController extends HttpServlet{
 			
 			List <ItemsQnaVO> QnaPagingList = service.QnaPagingList(pageNO,listSize, num);
 			request.setAttribute("QnaPagingList", QnaPagingList);	
-			request.setAttribute("totalCount", totalCount2);
+			request.setAttribute("totalCount2", totalCount2);
 			request.setAttribute("paging", paging);
 			
 			QnaRepList = service.listQnaRep();
@@ -206,14 +206,18 @@ public class FancyController extends HttpServlet{
 			
 			List <ItemsQnaRepVO> QnaRepPagingList = service.QnaRepPagingList(pageNO,listSize, num);
 			request.setAttribute("QnaRepPagingList", QnaRepPagingList);	
-			request.setAttribute("totalCount", totalCount3);
+			request.setAttribute("totalCount3", totalCount3);
 			request.setAttribute("paging", paging);
 			
 			List <FancyJoinVO> QnaPagingJoinList = service.QnaPagingJoinList(pageNO,listSize, num);
 			request.setAttribute("QnaPagingJoinList", QnaPagingJoinList);	
-			request.setAttribute("totalCount", totalCount2);
+			request.setAttribute("totalCount2", totalCount2);
 			request.setAttribute("paging", paging);
 			
+			int totalCountrep = service.CountRep(num);
+			int totalCountqna = service.CountQna(num);
+			request.setAttribute("totalCountrep", totalCountrep);
+			request.setAttribute("totalCountqna", totalCountqna);
 			
 			
 			nextPage = "/Home/Common/content.jsp";

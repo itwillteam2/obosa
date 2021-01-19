@@ -291,7 +291,7 @@ $(window).load(function(){
 			<section class="item_content_bar" style="z-index: 997 !important;">
 				<div class="inner">
 					<div class="tabBar">
-						<span class="on">상품상세</span> <span>상품후기</span> <span>상품Q&A</span>
+						<span class="on">상품상세</span> <span>상품후기(${totalCountrep})</span> <span>상품Q&A(${totalCountqna})</span>
 					</div>
 				</div>
 			</section>

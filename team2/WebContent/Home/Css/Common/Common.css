@@ -121,10 +121,8 @@ input[type=button]{cursor:pointer;}
 #CommonHeader .CategoryLarge li.Cart img {width:30px; height:30px;}
 
 #MyInfoSummary {position:absolute; left:199px; width:960px; height:284px; padding-top:23px; display:none; opacity:1;}
-/*#MyInfoSummary {position:absolute; left:199px; width:960px; height:284px; padding-top:118px; display:none; opacity:1;}*/
 #MyInfoSummary .MyInfoSummaryWrap {height:267px; background-color:#ffffff; border:2px solid #717171; border-radius:5px; padding:30px;}
 
-/*.MyInfoSummaryArea {position:fixed; width:100%; z-index:998; top:280px;} 상단 로고 삭제 전*/
 .MyInfoSummaryArea {position:fixed; width:100%; z-index:998; top:223px;}
 .MyInfoSummaryArea .AreaInner {position:relative; width:1200px; margin:0 auto;}
 
@@ -189,70 +187,6 @@ input[type=button]{cursor:pointer;}
 #CommonHeader_M {display:none; width:100%; height:4.1rem; background-color:#ffffff; position:relative;}
 #CommonHeaderMenu_M {display:block; width:100%; height:4.1rem; border-bottom:1px solid #e4e4e4; width:100%; padding:0.78125rem;}
 #CommonHeaderSearch_M {display:none; width:100%; height:4.1rem; border-bottom:1px solid #e4e4e4; width:100%; padding:0.78125rem;}
-
-.trMobileMenu .tdBtn {width:2.4375rem; height:2.4375rem;}
-.trMobileMenu .tdBtn a { position:relative; display:block; width:2.4375rem; height:2.4375rem;}
-.trMobileMenu .tdBtn .num { position:absolute; bottom:0; right:-3px; display:block; color:#ffffff; background-color:#e71e22; width:1.40625rem; line-height:1.40625rem; font-size:0.78125rem; text-align:center;  border-radius:0.6875rem; }
-.trMobileMenu .tdBtn img {width:2.4375rem; height:2.4375rem;}
-.trMobileMenu .tdLogo {width:8.486rem; height:2.4375rem;}
-.trMobileMenu .tdLogo a {display:block; width:8.486rem; height:2.4375rem; margin:0 auto;}
-.trMobileMenu .tdLogo a.left {margin:0;}
-.trMobileMenu .tdLogo img {width:8.486rem; height:2.4375rem;}
-.trMobileMenu .tdKwd {width:8.486rem; height:2.4375rem;}
-.trMobileMenu .tdKwd .CommonSearch {width:100%; border-bottom:2px solid #717171;}
-.trMobileMenu .tdKwd .CommonSearch input#kwd_M {display:block; background-color:#ffffff; padding:0; margin:0; width:100%; height:2.4375rem; line-height:2.4375rem; vertical-align:top; font-size:1rem; color:#000000; border:0;}
-
-#MobileMenuBackground {position:fixed; z-index:10000; display:none; top:0; left:0; width:100%; height:100%; background-color:#000000; opacity:0;}
-#MobileMenuBody       {position:fixed; z-index:10001; right:100%; top:0; width:70%; height:100%; background-color:#ffffff; overflow-y:scroll;}
-
-.MobileMenuWrap {padding:0.78125rem 0.78125rem 0.875rem 1rem;}
-
-.MobileMenuCategory {padding:0.5625rem 1rem 1rem;}
-.MobileMenuCategory p {border-bottom:1px solid #cccccc; width:100%; margin:0;}
-.MobileMenuCategory p a {display:block; width:100%; height:2.3rem; line-height:2.3rem; color:#000000; text-align:left; padding:0 0 0 0.28125rem; font-size:0.9rem;}
-
-
-.MobileLoginBefore {padding:0.5rem 0; background-color:#f5f5f5;}
-.trMobileLoginBefore dt {width:4.5rem; padding:0 1rem;}
-.trMobileLoginBefore dt img {width:2.5rem; height:2.5rem;}
-.trMobileLoginBefore dd {width:4.5rem; padding:0 1rem 0 0;}
-.trMobileLoginBefore dd a {display:block; width:100%; height:2rem; line-height:1.8rem; margin:0.25rem 0 0.25rem 0; text-align:center; border:1px solid #717171; border-radius:3px; color:#717171; font-size:0.9rem;}
-
-.MobileLoginAfter {padding:0 1rem;}
-
-.MobileMyInfo  {background-color:#ededed; padding:0 0.46875rem;}
-.MobileMyReceipt  {background-color:#ededed; padding:0.675rem 0.625rem 0.675rem 0.8125rem; margin:10px 0 0 0;}
-.MobileMyReceipt span {font-weight:bold; color:#000; font-size:0.9rem;}
-.MobileMyReceipt a:nth-child(2) img {vertical-align:middle; width:1.0rem;}
-.MobileMyReceipt a:nth-child(3) img {vertical-align:middle; width:0.8rem; float:right; padding:0.3rem 0;}
-
-
-.trMobileMyInfo .tdName {width:3.375rem; padding:0.625rem 0 0.78125rem;}
-.trMobileMyInfo .tdName a   {color:#000000; font-size:1.25rem; line-height:1.45rem; font-weight:bold;}
-.trMobileMyInfo .tdName img {height:1.25rem; width:auto; vertical-align:top; margin:0.15rem 0.21875rem 0.05rem 0;}
-.trMobileMyInfo .tdName sub {display:inline-block; width:0.7rem; height:0.7rem; margin:0 0 0.2rem 0.21875rem; background-image:url(../Images/Ver1/Common/circle_gt.png); background-repeat:no-repeat; background-size:0.7rem 0.7rem;}
-
-.trMobileMyInfo .tdBtn {width:3.375rem; padding:0.625rem 0 0.78125rem;}
-.trMobileMyInfo .tdBtn a {display:block; width:4rem; height:1.45rem; line-height:1.35rem; background-color:#727272; font-size:0.8rem; text-align:center; border-radius:3px; color:#ffffff;}
-
-.trMobileMyInfoDetail .td {background-color:#ffffff; text-align:center; padding:0.5rem 0 0.6rem; font-size:0.9rem;}
-.trMobileMyInfoDetail .td a {color:#666666;}
-.trMobileMyInfoDetail .td b {display:block; font-weight:normal; text-align:center; color:#e71f22; padding-top:0; font-size:1.1rem; padding-top:0.4rem;}
-.trMobileMyInfoDetail .td.Mileage {width:39%; border-radius:0.46875rem 0 0 0.46875rem}
-.trMobileMyInfoDetail .td.Coupon {width:22%;}
-.trMobileMyInfoDetail .td.Order {width:39%; border-radius:0 0.46875rem 0.46875rem 0;}
-
-.MobileMyMembership {background-color:#ededed; padding:0.46875rem;}
-.MobileMyMembershipWrap {background-color:#ffffff; text-align:center; padding:0.6rem 0; font-size:0.75rem; border-radius:0.46875rem; color:#92b8cf;}
-.MobileMyMileage {text-align:center; font-size:1.375rem; line-height:1.375rem; margin-top:0.4rem;}
-.MobileMyMileage a {color:#92b8cf; font-weight:bold;}
-.MobileMyMileage img {width:1.8125rem; height:0.9375rem; vertical-align:top; margin:0.21875rem 0.25rem;}
-
-.MobileMyBarcode {padding-top:0.5rem; position:relative;}
-.MobileMyBarcode a.BarcodeSample {display:block; width:5rem; height:2.5rem; margin:0 auto;}
-.MobileMyBarcode a.BarcodeSample img {width:5rem; height:2.5rem;}
-.MobileMyBarcode a.BarcodeClick {position:absolute; z-index:1; right:0.6rem; bottom:0; width:0.9375rem; height:0.9375rem; display:block;}
-.MobileMyBarcode a.BarcodeClick img {width:0.9375rem; height:0.9375rem;}
 
 #CommonFooter_M {display:none; border-top:1px solid #e4e4e4; padding:1rem 0 2.34375rem; line-height:0.84375rem; font-size:0.6875rem;}
 #CommonFooter_M .FooterMenu {font-size:0.8rem; text-align:center;}

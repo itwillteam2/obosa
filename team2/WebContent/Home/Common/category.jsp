@@ -119,7 +119,7 @@ function goUrl(pnum){
 								<span class="iteminfo"> 
 									<span class="text">
 										<!-- 제목 클릭했을때 그 인덱스값으로 가기 -->
-										<a href="/home/shop/itemdetail.asp?itemidx=2012110629" title="미니파우치 뽀글 지퍼주머니 체리 (37002942)">
+										<a href="${contextPath}/${category}/viewContent.do?num=${content.num}">
 											${content.productName } <!-- 제목  -->
 										</a>
 									</span>

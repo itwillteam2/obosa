@@ -181,7 +181,7 @@ public class LivingController extends HttpServlet {
 
 		} else if (action.equals("/viewContent.do")) {
 			int num = Integer.parseInt(request.getParameter("num"));
-			int totalCount = service.totalCountRep();
+			int totalCount = service.totalCountRep();		
 			int totalCount2 = service.totalCountQna();
 			int totalCount3 = service.totalCountQnaRep();
 			Paging paging = new Paging();
@@ -200,7 +200,7 @@ public class LivingController extends HttpServlet {
 			
 			List <ItemsQnaVO> QnaPagingList = service.QnaPagingList(pageNO,listSize, num);
 			request.setAttribute("QnaPagingList", QnaPagingList);	
-			request.setAttribute("totalCount", totalCount2);
+			request.setAttribute("totalCount2", totalCount2);
 			request.setAttribute("paging", paging);
 			
 			QnaRepList = service.listQnaRep();
@@ -208,14 +208,18 @@ public class LivingController extends HttpServlet {
 			
 			List <ItemsQnaRepVO> QnaRepPagingList = service.QnaRepPagingList(pageNO,listSize, num);
 			request.setAttribute("QnaRepPagingList", QnaRepPagingList);	
-			request.setAttribute("totalCount", totalCount3);
+			request.setAttribute("totalCount3", totalCount3);
 			request.setAttribute("paging", paging);
 			
 			List <LivingJoinVO> QnaPagingJoinList = service.QnaPagingJoinList(pageNO,listSize, num);
 			request.setAttribute("QnaPagingJoinList", QnaPagingJoinList);	
-			request.setAttribute("totalCount", totalCount2);
+			request.setAttribute("totalCount2", totalCount2);
 			request.setAttribute("paging", paging);
 			
+			int totalCountrep = service.CountRep(num);
+			request.setAttribute("totalCountrep", totalCountrep);
+			int totalCountqna = service.CountQna(num);		
+			request.setAttribute("totalCountqna", totalCountqna);
 			
 			
 			nextPage = "/Home/Common/content.jsp";

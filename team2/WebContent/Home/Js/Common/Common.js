@@ -199,50 +199,11 @@ $(document).ready(function(){
 		}
 	});
 
-	$("#MobileMenuBackground").click(function(){
-		fnMobileMenu(2);
-	});
-
-	
-
-	fnMobileMenu = function (x){
-
-		/*var screenHeight = screen.height;
-		var bodyHeight = $("body").height();*/
-
-		if (x==1) {//메뉴 열림
-
-			$("#MobileMenuBackground").show().animate({opacity:"0.8"},125,function(){
-				$("#MobileMenuBody").animate({right:"30%"},270,function(){
-					$("body").css("overflow","hidden");
-					$("body").css("position","fixed");
-				});
-			});
-
-		} else if (x==2||x==4) {//메뉴 닫힘(2=그냥 X버튼 / 4=로고 클릭)
-
-			$("#MobileMenuBody").animate({right:"100%"},270,function(){
-				$("#MobileMenuBackground").animate({opacity:"0"},125,function(){
-					$("#MobileMenuBackground").hide();
-					$("body").css("overflow","auto");
-					$("body").css("position","relative");
-					if (x==4) { //모바일 슬라이드 메뉴에서 로고 클릭시
-						location.href="/Home/";
-					}
-				});
-			});
-
-		}
-	}
-
-
-
-
 	fnMyInfoSummary = function(x){
-		if (x==1) {//onmouseover
+		if (x==1) {
 			$("#MyInfoSummary").css("display","block");
 			$("#MyInfoSummaryIcon").attr("src","/Images/Ver1/Common/top_icon_login_press.png");
-		} else if (x==2) {//onmouseout
+		} else if (x==2) {
 			$("#MyInfoSummary").css("display","none");
 			$("#MyInfoSummaryIcon").attr("src","/Images/Ver1/Common/top_icon_login_logined.png");
 		}
@@ -251,7 +212,7 @@ $(document).ready(function(){
 
 });
 
-function fnOnlyNumber(t) //onkeypress="fnOnlyNumber(this);"
+function fnOnlyNumber(t)
 {
 	var k = event.keyCode;
 	if (k < 48 || k > 57)

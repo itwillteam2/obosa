@@ -57,7 +57,7 @@ $(document).ready(function(){
 					<tbody>
 						<tr>
 							<td bgcolor="#d3e9f6"></td>
-							<td><a class="SlideLink" href="event/eventcontentse13a.html?EvtID=91374" target="_self" ><img style="border:0;" src="${contextPath}/Images/Ver1/Common/house_1.svg" /></a></td>
+							<td><a class="SlideLink" href="" target="_self" ><img style="border:0;" src="${contextPath}/Images/Ver1/Common/house_1.svg" /></a></td>
 							<td bgcolor="#d3e9f6"></td>
 						</tr>
 					</tbody>
@@ -316,62 +316,62 @@ $(document).ready(function(){
 		<div class="swiper-wrapper">
 		
 			<div class="swiper-slide">
-				<a href="Shop/ItemDetail58e5.html?itemidx=2012070226" title="2012070226" target="_blank" onclick="GA_event('메인_PC', 'DESIGN FINDER', '#1_2012070226');">
-					<img style="border-radius:50%;" src="../Upload/DesignMng/poom201223600681921931.jpg" />
+				<a href="#">
+					<img style="border-radius:50%;" src="${contextPath}/Images/Ver1/Common/logo.png" />
 				</a>
 			</div>
 		
 			<div class="swiper-slide">
-				<a href="Shop/ItemDetail4940.html?itemidx=2010300461" title="2010300461" target="_self" onclick="GA_event('메인_PC', 'DESIGN FINDER', '#2_2010300461');">
-					<img style="border-radius:50%;" src="../Upload/DesignMng/poom201214446491844153.jpg" />
+				<a href="#">
+					<img style="border-radius:50%;" src="${contextPath}/Images/Ver1/Common/logo.png" />
 				</a>
 			</div>
 		
 			<div class="swiper-slide">
-				<a href="Shop/ItemDetail981c.html?itemidx=2011130689" title="2011130689" target="_self" onclick="GA_event('메인_PC', 'DESIGN FINDER', '#3_2011130689');">
-					<img style="border-radius:50%;" src="../Upload/DesignMng/poom201214446582221931.jpg" />
+				<a href="#">
+					<img style="border-radius:50%;" src="${contextPath}/Images/Ver1/Common/logo.png" />
 				</a>
 			</div>
 		
 			<div class="swiper-slide">
-				<a href="Shop/ItemDetailb88b.html?itemidx=2011230105" title="2011230105" target="_self" onclick="GA_event('메인_PC', 'DESIGN FINDER', '#4_2011230105');">
-					<img style="border-radius:50%;" src="../Upload/DesignMng/poom201214446679332042.jpg" />
+				<a href="#">
+					<img style="border-radius:50%;" src="${contextPath}/Images/Ver1/Common/logo.png" />
 				</a>
 			</div>
 		
 			<div class="swiper-slide">
-				<a href="Shop/ItemDetail6956-2.html?itemidx=2012070309" title="2012070309" target="_self" onclick="GA_event('메인_PC', 'DESIGN FINDER', '#5_2012070309');">
-					<img style="border-radius:50%;" src="../Upload/DesignMng/poom201214446868110820.jpg" />
+				<a href="#">
+					<img style="border-radius:50%;" src="${contextPath}/Images/Ver1/Common/logo.png" />
 				</a>
 			</div>
 		
 			<div class="swiper-slide">
-				<a href="Shop/ItemDetail11b1.html?itemidx=2011260248" title="2011260248" target="_self" onclick="GA_event('메인_PC', 'DESIGN FINDER', '#6_2011260248');">
-					<img style="border-radius:50%;" src="../Upload/DesignMng/poom201223600773421931.jpg" />
+				<a href="#">
+					<img style="border-radius:50%;" src="${contextPath}/Images/Ver1/Common/logo.png" />
 				</a>
 			</div>
 		
 			<div class="swiper-slide">
-				<a href="Shop/ItemDetail15f0.html?itemidx=2012020321" title="2012020321" target="_self" onclick="GA_event('메인_PC', 'DESIGN FINDER', '#7_2012020321');">
-					<img style="border-radius:50%;" src="../Upload/DesignMng/poom201214447146443153.jpg" />
+				<a href="#">
+					<img style="border-radius:50%;" src="${contextPath}/Images/Ver1/Common/logo.png" />
 				</a>
 			</div>
 		
 			<div class="swiper-slide">
-				<a href="Shop/ItemDetailbe9c.html?itemidx=2012020315" title="2012020315" target="_self" onclick="GA_event('메인_PC', 'DESIGN FINDER', '#8_2012020315');">
-					<img style="border-radius:50%;" src="../Upload/DesignMng/poom201214447246898608.jpg" />
+				<a href="#">
+					<img style="border-radius:50%;" src="${contextPath}/Images/Ver1/Common/logo.png" />
 				</a>
 			</div>
 		
 			<div class="swiper-slide">
-				<a href="Shop/ItemDetailc26c.html?itemidx=2012020343" title="2012020343" target="_self" onclick="GA_event('메인_PC', 'DESIGN FINDER', '#9_2012020343');">
-					<img style="border-radius:50%;" src="../Upload/DesignMng/poom201214447386398608.jpg" />
+				<a href="#">
+					<img style="border-radius:50%;" src="${contextPath}/Images/Ver1/Common/logo.png" />
 				</a>
 			</div>
 		
 			<div class="swiper-slide">
-				<a href="Shop/ItemDetail0e9b.html?itemidx=2012020339" title="2012020339" target="_self" onclick="GA_event('메인_PC', 'DESIGN FINDER', '#10_2012020339');">
-					<img style="border-radius:50%;" src="../Upload/DesignMng/poom201214447607209709.jpg" />
+				<a href="#">
+					<img style="border-radius:50%;" src="${contextPath}/Images/Ver1/Common/logo.png" />
 				</a>
 			</div>
 		

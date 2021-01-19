@@ -129,4 +129,14 @@ public class ItemsService {
 		return vo;
 	}
 	
+	public int CountRep(int num) {
+		int totalCountrep = dao.getCountRep(num);
+		return totalCountrep;
+	}
+
+	public int CountQna(int num) {
+		int totalCountqna = dao.getCountQna(num);
+		return totalCountqna;
+	}
+	
 }
