@@ -125,8 +125,8 @@ public class MemberDAO {
 			String addr2 = vo.getAddr2();
 			Timestamp timestamp = new Timestamp(System.currentTimeMillis());
 			
-			query = "insert into customer(num, id, pwd, name, cpnum, email, postcode, addr1, addr2, joinDate) "
-					+ "values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+			query = "insert into customer(num, id, pwd, name, cpnum, email, postcode, addr1, addr2, joinDate, point) "
+					+ "values(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 			System.out.println(query);
 			
 			pstmt = con.prepareStatement(query);
@@ -140,6 +140,7 @@ public class MemberDAO {
 			pstmt.setString(8, addr1);
 			pstmt.setString(9, addr2);
 			pstmt.setTimestamp(10, timestamp);
+			pstmt.setInt(11, 0);
 			
 			pstmt.executeUpdate();
 		}catch(Exception e){
@@ -252,6 +253,7 @@ public class MemberDAO {
 				vo.setPostcode(rs.getString("postcode"));
 				vo.setAddr1(rs.getString("addr1"));
 				vo.setAddr2(rs.getString("addr2"));
+				vo.setPoint(Integer.parseInt(rs.getString("point")));
 			}else{
 				query = "select * from seller where id=?";
 				pstmt = con.prepareStatement(query);
@@ -471,6 +473,27 @@ public class MemberDAO {
 		}catch(Exception e){
 			System.out.println("delete메소드 내부에서 오류 발생 : " + e);
 		}finally{
+			release();
+		}
+	}
+
+	public void addPoint(String id, int point) {
+		try{
+			con = getConnection();
+			String query = "select point from customer where id=?";
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, id);
+			rs = pstmt.executeQuery();
+			
+			query = "update customer set point=? where id=?";
+			pstmt = con.prepareStatement(query);
+			pstmt.setInt(1, point);
+			pstmt.setString(2, id);
+			
+			pstmt.executeUpdate();
+		}catch(Exception e){
+			System.out.println("addPoint메소드 내부에서 오류 : " + e);
+		}finally {
 			release();
 		}
 	}

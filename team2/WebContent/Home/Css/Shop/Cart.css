@@ -1,0 +1,41 @@
+@charset "UTF-8";
+
+
+form{display:inline-block;color:black;width:100%;height:100%;margin-left:70px}
+input[type=text]{margin-left:80px;color:black;width: 200px;height:30px;text-align:right;line-height:10px;font-size:20px}
+span {margin:0 0 0 0;display:inline-block}
+input[type=button]#delCart{float:right;border-radius:5px;background-color:#808080;color:white;font-size:18px;width:110px;height:27px;margin:0 48px 0 10px}
+.line{display:inline-block;width:80%;margin-left:120px;border-bottom:1px;border-bottom-style:solid;border-bottom-color:#808080;}
+.pdt {margin:0 8em;display: inline-block;width:70%;}
+
+.imagePreview {display:inline-block;width:20%;}
+.imagePreview img {display:block;width:105px;height:105px;}
+
+.bottom, #checkAll {float:right;padding:5px 5px;}
+.btnOrder{border-color:red;border-radius:5px;background-color:red;color:white;font-size:18px;width:150px;height:27px;margin-right:3px;}
+.btnCart{border-color:white;border-radius:5px;background-color:white;color:#808080;font-size:12px;width:50px;height:27px;margin-right:3px;}
+.btnDelCart{border-color:black;border-radius:5px;background-color:#808080;color:white;border-color:#808080;font-size:12px;width:50px;height:27px;margin-right:3px;}
+
+.pdtInfo {display:inline-block;width:78%;padding: 0 0 0 180px;margin: 2px 0 0 0;}
+.pdtInfo .productName {display:block;padding: 3px 3px;margin: 0 3px 0 10px;font-size:18px; color:#000000; }
+.pdtInfo .sellerName {display:block;padding: 3px 3px;margin: 0 3px 0 10px;font-size:14px; color:#808080; }
+
+.pdtInfo .pdtOrder .productPrice {display:block;padding: 3px 3px;margin: 0 3px 0 10px;font-size:20px; color:#808080; }
+.pdtInfo .pdtOrder .shipping_fee {display:block;padding: 3px 3px;margin: 0 3px 0 15px;font-size:15px; color:#808080; }
+.pdtInfo .pdtOrder .btnStockQty  {display:inline;padding: 3px 3px;margin: 0 3px 0 15px;font-size:13px; color:#000000; }
+.pdtInfo .pdtOrder .Plus, .Minus {display:inline-block;width:30px; height:20px;padding: 3px 0;margin: 3px 0;font-size:12px; color:#000000;border-radius:3px;background-color:#ffffff; }
+
+.pdtInfo input[type=tel]{margin: 0;padding: 0;border: 0;width: 45px;height: 13px;font-weight: bold;font-size: 15px;color: #000000;text-align: center;}
+
+.pdtInfo .productName:before{color:black;font-size:16px;padding: 3px 40px;margin:0 200px 0 0;display:inline-block; content:" "; content:"상품명"; }
+.pdtInfo .sellerName:before{color:#808080;font-size:14px;padding: 3px 40px;margin:0 200px 0 0;display:inline-block; content:" "; content:"판매자"; }
+.pdtInfo .pdtOrder .productPrice:before{color:#808080;font-size:14px;padding: 3px 40px;margin:0 210px 0 0;display:inline-block; content:" "; content:"가격"; }
+.pdtInfo .pdtOrder .shipping_fee:before {color:#808080;font-size:14px;margin:0 200px 0 0;padding: 3px 40px;display:inline-block; content:" "; content:"배송비"; }
+.pdtInfo .pdtOrder .productPrice:after {color:#808080;font-size:14px;padding: 3px 3px;display:inline; content:" "; content:"원"; }
+.pdtInfo .pdtOrder .shipping_fee:after {color:#808080;font-size:14px;padding: 3px 3px;display:inline; content:" "; content:"원"; }
+.pdtInfo .pdtOrder .btnStockQty:before{color:#808080;font-size:14px;margin:0 160px 0 0px;padding: 3px 40px;display:inline-block; content:" "; content:"수량"; }
+
+
+.pdtInfo .pdtOrder {display:inline;}
+.pdtInfo .pdtOrder .totalPrice{display:block;}
+.pdtInfo .pdtOrder .totalPrice:before {display: inline-block; content: " ";content: "총 결제 금액";top: 50%;margin-top: 2px;font-size: 17px;color: #000000;line-height: 12px;}

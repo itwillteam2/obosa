@@ -11,6 +11,8 @@
 $(document).ready(function(){
 	if("${id}"!=""){
 		cartCount();
+	}else{
+		$("#countCart").css("display","none");
 	}
 });
 	
@@ -30,7 +32,10 @@ $(document).ready(function(){
 	function pageMove(category){
 		location.href="${contextPath}/category/list.do?category="+category;
 	}
-	
+	function fnGoCart(){
+		if("${id}"!=""){ location.href="${contextPath}/cart/cartList.do?customer_id=${id}"	}
+		else{ alert("회원 전용 서비스입니다."); }	
+	}
 </script>
 <div id="CommonHeader">
 	<div id="mymenu">
@@ -57,7 +62,7 @@ $(document).ready(function(){
 			<li class="CategoryMiddle"><a href="#">평가받기</a></li>
 			
 			<li class="Cart">
-				<a href="Order/Cart.html" title="장바구니">			
+				<a href="javascript:void(0)" onclick="fnGoCart();" title="장바구니">			
 					<img src="${contextPath}/Images/Ver1/Common/top_icon_cart.png" />
 				</a>
 				  <input type="text" id="countCart" value="" readonly>
