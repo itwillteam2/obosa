@@ -122,12 +122,12 @@ $(document).ready(function(){
 </div>
 
 <div class="BestItemWrap">
-	<a class="BestItemTitle" href="">NEW ARRIVAL</a>
+	<a class="BestItemTitle" href="">NEW ITEM</a>
 	<div class="BestItemList">
 		<ul>
 			<c:forEach var="newarr" items="${NewArrivalList}">
 				<li>
-					<a href="#">	
+					<a href="${contextPath}/${newarr.category}/viewContent.do?num=${newarr.num}">	
 						<span class="ImageBackGround"></span>
 						
 						<img class="ItemImage" src="${contextPath}/download.do?fd=${newarr.category}&num=${newarr.num}&productImageName=${newarr.productImageName1}" />
@@ -143,21 +143,15 @@ $(document).ready(function(){
 </div>
 
 <div class="NewArrivalWrap">
-	<a class="NewArrivalTitle" href="">BEST ITEM</a>
+	<a class="NewArrivalTitle" href="">BANNER</a>
 	<div class="NewArrivalList">
-		<a class="NewArrival1" href="shop/itemdetail6956.html?itemidx=2012070309" target="_self" style="background-color:#faf5bb; background-image:url(../Upload/DesignMng/poom2012214451339219219c87.jpg?v=v20201221105142);" onclick="GA_event('메인', 'NEW_ARRIVAL', '#1_https://www.artboxmall.com/home/shop/itemdetail.asp?itemidx=2012070309');">
-			<b>꽃다운 방역생활</b>참 마스크스트랩 (3 Types)
+		<a class="NewArrival1" href="#" style="background-image:url(../Images/Ver1/Common/banner1.png);">
 		</a>
-		<a class="NewArrival2" href="shop/itemdetailc333.html?itemidx=2012170238" target="_self" style="background-color:#e8f9b8; background-image:url(../Upload/DesignMng/poom2012144261795653659c87.jpg?v=v20201221105142);" onclick="GA_event('메인', 'NEW_ARRIVAL', '#2_https://www.artboxmall.com/home/shop/itemdetail.asp?itemidx=2012170238');">
-			<b>산타보다 핵인싸!</b>춤추는 트리모자 (2 Types)
+		<a class="NewArrival2" href="#" style="background-image:url(../Images/Ver1/Common/banner2.png);">
 		</a>
-		<a class="NewArrival3" href="shop/itemdetaild1fe.html?itemidx=2012020285" target="_self" style="background-color:#ffe1e0; background-image:url(../Upload/DesignMng/poom2012214448483320429c87.jpg?v=v20201221105142);" onclick="GA_event('메인_PC', 'NEW_ARRIVAL', '#3_https://www.artboxmall.com/home/shop/itemdetail.asp?itemidx=2012020285');">
-			<b>뽀글뽀글 함께 하숑</b>아이보리비숑 뽀글이 크로스백 (2 Colors)
+		<a class="NewArrival3" href="#" style="background-image:url(../Images/Ver1/Common/banner3.png);">
 		</a>
 		<div class="clear"></div>
-		<a class="NewArrival3_M" href="shop/itemdetaild1fe.html?itemidx=2012020285" target="_self" style="background-color:#ffe1e0; background-image:url(../Upload/DesignMng/poom2012214448831229319c87.jpg?v=v20201221105142);" onclick="GA_event('메인_MO', 'NEW_ARRIVAL', '#3_https://www.artboxmall.com/home/shop/itemdetail.asp?itemidx=2012020285');">
-			<b>뽀글뽀글 함께 하숑</b>아이보리비숑 뽀글이 크로스백 (2 Colors)
-		</a>
 	</div>
 </div>
 
