@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import Order.OrderVO;
+
 @WebServlet("/member/*")
 public class MemberController extends HttpServlet{
 
@@ -250,6 +252,15 @@ public class MemberController extends HttpServlet{
 					 + " alert('회원정보가 삭제되었습니다.'); "  
 					 +"</script>");
 			nextPage = "/Home/index.jsp";
+		}else if(action.equals("/orderList.do")){
+			HttpSession session = request.getSession();
+			String id = (String)session.getAttribute("id");
+
+			List<OrderVO> orderList = memberService.orderList(id);
+			System.out.println(id);
+			request.setAttribute("orderList", orderList);
+			
+			nextPage = "/Home/Member/orderList.jsp";
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);

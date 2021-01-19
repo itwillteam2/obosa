@@ -15,6 +15,14 @@
 <jsp:include page="/Home/inc/head.jsp"/>
 <link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/Shop/Cart.css" />
 <script type="text/javascript">
+$(document).ready(function(){
+	var id = "${id}";
+	if(id==""){
+		alert("회원 전용 페이지입니다. \n로그인 페이지로 이동합니다.");
+		location.href="${contextPath}/member/login.do";
+	}	
+});
+
 $(document).on("click","#checkAll", function(){
 	        $(".bottom").prop("checked",this.checked);
 });
