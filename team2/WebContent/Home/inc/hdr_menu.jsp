@@ -11,6 +11,8 @@
 $(document).ready(function(){
 	if("${id}"!=""){
 		cartCount();
+	}else{
+		$("#countCart").css("display","none");
 	}
 });
 	
