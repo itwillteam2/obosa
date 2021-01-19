@@ -28,10 +28,13 @@ public class CommonController extends HttpServlet{
 	
 	SearchVO searchVO;
 	SearchService searchService;
+	NewArrrivalVO newArrivalVO;
+	NewArrivalService newArrivalService;
 	
 	@Override
 	public void init() throws ServletException {
 		searchService = new SearchService();
+		newArrivalService = new NewArrivalService();
 	}
 	
 	@Override
@@ -55,8 +58,11 @@ public class CommonController extends HttpServlet{
 		String nextPage = null;
 
 		if(action.equals("/index.do")){
+			List <NewArrrivalVO> NewArrivalList = newArrivalService.NewArrivalList();
+			request.setAttribute("NewArrivalList", NewArrivalList);
+		
 			nextPage = "/Home/index.jsp";
-		}else if(action.equals("/living.do")){
+		}else if(action.equals("/living.do")){		
 			nextPage = "/Home/Living/living.jsp";
 		}else if(action.equals("/search.do")){
 			String search = request.getParameter("kwd");
