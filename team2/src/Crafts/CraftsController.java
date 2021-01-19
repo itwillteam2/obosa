@@ -27,6 +27,9 @@ public class CraftsController extends HttpServlet{
 	ItemsVO vo;
 	ItemsService service;
 	ItemsRepVO repVO;
+	ItemsQnaVO qnaVO;
+	ItemsQnaRepVO qnarepVO;
+	CraftsJoinVO joinVO;
 	String realPath;
 	final String CATEGORY="crafts";
 	private static String ARTICLE_IMAGE_REPO = "C:\\files\\article_image";
@@ -35,6 +38,9 @@ public class CraftsController extends HttpServlet{
 	public void init() throws ServletException {
 		vo = new ItemsVO();
 		repVO = new ItemsRepVO();
+		qnaVO = new ItemsQnaVO();
+		qnarepVO = new ItemsQnaRepVO();
+		joinVO = new CraftsJoinVO();
 		service = new ItemsService();
 	}
 
@@ -56,18 +62,21 @@ public class CraftsController extends HttpServlet{
 		request.setCharacterEncoding("utf-8");
 		response.setContentType("text/html; charset=utf-8");
 		
-		String nextPage = "";
+		String nextPage = null;
 		realPath = request.getServletContext().getRealPath("/files/"+CATEGORY);
 		String action = request.getPathInfo();
+		
+		List<ItemsQnaRepVO> QnaRepList = null;
+		List<CraftsJoinVO> joinList = null;
 
 		if (action == null || action.equals("/list.do")) {
 			int totalCount = service.totalCount();
 			Paging paging = new Paging();
 			int pageNO = (request.getParameter("pageNO") == null) ? 1 : Integer.parseInt(request.getParameter("pageNO"));
 			int pageSize = 5;  // 원하는 세팅 값 입력, 페이지 하단 숫자 표시 개수
-			int listSize = 8;  // 원하는 세팅 값 입력, 출력 게시물 개수
+			int listSize = 4;  // 원하는 세팅 값 입력, 출력 게시물 개수
 			
-			paging.makePage(totalCount, pageNO, listSize, pageSize); 
+			paging.makePage(totalCount, pageNO, pageSize, listSize); 
 			
 			String ord = request.getParameter("ord");
 			request.setAttribute("ord", ord);
@@ -77,8 +86,8 @@ public class CraftsController extends HttpServlet{
 			if(ord == "" || ord == null){
 				ord="신상품순";
 			}
-		
-			List<ItemsVO> contentList = service.ContentList(pageNO,listSize, ord);
+			
+			List <ItemsVO> contentList = service.ContentList(pageNO,listSize, ord);
 			request.setAttribute("contentList", contentList);	
 			request.setAttribute("category", CATEGORY);	 //------ 카테고리 입력
 			request.setAttribute("totalCount", totalCount);
@@ -169,9 +178,43 @@ public class CraftsController extends HttpServlet{
 			nextPage = "/Home/Common/content.jsp";
 
 		} else if (action.equals("/viewContent.do")) {
-			String num = request.getParameter("num");
-			ItemsVO content = (ItemsVO) service.ContentDetail(Integer.parseInt(num));
+			int num = Integer.parseInt(request.getParameter("num"));
+			int totalCount = service.totalCountRep();
+			int totalCount2 = service.totalCountQna();
+			int totalCount3 = service.totalCountQnaRep();
+			Paging paging = new Paging();
+			int pageNO = (request.getParameter("pageNO") == null) ? 1 : Integer.parseInt(request.getParameter("pageNO"));
+			int pageSize = 5;
+			int listSize = 5;
+			paging.makePage(totalCount, pageNO, pageSize, listSize); 
+			
+			ItemsVO content = (ItemsVO) service.ContentDetail(num);
 			request.setAttribute("content", content);
+			
+			List <ItemsRepVO> ReppagingList = service.ReppagingList(pageNO,listSize, num);
+			request.setAttribute("ReppagingList", ReppagingList);	
+			request.setAttribute("totalCount", totalCount);
+			request.setAttribute("paging", paging);
+			
+			List <ItemsQnaVO> QnaPagingList = service.QnaPagingList(pageNO,listSize, num);
+			request.setAttribute("QnaPagingList", QnaPagingList);	
+			request.setAttribute("totalCount", totalCount2);
+			request.setAttribute("paging", paging);
+			
+			QnaRepList = service.listQnaRep();
+			request.setAttribute("QnaRepList", QnaRepList);
+			
+			List <ItemsQnaRepVO> QnaRepPagingList = service.QnaRepPagingList(pageNO,listSize, num);
+			request.setAttribute("QnaRepPagingList", QnaRepPagingList);	
+			request.setAttribute("totalCount", totalCount3);
+			request.setAttribute("paging", paging);
+			
+			List <CraftsJoinVO> QnaPagingJoinList = service.QnaPagingJoinList(pageNO,listSize, num);
+			request.setAttribute("QnaPagingJoinList", QnaPagingJoinList);	
+			request.setAttribute("totalCount", totalCount2);
+			request.setAttribute("paging", paging);
+			
+			
 			
 			nextPage = "/Home/Common/content.jsp";
 		
@@ -182,7 +225,7 @@ public class CraftsController extends HttpServlet{
 			if(result==1) deleteFolder(Integer.parseInt(num));
 			nextPage = "/"+CATEGORY+"/list.do";
 			
-		}else if (action.equals("/addReply.do")) {
+		} else if (action.equals("/addReply.do")) {
 			
 			int rnum = 0;
 			
@@ -204,6 +247,88 @@ public class CraftsController extends HttpServlet{
 			PrintWriter pw2 = response.getWriter();
 			pw2.print("<script>" + "  alert('상품후기를 등록 했습니다.');" + "window.opener.location.reload(); " +
 			"window.close();"+ "</script>");	
+		} else if (action.equals("/addQna.do")) {
+			
+			int qnum = 0;
+			
+			int num = Integer.parseInt(request.getParameter("num"));
+			String title = request.getParameter("title");
+			String pw = request.getParameter("pw");
+			String content = request.getParameter("content");
+			String writer = request.getParameter("writer");
+			
+			qnaVO.setQnum(qnum);
+			qnaVO.setNum(num);
+			qnaVO.setTitle(title);
+			qnaVO.setPw(pw);
+			qnaVO.setContent(content);
+			qnaVO.setWriter(writer);
+			
+			
+			qnum = service.addQna(qnaVO);
+
+			PrintWriter pw2 = response.getWriter();
+			pw2.print("<script>" + "  alert('질문을 등록 했습니다.');" + "window.opener.location.reload(); " +
+			"window.close();"+ "</script>");	
+		} else if (action.equals("/addQnaReply.do")) {
+			int qrnum = 0;
+			
+			int qnum = Integer.parseInt(request.getParameter("qnum"));
+			String content = request.getParameter("content");
+			String pw = request.getParameter("pw");
+			
+			qnarepVO.setQrnum(qrnum);
+			qnarepVO.setQnum(qnum);
+			qnarepVO.setContent(content);
+			qnarepVO.setPw(pw);
+
+			qnum = service.addQnaRep(qnarepVO);
+			
+			PrintWriter pw2 = response.getWriter();
+			pw2.print("<script>" + "  alert('답변을 등록 했습니다.');" + "window.opener.location.reload(); " +
+			"window.close();"+ "</script>");	
+		
+		}else if (action.equals("/QnaReplyDelete.do")) {
+			int check = 0;
+			
+			int qrnum = Integer.parseInt(request.getParameter("qrnum"));
+			String pw = request.getParameter("pw");
+			String num = request.getParameter("num");
+			
+			check = service.QnaReplyDelete(qrnum, pw);
+			
+			PrintWriter pw2 = response.getWriter();
+			
+			if (check == 1) {
+				pw2.print("<script> alert('답변이 삭제되었습니다.');" + " location.href='" + request.getContextPath()
+						+ "/"+CATEGORY+"/viewContent.do?num="+num+"'; " + "</script>");
+			} else {
+				pw2.print("<script> alert('비밀번호가 틀립니다.');" + "history.back();" + "</script>");
+			}
+		}else if (action.equals("/QnaReplyModify.do")) {
+			
+			int check = 0;
+			
+			int qrnum = Integer.parseInt(request.getParameter("qrnum"));
+			String content = request.getParameter("content");
+			String pw = request.getParameter("pw");
+			
+			qnarepVO.setQrnum(qrnum);
+			qnarepVO.setContent(content);
+			qnarepVO.setPw(pw);
+
+			check = service.modifyReply(qnarepVO);
+			 
+			PrintWriter pw2 = response.getWriter();
+			
+			if(check == 1){
+				pw2.print("<script>" + "  alert('답변을 수정 했습니다.');" + "window.opener.location.reload(); " +
+						"window.close();"+ "</script>");
+			}else{
+				pw2.print("<script> alert('비밀번호가 틀립니다.');" +
+				"history.back();" + 
+				"</script>");	
+			}
 		}
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
@@ -285,5 +410,5 @@ public class CraftsController extends HttpServlet{
 		}
 	}// end of deleteFolder
 	
-	
+
 }// end

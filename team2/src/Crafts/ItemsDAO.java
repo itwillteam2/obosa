@@ -7,6 +7,8 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
+import CsCenter.InqRepVO;
+import CsCenter.InquiryVO;
 import DBUtil.DBConnection;
 
 public class ItemsDAO {
@@ -221,6 +223,7 @@ public class ItemsDAO {
 		return num;
 	}//end
 
+	
 	public int insertNewReply(ItemsRepVO repVO) {
 		int rnum = 0;
 		String sql ="";
@@ -262,5 +265,386 @@ public class ItemsDAO {
 		}
 		return rnum;
 	}//end
+	public int getTotalCountRep() {
+		int num = 0;
+		try {
+			conn = DBConnection.getConnection();
+			String query = "SELECT count(*) FROM "+CATEGORY+"_rep";
+			pstmt = conn.prepareStatement(query);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				num=rs.getInt(1);
+			}
+		
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			freeResource();
+		}
+
+		return num;
+	}
+	
+	public List<ItemsRepVO> getAllReply(int pageNO, int listSize, int num) {
+		List<ItemsRepVO> ReppagingList = new ArrayList<ItemsRepVO>();
+		pageNO= (pageNO-1)*listSize;
+		try {
+			conn = DBConnection.getConnection();
+			
+				String query = "SELECT * FROM "+CATEGORY+"_rep where num = " + num + " order by rnum desc "+" LIMIT "+pageNO+","+listSize;
+				pstmt = conn.prepareStatement(query);			
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				ItemsRepVO vo = new ItemsRepVO();
+				vo.setRnum(rs.getInt("rnum"));
+				vo.setNum(rs.getInt("num"));
+				vo.setTitle(rs.getString("title"));
+				vo.setWriter(rs.getString("writer"));
+				vo.setPw(rs.getString("pw"));
+				vo.setContent(rs.getString("content"));
+				vo.setDate(rs.getTimestamp("date"));
+				ReppagingList.add(vo);
+			}
+						
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			freeResource();
+		}
+		return ReppagingList;
+	}
+
+	public int insertNewQna(ItemsQnaVO qnaVO) {
+		int qnum = 0;
+		String sql ="";
+		
+		try {
+			conn = DBConnection.getConnection();
+			sql = "select max(qnum) from "	
+			+CATEGORY+"_qna";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){ 	qnum = rs.getInt(1) + 1;
+			}else{	qnum = 1; }
+			
+			int num = qnaVO.getNum();
+			String title = qnaVO.getTitle();
+			String pw = qnaVO.getPw();
+			String content = qnaVO.getContent();
+			String writer = qnaVO.getWriter();
+
+			String query = "INSERT INTO "+CATEGORY+"_qna(qnum, num, title, pw, content, writer)"
+					+ "VALUES(?, ?, ?, ?, ?, ?)";
+
+			pstmt = conn.prepareStatement(query);
+			
+			pstmt.setInt(1, qnum);
+			pstmt.setInt(2, num);
+			pstmt.setString(3, title);
+			pstmt.setString(4, pw);
+			pstmt.setString(5, content);
+			pstmt.setString(6, writer);
+
+			pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			freeResource();
+		}
+		return qnum;
+	}
+
+	public int getTotalCountQna() {
+		int num = 0;
+		try {
+			conn = DBConnection.getConnection();
+			String query = "SELECT count(*) FROM "+CATEGORY+"_qna";
+			pstmt = conn.prepareStatement(query);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				num=rs.getInt(1);
+			}
+		
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			freeResource();
+		}
+
+		return num;
+	}
+
+	public List<ItemsQnaVO> getAllQna(int pageNO, int listSize, int num) {
+		List<ItemsQnaVO> QnaPagingList = new ArrayList<ItemsQnaVO>();
+		pageNO= (pageNO-1)*listSize;
+		try {
+			conn = DBConnection.getConnection();
+			
+				String query = "SELECT * FROM "+CATEGORY+"_qna where num = " + num + " order by qnum desc "+" LIMIT "+pageNO+","+listSize;
+				pstmt = conn.prepareStatement(query);			
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				ItemsQnaVO vo = new ItemsQnaVO();
+				vo.setQnum(rs.getInt("qnum"));
+				vo.setNum(rs.getInt("num"));
+				vo.setTitle(rs.getString("title"));
+				vo.setWriter(rs.getString("writer"));
+				vo.setPw(rs.getString("pw"));
+				vo.setContent(rs.getString("content"));
+				vo.setDate(rs.getTimestamp("date"));
+				QnaPagingList.add(vo);
+
+			}
+			
+						
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			freeResource();
+		}
+		return QnaPagingList;
+	}
+
+	public int insertNewQnaRep(ItemsQnaRepVO qnarepVO) {
+		int qrnum = 0;
+
+		String sql = "";
+
+		try {
+			conn = DBConnection.getConnection();
+			sql = "select max(qrnum) from "+CATEGORY+"_qna_rep";
+
+			pstmt = conn.prepareStatement(sql);
+
+			rs = pstmt.executeQuery();
+
+			if (rs.next()) {
+				qrnum = rs.getInt(1) + 1;
+			} else {
+				qrnum = 1;
+			}
+			
+			int qnum = qnarepVO.getQnum();
+			String content = qnarepVO.getContent();
+			String pw = qnarepVO.getPw();
+
+			String query = "INSERT INTO "+CATEGORY+"_qna_rep(qrnum, qnum, pw, content, complete)"
+					+ "VALUES(?, ?, ?, ?, ?)";
+
+			pstmt = conn.prepareStatement(query);
+
+			pstmt.setInt(1, qrnum);
+			pstmt.setInt(2, qnum);
+			pstmt.setString(3, pw);
+			pstmt.setString(4, content);
+			pstmt.setInt(5, 1);
+			pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			freeResource();
+		}
+
+		return qrnum;
+	}
+
+	public List<ItemsQnaRepVO> selectAllQnaRep() {
+		List listQnaRep = new ArrayList();
+
+		try {
+			conn = DBConnection.getConnection();
+
+			String query = "select * from "+CATEGORY+"_qna_rep order by qnum desc";
+
+			pstmt = conn.prepareStatement(query);
+
+			rs = pstmt.executeQuery();
+
+			while (rs.next()) {
+				int qrnum = rs.getInt("qrnum");
+				int qnum = rs.getInt("qnum");
+				String content = rs.getString("content");		
+				String pw = rs.getString("pw");
+				int complete = rs.getInt("complete");
+
+				ItemsQnaRepVO qr = new ItemsQnaRepVO();
+				qr.setQrnum(qrnum);
+				qr.setQnum(qnum);
+				qr.setContent(content);
+				qr.setPw(pw);
+				qr.setComplete(complete);
+				
+				listQnaRep.add(qr);
+
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			freeResource();
+		}
+
+		return listQnaRep;
+	}
+
+	public int getTotalCountQnaRep() {
+		int num = 0;
+		try {
+			conn = DBConnection.getConnection();
+			String query = "SELECT count(*) FROM "+CATEGORY+"_qna_rep";
+			pstmt = conn.prepareStatement(query);
+			rs = pstmt.executeQuery();
+			if(rs.next()) {
+				num=rs.getInt(1);
+			}
+		
+		}catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			freeResource();
+		}
+
+		return num;
+	}
+
+	public List<ItemsQnaRepVO> getAllQnaRep(int pageNO, int listSize, int num) {
+		List<ItemsQnaRepVO> QnaRepPagingList = new ArrayList<ItemsQnaRepVO>();
+		pageNO= (pageNO-1)*listSize;
+		try {
+			conn = DBConnection.getConnection();
+			
+				String query = "SELECT * FROM "+CATEGORY+"_qna_rep order by qnum desc "+" LIMIT "+pageNO+","+listSize;
+				pstmt = conn.prepareStatement(query);			
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				ItemsQnaRepVO vo = new ItemsQnaRepVO();
+				vo.setQrnum(rs.getInt("qrnum"));
+				vo.setQnum(rs.getInt("qnum"));
+				vo.setPw(rs.getString("pw"));
+				vo.setContent(rs.getString("content"));
+				vo.setComplete(rs.getInt("complete"));
+				QnaRepPagingList.add(vo);
+			}
+						
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			freeResource();
+		}
+		return QnaRepPagingList;
+	}
+
+	public List<CraftsJoinVO> JoinQna(int pageNO, int listSize, int num) {
+		List<CraftsJoinVO> QnaPagingJoinList = new ArrayList<CraftsJoinVO>();
+		pageNO= (pageNO-1)*listSize;
+		try {
+			conn = DBConnection.getConnection();
+				String query = "select q.qnum, q.title, q.content, q.writer, q.date, ifnull(r.qrnum,0) qrnum, ifnull(r.content,0) rcontent, ifnull(r.complete, 0) complete "
+								+ "FROM "+CATEGORY+"_qna q left outer join "+CATEGORY+"_qna_rep r on q.qnum = r.qnum order by qnum desc"+" LIMIT "+pageNO+","+listSize;
+				pstmt = conn.prepareStatement(query);			
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				CraftsJoinVO vo = new CraftsJoinVO();
+				vo.setQnum(rs.getInt("qnum"));
+				vo.setTitle(rs.getString("title"));
+				vo.setContent(rs.getString("content"));
+				vo.setWriter(rs.getString("writer"));
+				vo.setDate(rs.getTimestamp("date"));
+				vo.setQrnum(rs.getInt("qrnum"));
+				vo.setRcontent(rs.getString("rcontent"));
+				vo.setComplete(rs.getInt("complete"));
+				QnaPagingJoinList.add(vo);	
+				
+				System.out.println(rs.getInt("qnum"));
+				System.out.println(rs.getString("title"));
+			}
+						
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally {
+			freeResource();
+		}
+		return QnaPagingJoinList;
+	}
+
+	public int QnaReplyDelete(int qrnum, String pw) {
+		int check = 0;
+		
+		String sql = "";
+		
+		try {
+			conn = DBConnection.getConnection();
+			
+			sql = "select pw from "+CATEGORY+"_qna_rep where qrnum = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, qrnum);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				if(pw.equals(rs.getString("pw"))){
+
+					check = 1;
+
+					sql = "delete from "+CATEGORY+"_qna_rep where qrnum=?";
+					
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setInt(1, qrnum);
+
+					
+					pstmt.executeUpdate();
+				}else{
+					check = 0;
+				}
+			}		
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally{
+			freeResource();
+		}
+		
+		return check;
+	}
+
+	public int modifyReply(ItemsQnaRepVO qnarepVO) {
+		int check = 0;
+		String sql = "";
+		
+		try {
+			conn = DBConnection.getConnection();
+			
+			sql = "select pw from "+CATEGORY+"_qna_rep where qrnum = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, qnarepVO.getQrnum());
+
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				if(qnarepVO.getPw().equals(rs.getString("pw"))){
+					check = 1;
+					sql = "update "+CATEGORY+"_qna_rep set content=? where qrnum=?";
+					pstmt = conn.prepareStatement(sql);
+					
+					pstmt.setString(1, qnarepVO.getContent());
+					pstmt.setInt(2, qnarepVO.getQrnum());
+
+					pstmt.executeUpdate();
+				}else{
+					check = 0;
+				}
+			}			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally{
+			freeResource();
+		}
+		return check;
+	}
 
 }
