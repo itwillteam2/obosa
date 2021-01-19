@@ -14,9 +14,15 @@
 					<a href="${contextPath}/member/join.do">회원가입</a>
 				</c:when>
 				<c:otherwise>
-					<label>환영합니다 ${name}님!</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-					<a href="${contextPath}/member/userInfoCK.do">회원정보변경</a>&nbsp; | &nbsp;
-					<a href="${contextPath}/member/logout.do">로그아웃</a>
+					<ul id="personal">
+						<li id="upper">환영합니다 ${name}님!&nbsp;&nbsp;&nbsp;
+							<ul id = "sub">
+								<li><a href="${contextPath}/member/userInfoCK.do">회원정보변경</a></li>
+								<li><a href="${contextPath}/member/orderList.do">주문내역</a></li>
+							</ul>
+						</li>
+						<li> | &nbsp;&nbsp;&nbsp;<a href="${contextPath}/member/logout.do">로그아웃</a></li>
+					</ul>
 				</c:otherwise>
 			</c:choose>
 		</div>

@@ -16,6 +16,7 @@ public class OrderVO {
 	private String sellerName;
 	private int quantity;
 	private int price;
+	private int point;
 	private int shipping_fee;
 	private Timestamp orderDate;
 	
@@ -96,6 +97,12 @@ public class OrderVO {
 	}
 	public void setPrice(int price) {
 		this.price = price;
+	}
+	public int getPoint() {
+		return point;
+	}
+	public void setPoint(int point) {
+		this.point = point;
 	}
 	public int getShipping_fee() {
 		return shipping_fee;

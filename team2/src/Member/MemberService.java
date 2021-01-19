@@ -1,5 +1,10 @@
 package Member;
 
+import java.util.List;
+
+import Order.OrderDAO;
+import Order.OrderVO;
+
 public class MemberService{
 
 	MemberDAO memberDAO = new MemberDAO();
@@ -57,5 +62,11 @@ public class MemberService{
 	
 	public void addPoint(String id, int point){
 		memberDAO.addPoint(id, point);
+	}
+	
+	public List<OrderVO> orderList(String id) {
+		OrderDAO orderDAO = new OrderDAO();
+		List<OrderVO> orderList = orderDAO.orderList(id);
+		return orderList;
 	}
 }

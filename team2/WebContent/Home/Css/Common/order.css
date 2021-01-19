@@ -1,0 +1,74 @@
+@CHARSET "UTF-8";
+
+h1{
+	text-align: center;
+	margin-top: 50px;
+}
+
+#orderTable{
+	text-align: center;
+	margin: 0 auto;
+	margin-bottom: 50px;
+}
+
+#orderTable input{
+	float: right;
+}
+
+#orderTable div{
+	font-size: 20px;
+}
+
+#orderTable td{
+	border-bottom: 1px dotted;
+	line-height: 180%;
+	padding: 20px 0;
+}
+
+#orderNum{
+	width: 100px;
+}
+
+#order{
+	width: 400px;
+}
+
+#orderDate{
+	width: 250px;
+}
+
+#num{
+	border: 1px solid none;
+	background-color: aliceblue;
+	border-radius: 20px;
+	padding: 10px;
+}
+
+#list{
+	border: 1px solid none;
+	background-color: aliceblue;
+	border-radius: 20px;
+	padding: 10px;
+}
+
+#date{
+	border: 1px solid none;
+	background-color: aliceblue;
+	border-radius: 20px;
+	padding: 10px;
+}
+
+.order{
+	width: 300px;
+	text-align: left;
+	padding-left: 30px;
+}
+
+.btn{
+	width: 100px;
+}
+
+#noOrder{
+	font-size: 20px;
+	margin-top: 50px;
+}
