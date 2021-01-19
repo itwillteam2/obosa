@@ -54,4 +54,8 @@ public class MemberService{
 	public void delete(String id) {
 		memberDAO.delete(id);
 	}
+	
+	public void addPoint(String id, int point){
+		memberDAO.addPoint(id, point);
+	}
 }

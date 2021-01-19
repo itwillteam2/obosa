@@ -79,6 +79,9 @@
     	<input type="hidden" name="fd" value="${paymentMap.fd}">
     	<input type="hidden" name="num" value="${paymentMap.num}">
     	<input type="hidden" name="productImageName" value="${paymentMap.productImageName}">
+    	<input type="hidden" name="point" value="${paymentMap.point}">
+    	<input type="hidden" name="gainPoint" value="${paymentMap.gainPoint}">
+    	<input type="hidden" name="usingPoint" value="${paymentMap.usingPoint}">
     </form>
 </body>
 </html>

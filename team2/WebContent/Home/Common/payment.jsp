@@ -25,7 +25,27 @@ $(document).ready(function(){
     $("#cpnum1").val(cpnum1);
     $("#cpnum2").val(cpnum2);
     $("#cpnum3").val(cpnum3);
-	});
+    
+    $('input[name="pay"]').change(function() {
+    	$('input[name="pay"]').each(function() {
+            var value = $(this).val();
+            var checked = $(this).prop('checked');
+            if(checked){
+            	if(value == "무통장입금" || value == "에스크로" || value == "휴대폰"){
+        			alert("해당 결제방법은 현재 준비중입니다.");
+        			$('input[value="카드"]').prop("checked", "checked");
+        			return;
+        		}
+            }
+    	});
+    });
+    
+    if($("#insertPoint").change(function(){
+    	var now = ${item.productPrice * qty + item.shipping_fee};
+    	var point = $("#insertPoint").val();
+    	$("#total").text(now - point);
+    }));
+});
 	
 fnGetAddressInfo = function(){
 	new daum.Postcode({
@@ -110,8 +130,38 @@ function submitPay(){
 		var address = $("#addr1").val() + " " + $("#addr2").val();
 		$("#address").val(address);
 		
+		var now = ${item.productPrice * qty + item.shipping_fee};
+		var point = $("#insertPoint").val();
+		$("input[type=hidden][name=totalPrice]").val($("#total").text());
+		
 		document.payForm.submit();
 	}
+}
+
+function onlyNumber(event) {
+	event = event || window.event;
+	var keyID = (event.which) ? event.which : event.keyCode;
+	if ((keyID >= 48 && keyID <= 57) || (keyID >= 96 && keyID <= 105)
+			|| keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39)
+		return;
+	else
+		return false;
+}
+
+function removeChar(event) {
+	event = event || window.event;
+	var keyID = (event.which) ? event.which : event.keyCode;
+	if (keyID == 8 || keyID == 46 || keyID == 37 || keyID == 39)
+		return;
+	else
+		event.target.value = event.target.value.replace(/[^0-9]/g, "");
+}
+
+function p(){
+	$("#insertPoint").val("${user.point}");
+	var now = ${item.productPrice * qty + item.shipping_fee};
+	var point = $("#insertPoint").val();
+	$("#total").text(now - point);
 }
 </script>
 <body>
@@ -144,7 +194,7 @@ function submitPay(){
 			<h3>주문상품</h3>
 			<div class="items">
 				<img src="${contextPath}/download.do?fd=${fd}&num=${num}&productImageName=${item.productImageName1}" />
-				<input type="hidden" name="fd" value="${fd }">
+				<input type="hidden" name="fd" value="${fd}">
 				<input type="hidden" name="num" value="${num}">
 				<input type="hidden" name="productImageName" value="${item.productImageName1}">
 				<div id="item">
@@ -159,11 +209,6 @@ function submitPay(){
 				</div>
 			</div>
 			<div class="clear"></div>
-			<div class="total">
-				<span id="totalPrice">총 <strong>${item.productPrice * qty + item.shipping_fee}</strong>원</span><br>
-				<span>${item.point}포인트가 적립됩니다</span>
-				<input type="hidden" name="totalPrice" value="${item.productPrice * qty + item.shipping_fee}">
-			</div>
 			<div class="clear"></div>
 			<br>
 			<hr>
@@ -171,8 +216,22 @@ function submitPay(){
 			<h3>결제수단</h3>
 			<div class="pay">
 				<div class="method">
-					<input type="radio" name="pay" value="카드" checked>&nbsp;&nbsp;카드&nbsp;&nbsp;&nbsp;&nbsp;
-					<input type="radio" name="pay" value="무통장입금">&nbsp;&nbsp;무통장입금
+					<input type="radio" name="pay" value="카드" checked>&nbsp;카드&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="radio" name="pay" value="무통장입금">&nbsp;무통장입금&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="radio" name="pay" value="에스크로">&nbsp;에스크로(실시간 계좌이체)&nbsp;&nbsp;&nbsp;&nbsp;
+					<input type="radio" name="pay" value="휴대폰">&nbsp;휴대폰결제&nbsp;&nbsp;&nbsp;&nbsp;
+				</div>
+				<div class="point">
+					포인트 사용&nbsp;&nbsp;<input type="text" id="insertPoint" name="usingPoint" class="cpnum" onkeydown='return onlyNumber(event)' onkeyup='removeChar(event)'>
+					&nbsp;&nbsp;<label id="gainPoint">현재 보유 포인트</label> : <strong>${user.point}</strong>
+					<input type="button" value="전액사용" class="pointBtn" onclick="p()">
+				</div>
+				<div class="total">
+					<span id="totalPrice">총 <strong id="total">${item.productPrice * qty + item.shipping_fee}</strong>원</span><br>
+					<span>${item.point}포인트가 적립됩니다</span>
+					<input type="hidden" name="point" value="${item.point}">
+					<input type="hidden" name="gainPoint" value="${user.point}">
+					<input type="hidden" id="totalPrice" name="totalPrice" value="${item.productPrice * qty + item.shipping_fee}">
 				</div>
 				<div class="email">
 					결제 확인 이메일  &nbsp;&nbsp;&nbsp;<input type="email"  id="email" name="email" placeholder="sangsang@abc.com">

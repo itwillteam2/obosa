@@ -75,7 +75,7 @@ strong{
 
 .total{
 	float: right;
-	margin: 20px 10px 10px 0;
+	margin: 70px 10px 10px 0;
 	text-align: right;
 	line-height: 30px;
 }
@@ -109,11 +109,12 @@ strong{
 	text-align:center; 
 	border:0; 
 	border-radius:5px; 
-	margin:0 auto;
+	margin:50px auto;
 }
 
 .email{
-	margin: 50px 0 50px 30px !important;
+	margin: 10px 0 50px 30px !important;
+	display: inline-block;
 }
 
 .email input[type=email]{
@@ -162,4 +163,28 @@ strong{
 	margin-right: 20px;
 	float: right;
 	text-align: right;
+}
+
+.point{
+	margin: 20px 0 0 30px;
+}
+
+#insertPoint{
+	margin-left: 40px;
+}
+
+#gainPoint{
+	color: blue;
+}
+
+.pointBtn{
+	width:70px;
+	height:30px; 
+	font-size:15px; 
+	color:#ffffff; 
+	background-color:slategray; 
+	text-align:center; 
+	border:0; 
+	border-radius:5px; 
+	margin-left: 10px;
 }
