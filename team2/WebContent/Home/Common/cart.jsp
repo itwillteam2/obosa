@@ -75,18 +75,10 @@ $(document).on("click","#checkAll", function(){
 	
 	// 상품 주문
 	$(document).on("click", ".btnOrder", function() {
-		var form = $(this).parent().serialize();
-			$.ajax({
-				type:"post",
-				async:true,
-				url:"${contextPath}/cart/delCart.do",  
-				data: form,
-				contentType: 'application/x-www-form-urlencoded; charset=UTF-8', 
-		        dataType: 'html',
-				success:function(result,textStatus){ location.href="${contextPath}/";  // payment link
-				},
-				error:function(result,textStatus){	alert("다시 시도해 주시기 바랍니다."); }
-				});
+			var category =$("input[name=category]").val();	  
+			var pnum=$("input[name=pnum]").val();
+			var qty=$("input[type=tel]").val();
+			location.href="${contextPath}/common/payment.do?fd="+category+"&num="+pnum+"&qty="+qty;
 	});
 	
 </script>
