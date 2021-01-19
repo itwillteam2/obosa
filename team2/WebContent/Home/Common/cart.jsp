@@ -100,6 +100,7 @@ $(document).on("click","#checkAll", function(){
 <input type="button" id="delCart" value="선택 삭제"/>
 <input type="checkbox" id="checkAll" />
 <c:forEach var="cart" items="${cart}">
+<div class="line"></div>
 <div class="pdt">
 <form method="post" action="" target="_self">
 
