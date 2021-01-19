@@ -124,7 +124,8 @@
 					<select class="form-control" name="category" id="productCategoryNo" required onchange="change_action();">
 						<option value="">선택하세요</option>
 						<option value="living">리빙</option>
-						<option value="crafts">공예</option>										
+						<option value="crafts">공예</option>
+						<option value="fancy">문구</option>											
 					</select>
 				</td>
 			</tr>

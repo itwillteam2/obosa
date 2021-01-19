@@ -57,7 +57,7 @@ $(document).ready(function(){
 		<ul>
 			<li class="CategoryMiddle"><a href="${contextPath}/living/list.do">리빙</a></li>
 			<li class="CategoryMiddle"><a href="${contextPath}/crafts/list.do">공예</a></li>
-			<li class="CategoryMiddle"><a href="#">문구</a></li>
+			<li class="CategoryMiddle"><a href="${contextPath}/fancy/list.do">문구</a></li>
 			<li class="CategoryMiddle"><a href="${contextPath}/CsCenter/NoticeList.do">공지사항</a></li>
 			<li class="CategoryMiddle"><a href="#">평가받기</a></li>
 			
