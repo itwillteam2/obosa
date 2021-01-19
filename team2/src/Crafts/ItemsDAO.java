@@ -7,8 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import CsCenter.InqRepVO;
-import CsCenter.InquiryVO;
 import DBUtil.DBConnection;
 
 public class ItemsDAO {
@@ -221,6 +219,48 @@ public class ItemsDAO {
 			freeResource();
 		}
 		return num;
+	}//end
+
+	public int insertNewReply(ItemsRepVO repVO) {
+		int rnum = 0;
+		String sql ="";
+		
+		try {
+			conn = DBConnection.getConnection();
+			sql = "select max(rnum) from "	
+			+CATEGORY+"_rep";
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){ 	rnum = rs.getInt(1) + 1;
+			}else{	rnum = 1; }
+			
+			int num = repVO.getNum();
+			String title = repVO.getTitle();
+			String pw = repVO.getPw();
+			String content = repVO.getContent();
+			String writer = repVO.getWriter();
+
+			String query = "INSERT INTO "+CATEGORY+"_rep(rnum, num, title, pw, content, writer)"
+					+ "VALUES(?, ?, ?, ?, ?, ?)";
+
+			pstmt = conn.prepareStatement(query);
+			
+			pstmt.setInt(1, rnum);
+			pstmt.setInt(2, num);
+			pstmt.setString(3, title);
+			pstmt.setString(4, pw);
+			pstmt.setString(5, content);
+			pstmt.setString(6, writer);
+
+			pstmt.executeUpdate();
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			freeResource();
+		}
+		return rnum;
 	}//end
 
 }

@@ -3,7 +3,6 @@ package Crafts;
 import java.util.ArrayList;
 import java.util.List;
 
-
 public class ItemsService {
 
 	//________  Crafts Service _________//
@@ -50,5 +49,9 @@ public class ItemsService {
 		vo = dao.getContent(num);
 		return vo;
 	}
+	
+	public int addReply(ItemsRepVO repVO){
+		return dao.insertNewReply(repVO);
+	}//end
 	
 }
