@@ -15,6 +15,9 @@
 <jsp:include page="/Home/inc/head.jsp"/>
 <link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/Shop/Cart.css" />
 <script type="text/javascript">
+$(document).on("click","#checkAll", function(){
+	        $(".bottom").prop("checked",this.checked);
+});
 
 //주문 수량
 	$(document).on("click", ".btnStockQty", function() {
@@ -31,7 +34,7 @@
 
 		if ($(this).hasClass("Plus")) {	obj.val(parseInt(obj.val(), 10) + 1);}
 		var total=price * parseInt(obj.val(), 10) + parseInt(shipping_fee, 10);
-		$(this).parents("section").find("input[name='totalPrice']").val(total);
+		$(this).parents(".pdtOrder").find("input[name='totalPrice']").val(total);
 	}); 
 	 
 // 서브밋 링크 
@@ -68,6 +71,8 @@
 			}
 			});
 		});
+		
+	
 	// 상품 주문
 	$(document).on("click", ".btnOrder", function() {
 		var form = $(this).parent().serialize();
@@ -90,46 +95,48 @@
 <jsp:include page="../inc/hdr_menu.jsp" />
 <div id="CommonHeaderArea"></div>
 <div id="CommonHeader_M"></div>
-
+<div id="clear"></div>
 <div class="wrap">
-<input type="button" id="delCart" value="삭제"/>
+<input type="button" id="delCart" value="선택 삭제"/>
+<input type="checkbox" id="checkAll" />
 <c:forEach var="cart" items="${cart}">
+<div class="pdt">
 <form method="post" action="" target="_self">
-<input type="checkbox" name="delCart" />
-<section class="iteminfo">
-<div class="imagePreview">
-	<img src="${contextPath}/download.do?fd=${cart.category}&num=${cart.pnum}&productImageName=${cart.productImageName1}" />
-</div>
-<div class="pdtInfo">
-	<span class="productName" >
-		${cart.productName}
-	</span>
-	<span class="sellerName" >
-		${cart.sellerName}"
-	</span>
-<div class="pdtOrderLayer ">
-	<span class="productQuantity"> 
-	<span class="productPrice" data-productPrice="${cart.productPrice}">${cart.productPrice}</span> 
-	<span class="shipping_fee" data-shipping_fee="${cart.shipping_fee}">${cart.shipping_fee}</span>
-		<input type="button" class="btnStockQty Minus" value="-" /> 
-		<input type="tel" name="cartQuantity" value="${cart.cartQuantity}" maxlength="3" />
-		<input type="button" class="btnStockQty Plus" value="+" /> 
-	</span>
-	<span class="totalPrice">
-	    <input type="text" name="totalPrice" value="${cart.totalPrice}"/>원
-		<input type="hidden" name="pnum" value="${cart.pnum}"/>
-		<input type="hidden" name="category" value="${cart.category}"/>
-		<input type="hidden" name="customer_id" value="${cart.customer_id}"/>	
-		<input type="hidden" name="productName" value="${cart.productName}"/>	
-		<input type="hidden" name="sellerName" value="${cart.sellerName}"/>	
-	</span>
-</div>
-</div>
-</section>
-		<input type="button" class="btnCart" value="장바구니 수정" />
-		<input type="button" class="btnDelCart" value="장바구니 삭제" />
-		<input type="button" class="btnOrder" value="바로 구매하기" />
+
+	<div class="imagePreview">
+		<img src="${contextPath}/download.do?fd=${cart.category}&num=${cart.pnum}&productImageName=${cart.productImageName1}" />
+	</div>
+	<div class="pdtInfo">
+			<span class="productName" >
+				${cart.productName}
+			</span>
+			<span class="sellerName" >
+				${cart.sellerName}
+			</span>
+		<div class="pdtOrder">
+				<span class="productPrice" data-productPrice="${cart.productPrice}">${cart.productPrice}</span> 
+				<span class="shipping_fee" data-shipping_fee="${cart.shipping_fee}">${cart.shipping_fee}</span>
+				<span class="btnStockQty"></span>
+				<input type="button" class="btnStockQty Minus" value="-" /> 
+				<input type="tel" name="cartQuantity" value="${cart.cartQuantity}" maxlength="3" />
+				<input type="button" class="btnStockQty Plus" value="+" /> 
+			<span class="totalPrice">
+			    <input type="text" name="totalPrice" value="${cart.totalPrice}"/>원
+				<input type="hidden" name="pnum" value="${cart.pnum}"/>
+				<input type="hidden" name="category" value="${cart.category}"/>
+				<input type="hidden" name="customer_id" value="${cart.customer_id}"/>	
+				<input type="hidden" name="productName" value="${cart.productName}"/>	
+				<input type="hidden" name="sellerName" value="${cart.sellerName}"/>	
+			</span>
+		</div>
+	</div>
+		<input type="checkbox" class="bottom" name="delCart" />
+		<input type="button" class="bottom btnDelCart" value="삭제" />
+		<input type="button" class="bottom btnCart" value="수정" />
+		<input type="button" class="bottom btnOrder" value="구매" />
 </form>
+</div>
+<div class="line"></div>
 </c:forEach>
 </div>
 <jsp:include page="../inc/footer.jsp" />
