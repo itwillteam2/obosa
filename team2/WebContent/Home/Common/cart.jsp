@@ -61,7 +61,26 @@ $(document).on("click","#checkAll", function(){
 				});
 	});
 
-	// 장바구니 삭제
+// 장바구니 삭제
+	$(document).on("click",".btnDelCart", function() {
+		var form = $(this).parent().serialize();
+		$.ajax({
+			type:"post",
+			async:true,
+			url:"${contextPath}/cart/delCart.do",  
+			data: form,
+			contentType: 'application/x-www-form-urlencoded; charset=UTF-8', 
+	        dataType: 'html',
+			success:function(result,textStatus){
+				history.go(0);
+			},
+			error:function(result,textStatus){
+				alert("다시 시도해 주시기 바랍니다.");
+			}
+			});
+		});
+
+	// 장바구니 선택 삭제
 	$(document).on("click","#delCart", function() {
 		var forms = $('input:checkbox[name="delCart"]:checked').parent().serialize();
 		$.ajax({
@@ -88,6 +107,8 @@ $(document).on("click","#checkAll", function(){
 			var qty= $(this).parent().find("input[type=tel]").val();
 			location.href="${contextPath}/common/payment.do?fd="+category+"&num="+pnum+"&qty="+qty;
 	});
+	
+	
 	
 </script>
 </head>
