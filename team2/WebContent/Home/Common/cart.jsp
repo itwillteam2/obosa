@@ -83,9 +83,9 @@ $(document).on("click","#checkAll", function(){
 	
 	// 상품 주문
 	$(document).on("click", ".btnOrder", function() {
-			var category =$("input[name=category]").val();	  
-			var pnum=$("input[name=pnum]").val();
-			var qty=$("input[type=tel]").val();
+			var category = $(this).parent().find("input[name=category]").val();	  
+			var pnum= $(this).parent().find("input[name=pnum]").val();
+			var qty= $(this).parent().find("input[type=tel]").val();
 			location.href="${contextPath}/common/payment.do?fd="+category+"&num="+pnum+"&qty="+qty;
 	});
 	
