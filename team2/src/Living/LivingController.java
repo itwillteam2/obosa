@@ -94,7 +94,7 @@ public class LivingController extends HttpServlet {
 			request.setAttribute("category", CATEGORY);	 //------ 카테고리 입력
 			request.setAttribute("totalCount", totalCount);
 			request.setAttribute("paging", paging);
-	
+			
 			nextPage="/Home/Common/category.jsp";
 		
 		}else  if (action.equals("/addItem.do")) {
@@ -335,8 +335,15 @@ public class LivingController extends HttpServlet {
 				"history.back();" + 
 				"</script>");	
 			}
-		}
-
+		}else if (action.equals("/countRep.do")) {
+			int num = Integer.parseInt(request.getParameter("pnum"));
+	
+			num = service.CountRep(num);
+			PrintWriter pw = response.getWriter();
+				pw.print(num);
+				pw.flush();
+				return;
+			}
 		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 		dispatcher.forward(request, response);
 	}//end of doHandle

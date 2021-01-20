@@ -18,6 +18,14 @@ $(document).on("change", "[name=ord]",function() {
 $(document).on({
 	mouseenter : function() {
 		$(this).find(".hover").addClass("on");
+	
+		var obj=$(this).find(".ps")
+		var _pnum =obj.attr("data-pnum");
+		$.post("${contextPath}/${category}/countRep.do",  
+			{pnum:_pnum},
+			function(result,textStatus){obj.text(result);
+	      });
+
 	},
 	mouseleave : function() {
 		$(this).find(".hover").removeClass("on");
@@ -69,7 +77,10 @@ function PageMove(page){
 	var ord = $("#ord option:selected").val();
 	location.href="${contextPath}/${category}/list.do?pageNO="+page;
 		}
-	
+
+
+
+
 </script>
 </head>
 <body>
