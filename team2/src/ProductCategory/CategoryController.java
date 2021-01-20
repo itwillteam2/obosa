@@ -61,6 +61,8 @@ public class CategoryController extends HttpServlet {
 		realPath = request.getServletContext().getRealPath("/files/"+setCategory);
 		String action = request.getPathInfo();
 		setCategory = request.getParameter("category");
+		
+		System.out.println(action);
 		if (action == null || action.equals("/list.do")) {
 			int totalCount = service.totalCount(setCategory);
 			Paging paging = new Paging();
