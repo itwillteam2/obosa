@@ -9,6 +9,7 @@
 <head>
 <jsp:include page="/Home/inc/head.jsp"/>
 <script type="text/javascript">
+
 $(document).on("change", "[name=ord]",function() {
 	var ord = $(this).val();	
 		location.href="${contextPath}/category/list.do?category=${category}&ord="+ord;			
@@ -46,8 +47,9 @@ $(document).on(	"click", ".hover>.cart", function() {
 });
 	
 $(document).on(	"click", ".hover>.ps", function() {
-	
-	alert("현재 지원하지 않는 기능입니다.")	;
+	 var pnum =$(this).attr("data-pnum");
+    location.href="${contextPath}/${category}/viewContent.do?&num="+pnum;
+
 });
 
 $(document).on("click", ".overlay_close,.btnGoShopping", function() {
@@ -65,12 +67,8 @@ $(document).on("click", ".overlay_close,.btnGoShopping", function() {
 // 페이지 이동
 function PageMove(page){
 	var ord = $("#ord option:selected").val();
-	location.href="${contextPath}/category/list.do?category=${category}&ord=${ord}&pageNO="+page;
+	location.href="${contextPath}/${category}/list.do?pageNO="+page;
 		}
-
-function goUrl(pnum){
-    location.href="${contextPath}/category/viewContent.do?&num="+pnum;
-}	
 	
 </script>
 </head>
@@ -113,7 +111,7 @@ function goUrl(pnum){
 											<span class="hover">
 												<span class="wish " ></span>										
 												<span class="cart" data-pnum="${content.num}" data-category="${category}" data-opt="cart"></span>
-												<span class="ps" data-pnum="${content.num}" data-category="${category}" data-opt="ps">${content.num}</span>
+												<span class="ps" data-pnum="${content.num}" data-category="${category}" data-opt="ps"></span>
 											</span>
 								</span> 
 								<span class="iteminfo"> 
