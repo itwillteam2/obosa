@@ -12,7 +12,7 @@
 
 $(document).on("change", "[name=ord]",function() {
 	var ord = $(this).val();	
-		location.href="${contextPath}/category/list.do?category=${category}&ord="+ord;			
+		location.href="${contextPath}/${category}/list.do?ord="+ord;			
 });
 
 $(document).on({
