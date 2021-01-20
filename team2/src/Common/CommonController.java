@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import Cart.CartService;
 import Crafts.ItemsService;
 import Crafts.ItemsVO;
 import Member.MemberService;
@@ -388,11 +389,15 @@ public class CommonController extends HttpServlet{
 				shipping_fee = cvo.getShipping_fee();
 			}
 			
-			OrderService oservice = new OrderService();
-			OrderVO ovo = new OrderVO();
-			
 			HttpSession session = request.getSession();
 			String id = (String)session.getAttribute("id");
+	
+			//장바구니 삭제
+			CartService cservice = new CartService();
+			cservice.deleteContent(num, fd, id);
+			
+			OrderService oservice = new OrderService();
+			OrderVO ovo = new OrderVO();
 			
 			ovo.setId(id);
 			ovo.setName(paymentMap.get("oname"));
