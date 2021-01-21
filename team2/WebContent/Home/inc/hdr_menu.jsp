@@ -5,10 +5,14 @@
 <c:set var="id" value="${sessionScope.id}"/>
 <c:set var="name" value="${sessionScope.name}"/>
 <c:set var="memtype" value="${sessionScope.memtype}"/>
-<!-- 네비 메뉴 위에 현재 위치 표시 -->
+<!-- 네비 메뉴 위에 현재 위치 표시 css-->
 <style type="text/css">
 li.selected:before {position:absolute;bottom:50px;content:url("${contextPath}/Images/Ver1/Common/top_nav.png");}
 </style>	
+<!-- end -->
+
+<header>
+<!-- 네비 메뉴 위에 현재 위치 표시 script-->
 <script type="text/javascript">
 $(document).ready(
 function (){
@@ -16,11 +20,10 @@ function (){
 	$("ul.nav a").each(function(){
 		if ($(this).attr("class") == category) {  $(this).parent().addClass('selected'); }
 	});
+	
 });
 </script>
-<!-- end -->
-
-<header>	
+<!-- end -->	
 <script>
 //초기 장바구니 내용 개수 가져오기
 $(document).ready(function(){
@@ -75,10 +78,10 @@ $(document).ready(function(){
 	<a href="${contextPath}/common/index.do" class="MainLogo"><img src="${contextPath}/Images/Ver1/Common/logo.png" /></a>
 	<a href="${contextPath}/common/index.do" class="MainLogoScroll"><img src="${contextPath}/Images/Ver1/Common/logo.png" /></a>
 	<div class="CategoryLarge">
-		<ul>
-			<li class="CategoryMiddle"><a href="${contextPath}/living/list.do">리빙</a></li>
-			<li class="CategoryMiddle"><a href="${contextPath}/crafts/list.do">공예</a></li>
-			<li class="CategoryMiddle"><a href="${contextPath}/fancy/list.do">문구</a></li>
+		<ul class="nav">
+			<li class="CategoryMiddle"><a class="living" href="${contextPath}/living/list.do">리빙</a></li>
+			<li class="CategoryMiddle"><a class="crafts" href="${contextPath}/crafts/list.do">공예</a></li>
+			<li class="CategoryMiddle"><a class="fancy" href="${contextPath}/fancy/list.do">문구</a></li>
 			<li class="CategoryMiddle"><a href="${contextPath}/CsCenter/NoticeList.do">공지사항</a></li>
 			<li class="CategoryMiddle"><a href="#">평가받기</a></li>
 			
