@@ -497,5 +497,30 @@ public class MemberDAO {
 			release();
 		}
 	}
+
+	public MemberVO findSeller(String sellerName) {
+		MemberVO vo = new MemberVO();
+		try{
+			con = getConnection();
+			String query = "select * from seller where shopName=?";
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, sellerName);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				vo.setPnum(rs.getString("pnum"));
+				vo.setCpnum(rs.getString("cpnum"));
+				vo.setPostcode(rs.getString("postcode"));
+				vo.setAddr1(rs.getString("addr1"));
+				vo.setAddr2(rs.getString("addr2"));
+				vo.setEmail(rs.getString("email"));
+			}
+		}catch(Exception e){
+			System.out.println("findSeller메소드 내부에서 오류 : e" + e);
+		}finally {
+			release();
+		}
+		return vo;
+	}//findSeller메소드 끝
 	
 }

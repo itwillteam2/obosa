@@ -136,7 +136,7 @@ public class LivingController extends HttpServlet {
 			} else {
 				PrintWriter out = response.getWriter();
 				out.print("<script>");
-				out.print("<alert='등록에 실패 했습니다.'>");
+				out.print("alert('등록에 실패 했습니다.');");
 				out.print("</script>");
 			}
 		} else if (action.equals("/ToUpdateContent.do")) {

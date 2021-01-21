@@ -105,7 +105,6 @@ public class OrderDAO {
 	public List<OrderVO> orderList(String id) {
 		List<OrderVO> orderList = new ArrayList<OrderVO>();
 		try{
-			OrderVO vo = new OrderVO();
 			con = getConnection();
 			String query = "select * from orderList where id=? order by num desc";
 			pstmt = con.prepareStatement(query);
@@ -113,6 +112,7 @@ public class OrderDAO {
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()){
+				OrderVO vo = new OrderVO();
 				vo.setNum(rs.getInt("num"));
 				vo.setName(rs.getString("name"));
 				vo.setCpnum(rs.getString("cpnum"));
@@ -137,5 +137,40 @@ public class OrderDAO {
 		}
 		return orderList;
 	}//orderList 메소드 끝
+
+	public OrderVO orderDetail(String id, int num) {
+		OrderVO vo = new OrderVO();
+		try{
+			con=getConnection();
+			String query = "select * from orderList where id=? and num=?";
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, id);
+			pstmt.setInt(2, num);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				vo.setNum(rs.getInt("num"));
+				vo.setName(rs.getString("name"));
+				vo.setCpnum(rs.getString("cpnum"));
+				vo.setEmail(rs.getString("email"));
+				vo.setPostcode(rs.getString("postcode"));
+				vo.setAddress(rs.getString("address"));
+				vo.setCategory(rs.getString("category"));
+				vo.setItemnum(rs.getInt("itemNum"));
+				vo.setProductName(rs.getString("productName"));
+				vo.setSellerName(rs.getString("sellerName"));
+				vo.setQuantity(rs.getInt("quantity"));
+				vo.setPrice(rs.getInt("price"));
+				vo.setPoint(rs.getInt("point"));
+				vo.setShipping_fee(rs.getInt("shipping_fee"));
+				vo.setOrderDate(rs.getTimestamp("orderDate"));
+			}
+		}catch(Exception e){
+			System.out.println("orderDetail메소드 내부에서 오류 : " + e);
+		}finally{
+			release();
+		}
+		return vo;
+	}//orderDetail메소드 끝
 
 }

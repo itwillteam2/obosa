@@ -257,10 +257,26 @@ public class MemberController extends HttpServlet{
 			String id = (String)session.getAttribute("id");
 
 			List<OrderVO> orderList = memberService.orderList(id);
-			System.out.println(id);
 			request.setAttribute("orderList", orderList);
 			
 			nextPage = "/Home/Member/orderList.jsp";
+		}else if(action.equals("/orderDetail.do")){
+			HttpSession session = request.getSession();
+			String id = (String)session.getAttribute("id");
+			
+			int num = Integer.parseInt(request.getParameter("num"));
+			request.setAttribute("num", num);
+			
+			OrderVO vo = memberService.orderDetail(id, num);
+			request.setAttribute("vo", vo);
+			
+			MemberVO memberVO = new MemberVO();
+			
+			String sellerName = vo.getSellerName();
+			memberVO = memberService.findSeller(sellerName);
+			request.setAttribute("seller", memberVO);
+			
+			nextPage = "/Home/Member/orderDetail.jsp";
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);

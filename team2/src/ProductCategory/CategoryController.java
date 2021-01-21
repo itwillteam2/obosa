@@ -61,6 +61,8 @@ public class CategoryController extends HttpServlet {
 		realPath = request.getServletContext().getRealPath("/files/"+setCategory);
 		String action = request.getPathInfo();
 		setCategory = request.getParameter("category");
+		
+		System.out.println(action);
 		if (action == null || action.equals("/list.do")) {
 			int totalCount = service.totalCount(setCategory);
 			Paging paging = new Paging();
@@ -111,7 +113,7 @@ public class CategoryController extends HttpServlet {
 			vo.setCategory(setCategory);
 		
 			int num = service.insertContent(vo);
-			if (num > 0) {
+			if (num > 1) {
 				deleteFolder(num,setCategory);
 				
 				File srcDir = new File(ARTICLE_IMAGE_REPO+"\\temp");
@@ -133,7 +135,7 @@ public class CategoryController extends HttpServlet {
 			} else {
 				PrintWriter pw = response.getWriter();
 				pw.print("<script>"
-					+"alert('새 상품 등록이 실패하였습니다.'); "
+					+"alert('새 상품 등록에 실패하였습니다.'); "
 					+"history.back();"
 					+"</script>");		
 				return;
