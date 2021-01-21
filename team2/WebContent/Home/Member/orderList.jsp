@@ -41,13 +41,13 @@
 							결제액 : ${orderList.price}<br>
 						</td>
 						<td class="btn">
-							<input type="button" value="주문 상세" onclick="location.href='${contextPath}/member/orderDetail.do'">
+							<input type="button" value="주문 상세" class="detailBtn" 
+							onclick="location.href='${contextPath}/member/orderDetail.do?num=${orderList.num}'">
 						</td>
 						<td>
 							${orderList.orderDate}
 						</td>
 					</tr>
-					<br>
 				</c:forEach>
 			</table>
 		</c:otherwise>

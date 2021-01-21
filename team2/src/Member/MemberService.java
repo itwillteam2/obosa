@@ -69,4 +69,17 @@ public class MemberService{
 		List<OrderVO> orderList = orderDAO.orderList(id);
 		return orderList;
 	}
+
+	public OrderVO orderDetail(String id, int num) {
+		OrderDAO orderDAO = new OrderDAO();
+		OrderVO orderVO = orderDAO.orderDetail(id, num);
+		return orderVO;
+	}
+
+	public MemberVO findSeller(String sellerName) {
+		MemberVO vo = new MemberVO();
+		vo = memberDAO.findSeller(sellerName);
+		return vo;
+	}
+	
 }

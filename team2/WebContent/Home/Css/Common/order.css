@@ -72,3 +72,45 @@ h1{
 	font-size: 20px;
 	margin-top: 50px;
 }
+
+#detailTable{
+	margin: 50px auto;
+	text-align: center;
+	padding: 10px;
+}
+
+#detailTable td{
+	padding: 20px 10px;
+	border-radius:30px;
+}
+
+.th{
+	background-color: aliceblue;
+}
+
+.listBtn {
+	display:block; 
+	width:310px; 
+	height:56px; 
+	line-height:56px; 
+	font-size:22px; 
+	color:#ffffff !important; 
+	background-color:#000000; 
+	font-weight:bold; 
+	text-align:center; 
+	border:0; 
+	border-radius:5px; 
+	margin:50px auto;
+}
+
+.detailBtn {
+	width:80px; 
+	height:40px; 
+	font-size:15px; 
+	color:black; 
+	background-color:aliceblue; 
+	text-align:center; 
+	border:0; 
+	border-radius:20px; 
+	margin:50px auto;
+}
