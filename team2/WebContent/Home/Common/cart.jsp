@@ -26,7 +26,7 @@ $(document).ready(function(){
 $(document).on("click","#checkAll", function(){
 	        $(".bottom").prop("checked",this.checked);
 	        var price=totalSum();
-		    $("#selTotalPrice").val(price);
+		    $(".selTotalPrice").text(price);
 });
 
 //주문 수량
@@ -132,7 +132,7 @@ $(document).on("click","#checkAll", function(){
 	$(document).on("change", "input[name=selCart]", function() {
 		$("#checkAll").prop("checked",false);
 		var price=totalSum();
-	    $("#selTotalPrice").val(price);
+	    $(".selTotalPrice").text(price);
 	});
 	
 	function totalSum(){
@@ -158,7 +158,7 @@ $(document).on("click","#checkAll", function(){
 <input type="button" id="selDelete" value="선택 삭제"/>
 <input type="button" id="selOrder" value="선택 주문"/>
 <input type="checkbox" id="checkAll" />
-<input type="text" id="selTotalPrice" value=""/>
+<span class="selTotalPrice"></span>
 <c:forEach var="cart" items="${cart}">
 <div class="line"></div>
 <div class="pdt">

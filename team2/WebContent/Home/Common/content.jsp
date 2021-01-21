@@ -161,12 +161,11 @@ $(window).load(function(){
 
 	$(document).on("click", ".btnCart", function() {
 		var cartQuantity = $("input[name='stockqty']").val();
-		alert(cartQuantity);
 		$.ajax({
 			type:"post",
 			async:true,
 			url:"${contextPath}/cart/addCart.do",  
-			data: {customer_id:"${id}",category:"${content.category}",pnum:"${content.num}",cartQuantity:cartQuantity},
+			data: {category:"${content.category}",pnum:"${content.num}",cartQuantity:cartQuantity},
 			contentType: 'application/x-www-form-urlencoded; charset=UTF-8', 
 	        dataType: 'html',
 			success:function(){ alert("장바구니에 추가되었습니다.");countCart();  

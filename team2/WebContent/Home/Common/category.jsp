@@ -39,13 +39,11 @@ $(document).on(	"click", ".hover>.wish", function() {
 
 // 장바구니 등록
 $(document).on(	"click", ".hover>.cart", function() {
-	var customer_id ="${id}" ;   
-	if(customer_id!=""){
+	if("${id}"!=""){
 	$(location).attr("href",
 				"${contextPath}/cart/addCart.do?"
 						+"category="+ $(this).attr("data-category") 
 						+"&pnum="+ $(this).attr("data-pnum")
-						+"&customer_id="+customer_id
 						+"&cartQuantity=1");
 	
 	    cartCount();
