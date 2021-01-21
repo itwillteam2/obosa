@@ -82,7 +82,7 @@ public class CartController extends HttpServlet{
 			String[] categorys  = request.getParameterValues("category");
 			for(int i=0;i<pnums.length;i++) {
 				int pnum = Integer.parseInt(pnums[i]);
-				int result = service.deleteContent(pnum,categorys[i],customer_id);
+				service.deleteContent(pnum,categorys[i],customer_id);
 			}
 			return;
 		} else if (action.equals("/modCart.do")) {
@@ -110,11 +110,7 @@ public class CartController extends HttpServlet{
 			int result = service.deleteContent(pnum,category,customer_id);
 			if(result!=0) {
 				PrintWriter pw = response.getWriter();
-				pw.print("<script>"
-					+"alert('장바구니 내용이 삭제되었습니다.'); "
-					+"location.href='"+request.getContextPath()
-					+"/Cart/cartList.do';"
-					+"</script>");		
+				pw.print(result);	
 				pw.flush();
 				return;
 			}else {
