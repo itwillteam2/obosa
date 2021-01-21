@@ -25,6 +25,8 @@ $(document).ready(function(){
 
 $(document).on("click","#checkAll", function(){
 	        $(".bottom").prop("checked",this.checked);
+	        var price=totalSum();
+		    $("#selTotalPrice").val(price);
 });
 
 //주문 수량
@@ -81,12 +83,31 @@ $(document).on("click","#checkAll", function(){
 		});
 
 	// 장바구니 선택 삭제
-	$(document).on("click","#delCart", function() {
-		var forms = $('input:checkbox[name="delCart"]:checked').parent().serialize();
+	$(document).on("click","#selDelete", function() {
+		var forms = $('input[name="selCart"]:checked').parent().serialize();
 		$.ajax({
 			type:"post",
 			async:true,
 			url:"${contextPath}/cart/delChkCart.do",  
+			data: forms,
+			contentType: 'application/x-www-form-urlencoded; charset=UTF-8', 
+	        dataType: 'html',
+			success:function(result,textStatus){
+				history.go(0);
+			},
+			error:function(result,textStatus){
+				alert("다시 시도해 주시기 바랍니다.");
+			}
+			});
+		});
+		
+	// 선택 주문
+	$(document).on("click","#selOrder", function() {
+		var forms = $('input[name="selCart"]:checked').parent().serialize();
+		$.ajax({
+			type:"post",
+			async:true,
+			url:"${contextPath}/cart/",  
 			data: forms,
 			contentType: 'application/x-www-form-urlencoded; charset=UTF-8', 
 	        dataType: 'html',
@@ -108,6 +129,22 @@ $(document).on("click","#checkAll", function(){
 			location.href="${contextPath}/common/payment.do?fd="+category+"&num="+pnum+"&qty="+qty;
 	});
 	
+	$(document).on("change", "input[name=selCart]", function() {
+		$("#checkAll").prop("checked",false);
+		var price=totalSum();
+	    $("#selTotalPrice").val(price);
+	});
+	
+	function totalSum(){
+		var obj = $(".cart").find("input[name=selCart]:checked");
+		var totalSum=0;
+
+		obj.each(function(){
+	 		result = $(this).siblings().find("input[name=totalPrice]").val();
+	 		totalSum +=  parseInt(result, 10);
+		});
+	 return totalSum;
+	}
 	
 	
 </script>
@@ -118,12 +155,14 @@ $(document).on("click","#checkAll", function(){
 <div id="CommonHeader_M"></div>
 <div id="clear"></div>
 <div class="wrap">
-<input type="button" id="delCart" value="선택 삭제"/>
+<input type="button" id="selDelete" value="선택 삭제"/>
+<input type="button" id="selOrder" value="선택 주문"/>
 <input type="checkbox" id="checkAll" />
+<input type="text" id="selTotalPrice" value=""/>
 <c:forEach var="cart" items="${cart}">
 <div class="line"></div>
 <div class="pdt">
-<form method="post" action="" target="_self">
+<form class="cart" method="post" action="" target="_self">
 
 	<div class="imagePreview">
 		<img src="${contextPath}/download.do?fd=${cart.category}&num=${cart.pnum}&productImageName=${cart.productImageName1}" />
@@ -152,10 +191,10 @@ $(document).on("click","#checkAll", function(){
 			</span>
 		</div>
 	</div>
-		<input type="checkbox" class="bottom" name="delCart" />
-		<input type="button" class="bottom btnDelCart" value="삭제" />
-		<input type="button" class="bottom btnCart" value="수정" />
-		<input type="button" class="bottom btnOrder" value="구매" />
+	<input type="checkbox" class="bottom" name="selCart" />
+	<input type="button" class="bottom btnDelCart" value="삭제" />
+	<input type="button" class="bottom btnCart" value="수정" />
+	<input type="button" class="bottom btnOrder" value="주문하기" />
 </form>
 </div>
 <div class="line"></div>
