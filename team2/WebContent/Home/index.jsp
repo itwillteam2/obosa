@@ -3,7 +3,6 @@
 	
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
-
 <!DOCTYPE html>
 <head>
 <html lang="ko">
@@ -11,9 +10,7 @@
 <script type="text/javascript">
 var WinKind;
 $(document).ready(function(){
-
     $('img[usemap]').rwdImageMaps();
-
 	var token = "2993198200.7efd5c1.43f329e4f4704fdc8a28d4b395c2d938";  	   	
 	$.ajax({
 		type:"get",  
@@ -30,27 +27,20 @@ $(document).ready(function(){
 				}
 			}
 			$("#InstagramListUl").empty().html(instaHtml);
-
 			$("#InstagramListUl > li").css("height",$("#InstagramListUl > li").width());
 		}
 	});
-
 	$( window ).resize( function() {
 		$("#InstagramListUl > li").css("height",$("#InstagramListUl > li").width());
     });
-
 });
-
-
 </script>
 </head>
 <body>
 <jsp:include page="/Home/inc/hdr_menu.jsp"/>
-
 <div class="TopRollingPc">
 	<div class="swiper-container">
 		<div class="swiper-wrapper">
-
 			<div class="swiper-slide">
 				<table border="0" cellspacing="0" cellpadding="0" style="width:100%; box-sizing:border-box;">
 					<colgroup><col width="*"><col width="1200"><col width="*"></colgroup>
@@ -88,7 +78,6 @@ $(document).ready(function(){
 		
 	</div>
 </div>
-
 <script>
 	var swiper = new Swiper('.TopRollingPc > .swiper-container', {
 		slidesPerView: 1,
@@ -108,7 +97,6 @@ $(document).ready(function(){
 		},
 	});
 </script>
-
 <div class="EventBannerWrap">
 	<a class="EventBanner1" href="event/eventcontents7265.html?EvtID=89986" style="background-color:#f1d4d7; background-image:url(../Upload/DesignMng/poom2012215195958986089c87.jpg?v=v20201221105142);" target="_self">
 		<b>DESIGNER`s DIARY</b>
@@ -121,43 +109,31 @@ $(document).ready(function(){
 	<div class="clear"></div>
 </div>
 
-<div class="BestItemWrap">
-	<a class="BestItemTitle" href="">NEW ITEM</a>
-	<div class="BestItemList">
-		<ul>
-			<c:forEach var="newarr" items="${NewArrivalList}">
-				<li>
-					<a href="${contextPath}/${newarr.category}/viewContent.do?num=${newarr.num}">	
-						<span class="ImageBackGround"></span>
-						
-						<img class="ItemImage" src="${contextPath}/download.do?fd=${newarr.category}&num=${newarr.num}&productImageName=${newarr.productImageName1}" />
-						<span class="ItemName">${newarr.productName }</span>
-						
-						<span class="ItemPrice">${newarr.productPrice }</span>
-					</a>
-				</li>
-			</c:forEach>		
-		</ul>
-		<div class="clear"></div>
-	</div>
-</div>
+	<div class="BestItemWrap">
+		<a class="BestItemTitle" href="">NEW ITEM</a>
+		<div class="BestItemList">
+			<ul>
+				<c:forEach var="newarr" items="${NewArrivalList}">
+					<li>
+						<a href="${contextPath}/${newarr.category}/viewContent.do?num=${newarr.num}"></a>
+						<span class="ImageBackGround"></span> <img class="ItemImage" src="${contextPath}/download.do?fd=${newarr.category}&num=${newarr.num}&productImageName=${newarr.productImageName1}" />
+					</li>
+				</c:forEach>
+			</ul>
 
-<div class="NewArrivalWrap">
+		</div>
+	</div>
+	<div class="NewArrivalWrap">
 	<a class="NewArrivalTitle" href="">BANNER</a>
 	<div class="NewArrivalList">
-		<a class="NewArrival1" href="#" style="background-image:url(../Images/Ver1/Common/banner1.png);">
-		</a>
-		<a class="NewArrival2" href="#" style="background-image:url(../Images/Ver1/Common/banner2.png);">
-		</a>
-		<a class="NewArrival3" href="#" style="background-image:url(../Images/Ver1/Common/banner3.png);">
-		</a>
+		<a class="NewArrival1" href="#" style="background-image:url(../Images/Ver1/Common/banner1.png);"></a>
+		<a class="NewArrival2" href="#" style="background-image:url(../Images/Ver1/Common/banner2.png);"></a>
+		<a class="NewArrival3" href="#" style="background-image:url(../Images/Ver1/Common/banner3.png);"></a>
 		<div class="clear"></div>
 	</div>
 </div>
 
-
 		<div class="clear"></div>
-
 <div class="DesignFinderWrapPc">
 	<div class="DesignFinderTitle">
 		<ul>
@@ -231,12 +207,9 @@ $(document).ready(function(){
 			</div>
 		
 		</div>
-
 	</div>
 </div>
-
 <script>
-
 	var swiper = new Swiper('.DesignFinderWrapPc > .swiper-container', {
 		slidesPerView: 7,
 		spaceBetween: 30,
@@ -252,8 +225,6 @@ $(document).ready(function(){
 		},
 	});
 </script>
-
-
 <jsp:include page="/Home/inc/footer.jsp"/>
 </body>
 </html>
