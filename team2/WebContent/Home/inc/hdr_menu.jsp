@@ -5,6 +5,21 @@
 <c:set var="id" value="${sessionScope.id}"/>
 <c:set var="name" value="${sessionScope.name}"/>
 <c:set var="memtype" value="${sessionScope.memtype}"/>
+<!-- 네비 메뉴 위에 현재 위치 표시 -->
+<style type="text/css">
+li.selected:before {position:absolute;bottom:50px;content:url("${contextPath}/Images/Ver1/Common/top_nav.png");}
+</style>	
+<script type="text/javascript">
+$(document).ready(
+function (){
+	var category="${category}";
+	$("ul.nav a").each(function(){
+		if ($(this).attr("class") == category) {  $(this).parent().addClass('selected'); }
+	});
+});
+</script>
+<!-- end -->
+
 <header>	
 <script>
 //초기 장바구니 내용 개수 가져오기
