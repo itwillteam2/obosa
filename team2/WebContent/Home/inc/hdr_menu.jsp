@@ -61,11 +61,11 @@ $(document).ready(function(){
 	<a href="${contextPath}/common/index.do" class="MainLogoScroll"><img src="${contextPath}/Images/Ver1/Common/logo.png" /></a>
 	<div class="CategoryLarge">
 		<ul>
-			<li class="CategoryMiddle"><a href="${contextPath}/living/list.do">리빙</a></li>
-			<li class="CategoryMiddle"><a href="${contextPath}/crafts/list.do">공예</a></li>
-			<li class="CategoryMiddle"><a href="${contextPath}/fancy/list.do">문구</a></li>
-			<li class="CategoryMiddle"><a href="${contextPath}/CsCenter/NoticeList.do">공지사항</a></li>
-			<li class="CategoryMiddle"><a href="#">평가받기</a></li>
+			<li class="CategoryMiddle"><a href="${contextPath}/living/list.do" style="font-size:20px; margin-left:50px;">리빙</a></li>
+			<li class="CategoryMiddle"><a href="${contextPath}/crafts/list.do" style="font-size:20px">공예</a></li>
+			<li class="CategoryMiddle"><a href="${contextPath}/fancy/list.do" style="font-size:20px">문구</a></li>
+			<li class="CategoryMiddle"><a href="${contextPath}/CsCenter/NoticeList.do" style="font-size:20px">공지사항</a></li>
+			<li class="CategoryMiddle"><a href="#" style="font-size:20px">평가받기</a></li>
 			
 			<li class="Cart">
 				<a href="javascript:void(0)" onclick="fnGoCart();" title="장바구니">			

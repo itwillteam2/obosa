@@ -98,7 +98,7 @@ input[type=button]{cursor:pointer;}
 #CommonHeader a.MainLogoScroll img {width:180px;;}
 
 #CommonHeader .CategoryLarge {height:57px;}
-#CommonHeader .CategoryLarge ul {display:table; height:57px; width:1200px; margin-left: auto; position:relative; margin-top:50px;}
+#CommonHeader .CategoryLarge ul {display:table; height:57px; width:1200px; margin: 0 auto; position:relative; margin-top:50px;}
 #CommonHeader .CategoryLarge li.CategoryMiddle {display:table-cell;margin:15px 35px 0 0;}
 #CommonHeader .CategoryLarge li.CategoryMiddle a {font-size:18px; color:#000000;}
 
