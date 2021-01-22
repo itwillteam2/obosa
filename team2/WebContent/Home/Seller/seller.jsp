@@ -8,7 +8,7 @@
 <html lang="ko">
 
 <head>
-<jsp:include page="/Home/inc/head.jsp" />
+<jsp:include page="/Home/inc/head.jsp" /> 
 <script type="text/javascript">
 	for(var i=1; i<5; i++){
 		$(document).on("change", "[name=ord"+i+"]",function() {
