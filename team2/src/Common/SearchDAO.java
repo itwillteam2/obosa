@@ -374,6 +374,7 @@ public class SearchDAO {
 	
 	public List<SearchVO> shopArticles(int pageNO, int listSize, String search, String ord) {
 		List<SearchVO> searchList = new ArrayList<SearchVO>();
+		pageNO= (pageNO-1)*listSize;
 		try {
 			
 			con = getConnection();
@@ -429,6 +430,7 @@ public class SearchDAO {
 	
 	public List<SearchVO> shopLiving(int pageNO, int listSize, String search, String ord) {
 		List<SearchVO> searchList = new ArrayList<SearchVO>();
+		pageNO= (pageNO-1)*listSize;
 		try {
 			
 			con = getConnection();
@@ -512,6 +514,7 @@ public class SearchDAO {
 
 	public List<SearchVO> shopCrafts(int pageNO, int listSize, String search, String ord) {
 		List<SearchVO> searchCrafts = new ArrayList<SearchVO>();
+		pageNO= (pageNO-1)*listSize;
 		try {
 			
 			con = getConnection();
@@ -574,6 +577,7 @@ public class SearchDAO {
 
 	public List<SearchVO> shopFancy(int pageNO, int listSize, String search, String ord) {
 		List<SearchVO> searchFancy = new ArrayList<SearchVO>();
+		pageNO= (pageNO-1)*listSize;
 		try {
 			
 			con = getConnection();
@@ -615,6 +619,7 @@ public class SearchDAO {
 	
 	public List<SearchVO> viewSearchArticles(int allPageNO, int listSize, String search, String ord) {
 		List<SearchVO> searchList = new ArrayList<SearchVO>();
+		allPageNO= (allPageNO-1)*listSize;
 		try {
 			
 			con = getConnection();
@@ -674,6 +679,7 @@ public class SearchDAO {
 	
 	public List<SearchVO> viewSearchLiving(int livingPageNO, int listSize, String search, String ord) {
 		List<SearchVO> searchList = new ArrayList<SearchVO>();
+		livingPageNO= (livingPageNO-1)*listSize;
 		try {
 			
 			con = getConnection();
@@ -717,6 +723,7 @@ public class SearchDAO {
 	
 	public List<SearchVO> viewSearchCrafts(int craftsPageNO, int listSize, String search, String ord) {
 		List<SearchVO> searchCrafts = new ArrayList<SearchVO>();
+		craftsPageNO= (craftsPageNO-1)*listSize;
 		try {
 			
 			con = getConnection();
@@ -760,6 +767,7 @@ public class SearchDAO {
 	
 	public List<SearchVO> viewSearchFancy(int fancyPageNO, int listSize, String search, String ord) {
 		List<SearchVO> searchFancy = new ArrayList<SearchVO>();
+		fancyPageNO= (fancyPageNO-1)*listSize;
 		try {
 			
 			con = getConnection();
