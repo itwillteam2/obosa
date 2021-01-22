@@ -138,7 +138,7 @@ public class CommonController extends HttpServlet{
 			request.setAttribute("searchList", searchList);
 			
 			Paging allPaging = new Paging();
-			allPaging.makePage(searchCount, allPageNO, listSize, pageSize);
+			allPaging.makePage(searchCount, allPageNO, pageSize, listSize);
 			request.setAttribute("allPaging", allPaging);
 			
 			//리빙리스트
@@ -151,7 +151,7 @@ public class CommonController extends HttpServlet{
 			request.setAttribute("searchLiving", searchLiving);
 			
 			Paging livingPaging = new Paging();
-			livingPaging.makePage(searchCount, livingPageNO, listSize, pageSize);
+			livingPaging.makePage(searchCount, livingPageNO, pageSize, listSize);
 			request.setAttribute("livingPaging", livingPaging);
 			
 			//공예리스트
@@ -164,7 +164,7 @@ public class CommonController extends HttpServlet{
 			request.setAttribute("searchCrafts", searchCrafts);
 			
 			Paging craftsPaging = new Paging();
-			craftsPaging.makePage(searchCount, craftsPageNO, listSize, pageSize);
+			craftsPaging.makePage(searchCount, craftsPageNO, pageSize, listSize);
 			request.setAttribute("craftsPaging", craftsPaging);
 			
 			//팬시리스트
@@ -177,7 +177,7 @@ public class CommonController extends HttpServlet{
 			request.setAttribute("searchFancy", searchFancy);
 			
 			Paging fancyPaging = new Paging();
-			fancyPaging.makePage(searchCount, fancyPageNO, listSize, pageSize);
+			fancyPaging.makePage(searchCount, fancyPageNO, pageSize, listSize);
 			request.setAttribute("fancyPaging", fancyPaging);
 			
 			nextPage="/Home/Common/viewSearchItems.jsp";

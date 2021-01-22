@@ -113,7 +113,7 @@ public class CategoryController extends HttpServlet {
 			vo.setCategory(setCategory);
 		
 			int num = service.insertContent(vo);
-			if (num > 1) {
+			if (num >= 1) {
 				deleteFolder(num,setCategory);
 				
 				File srcDir = new File(ARTICLE_IMAGE_REPO+"\\temp");
