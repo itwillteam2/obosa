@@ -98,11 +98,12 @@ input[type=button]{cursor:pointer;}
 #CommonHeader a.MainLogoScroll img {width:180px;;}
 
 #CommonHeader .CategoryLarge {height:57px;}
-#CommonHeader .CategoryLarge ul {display:table; height:57px; width:1200px; margin: 0 auto; position:relative; margin-top:50px;}
+#CommonHeader .CategoryLarge ul {display:table; height:57px; width:1200px; margin: 0 0 0 150px; position:relative; margin-top:50px;}
 #CommonHeader .CategoryLarge li.CategoryMiddle {display:table-cell;margin:15px 35px 0 0;}
-#CommonHeader .CategoryLarge li.CategoryMiddle a {font-size:18px; color:#000000;}
+#CommonHeader .CategoryLarge li.CategoryMiddle a {font-size:20px; color:#000000;}
+#CommonHeader .CategoryLarge li.CategoryMiddle.selected:before {position:absolute;bottom:50px;content:url("../../../Images/Ver1/Common/top_nav.png");}
 
-#CommonHeader .CategoryLarge li.Search {float:right; width:250px; height:40px; border-bottom:2px solid #787878; margin:5px 0 0 0;}
+#CommonHeader .CategoryLarge li.Search {float:right; width:250px; height:40px; border-bottom:2px solid #787878; margin:5px 10px 0 0;}
 #CommonHeader .CategoryLarge li.Search .CommonSearch input#kwd {display:inline-block; background-color:#ffffff; border:0; padding:0; margin:0; width:200px; height:35px; line-height:35px; vertical-align:top; font-size:16px; color:#000000;}
 #CommonHeader .CategoryLarge li.Search .CommonSearch a {display:inline-block; width:40px; height:35px; vertical-align:top;}
 #CommonHeader .CategoryLarge li.Search .CommonSearch img {width:40px; height:35px;}
@@ -115,7 +116,7 @@ input[type=button]{cursor:pointer;}
 #CommonHeader .CategoryLarge li.MyPage a#LoginBalloon img {width:69px; height:34px;}
 #CommonHeader .CategoryLarge li.MyPage .btnBallon { display:block; position:absolute; z-index:2; right:-15px; top:-33px; width:22px; height:25px; }
 
-#CommonHeader .CategoryLarge li.Cart   {display:table-cell;float:right; margin:5px 0 0 1px;}
+#CommonHeader .CategoryLarge li.Cart   {display:table-cell;float:right; margin:5px 120px 0 1px;}
 #CommonHeader .CategoryLarge li.Cart a {display:inline-block; width:40px; height:40px; position:relative;}
 #CommonHeader .CategoryLarge li.Cart .num { display:block; position:absolute; bottom:0; right:0; background-color:#e71e22; width:20px; line-height:20px; font-size:11px; color:#ffffff; text-align:center; border-radius:10px; }
 #CommonHeader .CategoryLarge li.Cart img {width:30px; height:30px;}
