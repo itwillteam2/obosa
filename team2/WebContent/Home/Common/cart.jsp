@@ -142,7 +142,7 @@ $(document).on("click","#checkAll", function(){
 <div id="CommonHeaderArea"></div>
 <div id="CommonHeader_M"></div>
 <div id="clear"></div>
-<div class="wrap">
+<div class="wrap" style="margin : 50px auto;">
 <input type="button" id="selDelete" value="선택 삭제"/>
 <input type="button" id="selOrder" value="선택 주문"/>
 <input type="checkbox" id="checkAll" />
