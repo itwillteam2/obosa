@@ -459,6 +459,7 @@ public class SearchDAO {
 				vo.setProductName(rs.getString("productName"));
 				vo.setProductPrice(rs.getInt("productPrice"));
 				vo.setSellerName(rs.getString("sellerName"));
+				vo.setCategory(rs.getString("category"));
 				vo.setNum(rs.getInt("num"));
 				searchList.add(vo);
 			}
@@ -543,6 +544,7 @@ public class SearchDAO {
 				vo.setProductName(rs.getString("productName"));
 				vo.setProductPrice(rs.getInt("productPrice"));
 				vo.setSellerName(rs.getString("sellerName"));
+				vo.setCategory(rs.getString("category"));
 				vo.setNum(rs.getInt("num"));
 				searchCrafts.add(vo);
 			}
@@ -606,6 +608,7 @@ public class SearchDAO {
 				vo.setProductName(rs.getString("productName"));
 				vo.setProductPrice(rs.getInt("productPrice"));
 				vo.setSellerName(rs.getString("sellerName"));
+				vo.setCategory(rs.getString("category"));
 				vo.setNum(rs.getInt("num"));
 				searchFancy.add(vo);
 			}

@@ -255,71 +255,38 @@ public class CommonController extends HttpServlet{
 			nextPage="/Home/Common/viewSearchShop.jsp";
 		}else if(action.equals("/seller.do")){
 			String name = request.getParameter("shopName");
-			request.setAttribute("shopName", name);
-			
-			String ord = request.getParameter("ord");
-			if(ord == null || ord ==""){
-				ord = "신상품순";
-			}
-			request.setAttribute("ord", ord);
-			
+			int pageNO = (request.getParameter("PageNO") == null) ? 1 :Integer.parseInt(request.getParameter("pageNO"));
+			String navCategory = (request.getParameter("navCategory")==null)?"all":request.getParameter("navCategory");
+			String ord = request.getParameter("ord")==null?"신상품순":request.getParameter("ord");
+	
 			int pageSize = 5;  // 원하는 세팅 값 입력, 페이지 하단 숫자 표시 개수
 			int listSize = 8;  // 원하는 세팅 값 입력, 출력 게시물 개수
+	
+			int count =0; 
+			List<SearchVO> list=null; 
 			
-			String category = request.getParameter("category");
-			request.setAttribute("category", category);
+				if(navCategory.equals("all")) {
+					count=searchService.shopCount(name);
+					list = searchService.shopList(pageNO, listSize, name, ord);
+				}else if(navCategory.equals("living")){
+					count = searchService.shopLivingCount(name);
+					list = searchService.shopLiving(pageNO, listSize, name, ord);
+				}else if(navCategory.equals("crafts")){			
+					count = searchService.shopCraftsCount(name);
+					list = searchService.shopCrafts(pageNO, listSize, name, ord);
+				}else if(navCategory.equals("fancy")){	
+					count = searchService.shopFancyCount(name);		
+					list = searchService.shopFancy(pageNO, listSize, name, ord);
+				}
+			Paging paging = new Paging();
+			paging.makePage(count, pageNO, pageSize,listSize);
 			
-			//전체
-			int searchCount = searchService.shopCount(name);
-			request.setAttribute("searchCount", searchCount);
-			
-			int allPageNO = (request.getParameter("allPageNO") == null) ? 1 : Integer.parseInt(request.getParameter("allPageNO"));
-			
-			List<SearchVO> searchList = searchService.shopList(allPageNO, listSize, name, ord);
-			request.setAttribute("searchList", searchList);
-			
-			Paging allPaging = new Paging();
-			allPaging.makePage(searchCount, allPageNO, pageSize, listSize);
-			request.setAttribute("allPaging", allPaging);
-			
-			//리빙리스트
-			int livingCount = searchService.shopLivingCount(name);
-			request.setAttribute("livingCount", livingCount);
-			
-			int livingPageNO = (request.getParameter("livingPageNO") == null) ? 1 : Integer.parseInt(request.getParameter("livingPageNO"));
-			
-			List<SearchVO> searchLiving = searchService.shopLiving(livingPageNO, listSize, name, ord);
-			request.setAttribute("searchLiving", searchLiving);
-			
-			Paging livingPaging = new Paging();
-			livingPaging.makePage(searchCount, livingPageNO, pageSize, listSize);
-			request.setAttribute("livingPaging", livingPaging);
-			
-			//공예리스트
-			int craftsCount = searchService.shopCraftsCount(name);
-			request.setAttribute("craftsCount", craftsCount);
-			
-			int craftsPageNO = (request.getParameter("craftsPageNO") == null) ? 1 : Integer.parseInt(request.getParameter("craftsPageNO"));
-			
-			List<SearchVO> searchCrafts = searchService.shopCrafts(craftsPageNO, listSize, name, ord);
-			request.setAttribute("searchCrafts", searchCrafts);
-			
-			Paging craftsPaging = new Paging();
-			craftsPaging.makePage(searchCount, craftsPageNO, pageSize, listSize);
-			request.setAttribute("craftsPaging", craftsPaging);
-			
-			//문구리스트
-			int fancyCount = searchService.shopFancyCount(name);
-			request.setAttribute("fancyCount", fancyCount);
-			
-			int fancyPageNO = (request.getParameter("fancyPageNO") == null) ? 1 : Integer.parseInt(request.getParameter("fancyPageNO"));
-			
-			List<SearchVO> searchFancy = searchService.shopFancy(fancyPageNO, listSize, name, ord);
-			request.setAttribute("searchFancy", searchFancy);
-			
-			Paging fancyPaging = new Paging();
-			fancyPaging.makePage(searchCount, fancyPageNO, pageSize, listSize);
-			request.setAttribute("fancyPaging", fancyPaging);
+			request.setAttribute("count", count);
+			request.setAttribute("list", list);
+			request.setAttribute("Paging", paging);
+			request.setAttribute("shopName", name);
+			request.setAttribute("navCategory", navCategory);
+			request.setAttribute("ord", ord);
 			
 			nextPage="/Home/Seller/seller.jsp";
 		}else if(action.equals("/write.do")){

@@ -30,7 +30,7 @@
 .sec_header .inner .kwd_etc { display:block; text-align:center; padding:0 0 70px 0; font-size:16px; line-height:20px;  }
 
 .sec_cont .inner.type2 { padding:0 0 60px 0; }
-.sec_cont .inner .info { padding:44px 0 30px 0; position:relative; }
+.sec_cont .inner .info {top: 44px; padding:20px 0 30px 0; position:relative; }
 .sec_cont .inner .info.type2 { padding:30px 0 40px 0; }
 .sec_cont .inner .info .result { display:block; position:absolute; bottom:30px; left:0; font-size:16px; color:#646464; line-height:23px; }
 .sec_cont .inner .info .result strong { font-size:20px; color:#000000; line-height:23px; }
