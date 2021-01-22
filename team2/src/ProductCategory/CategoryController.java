@@ -85,6 +85,9 @@ public class CategoryController extends HttpServlet {
 			nextPage="/Home/Common/category.jsp";
 		
 		} else if (action.equals("/GoAddItem.do")) {	
+			String sellerName = request.getParameter("sellerName");
+			request.setAttribute("sellerName", sellerName);
+			
 			nextPage = "/Home/Seller/upContent.jsp";
 		} else if (action.equals("/addItem.do")) {
 			Map<String, String> addItemMap = upload(request, response);
@@ -113,7 +116,7 @@ public class CategoryController extends HttpServlet {
 			vo.setCategory(setCategory);
 		
 			int num = service.insertContent(vo);
-			if (num > 1) {
+			if (num >= 1) {
 				deleteFolder(num,setCategory);
 				
 				File srcDir = new File(ARTICLE_IMAGE_REPO+"\\temp");

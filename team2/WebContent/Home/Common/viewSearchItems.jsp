@@ -361,19 +361,19 @@
 							<div class='paging'>
 								<span class='box'>
 									<!-- 번호 -->							
-							        <li><a href="javascript:allPageMove(${allPaging.prevPage})">이전</a></li>
+							        <span class="btn_pageprev"><a href="javascript:allPageMove(${allPaging.prevPage})"><img class="paging_pc" src="${contextPath}/Images/Ver1/Common/btn_board_prev.gif" /></a></span>
 									<c:forEach var="i" begin="${allPaging.startPage}" end="${allPaging.endPage}" step="1">
 										<c:choose>
 											<c:when test="${i eq allPaging.pageNo}">
-												<li class="active"><a href="javascript:allPageMove(${i})">${i}</a></li>
+												<span class="txt_pagenum"><a href="javascript:allPageMove(${i})">${i}</a></span>
 											</c:when>
 											<c:otherwise>
-												<li><a href="javascript:allPageMove(${i})">${i}</a></li>
+												<span class="txt_pagenum"><a href="javascript:allPageMove(${i})">${i}</a></span>
 											</c:otherwise>
 										</c:choose>
 									</c:forEach>
 																<!-- 번호 -->
-									<li><a href="javascript:allPageMove(${allPaging.nextPage})">다음</a></li>
+									<span class="btn_pagenext"><a href="javascript:allPageMove(${allPaging.nextPage})"><img class="paging_pc" src="${contextPath}/Images/Ver1/Common/btn_board_next.gif" /></a></span>
 								</span>
 							</div>
 						</div>
@@ -439,19 +439,19 @@
 								<div class='paging'>
 									<span class='box'>
 										<!-- 번호 -->							
-								        <li><a href="javascript:livingPageMove(${livingPaging.prevPage})">이전</a></li>
+								        <span class="btn_pageprev"><a href="javascript:livingPageMove(${livingPaging.prevPage})"><img class="paging_pc" src="${contextPath}/Images/Ver1/Common/btn_board_prev.gif" /></a></span>
 										<c:forEach var="i" begin="${livingPaging.startPage}" end="${livingPaging.endPage}" step="1">
 											<c:choose>
 												<c:when test="${i eq livingPaging.pageNo}">
-													<li class="active"><a href="javascript:livingPageMove(${i})">${i}</a></li>
+													<span class="txt_pagenum"><a href="javascript:livingPageMove(${i})">${i}</a></span>
 												</c:when>
 												<c:otherwise>
-													<li><a href="javascript:livingPageMove(${i})">${i}</a></li>
+													<span class="txt_pagenum"><a href="javascript:livingPageMove(${i})">${i}</a></span>
 												</c:otherwise>
 											</c:choose>
 										</c:forEach>
 																	<!-- 번호 -->
-										<li><a href="javascript:livingPageMove(${livingPaging.nextPage})">다음</a></li>
+										<span class="btn_pagenext"><a href="javascript:livingPageMove(${livingPaging.nextPage})"><img class="paging_pc" src="${contextPath}/Images/Ver1/Common/btn_board_next.gif" /></a></span>
 									</span>
 								</div>
 							</div>
@@ -517,19 +517,19 @@
 								<div class='paging'>
 									<span class='box'>
 										<!-- 번호 -->							
-								        <li><a href="javascript:craftsPageMove(${craftsPaging.prevPage})">이전</a></li>
+								        <span class="btn_pageprev"><a href="javascript:craftsPageMove(${craftsPaging.prevPage})"><img class="paging_pc" src="${contextPath}/Images/Ver1/Common/btn_board_prev.gif" /></a></span>
 										<c:forEach var="i" begin="${craftsPaging.startPage}" end="${craftsPaging.endPage}" step="1">
 											<c:choose>
 												<c:when test="${i eq craftsPaging.pageNo}">
-													<li class="active"><a href="javascript:craftsPageMove(${i})">${i}</a></li>
+													<span class="txt_pagenum"><a href="javascript:craftsPageMove(${i})">${i}</a></span>
 												</c:when>
 												<c:otherwise>
-													<li><a href="javascript:craftsPageMove(${i})">${i}</a></li>
+													<span class="txt_pagenum"><a href="javascript:craftsPageMove(${i})">${i}</a></span>
 												</c:otherwise>
 											</c:choose>
 										</c:forEach>
 																	<!-- 번호 -->
-										<li><a href="javascript:craftsageMove(${craftsPaging.nextPage})">다음</a></li>
+										<span class="btn_pagenext"><a href="javascript:craftsageMove(${craftsPaging.nextPage})"><img class="paging_pc" src="${contextPath}/Images/Ver1/Common/btn_board_next.gif" /></a></span>
 									</span>
 								</div>
 							</div>
@@ -569,7 +569,7 @@
 										<span class="img"> <!-- 사진 클릭했을때 그 인덱스값으로 가기 -->
 											<a href="${contextPath}/fancy/viewContent.do?fd=living&num=${searchFancy.num}&productImageName=${searchFancy.productImageName1}">
 													<!-- 이미지 불러오기 --> 
-													<img src="${contextPath}/download.do?fd=fancy&num=${searchFancy.num}&productImageName=${searchCrafts.productImageName1}">
+													<img src="${contextPath}/download.do?fd=fancy&num=${searchFancy.num}&productImageName=${searchFancy.productImageName1}">
 											</a> 
 											<span class="hover"> <span class="wish "
 												data-itemidx="2012110629"></span> <span class="cart"
@@ -595,19 +595,19 @@
 								<div class='paging'>
 									<span class='box'>
 										<!-- 번호 -->							
-								        <li><a href="javascript:fancyPageMove(${fancyPaging.prevPage})">이전</a></li>
+								        <span class="btn_pageprev"><a href="javascript:fancyPageMove(${fancyPaging.prevPage})"><img class="paging_pc" src="${contextPath}/Images/Ver1/Common/btn_board_prev.gif" /></a></span>
 										<c:forEach var="i" begin="${fancyPaging.startPage}" end="${fancyPaging.endPage}" step="1">
 											<c:choose>
 												<c:when test="${i eq fancyPaging.pageNo}">
-													<li class="active"><a href="javascript:fancyPageMove(${i})">${i}</a></li>
+													<span class="txt_pagenum"><a href="javascript:fancyPageMove(${i})">${i}</a></span>
 												</c:when>
 												<c:otherwise>
-													<li><a href="javascript:fancyPageMove(${i})">${i}</a></li>
+													<span class="txt_pagenum"><a href="javascript:fancyPageMove(${i})">${i}</a></span>
 												</c:otherwise>
 											</c:choose>
 										</c:forEach>
 																	<!-- 번호 -->
-										<li><a href="javascript:fancyPageMove(${fancyPaging.nextPage})">다음</a></li>
+										<span class="btn_pagenext"><a href="javascript:fancyPageMove(${fancyPaging.nextPage})"><img class="paging_pc" src="${contextPath}/Images/Ver1/Common/btn_board_next.gif" /></a></span>
 									</span>
 								</div>
 							</div>

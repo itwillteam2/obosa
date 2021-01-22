@@ -113,7 +113,7 @@
 			</colgroup>
 			<tr>
 				<td>
-					<input class="form-control" type="hidden" name="sellerName" id="sellerName" value="홍길동" required />
+					<input class="form-control" type="hidden" name="sellerName" id="sellerName" value="${sellerName}" required />
 				</td>
 			</tr>
 			<tr>
