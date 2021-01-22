@@ -11,7 +11,7 @@
 <jsp:include page="/Home/inc/head.jsp" /> 
 <script type="text/javascript">
 	// 탭 클릭시 서버와 연결
-	$(document).on("click",".nav",function(){
+	$(document).on("click",".ct",function(){
 		var navCategory=$(this).attr("data-name");
 		$("[name=navCategory]").val(navCategory);
 		$(".frm").attr("action","../common/seller.do").submit();
@@ -54,10 +54,10 @@
 			</div>
 			<div class="categories">
 				<ul>	
-					<li class="nav" data-name="all"><a href="javascript:void(0);" >전체</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</li> 
-					<li class="nav" data-name="living"><a href="javascript:void(0);" >리빙</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</li> 
-					<li class="nav" data-name="crafts"><a href="javascript:void(0);" >공예</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</li> 
-					<li class="nav" data-name="fancy"><a href="javascript:void(0);" >문구</a></li> 
+					<li class="ct" data-name="all"><a href="javascript:void(0);" >전체</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</li> 
+					<li class="ct" data-name="living"><a href="javascript:void(0);" >리빙</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</li> 
+					<li class="ct" data-name="crafts"><a href="javascript:void(0);" >공예</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</li> 
+					<li class="ct" data-name="fancy"><a href="javascript:void(0);" >문구</a></li> 
 				</ul>
 			</div>
 			<section class="sec_cont">
