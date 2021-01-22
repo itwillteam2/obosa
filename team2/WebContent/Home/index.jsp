@@ -148,8 +148,9 @@ $(document).ready(function(){
 			<ul>
 				<c:forEach var="newarr" items="${NewArrivalList}">
 					<li>
-						<a href="${contextPath}/${newarr.category}/viewContent.do?num=${newarr.num}"></a>
+						<a href="${contextPath}/${newarr.category}/viewContent.do?num=${newarr.num}">
 						<span class="ImageBackGround"></span> <img class="ItemImage" src="${contextPath}/download.do?fd=${newarr.category}&num=${newarr.num}&productImageName=${newarr.productImageName1}" />
+						</a>
 					</li>
 				</c:forEach>
 			</ul>
@@ -165,99 +166,62 @@ $(document).ready(function(){
 		<div class="clear"></div>
 	</div>
 </div>
+<div class="clear"></div>
 
-		<div class="clear"></div>
-<div class="DesignFinderWrapPc">
-	<div class="DesignFinderTitle">
-		<ul>
-			<li class="left">&lt;</li>
-			<li class="center"><b>DESIGN FINDER</b></li>
-			<li class="right">&gt;</li>
-		</ul>
-		<div class="clear"></div>
-	</div>
-	<div class="swiper-container" style="margin:17px 0 0 0;">
-		<div class="swiper-wrapper">
-		
-			<div class="swiper-slide">
-				<a href="#">
-					<img style="border-radius:50%;" src="${contextPath}/Images/Ver1/Common/logo.png" />
-				</a>
-			</div>
-		
-			<div class="swiper-slide">
-				<a href="#">
-					<img style="border-radius:50%;" src="${contextPath}/Images/Ver1/Common/logo.png" />
-				</a>
-			</div>
-		
-			<div class="swiper-slide">
-				<a href="#">
-					<img style="border-radius:50%;" src="${contextPath}/Images/Ver1/Common/logo.png" />
-				</a>
-			</div>
-		
-			<div class="swiper-slide">
-				<a href="#">
-					<img style="border-radius:50%;" src="${contextPath}/Images/Ver1/Common/logo.png" />
-				</a>
-			</div>
-		
-			<div class="swiper-slide">
-				<a href="#">
-					<img style="border-radius:50%;" src="${contextPath}/Images/Ver1/Common/logo.png" />
-				</a>
-			</div>
-		
-			<div class="swiper-slide">
-				<a href="#">
-					<img style="border-radius:50%;" src="${contextPath}/Images/Ver1/Common/logo.png" />
-				</a>
-			</div>
-		
-			<div class="swiper-slide">
-				<a href="#">
-					<img style="border-radius:50%;" src="${contextPath}/Images/Ver1/Common/logo.png" />
-				</a>
-			</div>
-		
-			<div class="swiper-slide">
-				<a href="#">
-					<img style="border-radius:50%;" src="${contextPath}/Images/Ver1/Common/logo.png" />
-				</a>
-			</div>
-		
-			<div class="swiper-slide">
-				<a href="#">
-					<img style="border-radius:50%;" src="${contextPath}/Images/Ver1/Common/logo.png" />
-				</a>
-			</div>
-		
-			<div class="swiper-slide">
-				<a href="#">
-					<img style="border-radius:50%;" src="${contextPath}/Images/Ver1/Common/logo.png" />
-				</a>
-			</div>
-		
+	<div class="mnBx funIdea" style="margin-bottom : 50px;">
+
+		<h3 class="mnTitle">FUN & IDEA</h3>
+
+		<div class="funIdeaBn slide" id="funIdeaSlide">
+			<ul class="swiper-wrapper">
+			
+				<li class="swiper-slide">
+					<a href="javascript:void(0);"  data-area=D2008001074 data-stock=2008001476 data-cmps=200700000006873 onclick="overpass.tracking.link({  goods_no : 'G20120024203', sale_shop_divi_cd : '10', sale_shop_no : '1312000036', sale_area_no : 'D2008001074', tr_yn : 'Y', conts_form_cd : '100', conts_dist_no : 'G20120024203', conts_divi_cd : '20', rel_no : 'G20120024203', rel_divi_cd : '10', openwinyn : '', disp_ctg_no : '', purch_age_limit_cd : '00'});" >
+						<span class="img"><img src="//image.artbox.co.kr/upload/C00001/dspl/banner/70/441/00/210100000006085_210100000006441.jpg" alt="펀앤아이디어_1"></span>
+						<span class="txt">
+							<strong>여간 힙한 것이 아니랑께</strong>
+							<em>2021벽걸이 달력</em>
+						</span>
+					</a>
+				</li>
+			
+				<li class="swiper-slide">
+					<a href="javascript:void(0);"  data-area=D2008001074 data-stock=2008001476 data-cmps=200700000006873 onclick="overpass.tracking.link({  goods_no : '2012080184', sale_shop_divi_cd : '10', sale_shop_no : '1312000036', sale_area_no : 'D2008001074', tr_yn : 'Y', conts_form_cd : '100', conts_dist_no : '2012080184', conts_divi_cd : '20', rel_no : '2012080184', rel_divi_cd : '10', openwinyn : '', disp_ctg_no : '', purch_age_limit_cd : '00'});" >
+						<span class="img"><img src="//image.artbox.co.kr/upload/C00001/dspl/banner/70/444/00/210100000006088_210100000006444.jpg" alt="펀앤아이디어_2"></span>
+						<span class="txt">
+							<strong>꽃과 향기를 그대에게</strong>
+							<em>아로마코 드라이플라워 부케꽃디퓨저 (디퓨져오일 15ml 포함)</em>
+						</span>
+					</a>
+				</li>
+			
+				<li class="swiper-slide">
+					<a href="javascript:void(0);"  data-area=D2008001074 data-stock=2008001476 data-cmps=200700000006873 onclick="overpass.tracking.link({  goods_no : '2012140252', sale_shop_divi_cd : '10', sale_shop_no : '1312000036', sale_area_no : 'D2008001074', tr_yn : 'Y', conts_form_cd : '100', conts_dist_no : '2012140252', conts_divi_cd : '20', rel_no : '2012140252', rel_divi_cd : '10', openwinyn : '', disp_ctg_no : '', purch_age_limit_cd : '00'});" >
+						<span class="img"><img src="//image.artbox.co.kr/upload/C00001/dspl/banner/70/445/00/210100000006089_210100000006445.jpg" alt="펀앤아이디어_3"></span>
+						<span class="txt">
+							<strong>다각도로 생각한다면</strong>
+							<em>rcube 인비지 데스크 펜</em>
+						</span>
+					</a>
+				</li>
+			
+				<li class="swiper-slide">
+					<a href="javascript:void(0);"  data-area=D2008001074 data-stock=2008001476 data-cmps=200700000006873 onclick="overpass.tracking.link({  goods_no : '2012100015', sale_shop_divi_cd : '10', sale_shop_no : '1312000036', sale_area_no : 'D2008001074', tr_yn : 'Y', conts_form_cd : '100', conts_dist_no : '2012100015', conts_divi_cd : '20', rel_no : '2012100015', rel_divi_cd : '10', openwinyn : '', disp_ctg_no : '', purch_age_limit_cd : '00'});" >
+						<span class="img"><img src="//image.artbox.co.kr/upload/C00001/dspl/banner/70/446/00/210100000006090_210100000006446.jpg" alt="펀앤아이디어_4"></span>
+						<span class="txt">
+							<strong>못 닦을 구석이 없어요!</strong>
+							<em>뿌리면서 닦는 청소 브러쉬 4종 SET</em>
+						</span>
+					</a>
+				</li>
+
+			</ul>
 		</div>
+
 	</div>
+
 </div>
-<script>
-	var swiper = new Swiper('.DesignFinderWrapPc > .swiper-container', {
-		slidesPerView: 7,
-		spaceBetween: 30,
-//		centeredSlides: true,
-		loop: true,
-		navigation: {
-			nextEl: '.right',
-			prevEl: '.left',
-		},
-		autoplay: {
-			delay: 4000,
-			disableOnInteraction: false,
-		},
-	});
-</script>
+
 <jsp:include page="/Home/inc/footer.jsp"/>
 </body>
 </html>
