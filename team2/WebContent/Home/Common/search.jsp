@@ -489,7 +489,7 @@
 										<span class="img"> <!-- 사진 클릭했을때 그 인덱스값으로 가기 -->
 											<a href="${contextPath}/fancy/viewContent.do?fd=living&num=${searchFancy.num}&productImageName=${searchFancy.productImageName1}">
 													<!-- 이미지 불러오기 --> 
-													<img src="${contextPath}/download.do?fd=fancy&num=${searchFancy.num}&productImageName=${searchCrafts.productImageName1}">
+													<img src="${contextPath}/download.do?fd=fancy&num=${searchFancy.num}&productImageName=${searchFancy.productImageName1}">
 											</a> 
 											<span class="hover"> <span class="wish "
 												data-itemidx="2012110629"></span> <span class="cart"
