@@ -85,6 +85,9 @@ public class CategoryController extends HttpServlet {
 			nextPage="/Home/Common/category.jsp";
 		
 		} else if (action.equals("/GoAddItem.do")) {	
+			String sellerName = request.getParameter("sellerName");
+			request.setAttribute("sellerName", sellerName);
+			
 			nextPage = "/Home/Seller/upContent.jsp";
 		} else if (action.equals("/addItem.do")) {
 			Map<String, String> addItemMap = upload(request, response);

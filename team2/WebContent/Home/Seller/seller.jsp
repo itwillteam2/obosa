@@ -199,7 +199,7 @@
 		<div>
 			<h1 class="searchShop">${shopName}</h1>
 			<div class ="writeBtn">
-				<a href="${contextPath}/category/GoAddItem.do">상품 등록</a>
+				<a href="${contextPath}/category/GoAddItem.do?sellerName=${shopName}">상품 등록</a>
 			</div>
 			<div class="categories">
 				<a href="javascript:fnSelectAll();" id="alla">전체</a> &nbsp;&nbsp;&nbsp; | &nbsp;&nbsp;&nbsp; 
