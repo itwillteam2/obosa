@@ -17,10 +17,10 @@
 
 
 .EventBannerWrap {width:1200px; margin:20px auto 0; padding:0;}
-.EventBannerWrap a {float:left; display:block; width:590px; height:205px; background-repeat:no-repeat; background-size:590px 205px; background-position:bottom right; border-radius:5px; color:#000000; font-size:17px; line-height:23px; padding:55px 0 0 30px; text-align:left;}
+.EventBannerWrap a {float:left; display:block; width:590px; height:250px; background-repeat:no-repeat; background-size:590px 250px; background-position:bottom right; border-radius:5px; color:#000000; font-size:17px; line-height:23px; padding:55px 0 0 30px; text-align:left;}
 .EventBannerWrap a b {display:block; font-size:29px; margin-bottom:24px;}
-.EventBannerWrap a.EventBanner1 {margin:0 10px 0 0;}
-.EventBannerWrap a.EventBanner2 {margin:0 0 0 10px;}
+.EventBannerWrap a.EventBanner1 {margin:0 10px 0 0; border-radius : 20px;}
+.EventBannerWrap a.EventBanner2 {margin:0 0 0 10px; border-radius : 20px;}
 
 
 

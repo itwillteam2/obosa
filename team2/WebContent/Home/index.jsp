@@ -47,7 +47,7 @@ $(document).ready(function(){
 					<tbody>
 						<tr>
 							<td bgcolor="#d3e9f6"></td>
-							<td><a class="SlideLink" href="" target="_self" ><img style="border:0;" src="${contextPath}/Images/Ver1/Common/house_1.svg" /></a></td>
+							<td><a class="SlideLink" href="" target="_self" ><img style=" width:100%; border:0;" src="${contextPath}/Images/Ver1/Common/2021.jpg" /></a></td>
 							<td bgcolor="#d3e9f6"></td>
 						</tr>
 					</tbody>
@@ -59,9 +59,48 @@ $(document).ready(function(){
 					<colgroup><col width="*"><col width="1200"><col width="*"></colgroup>
 					<tbody>
 						<tr>
-							<td bgcolor="#dfd5f3"></td>
-							<td><a class="SlideLink" href="event/eventcontents3ec6.html?EvtID=91095&amp;cdl=500" target="_self" ><img style="border:0;" src="${contextPath}/Images/Ver1/Common/house_1.svg" /></a></td>
-							<td bgcolor="#dfd5f3"></td>
+							<td bgcolor="#d3e9f6"></td>
+							<td><a class="SlideLink" href="" target="_self" ><img style="width:100%; border:0;" src="${contextPath}/Images/Ver1/Common/mind.jpg" /></a></td>
+							<td bgcolor="#d3e9f6"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			
+			<div class="swiper-slide">
+				<table border="0" cellspacing="0" cellpadding="0" style="width:100%; box-sizing:border-box;">
+					<colgroup><col width="*"><col width="1200"><col width="*"></colgroup>
+					<tbody>
+						<tr>
+							<td bgcolor="#d3e9f6"></td>
+							<td><a class="SlideLink" href="" target="_self" ><img style="width:100%; border:0;" src="${contextPath}/Images/Ver1/Common/soso.jpg" /></a></td>
+							<td bgcolor="#d3e9f6"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		
+			<div class="swiper-slide">
+				<table border="0" cellspacing="0" cellpadding="0" style="width:100%; box-sizing:border-box;">
+					<colgroup><col width="*"><col width="1200"><col width="*"></colgroup>
+					<tbody>
+						<tr>
+							<td bgcolor="#d3e9f6"></td>
+							<td><a class="SlideLink" href="" target="_self" ><img style="width:100%; border:0;" src="${contextPath}/Images/Ver1/Common/jaetack.jpg" /></a></td>
+							<td bgcolor="#d3e9f6"></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			
+			<div class="swiper-slide">
+				<table border="0" cellspacing="0" cellpadding="0" style="width:100%; box-sizing:border-box;">
+					<colgroup><col width="*"><col width="1200"><col width="*"></colgroup>
+					<tbody>
+						<tr>
+							<td bgcolor="#d3e9f6"></td>
+							<td><a class="SlideLink" href="" target="self" ><img style="border:0; width:100%;" src="${contextPath}/Images/Ver1/Common/seolnal.jpg" /></a></td>
+							<td bgcolor="#d3e9f6"></td>
 						</tr>
 					</tbody>
 				</table>
@@ -98,19 +137,13 @@ $(document).ready(function(){
 	});
 </script>
 <div class="EventBannerWrap">
-	<a class="EventBanner1" href="event/eventcontents7265.html?EvtID=89986" style="background-color:#f1d4d7; background-image:url(../Upload/DesignMng/poom2012215195958986089c87.jpg?v=v20201221105142);" target="_self">
-		<b>DESIGNER`s DIARY</b>
-		아트박스만의 <br />디자이너스 다이어리!
-	</a>
-	<a class="EventBanner2" href="event/eventcontents7b3b.html?EvtID=90642" style="background-color:#b6e8ff; background-image:url(../Upload/DesignMng/poom2012145748346219319c87.jpg?v=v20201221105142);" target="_self">
-		<b>방방곳곳 초크초크</b>
-		마르면 안돼요~<br />가습기, 할인가로 겟겟!
-	</a>
+	<a class="EventBanner1" href="" style="background-color:#f1d4d7; background-image:url(../Images/Ver1/Common/ban2.jpg);" target="_self"></a>
+	<a class="EventBanner2" href="" style="background-image:url(../Images/Ver1/Common/ban1.jpg);" target="_self"></a>
 	<div class="clear"></div>
 </div>
 
 	<div class="BestItemWrap">
-		<a class="BestItemTitle" href="">NEW ITEM</a>
+	<a class="BestItemTitle" href="">NEW ITEM</a>
 		<div class="BestItemList">
 			<ul>
 				<c:forEach var="newarr" items="${NewArrivalList}">

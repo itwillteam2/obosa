@@ -23,6 +23,7 @@ pageEncoding="UTF-8"%>
 	<link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/Common/Index.css" />
 	<link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/Common/FlexSliderIndex.css" />
 	<link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/Common/swiper.min.css" />
+	<link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/Common/main.css" />
 	<link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/Member/Member.css" />
 	<link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/Common/Item.css" />
 	<link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/CsCenter/Cscenter.css" />
