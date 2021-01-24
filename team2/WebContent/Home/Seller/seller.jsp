@@ -36,6 +36,13 @@
 		});
 	});
 	
+	function allPageMove(page){
+		var navCategory=$(this).attr("data-name");
+		$("[name=navCategory]").val(navCategory);
+		var ord=$("#ord").val();
+		location.href="${contextPath}/common/seller.do?pageNO="+page+"&ord="+ord+"&navCategory=${navCategory}&shopName=${name}";
+	}
+	
 </script>
 </head>
 <body>
