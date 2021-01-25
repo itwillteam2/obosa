@@ -3,6 +3,7 @@
 
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
+
 <!DOCTYPE html>
 <html lang="ko">
 
@@ -19,23 +20,32 @@ $(document).on({
 	mouseenter : function() {
 		$(this).find(".hover").addClass("on");
 	
-		var obj=$(this).find(".ps")
+		var obj=$(this).find(".ps");
 		var _pnum =obj.attr("data-pnum");
 		$.post("${contextPath}/${category}/countRep.do",  
 			{pnum:_pnum},
 			function(result,textStatus){obj.text(result);
 	      });
-
+	
+		var grdObj=$(this).find(".hover");
+		$.post("${contextPath}/${category}/countAvg.do",  
+			{pnum:_pnum},
+				function(result,textStatus){
+				var score = parseInt(result,10);
+				grdObj.children().each(function(){
+					if($(this).attr("data-grd")<=score){
+							$(this).addClass("on");
+						}else{
+							$(this).removeClass("on");
+						}
+				});
+		 });
 	},
 	mouseleave : function() {
 		$(this).find(".hover").removeClass("on");
 	}
 }, ".itemList>li");
 
-$(document).on(	"click", ".hover>.wish", function() {
-	alert("현재 지원하지 않는 기능입니다.")	
-	location.href = "#";
-});
 
 // 장바구니 등록
 $(document).on(	"click", ".hover>.cart", function() {
@@ -77,8 +87,6 @@ function PageMove(page){
 		}
 
 
-
-
 </script>
 </head>
 <body>
@@ -107,9 +115,7 @@ function PageMove(page){
 						</span>
 					</div>
 					<ul class='itemList'>
-						
-						
-						<c:forEach var="content" items="${contentList}">
+					<c:forEach var="content" items="${contentList}">	
 							<li>
 								<span class="img"> 
 										<!-- 사진 클릭했을때 그 인덱스값으로 가기 -->
@@ -117,8 +123,12 @@ function PageMove(page){
 											<!-- 이미지 불러오기 -->
 											<img src="${contextPath}/download.do?fd=${category}&num=${content.num}&productImageName=${content.productImageName1}">
 										</a> 
-											<span class="hover">
-												<span class="wish " ></span>										
+											<span class="hover" id="${content.num}">
+												<span class="wish" data-grd="1"></span>	
+												<span class="wish" data-grd="2"></span>	
+												<span class="wish" data-grd="3"></span>	
+												<span class="wish" data-grd="4"></span>	
+												<span class="wish" data-grd="5"></span>	
 												<span class="cart" data-pnum="${content.num}" data-category="${category}" data-opt="cart"></span>
 												<span class="ps" data-pnum="${content.num}" data-category="${category}" data-opt="ps"></span>
 											</span>
@@ -137,10 +147,6 @@ function PageMove(page){
 								</span>
 							</li>
 						</c:forEach>
-
-
-
-					
 					</ul>
 					<div class="clear"></div>
 					<div class="paging">

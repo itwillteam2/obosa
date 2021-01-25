@@ -10,7 +10,7 @@ public class ItemsRepVO {
 	private String content; 
 	private String writer; 
 	private Timestamp date;
-	
+
 	public ItemsRepVO() {
 		
 	}
@@ -24,8 +24,6 @@ public class ItemsRepVO {
 		this.writer = writer;
 		this.date = date;
 	}
-
-
 
 	public int getRnum() {
 		return rnum;

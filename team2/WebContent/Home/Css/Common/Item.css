@@ -54,11 +54,12 @@
 
 .sec_cont .inner .itemList li .img .hover    { display:none;  }
 .sec_cont .inner .itemList li .img .hover.on { display:block; position:absolute; bottom:0; left:0; right:0; height:60px; background-color:rgba(0,0,0,0.4); }
-.sec_cont .inner .itemList li .img .hover.on .wish    { display:block; position:absolute; bottom:18px; left:10px; width:24px; height:25px; cursor:pointer; background:url(https://www.artboxmall.com/images/ver1/common/lise_heart_off.png) no-repeat center; }
-.sec_cont .inner .itemList li .img .hover.on .wish.on { background:url(https://www.artboxmall.com/images/ver1/common/lise_heart_on.png) no-repeat center; }
-.sec_cont .inner .itemList li .img .hover.on .cart    { display:block; position:absolute; bottom:18px; left:40px; width:24px; height:25px; cursor:pointer; background:url(https://www.artboxmall.com/images/ver1/common/lise_basket.png) no-repeat center; }
-.sec_cont .inner .itemList li .img .hover.on .cart.on { background:url(https://www.artboxmall.com/images/ver1/common/lise_basket_on.png) no-repeat center; }
-.sec_cont .inner .itemList li .img .hover.on .ps	  { display:block; position:absolute; bottom:18px; right:10px; height:25px; cursor:pointer; padding:0 0 0 30px; background:url(https://www.artboxmall.com/images/ver1/common/lise_comment.png) no-repeat left center; color:#ffffff; font-size:14px; line-height:25px; }
+.sec_cont .inner .itemList li .img .hover.on .wish:nth-child(1) {margin:18px 0 18px 15px; float:left;; width:24px; height:25px; cursor:pointer; background:url(../../../Images/Ver1/Common/lise_heart_off.png) no-repeat center; }
+.sec_cont .inner .itemList li .img .hover.on .wish    { float:left;margin:18px 0 18px 0px; width:24px; height:25px; cursor:pointer; background:url(../../../Images/Ver1/Common/lise_heart_off.png) no-repeat center; }
+.sec_cont .inner .itemList li .img .hover.on .wish.on { background:url(../../../Images/Ver1/Common//lise_heart_on.png) no-repeat center; }
+.sec_cont .inner .itemList li .img .hover.on .cart    { margin:18px 10px 18px 0px;float:right; width:24px; height:25px; cursor:pointer; background:url(../../../Images/Ver1/Common/lise_basket.png) no-repeat center; }
+.sec_cont .inner .itemList li .img .hover.on .cart.on { background:url(../../../Images/Ver1/Common//lise_basket_on.png) no-repeat center; }
+.sec_cont .inner .itemList li .img .hover.on .ps	  { display:block; position:absolute; bottom:18px; right:45px; height:25px; cursor:pointer; padding:0 0 0 30px; background:url(../../../Images/Ver1/Common/lise_comment.png) no-repeat left center; color:#ffffff; font-size:14px; line-height:25px; }
 
 .sec_cont .inner .itemList li .img a { display:block; height:100%; }
 .sec_cont .inner .itemList li .img a img { width:100%; height:270px; border:0; }

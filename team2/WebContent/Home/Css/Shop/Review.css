@@ -17,7 +17,7 @@ body {font-family: 'Lato', sans-serif;}
   position: relative;
   overflow: hidden;
   width: 350px;
-  height: 500px;
+  height: 600px;
     
 }
 .container .half {
@@ -61,7 +61,7 @@ body {font-family: 'Lato', sans-serif;}
 }
 .container .content form {
   position: relative;
-  height: 287px;
+  height: 347px;
 
 }
 input:first-of-type{

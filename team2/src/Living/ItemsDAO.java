@@ -10,6 +10,7 @@ import java.util.List;
 import CsCenter.InqRepVO;
 import CsCenter.InquiryVO;
 import DBUtil.DBConnection;
+import Grade.GradeService;
 
 public class ItemsDAO {
 	
@@ -30,7 +31,8 @@ public class ItemsDAO {
 
 	//select all articles list of crafts.
 	public List<ItemsVO> getAllContents(int pageNO, int listSize, String ord) {
-		List<ItemsVO> contentLIst = new ArrayList<ItemsVO>();
+		
+		List<ItemsVO> contentList = new ArrayList<ItemsVO>();
 		pageNO= (pageNO-1)*listSize;
 		try {
 			conn = DBConnection.getConnection();
@@ -61,7 +63,7 @@ public class ItemsDAO {
 				vo.setReg_date(rs.getTimestamp("regDate"));
 				vo.setSellerName(rs.getString("sellerName"));
 				vo.setShipping_fee(rs.getInt("shipping_fee"));
-				contentLIst.add(vo);
+				contentList.add(vo);
 			}
 						
 		} catch (Exception e) {
@@ -69,7 +71,7 @@ public class ItemsDAO {
 		}finally {
 			freeResource();
 		}
-		return contentLIst;
+		return contentList;
 	}//end of selectAllArticles
 	
 //  -------- 전체 상품 개수 조회 ------- //
@@ -227,6 +229,7 @@ public class ItemsDAO {
 	public int insertNewReply(ItemsRepVO repVO) {
 		int rnum = 0;
 		String sql ="";
+		GradeService gservice = new GradeService();
 		
 		try {
 			conn = DBConnection.getConnection();
@@ -243,7 +246,7 @@ public class ItemsDAO {
 			String pw = repVO.getPw();
 			String content = repVO.getContent();
 			String writer = repVO.getWriter();
-
+				
 			String query = "INSERT INTO "+CATEGORY+"_rep(rnum, num, title, pw, content, writer)"
 					+ "VALUES(?, ?, ?, ?, ?, ?)";
 
@@ -255,9 +258,10 @@ public class ItemsDAO {
 			pstmt.setString(4, pw);
 			pstmt.setString(5, content);
 			pstmt.setString(6, writer);
-
+	
 			pstmt.executeUpdate();
 
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {

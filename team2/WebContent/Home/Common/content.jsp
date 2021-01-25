@@ -18,6 +18,15 @@
 <link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/Shop/ItemDetail.css">
 <link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/Shop/ScrollBar.css"/>
 
+<style type="text/css">
+		.grd {display:block;height:50px;margin-top:12px}
+		.grd:before{float:left;width:32px;height:32px;margin:10px 45px 10px 15px;content:"Grade";}
+		.grade {float:left;width:32px;height:32px;margin:auto;background-image:url('../Images/Ver1/Beta/star_bk.png')}
+		.grade.on {background-image:url('../Images/Ver1/Beta/star_yw.png')}
+		
+		</style>
+
+
 <script type="text/javascript">
 function payment(){
 	var id = "${id}";
@@ -40,8 +49,11 @@ $(window).load(function(){
 					$(this).find("iframe").css("maxWidth", "100%");
 					$(this).find("iframe").css("width", "100%");
 				});
-								
-			});
+				
+				
+				
+		
+	});
 	
 	$(document).on("click",".tabBar>span", function(){
 
@@ -147,6 +159,31 @@ $(window).load(function(){
 		} else {
 			$(this).next("div").css("display", "none");
 		}
+		
+		var grdObj=$(this).next().find(".grd");
+		var _pnum = grdObj.attr('data-num');
+		var _id = grdObj.attr('data-id');
+		
+		$.ajax({
+			type:"post",
+			async:true,
+			url:'${contextPath}/living/countGrd.do',  
+			data:{pnum:_pnum,id:_id},
+			success:function(result,textStatus){
+					var score = parseInt(result,10);
+					grdObj.children().each(function(){
+						if($(this).attr("data-grd")<=score){
+								$(this).addClass("on");
+							}else{
+								$(this).removeClass("on");
+							}
+					});
+			},
+			error:function(){ alert("페이지 새로 고침");	}
+			});
+		
+	
+		
 	});
 
 	$(document).on("click",".ClickQna", function(){
@@ -333,7 +370,7 @@ $(window).load(function(){
 				</c:if>
 				<div class='inner'>
 					<div class='table'>
-					<c:forEach var="Rep" items="${ReppagingList}">
+					<c:forEach var="Rep" items="${ReppagingList}" varStatus="status">
 						<span class='tr ClickPs'> 
 							<span class='td'>${Rep.rnum}</span> 
 							<span class='td type2'>
@@ -343,9 +380,21 @@ $(window).load(function(){
 							<span class='td'>${Rep.writer }</span>
 						</span>
 						<div class='ps on'>
+						<span class="grd" data-num="${content.num}" data-id="${Rep.writer}">
+								<span class="grade" data-grd="1"></span>	
+								<span class="grade" data-grd="2"></span>	
+								<span class="grade" data-grd="3"></span>	
+								<span class="grade" data-grd="4"></span>	
+								<span class="grade" data-grd="5"></span>	
+						</span>
 							<div class='ps_sub2'>${fn:replace(Rep.content, newLineChar, "<br/>")}</div>
+						
+						
 						</div>
-					</c:forEach>	
+		
+					    	
+		
+				</c:forEach>	
 					</div>
 					<div class="paging">
 						<span class="box">
