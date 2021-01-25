@@ -53,6 +53,7 @@ input[type=radio]:checked::-ms-check {padding:1px;}
 
 
 .clear     { display:block; clear:both; }
+.clearflt:after {content:".";visibility:hidden;display:block;height:0;clear:both;}
 .none      { display:none !important; }
 .hidden    { visibility:hidden; }
 
@@ -82,69 +83,39 @@ input[type=button]{cursor:pointer;}
 
 /*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ common header and footer ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/
 
+body { padding-top: 250px; } 
+header { position: fixed; top: 0; left: 0;transition: top 0.2s ease-in-out; border-bottom:1px solid #e4e4e4; width:100%;height:250px; z-index:999; background-color:#ffffff; opacity:1;text-align:center;}
 
-#CommonHeaderArea {display:block;}
-#CommonHeader {display:block; border-bottom:1px solid #e4e4e4; width:100%; position:absolute; z-index:999; left:0; top:0; background-color:#ffffff; opacity:1;}
+input[type=text]#countCart {position:relative;top:-30px;left:-20px;text-align:center;color:white;width:25px;height:25px;font-size:5px;padding: 0;margin: 0; line-height: 1px;background-color: violet;border-radius: 50px;}
 
-#CommonHeader .OtherBrand {height:57px; border-bottom:1px solid #e4e4e4;}
-#CommonHeader .OtherBrand ul {display:block; height:57px; width:1200px; margin:0 auto;}
-#CommonHeader .OtherBrand li {margin:18px 28px 0 0; }
-#CommonHeader .OtherBrand li img {width:auto; height:26px;}
 
-#CommonHeader a.MainLogo {width:260px; margin:10px auto 60px; display:block;}
+#CommonHeader {height:250px;display:block;text-align:center;}
+
+#CommonHeader a.MainLogo {display:block;width:260px; margin:auto auto;}
 #CommonHeader a.MainLogo img {width:260px;}
 
 #CommonHeader a.MainLogoScroll {width:180px; margin:0 auto; display:none;}
-#CommonHeader a.MainLogoScroll img {width:180px;;}
+#CommonHeader a.MainLogoScroll img {width:140px;}
 
-#CommonHeader .CategoryLarge {height:57px;}
-#CommonHeader .CategoryLarge ul {display:table; height:57px; width:1200px; margin: 0 0 0 150px; position:relative; margin-top:50px;}
-#CommonHeader .CategoryLarge li.CategoryMiddle {display:table-cell;margin:15px 35px 0 0;}
-#CommonHeader .CategoryLarge li.CategoryMiddle a {font-size:20px; color:#000000;}
-#CommonHeader .CategoryLarge li.CategoryMiddle.selected:before {position:absolute;bottom:50px;content:url("../../../Images/Ver1/Common/top_nav.png");}
+#CommonHeader .CategoryLarge {display:inline-block;width:100%;height:50px;}
+#CommonHeader .CategoryLarge ul.nav {float:left;height:40px; margin:35px 0px 10px 10px;display:table;}
+#CommonHeader .CategoryLarge li.CategoryMiddle {display:inline-block;margin:15px 35px 0 0;}
+#CommonHeader .CategoryLarge li.CategoryMiddle a {width:30px;height:30px;font-size:20px; color:#000000;}
+#CommonHeader .CategoryLarge li.CategoryMiddle.selected:before {position:absolute;bottom:40px;margin-left:20px;content:url("../../../Images/Ver1/Common/top_nav.png");}
 
-#CommonHeader .CategoryLarge li.Search {float:right; width:250px; height:40px; border-bottom:2px solid #787878; margin:5px 10px 0 0;}
-#CommonHeader .CategoryLarge li.Search .CommonSearch input#kwd {display:inline-block; background-color:#ffffff; border:0; padding:0; margin:0; width:200px; height:35px; line-height:35px; vertical-align:top; font-size:16px; color:#000000;}
+#CommonHeader .CategoryLarge li.tab {display:table-cell;width:50px;margin:15px 35px 0 0}
+
+#CommonHeader .CategoryLarge ul.rtMenu {float:right;height:40px; margin:30px 60px 10px 10px;display:table;}
+
+#CommonHeader .CategoryLarge li.Search {display:table-cell; width:250px; height:40px; border-bottom:2px solid #787878; margin:5px 10px 5px 10px;}
+#CommonHeader .CategoryLarge li.Search .CommonSearch input#kwd {display:inline-block; background-color:transparent; border:0; padding:0; margin:0; width:200px; height:35px; line-height:35px; vertical-align:top; font-size:16px; color:#000000;}
 #CommonHeader .CategoryLarge li.Search .CommonSearch a {display:inline-block; width:40px; height:35px; vertical-align:top;}
 #CommonHeader .CategoryLarge li.Search .CommonSearch img {width:40px; height:35px;}
 
-#CommonHeader .CategoryLarge li.MyPage {display:table-cell;float:right; width:180px;  margin:5px 0 0 1px; position:relative;}
-#CommonHeader .CategoryLarge li.MyPage a {display:inline-block; width:40px; height:40px;font-size: 15px;}
-#CommonHeader .CategoryLarge li.MyPage img {width:30px; height:30px;}
-
-#CommonHeader .CategoryLarge li.MyPage a#LoginBalloon {position:absolute; z-index:1; left:-7px; top:-22px; width:69px; height:34px;}
-#CommonHeader .CategoryLarge li.MyPage a#LoginBalloon img {width:69px; height:34px;}
-#CommonHeader .CategoryLarge li.MyPage .btnBallon { display:block; position:absolute; z-index:2; right:-15px; top:-33px; width:22px; height:25px; }
-
-#CommonHeader .CategoryLarge li.Cart   {display:table-cell;float:right; margin:5px 120px 0 1px;}
-#CommonHeader .CategoryLarge li.Cart a {display:inline-block; width:40px; height:40px; position:relative;}
-#CommonHeader .CategoryLarge li.Cart .num { display:block; position:absolute; bottom:0; right:0; background-color:#e71e22; width:20px; line-height:20px; font-size:11px; color:#ffffff; text-align:center; border-radius:10px; }
-#CommonHeader .CategoryLarge li.Cart img {width:30px; height:30px;}
-
-#MyInfoSummary {position:absolute; left:199px; width:960px; height:284px; padding-top:23px; display:none; opacity:1;}
-#MyInfoSummary .MyInfoSummaryWrap {height:267px; background-color:#ffffff; border:2px solid #717171; border-radius:5px; padding:30px;}
-
-.MyInfoSummaryArea {position:fixed; width:100%; z-index:998; top:223px;}
-.MyInfoSummaryArea .AreaInner {position:relative; width:1200px; margin:0 auto;}
-
-.trMyInfoSummary .tdCont {height:205px; width:550px;}
-.trMyInfoSummary .tdGap  {height:205px; width:30px;}
-.trMyInfoSummary .tdText {height:205px; width:316px; background-color:#f8f8f8; vertical-align:middle; padding-left:20px; border-radius:10px; font-size:14px; line-height:28px; color:#000000; text-align:left;}
-.trMyInfoSummary .tdText b {font-size:20px; line-height:20px; display:block; text-align:left; padding-bottom:10px;}
-
-.trMyInfoSummary .tdCont .MyInfoName     {float:left; font-size:38px; color:#000000; line-height:38px;}
-.trMyInfoSummary .tdCont .MyInfoName a   {color:#000000; font-weight:bold;}
-.trMyInfoSummary .tdCont .MyInfoName img {height:35px; width:auto; vertical-align:top; margin:3px 7px 0 0;}
-.trMyInfoSummary .tdCont .MyInfoName sub {display:inline-block; width:20px; height:20px; margin:0 0 4px 6px; background-image:url(../Images/Ver1/Common/circle_gt.png); background-repeat:no-repeat; background-size:20px 20px;}
-.trMyInfoSummary .tdCont .MyInfoBtn      {float:right; text-align:right; font-size:17px; line-height:38px;}
-.trMyInfoSummary .tdCont .MyInfoBtn span {margin:0 10px;}
-.trMyInfoSummary .tdCont .MyInfoMidGap   {clear:both; height:26px;}
-
-.trMyInfoSummary .tdCont .MyInfoDetail   {float:left; background-color:#f8f8f8; height:145px; text-align:center; padding-top:30px; font-size:20px;}
-.trMyInfoSummary .tdCont .MyInfoDetail b {display:block; font-weight:normal; text-align:center; color:#e71f22; padding-top:30px; font-size:36px;}
-.trMyInfoSummary .tdCont .MyInfoDetail.Mileage {width:211px; border-radius:10px 0 0 10px;}
-.trMyInfoSummary .tdCont .MyInfoDetail.Coupon {width:128px;}
-.trMyInfoSummary .tdCont .MyInfoDetail.Order {width:211px; border-radius:0 10px 10px 0;}
+#CommonHeader .CategoryLarge li.Cart   {display:table-cell;float:right; margin:5px 20px 0 1px;}
+#CommonHeader .CategoryLarge li.Cart a {width:50px; height:50px; position:relative;}
+#CommonHeader .CategoryLarge li.Cart img {width:43px; height:43px;}
+#CommonHeaderArea {display:block;height:350px;}
 
 
 #CommonFooter {display:block; border-top:1px solid #e4e4e4; padding:23px 0 42px;}
@@ -184,39 +155,6 @@ input[type=button]{cursor:pointer;}
 #CommonFooter .FooterInfo li.Information a.BizInfo {display:block; width:100px; height:24px; line-height:22px; border:1px solid #787878; border-radius:3px; text-align:center; margin:5px 0;}
 
 
-#CommonHeaderArea_M {display:none;}
-#CommonHeader_M {display:none; width:100%; height:4.1rem; background-color:#ffffff; position:relative;}
-#CommonHeaderMenu_M {display:block; width:100%; height:4.1rem; border-bottom:1px solid #e4e4e4; width:100%; padding:0.78125rem;}
-#CommonHeaderSearch_M {display:none; width:100%; height:4.1rem; border-bottom:1px solid #e4e4e4; width:100%; padding:0.78125rem;}
-
-#CommonFooter_M {display:none; border-top:1px solid #e4e4e4; padding:1rem 0 2.34375rem; line-height:0.84375rem; font-size:0.6875rem;}
-#CommonFooter_M .FooterMenu {font-size:0.8rem; text-align:center;}
-#CommonFooter_M .FooterMenu a {font-size:0.8rem;}
-#CommonFooter_M .FooterMenu span {font-size:0.8rem; margin:0 0.6875rem; color:#aaaaaa;}
-
-#CommonFooter_M .FooterMenu li.swiper-slide { width:auto; border-left:1px solid #aaaaaa; padding:0 1.0rem;}
-#CommonFooter_M .FooterMenu li.swiper-slide:nth-child(1) { border-left:0; }
-#CommonFooter_M .FooterMenu li.swiper-slide:nth-child(4) a { color:#3a4b59; }
-#CommonFooter_M .FooterMenu li.swiper-slide a { font-size:0.8rem; width:auto; line-height:1.125rem; color:#aaaaaa;  }
-
-
-#CommonFooter_M .FooterInfo {padding-top:0.9rem;}
-#CommonFooter_M .FooterInfo .CallCenter {text-align:center; font-size:0.7rem;}
-#CommonFooter_M .FooterInfo .CallCenter b {display:block; color:#000000; font-weight:normal; font-size:1.4rem; line-height:1.5rem;  text-align:center; margin-bottom:0.6rem;}
-#CommonFooter_M .FooterInfo .CallCenter b .number {font-family:'Saira Condensed'; font-weight:bold; font-size:1.5rem;}
-#CommonFooter_M .FooterInfo .CallCenter small {display:block; font-size:0.7rem; color:#3a4b59; text-align:center; margin-top:0.40625rem;}
-
-#CommonFooter_M .FooterInfo .TwoButton {padding:0.65625rem 0 1rem; border-bottom:1px solid #e4e4e4; text-align:center;}
-#CommonFooter_M .FooterInfo .TwoButton a {display:inline-block; font-size:0.9rem; width:7rem; height:1.9rem; margin:0 6px;  border:2px solid #cecece; text-align:center; border-radius:8px; line-height:1.6rem;}
-
-#CommonFooter_M .FooterInfo .Information {text-align:center; padding-top:1.03125rem; font-size:0.75rem; line-height:1.1rem;}
-#CommonFooter_M .FooterInfo .Information a.BizInfo {display:block; width:6.3rem; height:1.5rem; line-height:1.3rem; border:1px solid #787878; border-radius:3px; text-align:center; margin:0.5625rem auto 0; font-size:0.8rem;}
-#CommonFooter_M .FooterInfo .Information .FacebookInstagram {padding:0.75rem 0 0.5rem; text-align:center;}
-#CommonFooter_M .FooterInfo .Information .FacebookInstagram a {display:inline-block; width:1.6rem; height:1.6rem; margin:0 0.25rem;}
-#CommonFooter_M .FooterInfo .Information .FacebookInstagram img {width:1.6rem; height:1.6rem;}
-#CommonFooter_M .FooterInfo .Information small {font-size:0.65rem;}
-
-
 .footer_family { display:block; margin:0.9375rem auto; border:1px solid #afafaf; width:50%;}
 .footer_family select { border:0; width:100%; background:transparent url(../images/ver1/common/family_select_arrow.png) no-repeat right 0.9375rem center; 
 					    background-size:0.71875rem auto; font-size:0.9375rem; line-height:2.1875rem; padding:0 0.9375rem; color:#616161; }
@@ -236,8 +174,6 @@ input[type=button]{cursor:pointer;}
 .btn_pageon  { color:#df2e38 !important;font-size:16px; }
 .btn_pageoff { color:#000000 !important;font-size:16px; }
 
-
-.e35thMoBanner { display:none; }
 
 
 /*■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■ stamp ■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■■*/
@@ -260,7 +196,7 @@ span.stampicon.y2022   {width:30px; height:13px; background-size:30px 13px; back
 
 #mymenu{
 	text-align: right;
-	padding: 30px 30px 0px 30px;
+	padding: 10px 0px 0px 30px;
 	font-size: 17px;
 	margin-bottom: 20px;
 }	

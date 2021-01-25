@@ -135,69 +135,7 @@ function fnLoginBalloon(){
 }
 
 
-$(document).ready(function(){
 
-	var ScrollTop = 0;
-
-	if ($("#CommonHeader_M").css("display")=="none"){
-		var CommonHeaderHeight = $("#CommonHeader").height();
-		$("#CommonHeaderArea").height(CommonHeaderHeight);
-	} else {
-		var m_CommonHeaderHeight = $("#CommonHeader_M").height();
-		$("#CommonHeaderArea_M").height(m_CommonHeaderHeight);
-		$("#CommonHeader_M").css("position","absolute");
-	}
-
-
-	$(window).on("scroll", function (){
-		ScrollTop = $(window).scrollTop();
-
-		if ($("#CommonHeader_M").css("display")=="none"){ //모바일이 아닐 때만 스크롤 인식
-			if (ScrollTop > CommonHeaderHeight) { // 원래는 CommonHeaderHeight/3 인데 이걸로 하면 ie에서 떨림현상 발생
-				$("#CommonHeader").css("position","fixed");
-				$("#CommonHeader .OtherBrand").css("display","none");
-				$("#CommonHeader .MainLogo").css("display","none");
-				$("#CommonHeader .MainLogoScroll").css("display","block");
-				$("#MyInfoSummary").css("padding-top","23px");
-				$("#CommonHeader").css("opacity","0.9");
-				$("#CommonHeader").css("padding-bottom","30px");
-			//	$("#LoginBalloon").css("visibility","hidden");
-
-				$(".MyInfoSummaryArea").css("top","97px");
-				$(".MyInfoSummaryArea").css("z-index","99998");
-			//	if (nowPageURL.toLowerCase() === "http://")
-			//	{	$(".swiper-container.pc.popmart").css("top","862px"); 		}
-			} else {
-				$("#CommonHeader").css("position","absolute");
-				$("#CommonHeader .OtherBrand").css("display","block");
-				$("#CommonHeader .MainLogo").css("display","block");
-				$("#CommonHeader .MainLogoScroll").css("display","none");
-				$("#CommonHeader").css("opacity","1");
-				$("#CommonHeader").css("padding-bottom","0px");
-			//	$("#LoginBalloon").css("visibility","visible");
-
-				$(".MyInfoSummaryArea").css("top",(223-ScrollTop)+"px");
-				$(".MyInfoSummaryArea").css("z-index","998");
-			//	if (nowPageURL.toLowerCase() === "http://")
-			//	{	$(".swiper-container.pc.popmart").css("top","988px");		}
-			}
-			CommonHeaderHeight = $("#CommonHeader").height();
-			$("#CommonHeaderArea").height(CommonHeaderHeight);
-		} else {
-			ScrollTop = $(window).scrollTop();
-			if (ScrollTop > m_CommonHeaderHeight) { 
-				$("#CommonHeader_M").css("position","fixed");
-				$("#CommonHeader_M").css("top","0");
-				$("#CommonHeader_M").css("opacity","0.9");
-				$("#CommonHeader_M").css("z-index","998");
-			} else {
-				$("#CommonHeader_M").css("position","absolute");
-				$("#CommonHeader_M").css("opacity","1");
-			}
-			m_CommonHeaderHeight = $("#CommonHeader_M").height();
-			$("#CommonHeaderArea_M").height(m_CommonHeaderHeight);
-		}
-	});
 
 	fnMyInfoSummary = function(x){
 		if (x==1) {
@@ -210,7 +148,7 @@ $(document).ready(function(){
 	}
 
 
-});
+
 
 function fnOnlyNumber(t)
 {
