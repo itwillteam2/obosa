@@ -365,7 +365,7 @@ $(window).load(function(){
 					<div class='table'>
 					<c:forEach var="Rep" items="${ReppagingList}" varStatus="status">
 						<span class='tr ClickPs'> 
-							<span class='td'>${Rep.rnum}</span> 
+							<span class='td'></span> 
 							<span class='td type2'>
 								<span class='type01'>${Rep.title}</span>
 							</span> 
