@@ -4,8 +4,13 @@ public class GradeService{
 
 	GradeDAO dao = new GradeDAO();
 	
-	public void addGrade(String id, int pnum, String category, int repNum, int grade) {
-		dao.addGrade(id,pnum,category,repNum,grade);
+	public void addGrade(String id, int pnum, String category, int rNum, int grade) {
+		int result=dao.getGrade(pnum,category,id,rNum);
+		if (result>=0) {
+			dao.modGrade(id,pnum,category,rNum,grade);
+		}else {
+			dao.addGrade(id,pnum,category,rNum,grade);	
+		}
 	}
 	
 	public int getGradeAvg(int pnum, String category) {

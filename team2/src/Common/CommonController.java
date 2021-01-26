@@ -90,6 +90,9 @@ public class CommonController extends HttpServlet{
 			}else if(navCategory.equals("fancy")){	
 				count = searchService.fancyCount(search);	
 				list = searchService.searchFancy(search, ord);
+			}else if(navCategory.equals("food")){
+				count = searchService.foodCount(search);	
+				list = searchService.searchFood(search, ord);
 			}
 			
 			request.setAttribute("ord", ord);
@@ -129,6 +132,9 @@ public class CommonController extends HttpServlet{
 				}else if(navCategory.equals("fancy")){	
 					count = searchService.fancyCount(kwd);
 					list = searchService.viewSearchFancy(pageNO, listSize, kwd, ord);
+				}else if(navCategory.equals("food")){
+					count = searchService.foodCount(kwd);
+					list = searchService.viewSearchFood(pageNO, listSize, kwd, ord);
 				}
 			Paging paging = new Paging();
 			paging.makePage(count, pageNO, pageSize,listSize);
@@ -166,6 +172,9 @@ public class CommonController extends HttpServlet{
 				}else if(navCategory.equals("fancy")){	
 					count = searchService.shopFancyCount(name);		
 					list = searchService.shopFancy(pageNO, listSize, name, ord);
+				}else if(navCategory.equals("food")){
+					count = searchService.shopFoodCount(name);		
+					list = searchService.shopFood(pageNO, listSize, name, ord);
 				}
 				
 			Paging paging = new Paging();
@@ -205,6 +214,9 @@ public class CommonController extends HttpServlet{
 				}else if(navCategory.equals("fancy")){	
 					count = searchService.shopFancyCount(name);		
 					list = searchService.shopFancy(pageNO, listSize, name, ord);
+				}else if(navCategory.equals("food")){
+					count = searchService.shopFoodCount(name);		
+					list = searchService.shopFood(pageNO, listSize, name, ord);
 				}
 				
 			Paging paging = new Paging();
@@ -220,44 +232,6 @@ public class CommonController extends HttpServlet{
 			nextPage="/Home/Seller/seller.jsp";
 		}else if(action.equals("/write.do")){
 			nextPage="/Home/Seller/upContent.jsp";
-		}else if(action.equals("/purchase.do")){
-			
-			String fd = request.getParameter("fd");
-			request.setAttribute("fd", fd);
-			
-			int num = Integer.parseInt(request.getParameter("num"));
-			request.setAttribute("num", num);
-			
-			MemberService mservice = new MemberService();
-			MemberVO membervo = new MemberVO();
-			
-			HttpSession session = request.getSession();
-			String id = (String)session.getAttribute("id");
-			
-			membervo = mservice.searchUser(id);
-			request.setAttribute("user", membervo);
-			
-			Living.ItemsService lservice = new Living.ItemsService();
-			Living.ItemsVO livingvo = new Living.ItemsVO();
-			
-			ItemsService cservice = new ItemsService();
-			ItemsVO craftsvo = new ItemsVO();
-			
-			Fancy.ItemsService fservice = new Fancy.ItemsService();
-			Fancy.ItemsVO fancyvo = new Fancy.ItemsVO();
-			
-			if(fd.equals("living")){
-				livingvo = lservice.getContent(num);
-				request.setAttribute("item", livingvo);
-			}else if(fd.equals("crafts")){
-				craftsvo = cservice.getContent(num);
-				request.setAttribute("item", craftsvo);
-			}else if(fd.equals("fancy")){
-				fancyvo = fservice.getContent(num);
-				request.setAttribute("item", fancyvo);
-			}
-
-			nextPage="/Home/Common/purchase.jsp";
 		}else if(action.equals("/payment.do")){
 			String fd = request.getParameter("fd");
 			request.setAttribute("fd", fd);
@@ -286,6 +260,9 @@ public class CommonController extends HttpServlet{
 			Fancy.ItemsService fservice = new Fancy.ItemsService();
 			Fancy.ItemsVO fancyvo = new Fancy.ItemsVO();
 			
+			Food.ItemsService foodservice = new Food.ItemsService();
+			Food.ItemsVO foodvo = new Food.ItemsVO();
+			
 			if(fd.equals("living")){
 				livingvo = lservice.getContent(num);
 				request.setAttribute("item", livingvo);
@@ -295,6 +272,9 @@ public class CommonController extends HttpServlet{
 			}else if(fd.equals("fancy")){
 				fancyvo = fservice.getContent(num);
 				request.setAttribute("item", fancyvo);
+			}else if(fd.equals("food")){
+				foodvo = foodservice.getContent(num);
+				request.setAttribute("item", foodvo);
 			}
 			
 			nextPage="/Home/Common/payment.jsp";
@@ -332,6 +312,11 @@ public class CommonController extends HttpServlet{
 				Fancy.ItemsVO fvo = fservice.getContent(num);
 				sellerName = fvo.getSellerName();
 				shipping_fee = fvo.getShipping_fee();
+			}else if(fd.equals("food")){
+				Food.ItemsService foodservice = new Food.ItemsService();
+				Food.ItemsVO foodvo = foodservice.getContent(num);
+				sellerName = foodvo.getSellerName();
+				shipping_fee = foodvo.getShipping_fee();
 			}
 			
 			HttpSession session = request.getSession();

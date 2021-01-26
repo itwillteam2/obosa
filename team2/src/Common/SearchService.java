@@ -60,6 +60,17 @@ public class SearchService {
 		searchFancy = searchDAO.searchFancy(search, ord);
 		return searchFancy;
 	}
+	
+	public int foodCount(String search) {
+		int foodCount = searchDAO.foodCount(search);
+		return foodCount;
+	}
+	
+	public List<SearchVO> searchFood(String search, String ord) {
+		List<SearchVO> searchFood = new ArrayList<SearchVO>();
+		searchFood = searchDAO.searchFood(search, ord);
+		return searchFood;
+	}
 
 	public int shopCount(String kwd) {
 		int searchCount = searchDAO.shopCount(kwd);
@@ -104,6 +115,17 @@ public class SearchService {
 		searchFancy = searchDAO.shopFancy(pageNO, listSize, search, ord);
 		return searchFancy;
 	}
+	
+	public int shopFoodCount(String search) {
+		int fancyCount = searchDAO.shopFoodCount(search);
+		return fancyCount;
+	}
+	
+	public List<SearchVO> shopFood(int pageNO, int listSize, String search, String ord) {
+		List<SearchVO> searchFood = new ArrayList<SearchVO>();
+		searchFood = searchDAO.shopFood(pageNO, listSize, search, ord);
+		return searchFood;
+	}
 
 	public List<SearchVO> viewSearchList(int allPageNO, int listSize, String kwd, String ord) {
 		List<SearchVO> viewSearchList = new ArrayList<SearchVO>();
@@ -127,5 +149,11 @@ public class SearchService {
 		List<SearchVO> searchFancy = new ArrayList<SearchVO>();
 		searchFancy = searchDAO.viewSearchFancy(fancyPageNO, listSize, search, ord);
 		return searchFancy;
+	}
+	
+	public List<SearchVO> viewSearchFood(int fancyPageNO, int listSize, String search, String ord) {
+		List<SearchVO> searchFood = new ArrayList<SearchVO>();
+		searchFood = searchDAO.viewSearchFood(fancyPageNO, listSize, search, ord);
+		return searchFood;
 	}
 }

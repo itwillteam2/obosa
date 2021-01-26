@@ -146,9 +146,9 @@ function total(){
    
    // 상품 주문
    $(document).on("click", ".btnOrder", function() {
-         var category = $(this).parent().find("input[name=category]").val();     
-         var pnum= $(this).parent().find("input[name=pnum]").val();
-         var qty= $(this).parent().find("input[type=tel]").val();
+         var category = $(this).parent().parent().find("input[name=category]").val();     
+         var pnum= $(this).parent().parent().find("input[name=pnum]").val();
+         var qty= $(this).parent().parent().parent().find("input[type=tel]").val();
          location.href="${contextPath}/common/payment.do?fd="+category+"&num="+pnum+"&qty="+qty;
    });
    

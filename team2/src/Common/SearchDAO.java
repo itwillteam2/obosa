@@ -53,21 +53,24 @@ public class SearchDAO {
 			if(ord.equals("신상품순") || ord.equals("") || ord == null){
 				String query = "select * from (select * from living where productname like ? "
 						+ "union select * from fancy where productname like ? "
-						+ "union select * from crafts where productname like ?) a "
+						+ "union select * from crafts where productname like ? "
+						+ "union select * from food where productname like ?) a "
 						+ "order by regdate desc";
 				
 				pstmt = con.prepareStatement(query);
 			}else if(ord.equals("낮은가격순")){
 				String query = "select * from (select * from living where productname like ? "
 						+ "union select * from fancy where productname like ? "
-						+ "union select * from crafts where productname like ?) a "
+						+ "union select * from crafts where productname like ? "
+						+ "union select * from food where productname like ?) a "
 						+ "order by productprice";
 				
 				pstmt = con.prepareStatement(query);
 			}else if(ord.equals("높은가격순")){
 				String query = "select * from (select * from living where productname like ? "
 						+ "union select * from fancy where productname like ? "
-						+ "union select * from crafts where productname like ?) a "
+						+ "union select * from crafts where productname like ? "
+						+ "union select * from food where productname like ?) a "
 						+ "order by productprice desc";
 				
 				pstmt = con.prepareStatement(query);
@@ -76,6 +79,7 @@ public class SearchDAO {
 			pstmt.setString(1,"%"+search+"%");
 			pstmt.setString(2,"%"+search+"%");
 			pstmt.setString(3,"%"+search+"%");
+			pstmt.setString(4,"%"+search+"%");
 			
 			rs = pstmt.executeQuery();
 			
@@ -107,11 +111,13 @@ public class SearchDAO {
 			con = getConnection();
 			String query = "select count(*) from (select * from living where productname like ? "
 					+ "union select * from fancy where productname like ? "
-					+ "union select * from crafts where productname like ?) a";
+					+ "union select * from crafts where productname like ? "
+					+ "union select * from food where productname like ?) a";
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, "%"+search+"%");
 			pstmt.setString(2,"%"+search+"%");
 			pstmt.setString(3,"%"+search+"%");
+			pstmt.setString(4,"%"+search+"%");
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()){
@@ -353,17 +359,79 @@ public class SearchDAO {
 		return searchFancy;
 	}//searchFancy메소드 끝
 	
+	public int foodCount(String search) {
+		int foodCount = 0;
+		try{
+			con = getConnection();
+			String query = "SELECT count(*) FROM food where productname like ?";
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, "%"+search+"%");
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				foodCount = rs.getInt(1);
+			}
+		}catch(Exception e){
+			System.out.println("foodCount메소드 내부에서 오류 : " + e);
+		}finally{
+			release();
+		}
+		return foodCount;
+	}//foodCount메소드 끝
+	
+	public List<SearchVO> searchFood(String search, String ord) {
+		List<SearchVO> searchFood = new ArrayList<SearchVO>();
+		try {
+			
+			con = getConnection();
+			
+			if(ord.equals("신상품순") || ord.equals("") || ord == null){
+				String query = "SELECT * FROM food where productname like ? order by regdate desc";
+				pstmt = con.prepareStatement(query);
+			}else if(ord.equals("낮은가격순")){
+				String query = "SELECT * FROM food where productname like ? order by productprice";
+				pstmt = con.prepareStatement(query);
+			}else if(ord.equals("높은가격순")){
+				String query = "SELECT * FROM food where productname like ? order by productprice desc";
+				pstmt = con.prepareStatement(query);
+			}
+			
+			pstmt.setString(1,"%"+search+"%");
+			
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				SearchVO vo = new SearchVO();
+				vo.setProductImageName1(rs.getString("productImageName1"));
+				vo.setProductName(rs.getString("productName"));
+				vo.setProductPrice(rs.getInt("productPrice"));
+				vo.setSellerName(rs.getString("sellerName"));
+				vo.setNum(rs.getInt("num"));
+				vo.setCategory(rs.getString("category"));
+				searchFood.add(vo);
+			}
+		
+		} catch (Exception e) {
+			System.out.println("searchFood 메소드 내부에서 오류 : " + e);
+		}finally {
+			release();
+		}
+	
+		return searchFood;
+	}//searchFood메소드 끝
+	
 	public int shopCount(String search) {
 		int searchCount = 0;
 		try{
 			con = getConnection();
 			String query = "select count(*) from (select * from living where sellername=? "
 					+ "union select * from fancy where sellername=? "
-					+ "union select * from crafts where sellername=?) a";
+					+ "union select * from crafts where sellername=? "
+					+ "union select * from food where sellername=?) a";
 			pstmt = con.prepareStatement(query);
 			pstmt.setString(1, search);
 			pstmt.setString(2, search);
 			pstmt.setString(3, search);
+			pstmt.setString(4, search);
 			rs = pstmt.executeQuery();
 			
 			if(rs.next()){
@@ -387,21 +455,24 @@ public class SearchDAO {
 			if(ord.equals("신상품순") || ord.equals("") || ord == null){
 				String query = "select * from (select * from living where sellername=? "
 						+ "union select * from fancy where sellername=? "
-						+ "union select * from crafts where sellername=?) a "
+						+ "union select * from crafts where sellername=? "
+						+ "union select * from food where sellername=?) a "
 						+ " order by regdate desc"
 						+ " LIMIT "+pageNO+","+listSize;
 				pstmt = con.prepareStatement(query);
 			}else if(ord.equals("낮은가격순")){
 				String query = "select * from (select * from living where sellername=? "
 						+ "union select * from fancy where sellername=? "
-						+ "union select * from crafts where sellername=?) a "
+						+ "union select * from crafts where sellername=? "
+						+ "union select * from food where sellername=?) a "
 						+ " order by productprice"
 						+ " LIMIT "+pageNO+","+listSize;
 				pstmt = con.prepareStatement(query);
 			}else if(ord.equals("높은가격순")){
 				String query = "select * from (select * from living where sellername=? "
 						+ "union select * from fancy where sellername=? "
-						+ "union select * from crafts where sellername=?) a "
+						+ "union select * from crafts where sellername=? "
+						+ "union select * from food where sellername=?) a "
 						+ " order by productprice desc"
 						+ " LIMIT "+pageNO+","+listSize;
 				pstmt = con.prepareStatement(query);
@@ -410,6 +481,7 @@ public class SearchDAO {
 			pstmt.setString(1,search);
 			pstmt.setString(2,search);
 			pstmt.setString(3,search);
+			pstmt.setString(4,search);
 			
 			rs = pstmt.executeQuery();
 			while(rs.next()){
@@ -626,6 +698,70 @@ public class SearchDAO {
 		return searchFancy;
 	}//shopFancy메소드 끝
 	
+	public int shopFoodCount(String search) {
+		int foodCount = 0;
+		try{
+			con = getConnection();
+			String query = "SELECT count(*) FROM food where sellername=?";
+			pstmt = con.prepareStatement(query);
+			pstmt.setString(1, search);
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				foodCount = rs.getInt(1);
+			}
+		}catch(Exception e){
+			System.out.println("shopFoodCount메소드 내부에서 오류 : " + e);
+		}finally{
+			release();
+		}
+		return foodCount;
+	}//shopFoodCount메소드 끝
+	
+	public List<SearchVO> shopFood(int pageNO, int listSize, String search, String ord) {
+		List<SearchVO> searchFood = new ArrayList<SearchVO>();
+		pageNO= (pageNO-1)*listSize;
+		try {
+			
+			con = getConnection();
+			
+			if(ord.equals("신상품순") || ord.equals("") || ord == null){
+				String query = "SELECT * FROM food where sellername=? order by regdate desc"
+						+ " LIMIT "+pageNO+","+listSize;
+				pstmt = con.prepareStatement(query);
+			}else if(ord.equals("낮은가격순")){
+				String query = "SELECT * FROM food where sellername=? order by productprice"
+						+ " LIMIT "+pageNO+","+listSize;
+				pstmt = con.prepareStatement(query);
+			}else if(ord.equals("높은가격순")){
+				String query = "SELECT * FROM food where sellername=? order by productprice desc"
+						+ " LIMIT "+pageNO+","+listSize;
+				pstmt = con.prepareStatement(query);
+			}
+			
+			pstmt.setString(1,search);
+			
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				SearchVO vo = new SearchVO();
+				vo.setProductImageName1(rs.getString("productImageName1"));
+				vo.setProductName(rs.getString("productName"));
+				vo.setProductPrice(rs.getInt("productPrice"));
+				vo.setSellerName(rs.getString("sellerName"));
+				vo.setCategory(rs.getString("category"));
+				vo.setNum(rs.getInt("num"));
+				searchFood.add(vo);
+			}
+		
+		} catch (Exception e) {
+			System.out.println("shopFood 메소드 내부에서 오류 : " + e);
+		}finally {
+			release();
+		}
+	
+		return searchFood;
+	}//shopFood메소드 끝
+	
 	public List<SearchVO> viewSearchArticles(int allPageNO, int listSize, String search, String ord) {
 		List<SearchVO> searchList = new ArrayList<SearchVO>();
 		allPageNO= (allPageNO-1)*listSize;
@@ -636,7 +772,8 @@ public class SearchDAO {
 			if(ord.equals("신상품순") || ord.equals("") || ord == null){
 				String query = "select * from (select * from living where productname like ? "
 						+ "union select * from fancy where productname like ? "
-						+ "union select * from crafts where productname like ?) a "
+						+ "union select * from crafts where productname like ? "
+						+ "union select * from food where productname like ?) a "
 						+ "order by regdate desc"
 						+ " LIMIT "+allPageNO+","+listSize;
 				
@@ -644,7 +781,8 @@ public class SearchDAO {
 			}else if(ord.equals("낮은가격순")){
 				String query = "select * from (select * from living where productname like ? "
 						+ "union select * from fancy where productname like ? "
-						+ "union select * from crafts where productname like ?) a "
+						+ "union select * from crafts where productname like ? "
+						+ "union select * from food where productname like ?) a "
 						+ "order by productprice"
 						+ " LIMIT "+allPageNO+","+listSize;
 				
@@ -652,7 +790,8 @@ public class SearchDAO {
 			}else if(ord.equals("높은가격순")){
 				String query = "select * from (select * from living where productname like ? "
 						+ "union select * from fancy where productname like ? "
-						+ "union select * from crafts where productname like ?) a "
+						+ "union select * from crafts where productname like ? "
+						+ "union select * from food where productname like ?) a "
 						+ "order by productprice desc"
 						+ " LIMIT "+allPageNO+","+listSize;
 				
@@ -662,6 +801,7 @@ public class SearchDAO {
 			pstmt.setString(1,"%"+search+"%");
 			pstmt.setString(2,"%"+search+"%");
 			pstmt.setString(3,"%"+search+"%");
+			pstmt.setString(4,"%"+search+"%");
 			
 			rs = pstmt.executeQuery();
 			
@@ -818,6 +958,50 @@ public class SearchDAO {
 		}
 	
 		return searchFancy;
+	}//viewSearchFancy메소드 끝
+	
+	public List<SearchVO> viewSearchFood(int fancyPageNO, int listSize, String search, String ord) {
+		List<SearchVO> searchFood = new ArrayList<SearchVO>();
+		fancyPageNO= (fancyPageNO-1)*listSize;
+		try {
+			
+			con = getConnection();
+			
+			if(ord.equals("신상품순") || ord.equals("") || ord == null){
+				String query = "SELECT * FROM food where productname like ? order by regdate desc"
+						+ " LIMIT "+fancyPageNO+","+listSize;
+				pstmt = con.prepareStatement(query);
+			}else if(ord.equals("낮은가격순")){
+				String query = "SELECT * FROM food where productname like ? order by productprice"
+						+ " LIMIT "+fancyPageNO+","+listSize;
+				pstmt = con.prepareStatement(query);
+			}else if(ord.equals("높은가격순")){
+				String query = "SELECT * FROM food where productname like ? order by productprice desc"
+						+ " LIMIT "+fancyPageNO+","+listSize;
+				pstmt = con.prepareStatement(query);
+			}
+			
+			pstmt.setString(1,"%"+search+"%");
+			
+			rs = pstmt.executeQuery();
+			while(rs.next()){
+				SearchVO vo = new SearchVO();
+				vo.setProductImageName1(rs.getString("productImageName1"));
+				vo.setProductName(rs.getString("productName"));
+				vo.setProductPrice(rs.getInt("productPrice"));
+				vo.setSellerName(rs.getString("sellerName"));
+				vo.setNum(rs.getInt("num"));
+				vo.setCategory(rs.getString("category"));
+				searchFood.add(vo);
+			}
+		
+		} catch (Exception e) {
+			System.out.println("viewSearchFood 메소드 내부에서 오류 : " + e);
+		}finally {
+			release();
+		}
+	
+		return searchFood;
 	}//viewSearchFancy메소드 끝
 
 }
