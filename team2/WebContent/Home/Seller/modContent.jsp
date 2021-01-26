@@ -28,6 +28,10 @@
 			$('#productCategoryNo').val("living").prop("selected",true);
 		}else if(category=="_crafts"){
 			$('#productCategoryNo').val("crafts").prop("selected",true);
+		}else if(category == "_fancy"){
+			$('#productCategoryNo').val("fancy").prop("selected",true);
+		}else if(category == "_food"){
+			$('#productCategoryNo').val("food").prop("selected",true);
 		}else{
 			alert("잘못된 카테고리 입니다.")
 		}
