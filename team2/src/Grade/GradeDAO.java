@@ -38,32 +38,6 @@ public class GradeDAO {
 		}
 	}//release메소드 끝
 	
-	public boolean checkRep(String id, int pnum, String category){
-	      boolean result = false;
-	      try{
-	         con = getConnection();
-
-	         String query = "select (case count(repNum) when 1 then 'true' else 'false' end) as result "
-	         		+ "from grade where id=? and pnum =? and category=?";
-	               
-	         pstmt = con.prepareStatement(query);
-	         pstmt.setString(1, id);
-	         pstmt.setInt(2,pnum);
-	         pstmt.setString(3, category);
-	         rs = pstmt.executeQuery();
-	         rs.next();
-	         
-	         result = Boolean.parseBoolean(rs.getString("result"));
-	        
-	      }catch(Exception e){
-	    	  System.out.println("checkRep메소드 내부에서 오류 발생 : " + e);
-	      }finally {
-	         release();
-	      }
-	      return result;
-	   }//end
-	
-	
 	public int getGradeAvg(int pnum, String category) {
 		int result=0;
 		try{
@@ -88,21 +62,24 @@ public class GradeDAO {
 		return result;
 	}//end
 
-	public int getGrade(int pnum, String category, String id) {
+	public int getGrade(int pnum, String category, String id, int rNum) {
 		int result=0;
 		try{
 			con = getConnection();
 			String query=null;
 			
 			query = "select grade from grade "
-					+"where pnum=? and category=? and id=?";
+					+"where pnum=? and category=? and id=? and repNum=?";
 			
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, pnum);
 			pstmt.setString(2, category);
 			pstmt.setString(3, id);
+			pstmt.setInt(4, rNum);
+			
 			rs = pstmt.executeQuery();
-	        if(rs.next()) {
+	    
+			if(rs.next()) {
 	        	result = rs.getInt("grade");
 	        }
 		}catch(Exception e){
@@ -114,9 +91,8 @@ public class GradeDAO {
 	}//end
 	
 	
-	public int addGrade(String id, int pnum, String category, int repNum, int grade) {
+	public int addGrade(String id, int pnum, String category, int rNum, int grade) {
 		int result=0;
-		if(!checkRep(id,pnum,category)){
 			try{
 				con = getConnection();
 				String query=null;
@@ -128,7 +104,7 @@ public class GradeDAO {
 				pstmt.setString(1, id);
 				pstmt.setInt(2, pnum);
 				pstmt.setString(3, category);
-				pstmt.setInt(4, repNum);
+				pstmt.setInt(4, rNum);
 				pstmt.setInt(5, grade);
 				
 				pstmt.executeUpdate();
@@ -138,7 +114,6 @@ public class GradeDAO {
 				release();
 			}
 		  return result;
-		}
-	  return result;
+		
 	}//addCustomer메소드 끝
 }
