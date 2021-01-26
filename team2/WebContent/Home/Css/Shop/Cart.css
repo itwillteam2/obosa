@@ -1,5 +1,9 @@
 @charset "UTF-8";
 
+strong{
+	font-size: 1.2em;
+	color: black;
+}
 
 form.cart{display:inline-block;color:black;width:100%;height:100%;margin-left:70px; margin-top:30px; margin-bottom:30px;}
 input[name=totalPrice]{background-color:white;margin:15px 10px 15px 0;color:black;width: 200px;height:30px;text-align:right;font-size:20px;padding:1px 1px}
@@ -34,9 +38,11 @@ input[type=button]#delCart{float:right;border-radius:5px;background-color:#80808
 .pdtInfo .pdtOrder .productPrice {display:block;padding: 5px 5px;margin: 0 0 0 10px;font-size:16px; color:#808080; }
 .pdtInfo .pdtOrder .shipping_fee {display:block;padding: 5px 5px;margin: 0 0 0 10px;font-size:16px; color:#808080; }
 .pdtInfo .pdtOrder .btnStockQty  {display:inline;padding: 3px 3px;margin: 0 3px 0 15px;font-size:13px; color:#000000; }
-.pdtInfo .pdtOrder .Plus, .Minus {display:inline-block;width:20px; height:20px;padding: 3px 0;margin: 3px 0;font-size:12px; color:#000000;border-radius:50px;background-color:#ffffff; }
+.Plus {display:inline-block;width:20px; height:20px;padding: 3px 0;margin: 3px 0;font-size:12px; color:#000000;border-radius:50px;background-color:#ffffff; }
+.Minus {display:inline-block;width:20px; height:20px;padding: 3px 0;margin: 3px 0;font-size:12px; color:#000000;border-radius:50px;background-color:#ffffff; }
 
 .pdtInfo input[type=tel]{background-color:white;margin: 0;padding: 0;border: 0;width: 45px;height: 13px;font-weight: bold;font-size: 15px;color: #000000;text-align: center;}
+.cartQuantity {background-color:white !important;margin: 0 !important;padding: 0 !important;border: 0 !important;width: 45px !important;height: 13px !important;font-weight: bold;font-size: 15px !important;color: #000000 !important;text-align: center;}
 
 .pdtInfo .productName:before{color:black;font-size:16px;padding: 3px 40px;margin:0 195px 0 0;display:inline-block; content:" "; content:"상품명"; }
 .pdtInfo .sellerName:before{color:#808080;font-size:14px;padding: 3px 40px;margin:0 200px 0 0;display:inline-block; content:" "; content:"판매자"; }
@@ -50,3 +56,5 @@ input[type=button]#delCart{float:right;border-radius:5px;background-color:#80808
 .pdtInfo .pdtOrder {display:inline;}
 .pdtInfo .pdtOrder .totalPrice{display:block;background-color:white;}
 .pdtInfo .pdtOrder .totalPrice:before {display: inline-block; content: " ";content: "총 결제 금액";top: 50%; font-size: 20px;color: #000000;line-height: 12px;}
+
+#cartTable {float: right;}
