@@ -423,6 +423,50 @@ public class LivingController extends HttpServlet {
 				"</script>");	
 			}
 		
+		}else if (action.equals("/QnADelete.do")) {
+			int check = 0;
+			
+			int qnum = Integer.parseInt(request.getParameter("qnum"));
+			String pw = request.getParameter("pw");
+			String num = request.getParameter("num");
+			
+			check = service.QnADelete(qnum, pw);
+			
+			PrintWriter pw2 = response.getWriter();
+			
+			if (check == 1) {
+				pw2.print("<script> alert('상품후기가 삭제되었습니다.');" + " location.href='" + request.getContextPath()
+						+ "/"+CATEGORY+"/viewContent.do?num="+num+"'; " + "</script>");
+			} else {
+				pw2.print("<script> alert('비밀번호가 틀립니다.');" + "history.back();" + "</script>");
+			}
+		}else if (action.equals("/QnAModify.do")) {
+			
+			int check = 0;
+			
+			int qnum = Integer.parseInt(request.getParameter("qnum"));
+			String title = request.getParameter("title");
+			String content = request.getParameter("content");
+			String pw = request.getParameter("pw");
+			
+			qnaVO.setQnum(qnum);
+			qnaVO.setTitle(title);
+			qnaVO.setContent(content);
+			qnaVO.setPw(pw);
+
+			check = service.QnAModify(qnaVO);
+			 
+			PrintWriter pw2 = response.getWriter();
+			
+			if(check == 1){
+				pw2.print("<script>" + "  alert('QnA를 수정 했습니다.');" + "window.opener.location.reload(); " +
+						"window.close();"+ "</script>");
+			}else{
+				pw2.print("<script> alert('비밀번호가 틀립니다.');" +
+				"history.back();" + 
+				"</script>");	
+			}
+		
 		}
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
