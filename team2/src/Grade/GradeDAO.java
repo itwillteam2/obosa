@@ -88,6 +88,7 @@ public class GradeDAO {
 		}finally{
 			release();
 		}
+		System.out.println("grd:"+result);
 		return result;
 	}//end
 	
@@ -126,7 +127,7 @@ public class GradeDAO {
 				String query=null;
 				
 				query = "update grade_"+category+" set grade=? "
-						+ "where id=? and pnum=? and rNum=?";
+						+ "where id=? and pnum=? and repNum=?";
 				
 				pstmt = con.prepareStatement(query);
 				pstmt.setInt(1, grade);

@@ -5,6 +5,7 @@
 <c:set var="contextPath" value="${pageContext.request.contextPath}"/>
 <%
 	request.setCharacterEncoding("utf-8");
+	String num = request.getParameter("num");
 	String rnum = request.getParameter("rnum");
 	String category = request.getParameter("category");
 %>
@@ -49,6 +50,7 @@
             <div class="content">
                 <div class="signup-cont cont">
                     <form action="${contextPath}/<%=category%>/RepModify.do" method="post">
+                    	<input type="hidden" name="num" id="num" class="inpt" value="<%=num%>">
                     	<input type="hidden" name="rnum" id="rnum" class="inpt" value="<%=rnum%>">
                     	<input type="hidden" name="category" id="category" class="inpt" value="<%=category %>">
                         <input type="text" name="writer" id="writer" class="inpt" value="${sessionScope.id}" readonly>
