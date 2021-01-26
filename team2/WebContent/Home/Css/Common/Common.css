@@ -101,7 +101,7 @@ input[type=text]#countCart {position:relative;top:-30px;left:-20px;text-align:ce
 #CommonHeader .CategoryLarge ul.nav {float:left;height:40px; margin:35px 0px 10px 10px;display:table;}
 #CommonHeader .CategoryLarge li.CategoryMiddle {display:inline-block;margin:15px 35px 0 0;}
 #CommonHeader .CategoryLarge li.CategoryMiddle a {width:30px;height:30px;font-size:20px; color:#000000;}
-#CommonHeader .CategoryLarge li.CategoryMiddle.selected:before {position:absolute;bottom:40px;margin-left:20px;content:url("../../../Images/Ver1/Common/top_nav.png");}
+#CommonHeader .CategoryLarge li.CategoryMiddle.selected:before {position:absolute;bottom:40px;margin-left:3px;content:url("../../../Images/Ver1/Common/top_nav.png");}
 
 #CommonHeader .CategoryLarge li.tab {display:table-cell;width:50px;margin:15px 35px 0 0}
 
