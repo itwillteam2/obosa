@@ -343,7 +343,7 @@ public class CommonController extends HttpServlet{
 			
 			OrderService oservice = new OrderService();
 			OrderVO ovo = new OrderVO();
-			
+			 
 			ovo.setId(id);
 			ovo.setName(paymentMap.get("oname"));
 			ovo.setCpnum(paymentMap.get("cpnum"));
