@@ -138,5 +138,17 @@ public class ItemsService {
 		int totalCountqna = dao.getCountQna(num);
 		return totalCountqna;
 	}
+
+	public int RepDelete(int rnum, String pw) {
+		int check = dao.RepDelete(rnum, pw);
+		
+		return check;
+	}
+
+	public int RepModify(ItemsRepVO repVO) {
+		int check = dao.RepModify(repVO);
+		
+		return check;
+	}
 	
 }

@@ -369,7 +369,51 @@ public class FancyController extends HttpServlet{
 				pw.print(num);
 				pw.flush();
 				return;
+		}else if (action.equals("/RepDelete.do")) {
+			int check = 0;
+			
+			int rnum = Integer.parseInt(request.getParameter("rnum"));
+			String pw = request.getParameter("pw");
+			String num = request.getParameter("num");
+			
+			check = service.RepDelete(rnum, pw);
+			
+			PrintWriter pw2 = response.getWriter();
+			
+			if (check == 1) {
+				pw2.print("<script> alert('상품후기가 삭제되었습니다.');" + " location.href='" + request.getContextPath()
+						+ "/"+CATEGORY+"/viewContent.do?num="+num+"'; " + "</script>");
+			} else {
+				pw2.print("<script> alert('비밀번호가 틀립니다.');" + "history.back();" + "</script>");
 			}
+		}else if (action.equals("/RepModify.do")) {
+			
+			int check = 0;
+			
+			int rnum = Integer.parseInt(request.getParameter("rnum"));
+			String title = request.getParameter("title");
+			String content = request.getParameter("content");
+			String pw = request.getParameter("pw");
+			
+			repVO.setRnum(rnum);
+			repVO.setTitle(title);
+			repVO.setContent(content);
+			repVO.setPw(pw);
+
+			check = service.RepModify(repVO);
+			 
+			PrintWriter pw2 = response.getWriter();
+			
+			if(check == 1){
+				pw2.print("<script>" + "  alert('상품후기를 수정 했습니다.');" + "window.opener.location.reload(); " +
+						"window.close();"+ "</script>");
+			}else{
+				pw2.print("<script> alert('비밀번호가 틀립니다.');" +
+				"history.back();" + 
+				"</script>");	
+			}
+		
+		}
 
 		RequestDispatcher dispatcher = request.getRequestDispatcher(nextPage);
 		dispatcher.forward(request, response);

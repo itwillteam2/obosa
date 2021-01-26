@@ -17,7 +17,7 @@
 	<div id="CommonHeaderArea"></div>
 	<div id="CommonHeader_M"></div>
 	<h1>주문 상세</h1>
-	<h3><a href="${contextPath}/${vo.category}/viewContent.do?fd=${list.category}&num=${vo.num}">해당 상품 바로가기</a></h3>
+	<h3><a href="${contextPath}/${vo.category}/viewContent.do?fd=${vo.category}&num=${vo.itemnum}">해당 상품 바로가기</a></h3>
 	<table id="detailTable">
 		<tr>
 			<td class="th">주문번호</td>
@@ -68,8 +68,9 @@
 			</td>
 		</tr>
 	</table>
-	<input type="button" value="목록으로" class="listBtn" 
-	onclick="location.href='${contextPath}/member/orderList.do'">
+	<input type="button" style="background-color:#c80203;" value="상품후기작성" class="listBtn" onclick="window.open('${contextPath}/Home/Member/review.jsp?category=${vo.category}&num=${vo.itemnum }', '상품후기등록', 'width=500, height=500, location=no, status=no, scrollbars=no, resizable=no, left=500, top=100' );">
+	<input type="button" value="목록으로" class="listBtn" onclick="location.href='${contextPath}/member/orderList.do'">
+	
 	<jsp:include page="../inc/footer.jsp" />
 </body>
 </html>

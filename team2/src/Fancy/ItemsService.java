@@ -3,10 +3,6 @@ package Fancy;
 import java.util.ArrayList;
 import java.util.List;
 
-import CsCenter.InqRepVO;
-import CsCenter.NoticeVO;
-
-
 public class ItemsService {
 	
 	//________  fancy Service _________//
@@ -137,6 +133,17 @@ public class ItemsService {
 	public int CountQna(int num) {
 		int totalCountqna = dao.getCountQna(num);
 		return totalCountqna;
+	}
+	public int RepDelete(int rnum, String pw) {
+		int check = dao.RepDelete(rnum, pw);
+		
+		return check;
+	}
+
+	public int RepModify(ItemsRepVO repVO) {
+		int check = dao.RepModify(repVO);
+		
+		return check;
 	}
 	
 }

@@ -202,7 +202,7 @@
 .item_content.on .table .tr .td.border { border-top:1px solid #cacaca; }
 
 .item_content.postscript.on .table .ps { display:none; }
-.item_content.postscript.on .table .ps.on { display:none; position:relative; padding:0 0 50px 150px; background-color:#dad8ff;}
+.item_content.postscript.on .table .ps.on { display:none; position:relative; padding:0 0 35px 150px; background-color:#dad8ff;}
 .item_content.postscript.on .table .ps.on .ps_sub1 { padding:37px 0; }
 .item_content.postscript.on .table .ps.on .ps_sub1 span { display:block; float:left; padding:0 35px; font-size:17px; color:#000000; position:relative; }
 .item_content.postscript.on .table .ps.on .ps_sub1 .type2 { padding:0 35px 0 50px; }

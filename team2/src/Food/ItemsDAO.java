@@ -7,8 +7,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import CsCenter.InqRepVO;
-import CsCenter.InquiryVO;
 import DBUtil.DBConnection;
 
 public class ItemsDAO {
@@ -689,6 +687,84 @@ public class ItemsDAO {
 		}
 
 		return count;
+	}
+	
+	public int RepDelete(int rnum, String pw) {
+		int check = 0;
+		
+		String sql = "";
+		
+		try {
+			conn = DBConnection.getConnection();
+			
+			sql = "select pw from "+CATEGORY+"_rep where rnum = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, rnum);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				if(pw.equals(rs.getString("pw"))){
+
+					check = 1;
+
+					sql = "delete from "+CATEGORY+"_rep where rnum=?";
+					
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setInt(1, rnum);
+
+					
+					pstmt.executeUpdate();
+				}else{
+					check = 0;
+				}
+			}		
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally{
+			freeResource();
+		}
+		
+		return check;
+	}
+
+	public int RepModify(ItemsRepVO repVO) {
+		int check = 0;
+		String sql = "";
+		
+		try {
+			conn = DBConnection.getConnection();
+			
+			sql = "select pw from "+CATEGORY+"_rep where rnum = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, repVO.getRnum());
+
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				if(repVO.getPw().equals(rs.getString("pw"))){
+					check = 1;
+					sql = "update "+CATEGORY+"_rep set title=?, content=? where rnum=?";
+					pstmt = conn.prepareStatement(sql);
+					
+					pstmt.setString(1, repVO.getTitle());
+					pstmt.setString(2, repVO.getContent());
+					pstmt.setInt(3, repVO.getRnum());
+
+					pstmt.executeUpdate();
+				}else{
+					check = 0;
+				}
+			}			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally{
+			freeResource();
+		}
+		return check;
 	}
 
 }
