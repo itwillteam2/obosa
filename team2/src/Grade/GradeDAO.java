@@ -62,8 +62,9 @@ public class GradeDAO {
 		return result;
 	}//end
 
+	
 	public int getGrade(int pnum, String category, String id, int rNum) {
-		int result=0;
+		int result=-1;
 		try{
 			con = getConnection();
 			String query=null;
@@ -115,5 +116,31 @@ public class GradeDAO {
 			}
 		  return result;
 		
-	}//addCustomer메소드 끝
+	}//addGrade메소드 끝
+
+
+	public int modGrade(String id, int pnum, String category, int rNum, int grade) {
+		int result=0;
+			try{
+				con = getConnection();
+				String query=null;
+				
+				query = "update grade_"+category+" set grade=? "
+						+ "where id=? and pnum=? and rNum=?";
+				
+				pstmt = con.prepareStatement(query);
+				pstmt.setInt(1, grade);
+				pstmt.setString(2, id);
+				pstmt.setInt(3, pnum);
+				pstmt.setInt(4, rNum);
+				
+				pstmt.executeUpdate();
+			}catch(Exception e){
+				System.out.println("modGrade메소드 내부에서 오류 발생 : " + e);
+			}finally{
+				release();
+			}
+		  return result;
+		
+	}//modGrade메소드 끝
 }
