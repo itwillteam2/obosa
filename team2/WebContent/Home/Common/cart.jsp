@@ -25,13 +25,45 @@ $(document).ready(function(){
 		alert("회원 전용 페이지입니다. \n로그인 페이지로 이동합니다.");
 		location.href='${contextPath}/member/login.do';
 	}	
+
+	total();
+	
 });
 
 $(document).on("click","#checkAll", function(){
-	        $(".bottom").prop("checked",this.checked);
-	        var price=totalSum();
-		    $(".selTotalPrice").text(price);
+   $(".bottom").prop("checked",this.checked);
+	checkSum();
 });
+
+$(document).on("change", "input[name=selCart]", function() {
+	$("#checkAll").prop("checked",false);
+	checkSum();
+});
+
+function checkSum(){
+    var price=selTotalSum();
+    $(".selTotalPrice").text(price);
+}
+
+function selTotalSum(){
+	var obj = $(".cart").find("input[name=selCart]:checked");
+	var totalSum=0;
+	obj.each(function(){
+ 		result = $(this).siblings().find("input[name=totalPrice]").val();
+ 		totalSum +=  parseInt(result, 10);
+	});
+	total();
+ return totalSum;
+}
+
+function total(){
+	var totalSum=0;
+	$("input[name='totalPrice']").each(function(){
+ 		result = $(this).val();
+ 		totalSum +=  parseInt(result, 10);
+	});
+	 $(".cartTotal").text(totalSum);
+}
 
 //주문 수량
 	$(document).on("click", ".btnStockQty", function() {
@@ -49,6 +81,8 @@ $(document).on("click","#checkAll", function(){
 		if ($(this).hasClass("Plus")) {	obj.val(parseInt(obj.val(), 10) + 1);}
 		var total=price * parseInt(obj.val(), 10) + parseInt(shipping_fee, 10);
 		$(this).parents(".pdtOrder").find("input[name='totalPrice']").val(total);
+	
+		checkSum();
 	}); 
 	 
 //서브밋 링크 
@@ -62,7 +96,7 @@ $(document).on("click","#checkAll", function(){
 				data: form,
 				contentType: 'application/x-www-form-urlencoded; charset=UTF-8', 
 		        dataType: 'html',
-				success:function(){ history.go(0);	},
+				success:function(rs){if(rs=="updated"){ alert("수정 되었습니다.");}	},
 				error:function(){ alert("페이지 새로 고침");	}
 				});
 	});
@@ -118,22 +152,6 @@ $(document).on("click","#checkAll", function(){
 			location.href="${contextPath}/common/payment.do?fd="+category+"&num="+pnum+"&qty="+qty;
 	});
 	
-	$(document).on("change", "input[name=selCart]", function() {
-		$("#checkAll").prop("checked",false);
-		var price=totalSum();
-	    $(".selTotalPrice").text(price);
-	});
-	
-	function totalSum(){
-		var obj = $(".cart").find("input[name=selCart]:checked");
-		var totalSum=0;
-
-		obj.each(function(){
-	 		result = $(this).siblings().find("input[name=totalPrice]").val();
-	 		totalSum +=  parseInt(result, 10);
-		});
-	 return totalSum;
-	}
 
 </script>
 </head>
@@ -147,6 +165,7 @@ $(document).on("click","#checkAll", function(){
 <input type="button" id="selOrder" value="선택 주문"/>
 <input type="checkbox" id="checkAll" />
 <span class="selTotalPrice"></span>
+<span class="cartTotal"></span>
 <c:forEach var="cart" items="${cart}">
 <div class="line"></div>
 <div class="pdt">

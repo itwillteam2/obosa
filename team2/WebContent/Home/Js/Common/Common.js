@@ -176,7 +176,7 @@ function fnOnlyNumber(t)
 				$("#CommonHeader .MainLogo").css("display","none");
 				$("#CommonHeader .MainLogoScroll").css("display","block");
 				$("#CommonHeader .CategoryLarge ul.nav").css("margin","0 0 0 0");
-				$("#CommonHeader .CategoryLarge ul.rtMenu").css("margin","0 0 0 0").css("background-color","white").css("opacity","0.8")
+				$("#CommonHeader .CategoryLarge ul.rtMenu").css("margin","0 0 0 0");
 				$("header").css("opacity","0.8");
 			} else {
 				if(st+$(window).height() < $(document).height()) { 
