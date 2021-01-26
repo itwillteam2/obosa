@@ -88,7 +88,6 @@ public class GradeDAO {
 		}finally{
 			release();
 		}
-		System.out.println("grd:"+result);
 		return result;
 	}//end
 	

@@ -410,12 +410,8 @@ public class LivingController extends HttpServlet {
 			int grade = Integer.parseInt(request.getParameter("grade"));
 			GradeService gservice = new GradeService();
 			gservice.addGrade(writer,num,CATEGORY,rnum,grade);
-	
-		System.out.println("grd:"+writer+num+grade );	
 		// ----평점 수정 끝
-			
-			
-			
+				
 			PrintWriter pw2 = response.getWriter();
 			
 			if(check == 1){

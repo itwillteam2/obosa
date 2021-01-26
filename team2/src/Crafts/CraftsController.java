@@ -399,7 +399,14 @@ public class CraftsController extends HttpServlet{
 			repVO.setPw(pw);
 
 			check = service.RepModify(repVO);
-			 
+		// ----평점 수정
+			String writer = request.getParameter("writer");
+			int num = Integer.parseInt(request.getParameter("num"));
+			int grade = Integer.parseInt(request.getParameter("grade"));
+			GradeService gservice = new GradeService();
+			gservice.addGrade(writer,num,CATEGORY,rnum,grade);
+		// ----평점 수정 끝
+			
 			PrintWriter pw2 = response.getWriter();
 			
 			if(check == 1){
