@@ -44,8 +44,8 @@ public class GradeDAO {
 			con = getConnection();
 			String query=null;
 			
-			query = "select avg(grade) from grade "
-					+"where pnum=? and category=?";
+			query = "select avg(grade) from grade_"+category
+					+" where pnum=? and category=?";
 			
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, pnum);
@@ -68,8 +68,8 @@ public class GradeDAO {
 			con = getConnection();
 			String query=null;
 			
-			query = "select grade from grade "
-					+"where pnum=? and category=? and id=? and repNum=?";
+			query = "select grade from grade_"+category
+					+" where pnum=? and category=? and id=? and repNum=?";
 			
 			pstmt = con.prepareStatement(query);
 			pstmt.setInt(1, pnum);
@@ -97,7 +97,7 @@ public class GradeDAO {
 				con = getConnection();
 				String query=null;
 				
-				query = "insert into grade(id,pnum,category,repNum,grade) "
+				query = "insert into grade_"+category+"(id,pnum,category,repNum,grade) "
 						+ "values(?,?,?,?,?)";
 				
 				pstmt = con.prepareStatement(query);
