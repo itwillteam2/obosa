@@ -275,7 +275,7 @@ $(window).load(function(){
 						</span> 
 						<div class="pdtOrderLayer">
 						<c:choose>
-			 				<c:when test="${sessionScope.memtype != 'seller'}">
+			 				<c:when test="${sessionScope.name != content.sellerName}">
 						
 							<span class="btnOrderList"></span> 
 							<span class="pdtRight pdtQty pdtQtyLayer"> 

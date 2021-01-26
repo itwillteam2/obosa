@@ -141,6 +141,8 @@
 						<option disabled>선택하세요</option>
 						<option value="living" disabled>리빙</option>
 						<option value="crafts" disabled>공예</option>
+						<option value="fancy">문구</option>
+						<option value="food">식품</option>
 					</select>
 				</td>
 			</tr>
