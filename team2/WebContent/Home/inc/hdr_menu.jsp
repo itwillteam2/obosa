@@ -78,6 +78,7 @@ $(document).ready(function(){
 			<li class="CategoryMiddle"><a class="fancy" href="${contextPath}/fancy/list.do" >문구</a></li>
 			<li class="CategoryMiddle"><a class="fancy" href="${contextPath}/food/list.do" >식품</a></li>
 			<li class="CategoryMiddle"><a href="${contextPath}/CsCenter/NoticeList.do" >공지사항</a></li>
+			<li class="CategoryMiddle"><a href="${contextPath}/member/orderList.do" >주문내역</a></li>
 		</ul>
 		<ul class="rtMenu">
 		
