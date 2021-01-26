@@ -93,10 +93,7 @@ function PageMove(page){
 	<jsp:include page="/Home/inc/hdr_menu.jsp" />
 
 	<div class="wrap">
-		<section class="sec_header">
-			<div class="inner"></div>
-		</section>
-
+	
 		<section class="sec_cont">
 			<form name="frm" action="${contextPath}/${category}/list.do">
 				<input type="hidden" name="page" value="1" />
