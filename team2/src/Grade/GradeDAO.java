@@ -38,31 +38,6 @@ public class GradeDAO {
 		}
 	}//release메소드 끝
 	
-	public boolean checkRep(String id, int pnum, String category){
-	      boolean result = false;
-	      try{
-	         con = getConnection();
-
-	         String query = "select (case count(repNum) when 1 then 'true' else 'false' end) as result "
-	         		+ "from grade where id=? and pnum =? and category=?";
-	               
-	         pstmt = con.prepareStatement(query);
-	         pstmt.setString(1, id);
-	         pstmt.setInt(2,pnum);
-	         pstmt.setString(3, category);
-	         rs = pstmt.executeQuery();
-	         rs.next();
-	         
-	         result = Boolean.parseBoolean(rs.getString("result"));
-	        
-	      }catch(Exception e){
-	    	  System.out.println("checkRep메소드 내부에서 오류 발생 : " + e);
-	      }finally {
-	         release();
-	      }
-	      return result;
-	   }//end
-	
 	
 	public int getGradeAvg(int pnum, String category) {
 		int result=0;
@@ -116,7 +91,6 @@ public class GradeDAO {
 	
 	public int addGrade(String id, int pnum, String category, int repNum, int grade) {
 		int result=0;
-		if(!checkRep(id,pnum,category)){
 			try{
 				con = getConnection();
 				String query=null;
@@ -138,7 +112,6 @@ public class GradeDAO {
 				release();
 			}
 		  return result;
-		}
-	  return result;
+	
 	}//addCustomer메소드 끝
 }
