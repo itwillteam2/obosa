@@ -90,6 +90,9 @@ public class CommonController extends HttpServlet{
 			}else if(navCategory.equals("fancy")){	
 				count = searchService.fancyCount(search);	
 				list = searchService.searchFancy(search, ord);
+			}else if(navCategory.equals("food")){
+				count = searchService.foodCount(search);	
+				list = searchService.searchFood(search, ord);
 			}
 			
 			request.setAttribute("ord", ord);
@@ -129,6 +132,9 @@ public class CommonController extends HttpServlet{
 				}else if(navCategory.equals("fancy")){	
 					count = searchService.fancyCount(kwd);
 					list = searchService.viewSearchFancy(pageNO, listSize, kwd, ord);
+				}else if(navCategory.equals("food")){
+					count = searchService.foodCount(kwd);
+					list = searchService.viewSearchFood(pageNO, listSize, kwd, ord);
 				}
 			Paging paging = new Paging();
 			paging.makePage(count, pageNO, pageSize,listSize);
@@ -166,6 +172,9 @@ public class CommonController extends HttpServlet{
 				}else if(navCategory.equals("fancy")){	
 					count = searchService.shopFancyCount(name);		
 					list = searchService.shopFancy(pageNO, listSize, name, ord);
+				}else if(navCategory.equals("food")){
+					count = searchService.shopFoodCount(name);		
+					list = searchService.shopFood(pageNO, listSize, name, ord);
 				}
 				
 			Paging paging = new Paging();
@@ -205,6 +214,9 @@ public class CommonController extends HttpServlet{
 				}else if(navCategory.equals("fancy")){	
 					count = searchService.shopFancyCount(name);		
 					list = searchService.shopFancy(pageNO, listSize, name, ord);
+				}else if(navCategory.equals("food")){
+					count = searchService.shopFoodCount(name);		
+					list = searchService.shopFood(pageNO, listSize, name, ord);
 				}
 				
 			Paging paging = new Paging();

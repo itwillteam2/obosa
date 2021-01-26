@@ -62,7 +62,8 @@
 					<li class="ct" data-name="all"><a href="javascript:void(0);" >전체</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</li> 
 					<li class="ct" data-name="living"><a href="javascript:void(0);" >리빙</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</li> 
 					<li class="ct" data-name="crafts"><a href="javascript:void(0);" >공예</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</li> 
-					<li class="ct" data-name="fancy"><a href="javascript:void(0);" >문구</a></li> 
+					<li class="ct" data-name="fancy"><a href="javascript:void(0);" >문구</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;</li>
+					<li class="ct" data-name="food"><a href="javascript:void(0);">식품</a></li>
 				</ul>
 			</div>
 			<section class="sec_cont">
