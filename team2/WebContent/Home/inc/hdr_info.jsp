@@ -18,6 +18,7 @@
 						<li id="upper" class="logInfo">환영합니다 ${name}님!
 								<ul id = "sub">
 									<li><a href="${contextPath}/member/userInfoCK.do">회원정보변경</a></li>
+									<li><a href="${contextPath}/member/orderList.do">주문내역</a></li>
 								</ul>
 							</li>
 					</c:otherwise>
