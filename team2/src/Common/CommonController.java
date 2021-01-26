@@ -391,6 +391,10 @@ public class CommonController extends HttpServlet{
 		String point = request.getParameter("point");
 		String gainPoint = request.getParameter("gainPoint");
 		String usingPoint = request.getParameter("usingPoint");
+		if(usingPoint == "" || usingPoint == null){
+			usingPoint = "0";
+		}
+		System.out.println(usingPoint);
 		
 		paymentMap.put("oname", oname);
 		paymentMap.put("email", email);

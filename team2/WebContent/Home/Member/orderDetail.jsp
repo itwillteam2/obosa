@@ -17,6 +17,7 @@
 	<div id="CommonHeaderArea"></div>
 	<div id="CommonHeader_M"></div>
 	<h1>주문 상세</h1>
+	<h3><a href="${contextPath}/${vo.category}/viewContent.do?fd=${list.category}&num=${vo.num}">해당 상품 바로가기</a></h3>
 	<table id="detailTable">
 		<tr>
 			<td class="th">주문번호</td>
@@ -27,7 +28,8 @@
 		<tr>
 			<td class="th">상품명</td>
 			<td>
-				${vo.productName}<br><br>
+				<a href="${contextPath}/${vo.category}/viewContent.do?fd=${list.category}&num=${vo.num}">${vo.productName}</a>
+				<br><br>
 				수량 : ${vo.quantity}개
 			</td>
 			<td class="th">가격</td>
