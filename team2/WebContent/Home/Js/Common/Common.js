@@ -159,3 +159,36 @@ function fnOnlyNumber(t)
 	}
 }
 
+	
+	$(window).scroll(function() { 
+		var didScroll; 
+		var ScrollTop = 0;
+		var delta=5;
+		var CommonHeaderHeight = $("header").outerHeight();
+		
+		var st = $(this).scrollTop();
+		if(Math.abs(ScrollTop - st)<=delta)
+			return;
+		
+		if(st>ScrollTop && st >CommonHeaderHeight){
+				$("header").css("height","138px");
+				$("#mymenu").css("margin","0 0 0 0");
+				$("#CommonHeader .MainLogo").css("display","none");
+				$("#CommonHeader .MainLogoScroll").css("display","block");
+				$("#CommonHeader .CategoryLarge ul.nav").css("margin","0 0 0 0");
+				$("#CommonHeader .CategoryLarge ul.rtMenu").css("margin","0 0 0 0").css("background-color","white").css("opacity","0.8")
+				$("header").css("opacity","0.8");
+			} else {
+				if(st+$(window).height() < $(document).height()) { 
+				$("header").css("height","250px")
+				$("#mymenu").css("margin","0 0 20px 0");
+				$("#CommonHeader .CategoryLarge ul.nav").css("margin","35px 0px 10px 10px");
+				$("#CommonHeader .CategoryLarge ul.rtMenu").css("margin","30px 60px 10px 10px");
+				$("#CommonHeader .MainLogo").css("display","block");
+				$("#CommonHeader .MainLogoScroll").css("display","none");
+				$("header").css("opacity","1");
+				}
+			}
+		 lastScrollTop = st;
+  		});
+	
