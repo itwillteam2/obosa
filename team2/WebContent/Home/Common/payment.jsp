@@ -236,7 +236,11 @@ function p(){
 				<div class="email">
 					결제 확인 이메일  &nbsp;&nbsp;&nbsp;<input type="email"  id="email" name="email" placeholder="sangsang@abc.com">
 				</div>
-				<input type="button" onclick="submitPay();" class="payBtn" value="결제하기">
+				<div class="clear"></div>
+				
+				<input type="button" onclick="submitPay();" class="payBtn" value="결제하기" style="margin-left:200px;">
+				<input type="submit" class="payBtn" value="구매확정" style="cursor:pointer; background-color: #c80203; margin-left:30px">
+				
 			</div>
 		</div>
 	</form>
