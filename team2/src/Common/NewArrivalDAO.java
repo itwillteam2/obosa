@@ -36,7 +36,9 @@ public class NewArrivalDAO {
 					+ " select num, productImageName1, productName, productPrice, regdate, category"
 					+ " from crafts union all"
 					+ " select num, productImageName1, productName, productPrice, regdate, category"
-					+ " from fancy order by regdate desc limit 0,10";
+					+ " from fancy union all"
+					+ " select num, productImageName1, productName, productPrice, regdate, category"
+					+ " from food order by regdate desc limit 0,10";
 			
 			pstmt = conn.prepareStatement(query);	
 			rs = pstmt.executeQuery();

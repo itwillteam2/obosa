@@ -237,8 +237,7 @@ function p(){
 				</div>
 				<div class="clear"></div>
 				
-				<input type="button" onclick="submitPay();" class="payBtn" value="결제하기" style="margin-left:200px;">
-				<input type="button" onclick="location.href='${contextPath}/common/purchase.do?fd=${fd}&num=${num}'" class="payBtn" value="구매확정" style="cursor:pointer; background-color: #c80203; margin-left:30px">
+				<input type="button" onclick="submitPay();" class="payBtn" value="결제하기">
 				</div>
 			</div>
 		</div>
