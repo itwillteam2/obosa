@@ -7,7 +7,7 @@
 <%
 	request.setCharacterEncoding("UTF-8");
 	String category = request.getParameter("category");
-	String rnum = request.getParameter("rnum");
+	String qnum = request.getParameter("qnum");
 	int num = Integer.parseInt(request.getParameter("num"));
 %>
 
@@ -40,9 +40,9 @@
 	<div id="CommonHeader_M"></div>
 
 	<div class="wrap" id="ori_wrap">
-		<div class="top_title">상품후기 삭제</div>
+		<div class="top_title">QnA 삭제</div>
 
-		<form name="Inquiryfrm" method="post" action="${contextPath}/<%=category%>/RepDelete.do">
+		<form name="Inquiryfrm" method="post" action="${contextPath}/<%=category%>/QnADelete.do">
 			<div class="outter_box">
 				<div style="margin : 0 auto; width : 50%;">
 					<div>
@@ -50,14 +50,14 @@
 						<ul>
 							<li>*비밀번호</li>
 							<li><input type="password" name="pw" id="pw"/></li>
-							<li><input type="hidden" name="rnum" id="rnum" value="<%=rnum%>"/></li>
+							<li><input type="hidden" name="qnum" id="qnum" value="<%=qnum%>"/></li>
 							<li><input type="hidden" name="num" id="num" value="<%=num%>"/></li>
 						</ul>
 					</div>
 				</div>
 			</div>
 			<div class="btn_area">
-				<input type="button" value="취소" onclick="location.href='${contextPath}/CsCenter/InquiryList.do'">
+				<input type="button" value="취소" onclick="history.back();">
 				<input type="submit" value="삭제" id="submit">
 			</div>
 		</form>

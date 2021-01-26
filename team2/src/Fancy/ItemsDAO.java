@@ -541,7 +541,7 @@ public class ItemsDAO {
 		try {
 			conn = DBConnection.getConnection();
 				String query = "select q.qnum, q.title, q.content, q.writer, q.date, ifnull(r.qrnum,0) qrnum, ifnull(r.content,0) rcontent, ifnull(r.complete, 0) complete "
-								+ "FROM "+CATEGORY+"_qna q left outer join "+CATEGORY+"_qna_rep r on q.qnum = r.qnum order by qnum desc"+" LIMIT "+pageNO+","+listSize;
+								+ "FROM "+CATEGORY+"_qna q left outer join "+CATEGORY+"_qna_rep r on q.qnum = r.qnum where num = " + num + " order by qnum desc"+" LIMIT "+pageNO+","+listSize;
 				pstmt = conn.prepareStatement(query);			
 			rs = pstmt.executeQuery();
 			while(rs.next()) {

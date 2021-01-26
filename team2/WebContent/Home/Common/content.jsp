@@ -381,10 +381,10 @@ $(window).load(function(){
 							<div class='ps_sub2'>${fn:replace(Rep.content, newLineChar, "<br/>")}</div>
 							<c:if test="${Rep.writer == sessionScope.id }"> 
 							<span class="buttonreply" style="float:right;" onclick="window.open('${contextPath}/Home/Common/RepModify.jsp?category=${content.category}&rnum=${Rep.rnum}&num=${Rep.num}', 
-							'Q&A답변수정', 'width=500, height=500, location=no, status=no, scrollbars=no, resizable=no, left=500, top=100' );">
-							Q&A 답변 수정</span>
+							'상품후기 수정', 'width=500, height=500, location=no, status=no, scrollbars=no, resizable=no, left=500, top=100' );">
+							상품후기 수정</span>
 							<span class="buttonreply" style="float:right;" onclick="location.href='${contextPath}/Home/Common/RepDelete.jsp?category=${content.category}&rnum=${Rep.rnum}&num=${Rep.num}'">
-							Q&A 답변 삭제</span>
+							상품후기 삭제</span>
 							</c:if>
 						</div>
 				</c:forEach>	
@@ -431,27 +431,35 @@ $(window).load(function(){
 						</span>
 						<div class='qna on'>
 							<span class='qna_q'>${fn:replace(Qna.content, newLineChar, "<br/>")}</span>
-							
-							<c:choose>
-								<c:when test="${Qna.complete == 1}"> 
-									<span class='qna_a'>${fn:replace(Qna.rcontent, newLineChar, "<br/>")}</span>
+							<c:if test="${Qna.writer == sessionScope.id }">
+								<span class="buttonreply" style="float:right;" onclick="window.open('${contextPath}/Home/Common/qnaReplyModify.jsp?category=${content.category}&qnum=${Qna.qnum}&num=${content.num}', 
+								'Q&A수정', 'width=500, height=500, location=no, status=no, scrollbars=no, resizable=no, left=500, top=100' );">
+								Q&A 수정</span>
+								<span class="buttonreply" style="float:right;" onclick="location.href='${contextPath}/Home/Common/QnaDelete.jsp?category=${content.category}&qnum=${Qna.qnum}&num=${content.num}'">
+								Q&A 삭제</span>
+							</c:if>
+							<c:if test="${content.sellerName == sessionScope.name }">
+								<c:choose>
+									<c:when test="${Qna.complete == 1}"> 
+										<span class='qna_a'>${fn:replace(Qna.rcontent, newLineChar, "<br/>")}</span>
+											<c:if test="${content.sellerName == sessionScope.name }"> 
+											<span class="buttonreply" style="float:right;" onclick="window.open('${contextPath}/Home/Common/qnaReplyModify.jsp?category=${content.category}&qrnum=${Qna.qrnum}&num=${content.num}', 
+											'Q&A답변수정', 'width=500, height=500, location=no, status=no, scrollbars=no, resizable=no, left=500, top=100' );">
+											Q&A 답변 수정</span>
+											<span class="buttonreply" style="float:right;" onclick="location.href='${contextPath}/Home/Common/qnaReplyDelete.jsp?category=${content.category}&qrnum=${Qna.qrnum}&num=${content.num}'">
+											Q&A 답변 삭제</span>
+											</c:if>
+									</c:when>
+									<c:otherwise>
+										<span class='qna_a'>&nbsp;</span>
 										<c:if test="${content.sellerName == sessionScope.name }"> 
-										<span class="buttonreply" style="float:right;" onclick="window.open('${contextPath}/Home/Common/qnaReplyModify.jsp?category=${content.category}&qrnum=${Qna.qrnum}&num=${content.num}', 
-										'Q&A답변수정', 'width=500, height=500, location=no, status=no, scrollbars=no, resizable=no, left=500, top=100' );">
-										Q&A 답변 수정</span>
-										<span class="buttonreply" style="float:right;" onclick="location.href='${contextPath}/Home/Common/qnaReplyDelete.jsp?category=${content.category}&qrnum=${Qna.qrnum}&num=${content.num}'">
-										Q&A 답변 삭제</span>
+										<span class="buttonreply" style="float:right;" onclick="window.open('${contextPath}/Home/Common/qnaReply.jsp?category=${content.category}&qnum=${Qna.qnum}', 
+										'Q&A답변등록', 'width=500, height=500, location=no, status=no, scrollbars=no, resizable=no, left=500, top=100' );">
+										Q&A 답변 작성</span>
 										</c:if>
-								</c:when>
-								<c:otherwise>
-									<span class='qna_a'>&nbsp;</span>
-									<c:if test="${content.sellerName == sessionScope.name }"> 
-									<span class="buttonreply" style="float:right;" onclick="window.open('${contextPath}/Home/Common/qnaReply.jsp?category=${content.category}&qnum=${Qna.qnum}', 
-									'Q&A답변등록', 'width=500, height=500, location=no, status=no, scrollbars=no, resizable=no, left=500, top=100' );">
-									Q&A 답변 작성</span>
-									</c:if>
-								</c:otherwise>
-							</c:choose> 			
+									</c:otherwise>
+								</c:choose> 
+							</c:if>			
 						</div>
 						</c:forEach>
 					</div>
