@@ -232,50 +232,6 @@ public class CommonController extends HttpServlet{
 			nextPage="/Home/Seller/seller.jsp";
 		}else if(action.equals("/write.do")){
 			nextPage="/Home/Seller/upContent.jsp";
-		}else if(action.equals("/purchase.do")){
-			
-			String fd = request.getParameter("fd");
-			request.setAttribute("fd", fd);
-			
-			int num = Integer.parseInt(request.getParameter("num"));
-			request.setAttribute("num", num);
-			
-			MemberService mservice = new MemberService();
-			MemberVO membervo = new MemberVO();
-			
-			HttpSession session = request.getSession();
-			String id = (String)session.getAttribute("id");
-			
-			membervo = mservice.searchUser(id);
-			request.setAttribute("user", membervo);
-			
-			Living.ItemsService lservice = new Living.ItemsService();
-			Living.ItemsVO livingvo = new Living.ItemsVO();
-			
-			ItemsService cservice = new ItemsService();
-			ItemsVO craftsvo = new ItemsVO();
-			
-			Fancy.ItemsService fservice = new Fancy.ItemsService();
-			Fancy.ItemsVO fancyvo = new Fancy.ItemsVO();
-			
-			Food.ItemsService foodservice = new Food.ItemsService();
-			Food.ItemsVO foodvo = new Food.ItemsVO();
-			
-			if(fd.equals("living")){
-				livingvo = lservice.getContent(num);
-				request.setAttribute("item", livingvo);
-			}else if(fd.equals("crafts")){
-				craftsvo = cservice.getContent(num);
-				request.setAttribute("item", craftsvo);
-			}else if(fd.equals("fancy")){
-				fancyvo = fservice.getContent(num);
-				request.setAttribute("item", fancyvo);
-			}else if(fd.equals("food")){
-				foodvo = foodservice.getContent(num);
-				request.setAttribute("item", foodvo);
-			}
-
-			nextPage="/Home/Common/purchase.jsp";
 		}else if(action.equals("/payment.do")){
 			String fd = request.getParameter("fd");
 			request.setAttribute("fd", fd);
