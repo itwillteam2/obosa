@@ -258,7 +258,10 @@ span.stampicon.y2022   {width:30px; height:13px; background-size:30px 13px; back
 	margin-right: 30px;
 }
 
-#personal{
+li.logInfo {float:right;margin:0 0;}
+li.logInfo.lt {margin-right:20px}
+li.logInfo.lt a:before {content:"|";margin:0 7px 0 10px }
+ul.personal{
 	float: right;
 }
 
