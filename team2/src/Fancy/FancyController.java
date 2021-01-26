@@ -204,13 +204,14 @@ public class FancyController extends HttpServlet{
 			List <ItemsRepVO> ReppagingList = service.ReppagingList(pageNO,listSize, num);
 // ----- 후기 평점
 			String writer=null;
-			int pnum,grd=0;
+			int pnum,grd,rNum=0;
 			GradeService gservice = new GradeService();
 			List <Integer> grdList = new ArrayList<Integer>();
 			for(int i=0;i<ReppagingList.size();i++) {
 				writer=ReppagingList.get(i).getWriter();
 				pnum=ReppagingList.get(i).getNum();
-				grd=gservice.getGrade(pnum, CATEGORY, writer);
+				rNum=ReppagingList.get(i).getRnum();
+				grd=gservice.getGrade(pnum, CATEGORY, writer,rNum);
 				grdList.add(grd);
 			}
 			request.setAttribute("grdCount", grdList);

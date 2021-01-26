@@ -13,8 +13,8 @@ public class GradeService{
 		return result;
 	}
 	
-	public int getGrade(int pnum, String category, String id){
-		int result=dao.getGrade(pnum,category,id);
+	public int getGrade(int pnum, String category, String id, int rNum){
+		int result=dao.getGrade(pnum,category,id,rNum);
 		return result;
 	}
 }
