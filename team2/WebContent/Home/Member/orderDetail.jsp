@@ -28,7 +28,7 @@
 		<tr>
 			<td class="th">상품명</td>
 			<td>
-				<a href="${contextPath}/${vo.category}/viewContent.do?fd=${list.category}&num=${vo.num}">${vo.productName}</a>
+				<a href="${contextPath}/${vo.category}/viewContent.do?fd=${vo.category}&num=${vo.itemnum}">${vo.productName}</a>
 				<br><br>
 				수량 : ${vo.quantity}개
 			</td>
