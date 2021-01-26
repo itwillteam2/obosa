@@ -3,6 +3,7 @@ package Crafts;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -19,6 +20,7 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.FileUtils;
 
+import Grade.GradeService;
 import Page.Paging;
 
 @WebServlet("/crafts/*")
@@ -94,7 +96,15 @@ public class CraftsController extends HttpServlet{
 			request.setAttribute("paging", paging);
 	
 			nextPage="/Home/Common/category.jsp";
-		
+	// ---- category 평균 평점		
+			}else if (action.equals("/countAvg.do")) {	
+				GradeService gservice = new GradeService();
+				int pnum = Integer.parseInt(request.getParameter("pnum"));
+				PrintWriter pw = response.getWriter();
+				pw.print(gservice.getGradeAvg(pnum,CATEGORY));		
+				pw.flush();
+				return;
+	// ---- category 평균 평점 끝  		
 		}else  if (action.equals("/addItem.do")) {
 			Map<String, String> addItemMap = upload(request, response);
 
@@ -190,8 +200,20 @@ public class CraftsController extends HttpServlet{
 			
 			ItemsVO content = (ItemsVO) service.ContentDetail(num);
 			request.setAttribute("content", content);
-			
 			List <ItemsRepVO> ReppagingList = service.ReppagingList(pageNO,listSize, num);
+	// ----- 후기 평점
+			String writer=null;
+			int pnum,grd=0;
+			GradeService gservice = new GradeService();
+			List <Integer> grdList = new ArrayList<Integer>();
+			for(int i=0;i<ReppagingList.size();i++) {
+				writer=ReppagingList.get(i).getWriter();
+				pnum=ReppagingList.get(i).getNum();
+				grd=gservice.getGrade(pnum, CATEGORY, writer);
+				grdList.add(grd);
+			}
+			request.setAttribute("grdCount", grdList);
+	// -----후기 평점	끝		
 			request.setAttribute("ReppagingList", ReppagingList);	
 			request.setAttribute("totalCount", totalCount);
 			request.setAttribute("paging", paging);
@@ -246,7 +268,11 @@ public class CraftsController extends HttpServlet{
 			repVO.setWriter(writer);
 			
 			rnum = service.addReply(repVO);
-
+		// ----평점 등록
+			int grade = Integer.parseInt(request.getParameter("grade"));
+			GradeService gservice = new GradeService();
+			gservice.addGrade(writer,num,CATEGORY,rnum,grade);
+		// ----평점 등록 끝
 			PrintWriter pw2 = response.getWriter();
 			pw2.print("<script>" + "  alert('상품후기를 등록 했습니다.');" + "window.opener.location.reload(); " +
 			"window.close();"+ "</script>");	

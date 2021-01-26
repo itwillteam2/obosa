@@ -191,7 +191,7 @@
 .item_content.on .table:nth-last-child(1) { border-bottom:0; }
 .item_content.on .table .tr { display:block; cursor:pointer; position:relative; }
 .item_content.on .table .tr .td { padding : 10px 0;width:150px;  display:block; float:left; font-size:18px; color:#000000; text-align:center; line-height:62px; }
-.item_content.on .table .tr .td.type2 { width:750px; text-align:left;}
+.item_content.on .table .tr .td.type2 { width:625px; text-align:left;}
 .item_content.on .table .tr .td.type3 { width:750px; text-align:left; padding:0 0 0 20px; background:url(/images/ver1/shop/reply_bullet.gif) no-repeat left center; }
 .item_content.on .table .tr .td.type2 span { position:relative; }
 .item_content.on .table .tr .td.type2:after { display:block; content:" "; clear:both; }

@@ -19,10 +19,9 @@
 <link rel="stylesheet" type="text/css" href="${contextPath}/Home/Css/Shop/ScrollBar.css"/>
 
 <style type="text/css">
-		.grd {display:block;height:50px;margin-top:12px}
-		.grd:before{float:left;width:32px;height:32px;margin:10px 45px 10px 15px;content:"Grade";}
-		.grade {float:left;width:32px;height:32px;margin:auto;background-image:url('../Images/Ver1/Beta/star_bk.png')}
-		.grade.on {background-image:url('../Images/Ver1/Beta/star_yw.png')}
+		.grd {width:125px;height:80px;;padding:22px 0;display:block; float:left; text-align:center; line-height:62px;}
+		.grade {margin-top:8px;float:left;width:23px;height:23px;background-image:url('../Images/Ver1/Beta/star_bk.png');background-size:22px 22px;background-repeat: no-repeat;}
+		.grade.on {background-image:url('../Images/Ver1/Beta/star_yw.png');background-size:22px 22px;background-repeat: no-repeat;}
 		
 		</style>
 
@@ -49,10 +48,24 @@ $(window).load(function(){
 					$(this).find("iframe").css("maxWidth", "100%");
 					$(this).find("iframe").css("width", "100%");
 				});
+// 별점				
+			
+				var grdArr="${grdCount}".substr(1,parseInt("${grdCount}".length, 10)-2).split(", ");
+				var grdObj=$('.table').find(".grd");
+				grdObj.each(function(idx){
+					if( parseInt($(this).attr('data-idx'),10)==idx){
+					var score = grdArr[idx];
+						$(this).children().each(function(){
+							if($(this).attr("data-grd")<=score){$(this).addClass("on");
+							}else{$(this).removeClass("on");}
+						});
+					}
+				});						
+// 별점 끝				
 				
 				
 				
-		
+// 별점		
 	});
 	
 	$(document).on("click",".tabBar>span", function(){
@@ -160,27 +173,7 @@ $(window).load(function(){
 			$(this).next("div").css("display", "none");
 		}
 		
-		var grdObj=$(this).next().find(".grd");
-		var _pnum = grdObj.attr('data-num');
-		var _id = grdObj.attr('data-id');
 		
-		$.ajax({
-			type:"post",
-			async:true,
-			url:'${contextPath}/living/countGrd.do',  
-			data:{pnum:_pnum,id:_id},
-			success:function(result,textStatus){
-					var score = parseInt(result,10);
-					grdObj.children().each(function(){
-						if($(this).attr("data-grd")<=score){
-								$(this).addClass("on");
-							}else{
-								$(this).removeClass("on");
-							}
-					});
-			},
-			error:function(){ alert("페이지 새로 고침");	}
-			});
 		
 	
 		
@@ -366,7 +359,7 @@ $(window).load(function(){
 
 			<section class="item_content postscript">
 				<c:if test="${sessionScope.name != content.sellerName }">
-					<input class='btnOverlay btnProductQnA' type='button' value='상품후기 작성'  onclick="window.open('${contextPath}/Home/Common/review.jsp?category=${content.category}&num=<%=num %>', '상품후기등록', 'width=500, height=500, location=no, status=no, scrollbars=no, resizable=no, left=500, top=100' );"  />
+					<input class='btnOverlay btnProductQnA' type='button' value='상품후기 작성'  onclick="window.open('${contextPath}/Home/Common/review.jsp?category=${content.category}&num=<%=num %>', '상품후기등록', 'width=500, height=600, location=no, status=no, scrollbars=no, resizable=no, left=500, top=100' );"  />
 				</c:if>
 				<div class='inner'>
 					<div class='table'>
@@ -376,24 +369,20 @@ $(window).load(function(){
 							<span class='td type2'>
 								<span class='type01'>${Rep.title}</span>
 							</span> 
-							<span class='td'><fmt:formatDate value="${Rep.date}" /></span>
-							<span class='td'>${Rep.writer }</span>
-						</span>
-						<div class='ps on'>
-						<span class="grd" data-num="${content.num}" data-id="${Rep.writer}">
+							<span class="grd" data-idx="${status.index}" data-num="${content.num}" data-id="${Rep.writer}">
 								<span class="grade" data-grd="1"></span>	
 								<span class="grade" data-grd="2"></span>	
 								<span class="grade" data-grd="3"></span>	
 								<span class="grade" data-grd="4"></span>	
 								<span class="grade" data-grd="5"></span>	
+							</span>
+							<span class='td'>${Rep.writer }</span>
+							<span class='td'><fmt:formatDate value="${Rep.date}" /></span>
+							
 						</span>
+						<div class='ps on'>
 							<div class='ps_sub2'>${fn:replace(Rep.content, newLineChar, "<br/>")}</div>
-						
-						
 						</div>
-		
-					    	
-		
 				</c:forEach>	
 					</div>
 					<div class="paging">

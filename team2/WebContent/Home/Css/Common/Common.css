@@ -89,7 +89,7 @@ header { position: fixed; top: 0; left: 0;transition: top 0.2s ease-in-out; bord
 input[type=text]#countCart {position:relative;top:-30px;left:-20px;text-align:center;color:white;width:25px;height:25px;font-size:5px;padding: 0;margin: 0; line-height: 1px;background-color: violet;border-radius: 50px;}
 
 
-#CommonHeader {min-width:1200px;width:100%;height:250px;display:block;text-align:center;}
+#CommonHeader {min-width:1200px;width:100%;display:block;text-align:center;}
 
 #CommonHeader a.MainLogo {display:block;width:260px; margin:auto auto;}
 #CommonHeader a.MainLogo img {width:260px;}

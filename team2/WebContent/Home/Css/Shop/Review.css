@@ -4,7 +4,7 @@
 *{margin: 0 auto; padding: 0; list-style: none; box-sizing: border-box;}
 a{text-decoration: none; color: inherit; display: block;}
 .clear{clear: both; position: inherit;}
-body {font-family: 'Lato', sans-serif;}
+body {font-family: 'Lato', sans-serif;padding: 0 0;}
 .login{width: 1200px; height: 800px; background-repeat: no-repeat; text-align: center; background-color: black; position: relative;}
 .login img{width: 100%; height: 100%;}
 
