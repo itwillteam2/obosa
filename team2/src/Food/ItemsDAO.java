@@ -766,5 +766,83 @@ public class ItemsDAO {
 		}
 		return check;
 	}
+	
+	public int QnADelete(int qnum, String pw) {
+		int check = 0;
+		
+		String sql = "";
+		
+		try {
+			conn = DBConnection.getConnection();
+			
+			sql = "select pw from "+CATEGORY+"_qna where qnum = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, qnum);
+			
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				if(pw.equals(rs.getString("pw"))){
+
+					check = 1;
+
+					sql = "delete from "+CATEGORY+"_qna where qnum=?";
+					
+					pstmt = conn.prepareStatement(sql);
+					pstmt.setInt(1, qnum);
+
+					
+					pstmt.executeUpdate();
+				}else{
+					check = 0;
+				}
+			}		
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally{
+			freeResource();
+		}
+		
+		return check;
+	}
+
+	public int QnAModify(ItemsQnaVO qnaVO) {
+		int check = 0;
+		String sql = "";
+		
+		try {
+			conn = DBConnection.getConnection();
+			
+			sql = "select pw from "+CATEGORY+"_qna where qnum = ?";
+			
+			pstmt = conn.prepareStatement(sql);
+
+			pstmt.setInt(1, qnaVO.getQnum());
+
+			rs = pstmt.executeQuery();
+			
+			if(rs.next()){
+				if(qnaVO.getPw().equals(rs.getString("pw"))){
+					check = 1;
+					sql = "update "+CATEGORY+"_qna set title=?, content=? where Qnum=?";
+					pstmt = conn.prepareStatement(sql);
+					
+					pstmt.setString(1, qnaVO.getTitle());
+					pstmt.setString(2, qnaVO.getContent());
+					pstmt.setInt(3, qnaVO.getQnum());
+
+					pstmt.executeUpdate();
+				}else{
+					check = 0;
+				}
+			}			
+		}catch(Exception e) {
+			e.printStackTrace();
+		}finally{
+			freeResource();
+		}
+		return check;
+	}
 
 }

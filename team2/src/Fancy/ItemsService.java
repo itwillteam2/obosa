@@ -146,4 +146,16 @@ public class ItemsService {
 		return check;
 	}
 	
+	public int QnADelete(int qnum, String pw) {
+		int check = dao.QnADelete(qnum, pw);
+		
+		return check;
+	}
+
+	public int QnAModify(ItemsQnaVO qnaVO) {
+		int check = dao.QnAModify(qnaVO);
+		
+		return check;
+	}
+	
 }
