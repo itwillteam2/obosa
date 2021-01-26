@@ -258,6 +258,9 @@ public class CommonController extends HttpServlet{
 			Fancy.ItemsService fservice = new Fancy.ItemsService();
 			Fancy.ItemsVO fancyvo = new Fancy.ItemsVO();
 			
+			Food.ItemsService foodservice = new Food.ItemsService();
+			Food.ItemsVO foodvo = new Food.ItemsVO();
+			
 			if(fd.equals("living")){
 				livingvo = lservice.getContent(num);
 				request.setAttribute("item", livingvo);
@@ -267,6 +270,9 @@ public class CommonController extends HttpServlet{
 			}else if(fd.equals("fancy")){
 				fancyvo = fservice.getContent(num);
 				request.setAttribute("item", fancyvo);
+			}else if(fd.equals("food")){
+				foodvo = foodservice.getContent(num);
+				request.setAttribute("item", foodvo);
 			}
 
 			nextPage="/Home/Common/purchase.jsp";
@@ -298,6 +304,9 @@ public class CommonController extends HttpServlet{
 			Fancy.ItemsService fservice = new Fancy.ItemsService();
 			Fancy.ItemsVO fancyvo = new Fancy.ItemsVO();
 			
+			Food.ItemsService foodservice = new Food.ItemsService();
+			Food.ItemsVO foodvo = new Food.ItemsVO();
+			
 			if(fd.equals("living")){
 				livingvo = lservice.getContent(num);
 				request.setAttribute("item", livingvo);
@@ -307,6 +316,9 @@ public class CommonController extends HttpServlet{
 			}else if(fd.equals("fancy")){
 				fancyvo = fservice.getContent(num);
 				request.setAttribute("item", fancyvo);
+			}else if(fd.equals("food")){
+				foodvo = foodservice.getContent(num);
+				request.setAttribute("item", foodvo);
 			}
 			
 			nextPage="/Home/Common/payment.jsp";
@@ -344,6 +356,11 @@ public class CommonController extends HttpServlet{
 				Fancy.ItemsVO fvo = fservice.getContent(num);
 				sellerName = fvo.getSellerName();
 				shipping_fee = fvo.getShipping_fee();
+			}else if(fd.equals("food")){
+				Food.ItemsService foodservice = new Food.ItemsService();
+				Food.ItemsVO foodvo = foodservice.getContent(num);
+				sellerName = foodvo.getSellerName();
+				shipping_fee = foodvo.getShipping_fee();
 			}
 			
 			HttpSession session = request.getSession();
