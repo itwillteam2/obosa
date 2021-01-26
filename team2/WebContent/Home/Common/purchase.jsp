@@ -171,26 +171,6 @@ function p(){
 	<form action="${contextPath}/common/pay.do" name="payForm" method="post">
 		<input type="hidden" name="recentURI" value="${recentURI}">
 		<div class="payment">
-			<h1>주문 / 결제</h1>
-			<hr>
-			<h3>주문자 정보</h3>
-			<div class="address">
-				<input type="text" name="oname" id="name" value="${name}" placeholder="이름"/>&nbsp;&nbsp;&nbsp;
-				<input type="text" id="cpnum1" class="cpnum"> - 
-				<input type="text" id="cpnum2" class="cpnum"> - 
-				<input type="text" id="cpnum3" class="cpnum"><br><br>
-				<input type="hidden" name="cpnum" id="cpnum">
-				
-				<input type="text" id="postcode" name="postcode" maxlength="5" value="${user.postcode}" placeholder="우편번호" readonly>
-	            <a class="button" href="javascript:fnGetAddressInfo();" id="addrBtn">우편번호 찾기</a><br>
-	            <input type="text" id="addr1" name="addr1" class="addr" value="${user.addr1}" placeholder="주소" readonly><br>
-	            <input type="text" id="addr2" name="addr2" class="addr" placeholder="상세주소" value="${user.addr2}">
-	            <input type="hidden" id="address" name="address">
-			</div>
-			<div class="clear"></div>
-			<br>
-			<hr>
-			<br>
 			<h3>주문상품</h3>
 			<div class="items">
 				<img src="${contextPath}/download.do?fd=${fd}&num=${num}&productImageName=${item.productImageName1}" />
@@ -200,46 +180,9 @@ function p(){
 				<div id="item">
 					${item.sellerName}<br>
 					${item.productName}<br>
-					수량 : ${qty}개
-					<input type="hidden" name="productName" value="${item.productName}">
-					<input type="hidden" name="qty" value="${qty}">
-				<div id="price">
-					<strong>${item.productPrice * qty}</strong>원<br>
-					배송비 : ${item.shipping_fee}원
-				</div>
 			</div>
 			<div class="clear"></div>
-			<br>
-			<hr>
-			<br>
-			<h3>결제수단</h3>
-			<div class="pay">
-				<div class="method">
-					<input type="radio" name="pay" value="카드" checked>&nbsp;카드&nbsp;&nbsp;&nbsp;&nbsp;
-					<input type="radio" name="pay" value="무통장입금">&nbsp;무통장입금&nbsp;&nbsp;&nbsp;&nbsp;
-					<input type="radio" name="pay" value="에스크로">&nbsp;에스크로(실시간 계좌이체)&nbsp;&nbsp;&nbsp;&nbsp;
-					<input type="radio" name="pay" value="휴대폰">&nbsp;휴대폰결제&nbsp;&nbsp;&nbsp;&nbsp;
-				</div>
-				<div class="point">
-					포인트 사용&nbsp;&nbsp;<input type="text" id="insertPoint" name="usingPoint" class="cpnum" onkeydown='return onlyNumber(event)' onkeyup='removeChar(event)'>
-					&nbsp;&nbsp;<label id="gainPoint">현재 보유 포인트</label> : <strong>${user.point}</strong>
-					<input type="button" value="전액사용" class="pointBtn" onclick="p()">
-				</div>
-				<div class="total">
-					<span id="totalPrice">총 <strong id="total">${item.productPrice * qty + item.shipping_fee}</strong>원</span><br>
-					<span>${item.point}포인트가 적립됩니다</span>
-					<input type="hidden" name="point" value="${item.point}">
-					<input type="hidden" name="gainPoint" value="${user.point}">
-					<input type="hidden" id="totalPrice" name="totalPrice" value="${item.productPrice * qty + item.shipping_fee}">
-				</div>
-				<div class="email">
-					결제 확인 이메일  &nbsp;&nbsp;&nbsp;<input type="email"  id="email" name="email" placeholder="sangsang@abc.com">
-				</div>
-				<div class="clear"></div>
-				
-				<input type="button" onclick="submitPay();" class="payBtn" value="결제하기" style="margin-left:200px;">
-				<input type="button" onclick="location.href='${contextPath}/common/purchase.do?fd=${fd}&num=${num}'" class="payBtn" value="구매확정" style="cursor:pointer; background-color: #c80203; margin-left:30px">
-				</div>
+			<input class='btnOverlay btnProductQnA' type='button' value='상품후기 작성'  onclick="window.open('${contextPath}/Home/Common/review.jsp?fd=${fd}&num=${num}', '상품후기등록', 'width=500, height=600, location=no, status=no, scrollbars=no, resizable=no, left=500, top=100' );"  />
 			</div>
 		</div>
 	</form>
