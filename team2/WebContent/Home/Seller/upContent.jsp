@@ -192,7 +192,7 @@
 				</th>
 				<td>
 					<div class="custom-file">
-						<input class="custom-file-input" type="file" name="productImageName1" id="productImageName1" onchange="showPreview(this, 'image')" required />
+						<input class="custom-file-input" type="file" name="productImageName1" id="productImageName1" onchange="showPreview(this, 'image')" required accept="image/*" />
 						<label class="custom-file-label" for="productImageName1" id="imageLabel1">선택된 파일 없음</label>
 					</div>
 				</td>
@@ -203,7 +203,7 @@
 				</th>
 				<td>
 					<div class="custom-file">
-						<input class="custom-file-input" type="file" name="productImageName2" id="productImageName2" onchange="showPreview(this, 'image')" />
+						<input class="custom-file-input" type="file" name="productImageName2" id="productImageName2" onchange="showPreview(this, 'image')" accept="image/*" />
 						<label class="custom-file-label" for="productImageName2"  id="imageLabel2">선택된 파일 없음</label>
 					</div>
 				</td>
@@ -214,7 +214,7 @@
 				</th>
 				<td>
 					<div class="custom-file">
-						<input class="custom-file-input" type="file" name="productImageName3" id="productImageName3" onchange="showPreview(this, 'image')" />
+						<input class="custom-file-input" type="file" name="productImageName3" id="productImageName3" onchange="showPreview(this, 'image')" accept="image/*" />
 						<label class="custom-file-label" for="productImageName3"  id="imageLabel3">선택된 파일 없음</label>
 					</div>
 				</td>
