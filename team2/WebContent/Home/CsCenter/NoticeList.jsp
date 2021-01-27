@@ -67,7 +67,7 @@
 				</c:when>
 			</c:choose>
 		</div>
-		<span class="tot_cnt">총 <span>102</span>건의 FAQ가 있습니다.
+		<span class="tot_cnt">총 <span>${totalCount}</span>건의 공지사항이 있습니다.
 		</span>
 		<div style="clear: both;"></div>
 		<div class="tab_gubn">
