@@ -113,6 +113,13 @@ public class MemberController extends HttpServlet{
 			
 			Boolean check = memberService.login(vo);
 			
+	// --- 페이지 체크		
+			int chk = recentURI.lastIndexOf("/");
+			String chkURI = recentURI.substring(chk,recentURI.length());
+			if(chkURI.equals("/join.do"))recentURI="../common/index.do";
+	// --- 페이지 체크 끝		
+			
+			
 			if(check){
 				HttpSession session = request.getSession();
 				session.setAttribute("id", id);
@@ -131,12 +138,16 @@ public class MemberController extends HttpServlet{
 				pw.print("<script>" 
 				         + " location.href='"+recentURI+"'; "
 						 +"</script>");
+				pw.flush();
+				return;
 			}else{
 				PrintWriter pw = response.getWriter();
 				pw.print("<script>" 
 						 + " alert('아이디 또는 비밀번호가 잘못되었습니다.');"  
 				         + " location.href=document.referrer;"
 						 +"</script>");
+				pw.flush();
+				return;
 			}
 			
 		}else if(action.equals("/logout.do")){
@@ -146,6 +157,8 @@ public class MemberController extends HttpServlet{
 			pw.print("<script>" 
 			         + " location.href=document.referrer;"
 					 +"</script>");
+			pw.flush();
+			return;
 		}else if(action.equals("/login.do")){
 			nextPage = "/Home/Member/Login.jsp";
 		}else if(action.equals("/join.do")){
@@ -228,6 +241,8 @@ public class MemberController extends HttpServlet{
 					 + " alert('정보 수정이 완료되었습니다.');"  
 					 + " location.href='"+recentURI+"'; "
 					 +"</script>");
+			pw.flush();
+			return;
 		}else if(action.equals("/find.do")){
 			nextPage = "/Home/Member/find.jsp";
 		}else if(action.equals("/modPwd.do")){
