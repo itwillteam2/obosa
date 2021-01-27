@@ -163,12 +163,12 @@ function fnOnlyNumber(t)
 	$(window).scroll(function() { 
 		var didScroll; 
 		var ScrollTop = 0;
-		var delta=5;
+	//	var delta=5;
 		var CommonHeaderHeight = $("header").outerHeight();
 		
 		var st = $(this).scrollTop();
-		if(Math.abs(ScrollTop - st)<=delta)
-			return;
+	//	if(Math.abs(ScrollTop - st)<=delta)
+	//		return;
 		
 		if(st>ScrollTop && st >CommonHeaderHeight){
 				$("header").css("height","138px");
@@ -190,5 +190,9 @@ function fnOnlyNumber(t)
 				}
 			}
 		 lastScrollTop = st;
+  		
+  		$('header').css('left',0-$(this).scrollLeft());
+  		
+  		
   		});
 	
