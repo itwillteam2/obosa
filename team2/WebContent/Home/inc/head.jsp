@@ -39,47 +39,4 @@ pageEncoding="UTF-8"%>
 	<script type="text/javascript" src="${contextPath}/Home/Js/Common/swiper.min.js"></script>
 	<script type="text/javascript" src="${contextPath}/Home/Js/Common/jquery.rwdImageMaps.min.js"></script>
 	<script type="text/javascript" src="${contextPath}/Home/Js/Common/jquery.bxslider.ABIndex.js"></script>
-	<script type="text/javascript">
-		var WinKind;
-		$(document).ready(function(){
-			$('img[usemap]').rwdImageMaps();
-			
-		fnMenuCharacter = function(x){
-			var srcOn = $("#MenuCharacter"+x).attr("srcon");
-			var srcOff = $("#MenuCharacter"+x).attr("srcoff");
-			var srcNow = $("#MenuCharacter"+x).attr("src");
-			if (srcNow!=srcOn) {
-				for (var i=1; i<=4; i++) {
-					if (i!=x) {
-						$("#MenuCharacter"+i).attr("src",$("#MenuCharacter"+i).attr("srcoff"));
-						$("#CharacterList"+i).css("display","none");
-					}
-				}
-				$("#MenuCharacter"+x).attr("src",$("#MenuCharacter"+x).attr("srcon"));
-				$("#CharacterList"+x).css("display","block");
-			}
-		}
-			
-			var token = "2993198200.7efd5c1.43f329e4f4704fdc8a28d4b395c2d938";  	   	
-			$.ajax({
-				type:"get",  
-				dataType: "jsonp",  
-				cache: false,  
-				url: "https://api.instagram.com/v1/users/self/media/recent/?access_token=" + token,
-				success: function(response) {
-					var instaHtml = "";
-					for (var i = 0; i < response.data.length; i++) {
-						instaHtml += "<li class=\"num"+(i+1)+"\"><a href=\"" + response.data[i].link + "\" target=\"_blank\" ><div style=\"background-image:url(" + response.data[i].images.standard_resolution.url + ");\"></div></a></li>";
-						if (i >= 5) {
-							break;
-						}
-					}
-					$("#InstagramListUl").empty().html(instaHtml);
-					$("#InstagramListUl > li").css("height",$("#InstagramListUl > li").width());
-				}
-			});
-			$( window ).resize( function() {
-				$("#InstagramListUl > li").css("height",$("#InstagramListUl > li").width());
-			});
-		});
-		</script>
+	
