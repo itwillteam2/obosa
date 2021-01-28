@@ -49,16 +49,15 @@ $(document).on({
 
 // 장바구니 등록
 $(document).on(	"click", ".hover>.cart", function() {
-	if("${id}"!=""){
-	$(location).attr("href",
+	if("${id}"==""){alert("회원 전용 서비스 입니다.");	}
+	else if(${memtype == 'seller'}){alert("구매 회원 전용 서비스 입니다.");	}
+	else{
+		$(location).attr("href",
 				"${contextPath}/cart/addCart.do?"
 						+"category="+ $(this).attr("data-category") 
 						+"&pnum="+ $(this).attr("data-pnum")
 						+"&cartQuantity=1");
-	
 	    cartCount();
-	}else{
-		alert("회원 전용 서비스 입니다.");
 	}
 });
 	
