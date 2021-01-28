@@ -200,7 +200,7 @@ public class FancyController extends HttpServlet{
 			
 			ItemsVO content = (ItemsVO) service.ContentDetail(num);
 			request.setAttribute("content", content);
-			
+			request.setAttribute("category",content.getCategory());
 			List <ItemsRepVO> ReppagingList = service.ReppagingList(pageNO,listSize, num);
 // ----- 후기 평점
 			String writer=null;

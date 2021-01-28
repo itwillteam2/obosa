@@ -201,7 +201,7 @@ public class LivingController extends HttpServlet {
 			
 			ItemsVO content = (ItemsVO) service.ContentDetail(num);
 			request.setAttribute("content", content);
-			System.out.println("ctg:"+content.getCategory());
+			request.setAttribute("category",content.getCategory());
 			List <ItemsRepVO> ReppagingList = service.ReppagingList(pageNO,listSize, num);
 	// ----- 후기 평점
 			String writer=null;
