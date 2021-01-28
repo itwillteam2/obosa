@@ -151,6 +151,9 @@ $(document).ready(function(){
 						<a href="${contextPath}/${newarr.category}/viewContent.do?num=${newarr.num}">
 						<span class="ImageBackGround"></span> <img class="ItemImage" src="${contextPath}/download.do?fd=${newarr.category}&num=${newarr.num}&productImageName=${newarr.productImageName1}" />
 						</a>
+						<span class="ItemName">${newarr.productName }</span>
+
+						<span class="ItemPrice">${newarr.productPrice }원</span>
 					</li>
 				</c:forEach>
 			</ul>
