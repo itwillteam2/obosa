@@ -70,9 +70,6 @@ public class LivingController extends HttpServlet {
 		
 		List<ItemsQnaRepVO> QnaRepList = null;
 		List<LivingJoinVO> joinList = null;
-
-		
-		System.out.println("act:"+action);
 		
 		if (action == null || action.equals("/list.do")) {
 			int totalCount = service.totalCount();
@@ -204,6 +201,7 @@ public class LivingController extends HttpServlet {
 			
 			ItemsVO content = (ItemsVO) service.ContentDetail(num);
 			request.setAttribute("content", content);
+			System.out.println("ctg:"+content.getCategory());
 			List <ItemsRepVO> ReppagingList = service.ReppagingList(pageNO,listSize, num);
 	// ----- 후기 평점
 			String writer=null;
@@ -252,7 +250,6 @@ public class LivingController extends HttpServlet {
 		} else if (action.equals("/deleteContent.do")) {
 			String num = request.getParameter("num");
 			int result= service.deleteContent(Integer.parseInt(num));
-			System.out.println(result);
 			if(result==1) deleteFolder(Integer.parseInt(num));
 			nextPage = "/"+CATEGORY+"/list.do";
 			
@@ -530,8 +527,6 @@ public class LivingController extends HttpServlet {
 	public void deleteFolder(int num) {
 		try {
 			String folderPath = ARTICLE_IMAGE_REPO +"\\"+CATEGORY+"\\" + num;
-			
-			System.out.println(folderPath);
 			File folder = new File(folderPath);
 
 			if (folder.exists()) {

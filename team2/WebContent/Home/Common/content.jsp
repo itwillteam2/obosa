@@ -187,6 +187,9 @@ $(window).load(function(){
 	});
 
 	$(document).on("click", ".btnCart", function() {
+		if("${id}"==""){alert("회원 전용 서비스 입니다.");	}
+		else if(${memtype == 'seller'}){alert("구매 회원 전용 서비스 입니다.");	}
+		else{
 		var cartQuantity = $("input[name='stockqty']").val();
 		$.ajax({
 			type:"post",
@@ -199,6 +202,7 @@ $(window).load(function(){
 			},
 			error:function(){ alert("다시 시도해 주시기 바랍니다."); }
 			});
+		}
 	});
 	
 	$(document).on("click", ".btnModItem", function() {
