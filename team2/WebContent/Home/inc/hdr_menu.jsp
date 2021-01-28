@@ -19,10 +19,10 @@ function (){
 
 //초기 장바구니 내용 개수 가져오기
 $(document).ready(function(){
-	if("${id}"!=""){
-		cartCount();
-	}else{
+	if("${id}"==""||${memtype == 'seller'}){
 		$("#countCart").css("display","none");
+	}else{
+		cartCount();
 	}
 });
 	
@@ -43,8 +43,9 @@ $(document).ready(function(){
 		location.href="${contextPath}/category/list.do?category="+category;
 	}
 	function fnGoCart(){
-		if("${id}"!=""){ location.href="${contextPath}/cart/cartList.do?customer_id=${id}"	}
-		else{ alert("회원 전용 서비스입니다."); }	
+		if("${id}"==""){ alert("회원 전용 서비스입니다.");}
+		else if(${memtype == 'seller'}){ alert("구매 회원 전용 서비스입니다."); }	
+		else{location.href="${contextPath}/cart/cartList.do?customer_id=${id}" }	
 	}
 	
 </script>

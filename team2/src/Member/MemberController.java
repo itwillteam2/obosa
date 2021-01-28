@@ -117,6 +117,7 @@ public class MemberController extends HttpServlet{
 			int chk = recentURI.lastIndexOf("/");
 			String chkURI = recentURI.substring(chk,recentURI.length());
 			if(chkURI.equals("/join.do"))recentURI="../common/index.do";
+			if(chkURI.equals("/login.do"))recentURI="../common/index.do";
 	// --- 페이지 체크 끝		
 			
 			

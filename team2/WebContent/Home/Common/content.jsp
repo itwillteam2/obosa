@@ -62,10 +62,7 @@ $(window).load(function(){
 					}
 				});						
 // 별점 끝				
-				
-				
-				
-// 별점		
+	
 	});
 	
 	$(document).on("click",".tabBar>span", function(){
@@ -198,7 +195,7 @@ $(window).load(function(){
 			data: {category:"${content.category}",pnum:"${content.num}",cartQuantity:cartQuantity},
 			contentType: 'application/x-www-form-urlencoded; charset=UTF-8', 
 	        dataType: 'html',
-			success:function(){ alert("장바구니에 추가되었습니다.");countCart();  
+			success:function(){ alert("장바구니에 추가되었습니다.");cartCount();  
 			},
 			error:function(){ alert("다시 시도해 주시기 바랍니다."); }
 			});
