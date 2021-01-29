@@ -44,7 +44,7 @@ public class CartController extends HttpServlet{
 		HttpSession session = request.getSession();
 		String customer_id = (String)session.getAttribute("id");
 		
-		
+		System.out.println("ct"+action);
 		
 		if(action.equals("/cartList.do")){	
 			List<CartVO> cart = new ArrayList<CartVO>();
@@ -55,16 +55,17 @@ public class CartController extends HttpServlet{
 		
 		} else if (action.equals("/addCart.do")) {	
 			int pnum=Integer.parseInt(request.getParameter("pnum"));
-			String category=request.getParameter("category");		
+			String category=request.getParameter("category");	
 			int cartQuantity=Integer.parseInt(request.getParameter("cartQuantity"));
 			int count = service.insertContent(pnum,category,customer_id,cartQuantity);
 			if(count!=0) { 
 				request.setAttribute("cartCount", count);
 				PrintWriter pw = response.getWriter();
-				pw.print("<script>"
-					+"alert('장바구니에 등록하였습니다.');"
-					+"history.back();"
-					+"</script>");		
+				pw.print("ok");
+		//		pw.print("<script>"
+		//			+"alert('장바구니에 등록하였습니다.');"
+		//			+"history.back();"
+		//			+"</script>");		
 				pw.flush();
 				return;
 				

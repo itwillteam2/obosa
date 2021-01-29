@@ -22,7 +22,11 @@
 		.grd {width:125px;height:80px;;padding:22px 0;display:block; float:left; text-align:center; line-height:62px;}
 		.grade {margin-top:8px;float:left;width:23px;height:23px;background-image:url('../Images/Ver1/Beta/star_bk.png');background-size:22px 22px;background-repeat: no-repeat;}
 		.grade.on {background-image:url('../Images/Ver1/Beta/star_yw.png');background-size:22px 22px;background-repeat: no-repeat;}
-		
+		.addCart{position:absolute;bottom:50px;width:45px;height:45px;background-color:transparent;}
+		.event{display:inline-block;width:45px;height:45px; background:url('${contextPath}/Images/Ver1/Common/cart_gift.png'); background-repeat:no-repeat; background-size:45px 45px; background-position:center center;animation: cart 5s forwards;}
+		@keyframes cart {0% {-webkit-transform: translateY(0%)	}	
+							80%{-webkit-transform: translateY(80%)	}
+								100%{opacity:0}	}
 		</style>
 
 
@@ -62,7 +66,7 @@ $(window).load(function(){
 					}
 				});						
 // 별점 끝				
-	
+
 	});
 	
 	$(document).on("click",".tabBar>span", function(){
@@ -187,22 +191,24 @@ $(window).load(function(){
 	});
 
 	$(document).on("click", ".btnCart", function() {
-		if("${id}"==""){alert("회원 전용 서비스 입니다.");	}
-		else if(${memtype == 'seller'}){alert("구매 회원 전용 서비스 입니다.");	}
-		else{
-		var cartQuantity = $("input[name='stockqty']").val();
-		$.ajax({
-			type:"post",
-			async:true,
-			url:"${contextPath}/cart/addCart.do",  
-			data: {category:"${content.category}",pnum:"${content.num}",cartQuantity:cartQuantity},
-			contentType: 'application/x-www-form-urlencoded; charset=UTF-8', 
-	        dataType: 'html',
-			success:function(){ alert("장바구니에 추가되었습니다.");cartCount();  
-			},
-			error:function(){ alert("다시 시도해 주시기 바랍니다."); }
-			});
-		}
+		if("${id}"==""){alert("회원 전용 서비스 입니다.");   }
+		   else if(${memtype == 'seller'}){alert("구매 회원 전용 서비스 입니다.");   }
+		   else{
+			var cartQuantity = $("input[name='stockqty']").val();
+			$.ajax({
+				type:"post",
+				async:true,
+				url:"${contextPath}/cart/addCart.do",  
+				data: {category:"${content.category}",pnum:"${content.num}",cartQuantity:cartQuantity},
+				contentType: 'application/x-www-form-urlencoded; charset=UTF-8', 
+		        dataType: 'html',
+				success:function(result){if(result=="ok"){$('.addCart').html('<span class="event"></span>'); 
+				cartCount(); 
+				}else{alert("다시 시도해 주시기 바랍니다.")}
+				},
+				error:function(){ alert("서버와의 연결에 실패하였습니다."); }
+				});
+		   }
 	});
 	
 	$(document).on("click", ".btnModItem", function() {
@@ -382,10 +388,10 @@ $(window).load(function(){
 							<div class='ps_sub2'>${fn:replace(Rep.content, newLineChar, "<br/>")}</div>
 							<c:if test="${Rep.writer == sessionScope.id }"> 
 							<span class="buttonreply" style="float:right;" onclick="window.open('${contextPath}/Home/Common/RepModify.jsp?category=${content.category}&rnum=${Rep.rnum}&num=${Rep.num}', 
-							'상품후기 수정', 'width=500, height=500, location=no, status=no, scrollbars=no, resizable=no, left=500, top=100' );">
-							상품후기 수정</span>
+							'Q&A답변수정', 'width=500, height=500, location=no, status=no, scrollbars=no, resizable=no, left=500, top=100' );">
+							Q&A 답변 수정</span>
 							<span class="buttonreply" style="float:right;" onclick="location.href='${contextPath}/Home/Common/RepDelete.jsp?category=${content.category}&rnum=${Rep.rnum}&num=${Rep.num}'">
-							상품후기 삭제</span>
+							Q&A 답변 삭제</span>
 							</c:if>
 						</div>
 				</c:forEach>	
@@ -432,33 +438,27 @@ $(window).load(function(){
 						</span>
 						<div class='qna on'>
 							<span class='qna_q'>${fn:replace(Qna.content, newLineChar, "<br/>")}</span>
-								<c:if test="${Qna.writer == sessionScope.id }">
-									<span class="buttonreply" style="float:right;" onclick="window.open('${contextPath}/Home/Common/QnAModify.jsp?category=${content.category}&qnum=${Qna.qnum}&num=${content.num}', 
-									'Q&A수정', 'width=500, height=500, location=no, status=no, scrollbars=no, resizable=no, left=500, top=100' );">
-									Q&A 수정</span>
-									<span class="buttonreply" style="float:right;" onclick="location.href='${contextPath}/Home/Common/QnaDelete.jsp?category=${content.category}&qnum=${Qna.qnum}&num=${content.num}'">
-									Q&A 삭제</span>
-								</c:if>
-								<c:choose>
-									<c:when test="${Qna.complete == 1}"> 
-										<span class='qna_a'>${fn:replace(Qna.rcontent, newLineChar, "<br/>")}</span>
-											<c:if test="${content.sellerName == sessionScope.name }"> 
-											<span class="buttonreply" style="float:right;" onclick="window.open('${contextPath}/Home/Common/qnaReplyModify.jsp?category=${content.category}&qrnum=${Qna.qrnum}&num=${content.num}', 
-											'Q&A답변수정', 'width=500, height=500, location=no, status=no, scrollbars=no, resizable=no, left=500, top=100' );">
-											Q&A 답변 수정</span>
-											<span class="buttonreply" style="float:right;" onclick="location.href='${contextPath}/Home/Common/qnaReplyDelete.jsp?category=${content.category}&qrnum=${Qna.qrnum}&num=${content.num}'">
-											Q&A 답변 삭제</span>
-											</c:if>
-									</c:when>
-									<c:otherwise>
-										<span class='qna_a'>&nbsp;</span>
+							
+							<c:choose>
+								<c:when test="${Qna.complete == 1}"> 
+									<span class='qna_a'>${fn:replace(Qna.rcontent, newLineChar, "<br/>")}</span>
 										<c:if test="${content.sellerName == sessionScope.name }"> 
-										<span class="buttonreply" style="float:right;" onclick="window.open('${contextPath}/Home/Common/qnaReply.jsp?category=${content.category}&qnum=${Qna.qnum}', 
-										'Q&A답변등록', 'width=500, height=500, location=no, status=no, scrollbars=no, resizable=no, left=500, top=100' );">
-										Q&A 답변 작성</span>
+										<span class="buttonreply" style="float:right;" onclick="window.open('${contextPath}/Home/Common/qnaReplyModify.jsp?category=${content.category}&qrnum=${Qna.qrnum}&num=${content.num}', 
+										'Q&A답변수정', 'width=500, height=500, location=no, status=no, scrollbars=no, resizable=no, left=500, top=100' );">
+										Q&A 답변 수정</span>
+										<span class="buttonreply" style="float:right;" onclick="location.href='${contextPath}/Home/Common/qnaReplyDelete.jsp?category=${content.category}&qrnum=${Qna.qrnum}&num=${content.num}'">
+										Q&A 답변 삭제</span>
 										</c:if>
-									</c:otherwise>
-								</c:choose> 		
+								</c:when>
+								<c:otherwise>
+									<span class='qna_a'>&nbsp;</span>
+									<c:if test="${content.sellerName == sessionScope.name }"> 
+									<span class="buttonreply" style="float:right;" onclick="window.open('${contextPath}/Home/Common/qnaReply.jsp?category=${content.category}&qnum=${Qna.qnum}', 
+									'Q&A답변등록', 'width=500, height=500, location=no, status=no, scrollbars=no, resizable=no, left=500, top=100' );">
+									Q&A 답변 작성</span>
+									</c:if>
+								</c:otherwise>
+							</c:choose> 			
 						</div>
 						</c:forEach>
 					</div>
