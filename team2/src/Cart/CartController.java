@@ -44,8 +44,6 @@ public class CartController extends HttpServlet{
 		HttpSession session = request.getSession();
 		String customer_id = (String)session.getAttribute("id");
 		
-		System.out.println("ct"+action);
-		
 		if(action.equals("/cartList.do")){	
 			List<CartVO> cart = new ArrayList<CartVO>();
 			cart = service.getCart(customer_id);
