@@ -39,7 +39,7 @@
 	<div id="CommonHeader_M"></div>
 
 	<div class="wrap" id="ori_wrap">
-		<div class="top_title">FAQ 삭제</div>
+		<div class="top_title">Q&A 삭제</div>
 
 		<form name="Inquiryfrm" method="post" action="${contextPath}/CsCenter/DeleteInquiry.do">
 			<div class="outter_box">

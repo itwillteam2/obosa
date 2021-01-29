@@ -103,8 +103,8 @@
 					
 					<c:if test="${sessionScope.id == InquiryList.id }">
 						<div class="more_info">
-							<span><a href="${contextPath}/CsCenter/InquiryModify.do?inqnum=${InquiryList.inqnum}" style="color : white;">FAQ 수정</a></span>
-							<span><a href="${contextPath}/Home/CsCenter/InquiryDelete.jsp?inqnum=${InquiryList.inqnum}" style="color : white;">FAQ 삭제</a></span>
+							<span><a href="${contextPath}/CsCenter/InquiryModify.do?inqnum=${InquiryList.inqnum}" style="color : white;">Q&A 수정</a></span>
+							<span><a href="${contextPath}/Home/CsCenter/InquiryDelete.jsp?inqnum=${InquiryList.inqnum}" style="color : white;">Q&A 삭제</a></span>
 						</div>
 					</c:if>	
 			</div>

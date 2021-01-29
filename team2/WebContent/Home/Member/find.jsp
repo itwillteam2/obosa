@@ -368,7 +368,7 @@
 	<div class="tableDiv" id="TableEMAIL">
 		<dl class="trJoin">
 			<dd>
-				<input type="text" id="i_mememail" name="mememail" maxlength="50" placeholder="예) example@artbox.co.kr">
+				<input type="text" id="i_mememail" name="mememail" maxlength="50" placeholder="예) example@sangsangmarket.com">
 				<p class="null"></p>
 			</dd>
 		</dl>
