@@ -559,10 +559,7 @@ public class ItemsDAO {
 				vo.setRcontent(rs.getString("rcontent"));
 				vo.setComplete(rs.getInt("complete"));
 				QnaPagingJoinList.add(vo);	
-				
-				System.out.println(rs.getInt("qnum"));
-				System.out.println(rs.getString("title"));
-			}
+				}
 						
 		} catch (Exception e) {
 			e.printStackTrace();

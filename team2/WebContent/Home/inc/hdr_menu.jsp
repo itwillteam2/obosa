@@ -94,6 +94,7 @@ $(document).ready(function(){
 			</c:choose>
 	
 			<li class="Cart">
+				<div class="addCart"></div>
 				<a href="javascript:void(0)" onclick="fnGoCart();" title="장바구니">			
 					<img src="${contextPath}/Images/Ver1/Common/top_icon_cart.png" />
 				</a>

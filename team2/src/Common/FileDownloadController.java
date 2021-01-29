@@ -42,7 +42,6 @@ public class FileDownloadController extends HttpServlet{ //이미지를 다운�
 		File imageFile = new File(path);
 		response.setHeader("Cache-Control", "no-cache");
 		response.addHeader("Content-disposition", "attachment;filename=" + productImageName);
-		System.out.println(path);
 		FileInputStream in = new FileInputStream(imageFile);
 		
 		byte[] buffer = new byte[1024*8]; //8kb

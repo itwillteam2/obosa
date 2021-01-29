@@ -211,7 +211,7 @@ public class CartDAO {
 				num=getContentCount(pnum,category,customer_id);
 			} else {
 				cartQuantity +=vo.getCartQuantity();
-				totalPrice= vo.getProductPrice()*cartQuantity+vo.getTotalPrice();
+				totalPrice= vo.getProductPrice()*cartQuantity+vo.getShipping_fee();						   
 				updateContent(pnum,category,customer_id,cartQuantity,totalPrice);
 				num=getContentCount(pnum,category,customer_id);
 			}
