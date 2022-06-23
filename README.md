@@ -7,6 +7,7 @@
  - MySQL
  - Apache Tocat
  - JSP
+ - Javascript
  - JQuery
  - ajax
  - JSTL
